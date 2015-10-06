@@ -1,0 +1,36 @@
+= 2 in the black circle is the pivot, the shaded column is v/a11, and the shaded row is wT. The
+elements of U computed thus far are above the horizontal line, and the elements of L are to the
+left of the vertical line. The Schur complement matrix A′ - vwT/a11 occupies the lower right.
+(c) We now operate on the Schur complement matrix produced from part (b). The element a22
+= 4 in the black circle is the pivot, and the shaded column and row are v/a22 and wT (in the
+partitioning of the Schur complement), respectively. Lines divide the matrix into the elements
+of U computed so far (above), the elements of L computed so far (left), and the new Schur
+complement (lower right). (d) The next step completes the factorization. (The element 3 in the
+new Schur complement becomes part of U when the recursion terminates.) (e) The
+factorization A = LU.
+Computing an LUP decomposition
+Generally, in solving a system of linear equations Ax = b, we must pivot on off-diagonal
+elements of A to avoid dividing by 0. Not only is division by 0 undesirable, so is division by
+any small value, even if A is nonsingular, because numerical instabilities can result in the
+computation. We therefore try to pivot on a large value.
+The mathematics behind LUP decomposition is similar to that of LU decomposition. Recall
+that we are given an n × n nonsingular matrix A and wish to find a permutation matrix P, a
+unit lower-triangular matrix L, and an upper-triangular matrix U such that P A = LU . Before
+we partition the matrix A, as we did for LU decomposition, we move a nonzero element, say
+ak1, from somewhere in the first column to the (1, 1) position of the matrix. (If the first
+column contains only 0's, then A is singular, because its determinant is 0, by Theorems 28.4
+and 28.5.) In order to preserve the set of equations, we exchange row 1 with row k, which is
+equivalent to multiplying A by a permutation matrix Q on the left (Exercise 28.1-5). Thus, we
+can write Q A as
+
+where v = (a21, a31, . . . , an1)T, except that a11 replaces ak1; wT = (ak2, ak3, . . . , akn); and A′ is
+an (n - 1) × (n - 1) matrix. Since ak1 ≠ 0, we can now perform much the same linear algebra as
+for LU decomposition, but now guaranteeing that we do not divide by 0:
+
+As we saw for LU decomposition, if A is nonsingular, then the Schur complement A′ - vwT/ak1
+is nonsingular, too. Therefore, we can inductively find an LUP decomposition for it, with unit
+lower-triangular matrix L′, upper-triangular matrix U′, and permutation matrix P′, such that
+P′(A′ - vwT/ak1) = L′U′.
+Define
+
+

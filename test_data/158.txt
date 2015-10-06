@@ -1,0 +1,38 @@
+d. Can any of your sorting algorithms from parts (a)-(c) be used to sort n records with bbit keys using radix sort in O(bn) time? Explain how or why not.
+e. Suppose that the n records have keys in the range from 1 to k. Show how to modify
+counting sort so that the records can be sorted in place in O(n + k) time. You may use
+O(k) storage outside the input array. Is your algorithm stable? (Hint: How would you
+do it for k = 3?)
+
+Problems 8-3: Sorting variable-length items
+a. You are given an array of integers, where different integers may have different
+numbers of digits, but the total number of digits over all the integers in the array is n.
+Show how to sort the array in O(n) time.
+b. You are given an array of strings, where different strings may have different numbers
+of characters, but the total number of characters over all the strings is n. Show how to
+sort the strings in O(n) time.
+(Note that the desired order here is the standard alphabetical order; for example, a < ab
+< b.)
+
+Problems 8-4: Water jugs
+Suppose that you are given n red and n blue water jugs, all of different shapes and sizes. All
+red jugs hold different amounts of water, as do the blue ones. Moreover, for every red jug,
+there is a blue jug that holds the same amount of water, and vice versa.
+It is your task to find a grouping of the jugs into pairs of red and blue jugs that hold the same
+amount of water. To do so, you may perform the following operation: pick a pair of jugs in
+which one is red and one is blue, fill the red jug with water, and then pour the water into the
+blue jug. This operation will tell you whether the red or the blue jug can hold more water, or if
+they are of the same volume. Assume that such a comparison takes one time unit. Your goal is
+to find an algorithm that makes a minimum number of comparisons to determine the
+grouping. Remember that you may not directly compare two red jugs or two blue jugs.
+a. Describe a deterministic algorithm that uses Θ(n2) comparisons to group the jugs into
+pairs.
+b. Prove a lower bound of Θ(n lg n) for the number of comparisons an algorithm solving
+this problem must make.
+c. Give a randomized algorithm whose expected number of comparisons is O(n lg n),
+and prove that this bound is correct. What is the worst-case number of comparisons for
+your algorithm?
+
+Problems 8-5: Average sorting
+
+

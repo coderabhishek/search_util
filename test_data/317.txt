@@ -1,0 +1,45 @@
+pi are 0; this paper contains an O(n3)-time algorithm. Aho, Hopcroft, and Ullman [5] present
+the algorithm from Section 15.5. Exercise 15.5-4 is due to Knuth [184]. Hu and Tucker [161]
+devised an algorithm for the case in which all probabilities pi are 0 that uses O(n2) time and
+O(n) space; subsequently, Knuth [185] reduced the time to O(n lg n).
+
+Chapter 16: Greedy Algorithms
+Overview
+Algorithms for optimization problems typically go through a sequence of steps, with a set of
+choices at each step. For many optimization problems, using dynamic programming to
+determine the best choices is overkill; simpler, more efficient algorithms will do. A greedy
+algorithm always makes the choice that looks best at the moment. That is, it makes a locally
+optimal choice in the hope that this choice will lead to a globally optimal solution. This
+chapter explores optimization problems that are solvable by greedy algorithms. Before
+reading this chapter, you should read about dynamic programming in Chapter 15, particularly
+Section 15.3.
+Greedy algorithms do not always yield optimal solutions, but for many problems they do. We
+shall first examine in Section 16.1 a simple but nontrivial problem, the activity-selection
+problem, for which a greedy algorithm efficiently computes a solution. We shall arrive at the
+greedy algorithm by first considering a dynamic-programming solution and then showing that
+we can always make greedy choices to arrive at an optimal solution. Section 16.2 reviews the
+basic elements of the greedy approach, giving a more direct approach to proving greedy
+algorithms correct than the dynamic-programming-based process of Section 16.1. Section
+16.3 presents an important application of greedy techniques: the design of data-compression
+(Huffman) codes. In Section 16.4, we investigate some of the theory underlying combinatorial
+structures called "matroids" for which a greedy algorithm always produces an optimal
+solution. Finally, Section 16.5 illustrates the application of matroids using a problem of
+scheduling unit-time tasks with deadlines and penalties.
+The greedy method is quite powerful and works well for a wide range of problems. Later
+chapters will present many algorithms that can be viewed as applications of the greedy
+method, including minimum-spanning-tree algorithms (Chapter 23), Dijkstra's algorithm for
+shortest paths from a single source (Chapter 24), and Chv´atal's greedy set-covering heuristic
+(Chapter 35). Minimum-spanning-tree algorithms are a classic example of the greedy method.
+Although this chapter and Chapter 23 can be read independently of each other, you may find
+it useful to read them together.
+
+16.1 An activity-selection problem
+Our first example is the problem of scheduling several competing activities that require
+exclusive use of a common resource, with a goal of selecting a maximum-size set of mutually
+compatible activities. Suppose we have a set S = {a1, a2, ..., an} of n proposed activities that
+wish to use a resource, such as a lecture hall, which can be used by only one activity at a time.
+Each activity ai has a start time si and a finish time fi, where 0 ≤ si < fi < ∞. If selected,
+activity ai takes place during the half-open time interval [si, fi). Activities ai and aj are
+compatible if the intervals [si, fi) and [sj fj) do not overlap (i.e., ai and aj are compatible if si ≥
+
+

@@ -1,0 +1,37 @@
+We begin by choosing a prime number p large enough so that every possible key k is in the
+range 0 to p - 1, inclusive. Let Zp denote the set {0, 1, ..., p - 1}, and let denote the set {1, 2,
+..., p - 1}. Since p is prime, we can solve equations modulo p with the methods given in
+Chapter 31. Because we assume that the size of the universe of keys is greater than the
+number of slots in the hash table, we hav p > m.
+We now define the hash function ha,b for any
+and any b Zp using a linear
+transformation followed by reductions modulo p and then modulo m:
+(11.3)
+For example, with p = 17 and m = 6, we have h3,4(8) = 5. The family of all such hash
+functions is
+(11.4)
+Each hash function ha,b maps Zp to Zm. This class of hash functions has the nice property that
+the size m of the output range is arbitrary—not necessarily prime—a feature which we shall
+use in Section 11.5. Since there are p - 1 choices for a and there are p choices for b, there are
+p(p - 1) hash functions in ℋp,m.
+Theorem 11.5
+
+The class ℋp,m of hash functions defined by equations (11.3) and (11.4) is universal.
+Proof Consider two distinct keys k and l from Zp, so that k ≠ l. For a given hash function ha,b
+we let
+r = (ak + b) mod p,
+s = (al + b) mod p.
+We first note that r ≠ s. Why? Observe that
+r - s ≡ a(k - l) (mod p).
+It follows that r ≠ s because p is prime and both a and (k - l) are nonzero modulo p, and so
+their product must also be nonzero modulo p by Theorem 31.6. Therefore, during the
+computation of any ha,b in ℋp,m, distinct inputs k and l map to distinct values r and s modulo
+p; there are no collisions yet at the "mod p level." Moreover, each of the possible p(p - 1)
+choices for the pair (a, b) with a ≠ 0 yields a different resulting pair (r, s) with r ≠ s, since we
+can solve for a and b given r and s:
+a = ((r - s)((k - l)-1 mod p)) mod p,
+b = (r - ak) mod p,
+where ((k - l)-1 mod p) denotes the unique multiplicative inverse, modulo p, of k - l. Since
+there are only p(p - 1) possible pairs (r, s) with r ≠ s, there is a one-to-one correspondence
+
+

@@ -1,0 +1,52 @@
+infeasible or returns a slack form for which the basic solution is feasible. The main part of the
+algorithm is given in the while loop in lines 2–11. If all the coefficients in the objective
+function are negative, then the while loop terminates. Otherwise, in line 3, we select a
+variable xe whose coefficient in the objective function is positive to be the entering variable.
+While we have the freedom to choose any such variable as the entering variable, we assume
+that we use some prespecified deterministic rule. Next, in lines 4–8, we check each constraint,
+and we pick the one that most severely limits the amount by which we can increase xe without
+violating any of the nonnegativity constraints; the basic variable associated with this
+constraint is xl. Again, we may have the freedom to choose one of several variables as the
+leaving variable, but we assume that we use some prespecified deterministic rule. If none of
+the constraints limits the amount by which the entering variable can increase, the algorithm
+returns "unbounded" in line 10. Otherwise, line 11 exchanges the roles of the entering and
+leaving variables by calling the subroutine PIVOT(N, B, A, b, c, v, l, e), described above.
+Lines 12–15 compute a solution for the original linear-programming variables
+by
+setting all the nonbasic variables to 0 and each basic variable to bi. In Theorem 29.10, we
+shall see that this solution is an optimal solution to the linear program. Finally, line 16 returns
+the computed values of these original linear-programming variables.
+To show that SIMPLEX is correct, we first show that if SIMPLEX has an initial feasible
+solution and eventually terminates, then it either returns a feasible solution or determines that
+the linear program is unbounded. Then, we show that SIMPLEX terminates. Finally, in
+Section 29.4, we show that the solution returned is optimal.
+Lemma 29.2
+Given a linear program (A, b, c), suppose that the call to INITIALIZE-SIMPLEX in line 1 of
+SIMPLEX returns a slack form for which the basic solution is feasible. Then if SIMPLEX
+returns a solution in line 16, that solution is a feasible solution to the linear program. If
+SIMPLEX returns "unbounded" in line 10, the linear program is unbounded.
+Proof We use the following three-part loop invariant:
+•
+
+At the start of each iteration of the while loop of lines 2–11,
+1. the slack form is equivalent to the slack form returned by the call of
+INITIALIZE-SIMPLEX,
+2. for each i B, we have bi ≥ 0, and
+3. the basic solution associated with the slack form is feasible.
+
+•
+
+Initialization: The equivalence of the slack forms is trivial for the first iteration. We
+assume, in the statement of the lemma, that the call to INITIALIZE-SIMPLEX in line
+1 of SIMPLEX returns a slack form for which the basic solution is feasible. Thus, the
+third part of the invariant is true. Furthermore, since each basic variable xi is set to bi
+in the basic solution, and the feasibility of the basic solution implies that each basic
+variable xi is nonnegative, we have that bi ≥ 0. Thus, the second part of the invariant
+holds.
+Maintenance: We shall show that the loop invariant is maintained, assuming that the
+return statement in line 10 is not executed. We shall handle the case that line 10
+executes when we discuss termination.
+
+•
+
+

@@ -1,0 +1,33 @@
+where the constants a0, a1, ..., ad are the coefficients of the polynomial and ad ≠ 0. A
+polynomial is asymptotically positive if and only if ad > 0. For an asymptotically positive
+polynomial p(n) of degree d, we have p(n) = Θ(nd). For any real constant a ≥ 0, the function
+na is monotonically increasing, and for any real constant a ≥ 0, the function na is
+monotonically decreasing. We say that a function f(n) is polynomially bounded if f(n) = O(nk)
+for some constant k.
+Exponentials
+For all real a > 0, m, and n, we have the following identities:
+a0 = 1,
+a1 = a,
+a-1 = 1/a,
+(am)n = amn,
+(am)n = (an)m,
+am an = am+n.
+For all n and a ≥ 1, the function an is monotonically increasing in n. When convenient, we
+shall assume 00 = 1.
+The rates of growth of polynomials and exponentials can be related by the following fact. For
+all real constants a and b such that a > 1,
+(3.9)
+from which we can conclude that
+nb = o(an).
+Thus, any exponential function with a base strictly greater than 1 grows faster than any
+polynomial function.
+Using e to denote 2.71828..., the base of the natural logarithm function, we have for all real x,
+(3.10)
+
+where "!" denotes the factorial function defined later in this section. For all real x, we have the
+inequality
+(3.11)
+where equality holds only when x = 0. When |x| ≤ 1, we have the approximation
+(3.12)
+
+

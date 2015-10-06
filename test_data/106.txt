@@ -1,0 +1,25 @@
+We approximate by integrals to bound this summation from above and below. By the
+inequalities (A.12), we have
+
+Evaluating these definite integrals gives us the bounds
+
+which provide a rather tight bound for Pr {S}. Because we wish to maximize our probability
+of success, let us focus on choosing the value of k that maximizes the lower bound on Pr {S}.
+(Besides, the lower-bound expression is easier to maximize than the upper-bound expression.)
+Differentiating the expression (k/n)(ln n - ln k) with respect to k, we obtain
+
+Setting this derivative equal to 0, we see that the lower bound on the probability is maximized
+when ln k = ln n - 1 = ln(n/e) or, equivalently, when k = n/e. Thus, if we implement our
+strategy with k = n/e, we will succeed in hiring our best-qualified applicant with probability at
+least 1/e.
+Exercises 5.4-1
+How many people must there be in a room before the probability that someone has the same
+birthday as you do is at least 1/2? How many people must there be before the probability that
+at least two people have a birthday on July 4 is greater than 1/2?
+
+Exercises 5.4-2
+Suppose that balls are tossed into b bins. Each toss is independent, and each ball is equally
+likely to end up in any bin. What is the expected number of ball tosses before at least one of
+the bins contains two balls?
+
+

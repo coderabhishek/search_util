@@ -1,0 +1,40 @@
+which they appear. There are many choices, therefore, for the vertices of the convex
+hull. Chapter 33 gives two good methods for finding the convex hull.
+These lists are far from exhaustive (as you again have probably surmised from this book's
+heft), but exhibit two characteristics that are common to many interesting algorithms.
+1. There are many candidate solutions, most of which are not what we want. Finding one
+that we do want can present quite a challenge.
+2. There are practical applications. Of the problems in the above list, shortest paths
+provides the easiest examples. A transportation firm, such as a trucking or railroad
+company, has a financial interest in finding shortest paths through a road or rail
+network because taking shorter paths results in lower labor and fuel costs. Or a routing
+node on the Internet may need to find the shortest path through the network in order to
+route a message quickly.
+Data structures
+This book also contains several data structures. A data structure is a way to store and
+organize data in order to facilitate access and modifications. No single data structure works
+well for all purposes, and so it is important to know the strengths and limitations of several of
+them.
+Technique
+Although you can use this book as a "cookbook" for algorithms, you may someday encounter
+a problem for which you cannot readily find a published algorithm (many of the exercises and
+problems in this book, for example!). This book will teach you techniques of algorithm design
+and analysis so that you can develop algorithms on your own, show that they give the correct
+answer, and understand their efficiency.
+Hard problems
+Most of this book is about efficient algorithms. Our usual measure of efficiency is speed, i.e.,
+how long an algorithm takes to produce its result. There are some problems, however, for
+which no efficient solution is known. Chapter 34 studies an interesting subset of these
+problems, which are known as NP-complete.
+Why are NP-complete problems interesting? First, although no efficient algorithm for an NPcomplete problem has ever been found, nobody has ever proven that an efficient algorithm for
+one cannot exist. In other words, it is unknown whether or not efficient algorithms exist for
+NP-complete problems. Second, the set of NP-complete problems has the remarkable property
+that if an efficient algorithm exists for any one of them, then efficient algorithms exist for all
+of them. This relationship among the NP-complete problems makes the lack of efficient
+solutions all the more tantalizing. Third, several NP-complete problems are similar, but not
+identical, to problems for which we do know of efficient algorithms. A small change to the
+problem statement can cause a big change to the efficiency of the best known algorithm.
+It is valuable to know about NP-complete problems because some of them arise surprisingly
+often in real applications. If you are called upon to produce an efficient algorithm for an NPcomplete problem, you are likely to spend a lot of time in a fruitless search. If you can show
+
+

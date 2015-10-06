@@ -1,0 +1,53 @@
+recursive strategy outlined above can be employed without fear of dividing by 0. We shall
+prove this result, as well as several others, in Section 28.5.
+Our code for LU decomposition of a matrix A follows the recursive strategy, except that an
+iteration loop replaces the recursion. (This transformation is a standard optimization for a
+"tail-recursive" procedure—one whose last operation is a recursive call to itself.) It assumes
+that the dimension of A is kept in the attribute rows[A]. Since we know that the output matrix
+U has 0's below the diagonal, and since LUP-SOLVE does not look at these entries, the code
+does not bother to fill them in. Likewise, because the output matrix L has 1's on its diagonal
+and 0's above the diagonal, these entries are not filled in either. Thus, the code computes only
+the "significant" entries of L and U.
+LU-DECOMPOSITION(A)
+1 n ← rows[A]
+2 for k ← 1 to n
+3
+do ukk ← akk
+4
+for i ← k + 1 to n
+5
+
+do lik ← aik/ukk
+
+▹lik holds vi
+
+▹uki holds
+6
+uki ← aki
+7
+for i ← k + 1 to n
+8
+do for j ← k + 1 to n
+9
+do aij ← aij - likukj
+10 return L and U
+
+The outer for loop beginning in line 2 iterates once for each recursive step. Within this loop,
+the pivot is determined to be ukk = akk in line 3. Within the for loop in lines 4–6 (which does
+not execute when k = n), the v and wT vectors are used to update L and U . The elements of the
+v vector are determined in line 5, where vi is stored in lik, and the elements of the wT vector are
+determined in line 6, where is stored in uki . Finally, the elements of the Schur complement
+are computed in lines 7–9 and stored back in the matrix A. (We don't need to divide by akk in
+line 9 because we already did so when we computed lik in line 5.) Because line 9 is triply
+nested, LU-DECOMPOSITION runs in time Θ(n3).
+Figure 28.1 illustrates the operation of LU-DECOMPOSITION. It shows a standard
+optimization of the procedure in which the significant elements of L and U are stored "in
+place" in the matrix A. That is, we can set up a correspondence between each element aij and
+either lij (if i > j) or uij (if i ≤ j) and update the matrix A so that it holds both L and U when the
+procedure terminates. The pseudocode for this optimization is obtained from the above
+pseudocode merely by replacing each reference to l or u by a; it is not difficult to verify that
+this transformation preserves correctness.
+
+Figure 28.1: The operation of LU-DECOMPOSITION. (a) The matrix A. (b) The element a11
+
+

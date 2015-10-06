@@ -1,0 +1,42 @@
+|E'| = (14 |E|) + (2 |E| - |V|) + (2k|V|)
+= 16 |E| + (2k - 1)|V|
+≤ 16 |E| + (2 |V| - 1)|V|.
+Now we show that the transformation from graph G to G' is a reduction. That is, we must
+show that G has a vertex cover of size k if and only if G' has a hamiltonian cycle.
+Suppose that G = (V, E) has a vertex cover V* V of size k. Let V* = {u1, u2,..., uk}. As
+Figure 34.17 shows, we form a hamiltonian cycle in G by including the following edges[8] for
+,
+degree(uj), which
+each vertex uj V*. Include edges
+connect all widgets corresponding to edges incident on uj. We also include the edges within
+these widgets as Figures 34.16(b)-(d) show, depending on whether the edge is covered by one
+or two vertices in V*. The hamiltonian cycle also includes the edges
+
+By inspecting Figure 34.17, the reader can verify that these edges form a cycle. The cycle
+starts at s1, visits all widgets corresponding to edges incident on u1, then visits s2, visits all
+widgets corresponding to edges incident on u2, and so on, until it returns to s1. Each widget is
+visited either once or twice, depending on whether one or two vertices of V* cover its
+corresponding edge. Because V* is a vertex cover for G, each edge in E is incident on some
+vertex in V*, and so the cycle visits each vertex in each widget of G'. Because the cycle also
+visits every selector vertex, it is hamiltonian.
+Conversely, suppose that G' = (V', E') has a hamiltonian cycle C
+
+E'. We claim that the set
+
+(34.4)
+is a vertex cover for G. To see why, partition C into maximal paths that start at some selector
+vertex si, traverse an edge (si, [u, u(1), 1]) for some u V, and end at a selector vertex sj
+without passing through any other selector vertex. Let us call each such path a "cover path."
+From how G' is constructed, each cover path must start at some si, take the edge (si, [u, u(1),
+1]) for some vertex u V, pass through all the widgets corresponding to edges in E incident
+on u, and then end at some selector vertex sj. We refer to this cover path as pu, and by
+equation (34.4), we put u into V*. Each widget visited by pu must be Wuv or Wvu for some v
+V. For each widget visited by pu, its vertices are visited by either one or two cover paths. If
+they are visited by one cover path, then edge (u, v) E is covered in G by vertex u. If two
+cover paths visit the widget, then the other cover path must be pv, which implies that v V*,
+and edge (u, v) E is covered by both u and v. Because each vertex in each widget is visited
+by some cover path, we see that each edge in E is covered by some vertex in V*.
+
+34.5.4 The traveling-salesman problem
+
+

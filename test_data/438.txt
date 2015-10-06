@@ -1,0 +1,39 @@
+unchanged, then φq(x) = φq-1(x). If level(x) is unchanged and iter(x) increases, then it increases
+by at least 1, and so φq(x) ≤ φq-1(x) - 1.
+Finally, if the qth operation increases level(x), it increases by at least 1, so that the value of the
+term (α(n) - level(x)) · rank[x] drops by at least rank[x]. Because level(x) increased, the value
+of iter(x) might drop, but according to the bound (21.2), the drop is by at most rank[x] - 1.
+Thus, the increase in potential due to the change in iter(x) is less than the decrease in potential
+due to the change in level(x), and we conclude that φq(x) ≤ φq-1(x) - 1.
+
+Our final three lemmas show that the amortized cost of each MAKE-SET, LINK, and FINDSET operation is O(α(n)). Recall from equation (17.2) that the amortized cost of each
+operation is its actual cost plus the increase in potential due to the operation.
+Lemma 21.10
+The amortized cost of each MAKE-SET operation is O(1).
+Proof Suppose that the qth operation is MAKE-SET(x). This operation creates node x with
+rank 0, so that φq(x) = 0. No other ranks or potentials change, and so Φq = Φq-1. Noting that
+the actual cost of the MAKE-SET operation is O(1) completes the proof.
+
+Lemma 21.11
+The amortized cost of each LINK operation is O(α(n)).
+Proof Suppose that the qth operation is LINK(x, y). The actual cost of the LINK operation is
+O(1). Without loss of generality, suppose that the LINK makes y the parent of x.
+To determine the change in potential due to the LINK, we note that the only nodes whose
+potentials may change are x, y, and the children of y just prior to the operation. We shall show
+that the only node whose potential can increase due to the LINK is y, and that its increase is at
+most α(n):
+•
+•
+
+By Lemma 21.9, any node that is y's child just before the LINK cannot have its
+potential increase due to the LINK.
+From the definition of φq(x), we see that, since x was a root just before the qth
+operation, φq-1(x) = α(n) · rank[x]. If rank[x] = 0, then φq(x) = φq-1(x) = 0. Otherwise,
+φq(x) = (α(n) - level(x)) · rank[x] - iter(x)
+< α(n) · rank[x] (by inequalities (21.1) and (21.2)).
+
+•
+
+Because this last quantity is φq-1(x), we see that x's potential decreases.
+
+

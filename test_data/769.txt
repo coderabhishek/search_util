@@ -1,0 +1,41 @@
+Exercises 31.6-3
+Assuming that you know φ (n), explain how to compute a-1 mod n for any
+procedure MODULAR-EXPONENTIATION.
+
+using the
+
+31.7 The RSA public-key cryptosystem
+A public-key cryptosystem can be used to encrypt messages sent between two communicating
+parties so that an eavesdropper who overhears the encrypted messages will not be able to
+decode them. A public-key cryptosystem also enables a party to append an unforgeable
+"digital signature" to the end of an electronic message. Such a signature is the electronic
+version of a handwritten signature on a paper document. It can be easily checked by anyone,
+forged by no one, yet loses its validity if any bit of the message is altered. It therefore
+provides authentication of both the identity of the signer and the contents of the signed
+message. It is the perfect tool for electronically signed business contracts, electronic checks,
+electronic purchase orders, and other electronic communications that must be authenticated.
+The RSA public-key cryptosystem is based on the dramatic difference between the ease of
+finding large prime numbers and the difficulty of factoring the product of two large prime
+numbers. Section 31.8 describes an efficient procedure for finding large prime numbers, and
+Section 31.9 discusses the problem of factoring large integers.
+Public-key cryptosystems
+In a public-key cryptosystem, each participant has both a public key and a secret key. Each
+key is a piece of information. For example, in the RSA cryptosystem,each key consists of a
+pair of integers. The participants "Alice" and "Bob" are traditionally used in cryptography
+examples; we denote their public and secret keys as PA, SA for Alice and PB, SB for Bob.
+Each participant creates his own public and secret keys. Each keeps his secret key secret, but
+he can reveal his public key to anyone or even publish it. In fact, it is often convenient to
+assume that everyone's public key is available in a public directory, so that any participant can
+easily obtain the public key of any other participant.
+The public and secret keys specify functions that can be applied to any message. Let denote
+the set of permissible messages. For example, might be the set of all finite-length bit
+sequences. In the simplest, and original, formulation of public-key cryptography, we require
+that the public and secret keys specify one-to-one functions from to itself. The function
+corresponding to Alice's public key PA is denoted PA(), and the function corresponding to her
+secret key SA is denoted SA(). The functions PA() and SA() are thus permutations of . We
+assume that the functions PA() and SA() are efficiently computable given the corresponding
+key PA or SA.
+The public and secret keys for any participant are a "matched pair" in that they specify
+functions that are inverses of each other. That is,
+
+

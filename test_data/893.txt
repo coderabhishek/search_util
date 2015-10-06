@@ -1,0 +1,28 @@
+Figure 35.1: The operation of APPROX-VERTEX-COVER. (a) The input graph G, which has
+7 vertices and 8 edges. (b) The edge (b, c), shown heavy, is the first edge chosen by
+APPROX-VERTEX-COVER. Vertices b and c, shown lightly shaded, are added to the set C
+containing the vertex cover being created. Edges (a, b), (c, e), and (c, d), shown dashed, are
+removed since they are now covered by some vertex in C. (c) Edge (e, f) is chosen; vertices e
+and f are added to C. (d) Edge (d, g) is chosen; vertices d and g are added to C. (e) The set C,
+which is the vertex cover produced by APPROX-VERTEX-COVER, contains the six vertices
+b, c, d, e, f, g. (f) The optimal vertex cover for this problem contains only three vertices: b, d,
+and e.
+Theorem 35.1
+APPROX-VERTEX-COVER is a polynomial-time 2-approximation algorithm.
+Proof We have already shown that APPROX-VERTEX-COVER runs in polynomial time.
+The set C of vertices that is returned by APPROX-VERTEX-COVER is a vertex cover, since
+the algorithm loops until every edge in E[G] has been covered by some vertex in C.
+To see that APPROX-VERTEX-COVER returns a vertex cover that is at most twice the size
+of an optimal cover, let A denote the set of edges that were picked in line 4 of APPROXVERTEX-COVER. In order to cover the edges in A, any vertex cover-in particular, an
+optimal cover C*-must include at least one endpoint of each edge in A. No two edges in A
+share an endpoint, since once an edge is picked in line 4, all other edges that are incident on
+its endpoints are deleted from E′ in line 6. Thus, no two edges in A are covered by the same
+vertex from C*, and we have the lower bound
+(35.2)
+on the size of an optimal vertex cover. Each execution of line 4 picks an edge for which
+neither of its endpoints is already in C, yielding an upper bound (an exact upper bound, in
+fact) on the size of the vertex cover returned:
+(35.3)
+Combining equations (35.2) and (35.3), we obtain
+
+

@@ -1,0 +1,54 @@
+Upper-bound property (Lemma 24.11)
+•
+
+We always have d[v] ≥ δ(s, v) for all vertices v
+δ(s, v), it never changes.
+
+V , and once d[v] achieves the value
+
+No-path property (Corollary 24.12)
+•
+
+If there is no path from s to v, then we always have d[v] = δ(s, v) = ∞.
+
+Convergence property (Lemma 24.14)
+•
+
+If
+is a shortest path in G for some u, v V, and if d[u] = δ(s, u) at any time
+prior to relaxing edge (u, v), then d[v] = δ(s, v) at all times afterward.
+
+Path-relaxation property (Lemma 24.15)
+•
+
+If p = v0, v1,..., vk is a shortest path from s = v0 to vk, and the edges of p are relaxed
+in the order (v0, v1), (v1, v2),..., (vk-1, vk), then d[vk] = δ(s, vk). This property holds
+regardless of any other relaxation steps that occur, even if they are intermixed with
+relaxations of the edges of p.
+
+Predecessor-subgraph property (Lemma 24.17)
+•
+
+Once d[v] = δ(s, v) for all v
+rooted at s.
+
+V, the predecessor subgraph is a shortest-paths tree
+
+Chapter outline
+Section 24.1 presents the Bellman-Ford algorithm, which solves the single-source shortestpaths problem in the general case in which edges can have negative weight. The BellmanFord algorithm is remarkable in its simplicity, and it has the further benefit of detecting
+whether a negative-weight cycle is reachable from the source. Section 24.2 gives a linear-time
+algorithm for computing shortest paths from a single source in a directed acyclic graph.
+Section 24.3 covers Dijkstra's algorithm, which has a lower running time than the BellmanFord algorithm but requires the edge weights to be nonnegative. Section 24.4 shows how the
+Bellman-Ford algorithm can be used to solve a special case of "linear programming." Finally,
+Section 24.5 proves the properties of shortest paths and relaxation stated above.
+We require some conventions for doing arithmetic with infinities. We shall assume that for
+any real number a ≠ -∞, we have a + ∞ = ∞ + a = ∞. Also, to make our proofs hold in the
+presence of negative-weight cycles, we shall assume that for any real number a ≠ ∞, we have
+a + (-∞) = (-∞) + a = -∞.
+All algorithms in this chapter assume that the directed graph G is stored in the adjacency-list
+representation. Additionally, stored with each edge is its weight, so that as we traverse each
+adjacency list, we can determine the edge weights in O(1) time per edge.
+
+24.1 The Bellman-Ford algorithm
+
+

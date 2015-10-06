@@ -1,0 +1,40 @@
+As an example of the application of the Chinese remainder theorem, suppose we are given the
+two equations
+a ≡ 2 (mod 5),
+a ≡ 3 (mod 13),
+so that a1 = 2, n1 = m2 = 5, a2 = 3, and n2 = m1 = 13, and we wish to compute a mod 65, since
+n = 65. Because 13-1 ≡ 2 (mod 5) and 5-1 ≡ 8 (mod 13), we have
+c1 = 13(2 mod 5) = 26,
+c2 = 5(8 mod 13) = 40,
+and
+a ≡ 2 · 26 + 3 · 40 (mod 65)
+≡ 52 + 120
+(mod 65)
+≡ 42
+(mod 65).
+See Figure 31.3 for an illustration of the Chinese remainder theorem, modulo 65.
+
+0 1 2 3 4 5 6 7 8 9 10 11 1
+2
+0 0 40 15 55 30 5 45 20 60 35 10 50 2
+5
+1 26 1 41 16 56 31 6 46 21 61 36 11 5
+1
+2 52 27 2 42 17 57 32 7 47 22 62 37 1
+2
+3 13 53 28 3 43 18 58 33 8 48 23 63 3
+8
+4 39 14 54 29 4 44 19 59 34 9 49 24 6
+4
+Figure 31.3: An illustration of the Chinese remainder theorem for n1 = 5 and n2 = 13. For this
+example, c1 = 26 and c2 = 40. In row i, column j is shown the value of a, modulo 65, such that
+(a mod 5) = i and (a mod 13) = j. Note that row 0, column 0 contains a 0. Similarly, row
+4,column 12 contains a 64 (equivalent to -1). Since c1 = 26, moving down a row increases a
+by 26. Similarly, c2 = 40 means that moving right by a column increases a by 40. Increasing a
+by 1 corresponds to moving diagonally downward and to the right, wrapping around from the
+bottom to the top and from the right to the left.
+Thus, we can work modulo n by working modulo n directly or by working in the transformed
+representation using separate modulo ni computations, as convenient. The computations are
+entirely equivalent.
+
+

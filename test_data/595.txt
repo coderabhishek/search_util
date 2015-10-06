@@ -1,0 +1,56 @@
+b. For a given number K, show that an augmenting path of capacity at least K can be
+found in O(E) time, if such a path exists.
+The following modification of FORD-FULKERSON-METHOD can be used to compute a
+maximum flow in G.
+MAX-FLOW-BY-SCALING (G, s, t)
+1 C ← max(u.v) Ec(u, v)
+2 initialize flow f to 0
+3
+4
+5
+6
+7
+8
+
+K ← 2⌊lgC⌋
+while K ≥ 1
+do while there exists an augmenting path p of capacity at least K
+do augment flow f along p
+K ← K/2
+return f
+
+c. Argue that MAX-FLOW-BY-SCALING returns a maximum flow.
+d. Show that the capacity of a minimum cut of the residual graph Gf is at most 2K |E|
+each time line 4 is executed.
+e. Argue that the inner while loop of lines 5-6 is executed O(E) times for each value of
+K.
+f. Conclude that MAX-FLOW-BY-SCALING can be implemented so that it runs in
+O(E2 lg C) time.
+
+Problem 26-6: Maximum flow with negative capacities
+Suppose that we allow a flow network to have negative (as well as positive) edge capacities.
+In such a network, a feasible flow need not exist.
+a. Consider an edge (u, v) in a flow network G = (V, E) with c(u, v) < 0. Briefly explain
+what such a negative capacity means in terms of the flow between u and v.
+Let G = (V, E) be a flow network with negative edge capacities, and let s and t be the source
+and sink of G. Construct the ordinary flow network G' = (V', E') with capacity function c',
+source s', and sink t', where
+V' = V
+
+{s', t'}
+
+and
+E' = E
+
+{(u, v) : (v, u)
+{(s', v) : v V}
+{(u, t') : u V}
+{(s, t), (t, s)}
+
+E}
+
+We assign capacities to edges as follows. For each edge (u, v)
+
+E, we set
+
+

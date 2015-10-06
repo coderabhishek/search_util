@@ -1,0 +1,31 @@
+Figure 13.7: The cases in the while loop of the procedure RB-DELETE-FIXUP. Darkened
+nodes have color attributes BLACK, heavily shaded nodes have color attributes RED, and
+lightly shaded nodes have color attributes represented by c and c′, which may be either RED
+or BLACK. The letters α, β, ..., ζ represent arbitrary subtrees. In each case, the configuration
+on the left is transformed into the configuration on the right by changing some colors and/or
+performing a rotation. Any node pointed to by x has an extra black and is either doubly black
+or red-and-black. The only case that causes the loop to repeat is case 2. (a) Case 1 is
+transformed to case 2, 3, or 4 by exchanging the colors of nodes B and D and performing a
+left rotation. (b) In case 2, the extra black represented by the pointer x is moved up the tree by
+coloring node D red and setting x to point to node B. If we enter case 2 through case 1, the
+while loop terminates because the new node x is red-and-black, and therefore the value c of its
+color attribute is RED. (c) Case 3 is transformed to case 4 by exchanging the colors of nodes
+C and D and performing a right rotation. (d) In Case 4, the extra black represented by x can be
+removed by changing some colors and performing a left rotation (without violating the redblack properties), and the loop terminates.
+Case 1: x's sibling w is red
+
+Case 1 (lines 5–8 of RB-DELETE-FIXUP and Figure 13.7(a)) occurs when node w, the
+sibling of node x, is red. Since w must have black children, we can switch the colors of w and
+p[x] and then perform a left-rotation on p[x] without violating any of the red-black properties.
+The new sibling of x, which is one of w's children prior to the rotation, is now black, and thus
+we have converted case 1 into case 2, 3, or 4.
+Cases 2, 3, and 4 occur when node w is black; they are distinguished by the colors of w's
+children.
+Case 2: x's sibling w is black, and both of w's children are black
+
+In case 2 (lines 10–11 of RB-DELETE-FIXUP and Figure 13.7(b)), both of w's children are
+black. Since w is also black, we take one black off both x and w, leaving x with only one black
+and leaving w red. To compensate for removing one black from x and w, we would like to add
+an extra black to p[x], which was originally either red or black. We do so by repeating the
+
+

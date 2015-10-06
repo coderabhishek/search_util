@@ -1,0 +1,39 @@
+Figure 27.1: (a) A comparator with inputs x and y and outputs x' and y'. (b) The same
+comparator, drawn as a single vertical line. Inputs x = 7, y = 3 and outputs x' = 3, y' = 7 are
+shown.
+x' = min(x, y),
+y' = max(x, y).
+Because the pictorial representation of a comparator in Figure 27.1(a) is too bulky for our
+purposes, we shall adopt the convention of drawing comparators as single vertical lines, as
+shown in Figure 27.1(b). Inputs appear on the left and outputs on the right, with the smaller
+input value appearing on the top output and the larger input value appearing on the bottom
+output. We can thus think of a comparator as sorting its two inputs.
+We shall assume that each comparator operates in O(1) time. In other words, we assume that
+the time between the appearance of the input values x and y and the production of the output
+values x' and y' is a constant.
+A wire transmits a value from place to place. Wires can connect the output of one comparator
+to the input of another, but otherwise they are either network input wires or network output
+wires. Throughout this chapter, we shall assume that a comparison network contains n input
+wires a1, a2,...,an, through which the values to be sorted enter the network, and n output wires
+b1, b2,...,bn, which produce the results computed by the network. Also, we shall speak of the
+input sequence a1, a2,...,an and the output sequence b1, b2,...,bn , referring to the values
+on the input and output wires. That is, we use the same name for both a wire and the value it
+carries. Our intention will always be clear from the context.
+Figure 27.2 shows a comparison network, which is a set of comparators interconnected by
+wires. We draw a comparison network on n inputs as a collection of n horizontal lines with
+comparators stretched vertically. Note that a line does not represent a single wire, but rather a
+sequence of distinct wires connecting various comparators. The top line in Figure 27.2, for
+example, represents three wires: input wire a1, which connects to an input of comparator A; a
+wire connecting the top output of comparator A to an input of comparator C; and output wire
+b1, which comes from the top output of comparator C. Each comparator input is connected to
+a wire that is either one of the network's n input wires a1, a2,...,an or is connected to the output
+of another comparator. Similarly, each comparator output is connected to a wire that is either
+one of the network's n output wires b1, b2,...,bn or is connected to the input of another
+comparator. The main requirement for interconnecting comparators is that the graph of
+interconnections must be acyclic: if we trace a path from the output of a given comparator to
+the input of another to an output to an input, etc., the path we trace must never cycle back on
+itself and go through the same comparator twice. Thus, as in Figure 27.2, we can draw a
+comparison network with network inputs on the left and network outputs on the right; data
+move through the network from left to right.
+
+

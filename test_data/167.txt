@@ -1,0 +1,29 @@
+Figure 9.1: Analysis of the algorithm SELECT. The n elements are represented by small
+circles, and each group occupies a column. The medians of the groups are whitened, and the
+median-of-medians x is labeled. (When finding the median of an even number of elements,
+we use the lower median.) Arrows are drawn from larger elements to smaller, from which it
+can be seen that 3 out of every full group of 5 elements to the right of x are greater than x, and
+3 out of every group of 5 elements to the left of x are less than x. The elements greater than x
+are shown on a shaded background.
+Similarly, the number of elements that are less than x is at least 3n/10 - 6. Thus, in the worst
+case, SELECT is called recursively on at most 7n/10 + 6 elements in step 5.
+We can now develop a recurrence for the worst-case running time T(n) of the algorithm
+SELECT. Steps 1, 2, and 4 take O(n) time. (Step 2 consists of O(n) calls of insertion sort on
+sets of size O(1).) Step 3 takes time T(⌈n/5⌉), and step 5 takes time at most T(7n/10+ 6),
+assuming that T is monotonically increasing. We make the assumption, which seems
+unmotivated at first, that any input of 140 or fewer elements requires O(1) time; the origin of
+the magic constant 140 will be clear shortly. We can therefore obtain the recurrence
+
+We show that the running time is linear by substitution. More specifically, we will show that
+T(n) ≤ cn for some suitably large constant c and all n > 0. We begin by assuming that T(n) ≤
+cn for some suitably large constant c and all n ≤ 140; this assumption holds if c is large
+enough. We also pick a constant a such that the function described by the O(n) term above
+(which describes the non-recursive component of the running time of the algorithm) is
+bounded above by an for all n > 0. Substituting this inductive hypothesis into the right-hand
+side of the recurrence yields
+T(n) ≤ c ⌈n/5⌉ + c(7n/10 + 6) + an
+≤ cn/5 + c + 7cn/10 + 6c + an
+= 9cn/10 + 7c + an
+= cn + (-cn/10 + 7c + an) ,
+
+

@@ -1,0 +1,37 @@
+is composite because 3 | 39. The integer 1 is said to be a unit and is neither prime nor
+composite. Similarly, the integer 0 and all negative integers are neither prime nor composite.
+The division theorem, remainders, and modular equivalence
+Given an integer n, the integers can be partitioned into those that are multiples of n and those
+that are not multiples of n. Much number theory is based upon a refinement of this partition
+obtained by classifying the nonmultiples of n according to their remainders when divided by
+n. The following theorem is the basis for this refinement. The proof of this theorem will not
+be given here (see, for example, Niven and Zuckerman [231]).
+Theorem 31.1: (Division theorem)
+For any integer a and any positive integer n, there are unique integers q and r such that 0 ≤ r <
+n and a = qn + r.
+
+The value q = ⌊a/n⌋ is the quotient of the division. The value r = a mod n is the remainder
+(or residue) of the division. We have that n | a if and only if a mod n = 0.
+The integers can be divided into n equivalence classes according to their remainders modulo
+n. The equivalence class modulo n containing an integer a is
+[a]n = {a + kn : k
+
+Z}.
+
+For example, [3]7 = {..., -11, -4, 3, 10, 17, ...}; other denotations for this set are [-4]7 and
+[10]7. Using the notation defined on page 52, we can say that writing a [b]n is the same as
+writing a ≡ b (mod n). The set of all such equivalence classes is
+(31.1)
+One often sees the definition
+(31.2)
+which should be read as equivalent to equation (31.1) with the understanding that 0 represents
+[0]n, 1 represents [1]n, and so on; each class is represented by its least nonnegative element.
+The underlying equivalence classes must be kept in mind, however. For example, a reference
+to -1 as a member of Zn is a reference to [n - 1]n, since -1 ≡ n - 1 (mod n).
+Common divisors and greatest common divisors
+If d is a divisor of a and d is also a divisor of b, then d is a common divisor of a and b. For
+example, the divisors of 30 are 1, 2, 3, 5, 6, 10, 15, and 30, and so the common divisors of 24
+and 30 are 1, 2, 3, and 6. Note that 1 is a common divisor of any two integers.
+An important property of common divisors is that
+
+

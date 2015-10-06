@@ -1,0 +1,34 @@
+Figure 34.5: The proof of Lemma 34.3. The algorithm F is a reduction algorithm that
+computes the reduction function f from L1 to L2 in polynomial time, and A2 is a polynomialtime algorithm that decides L2. Illustrated is an algorithm A1 that decides whether x L1 by
+using F to transform any input x into f (x) and then using A2 to decide whether f(x) L2.
+The correctness of A1 follows from condition (34.1). The algorithm runs in polynomial time,
+since both F and A2 run in polynomial time (see Exercise 34.1-5).
+
+NP-completeness
+Polynomial-time reductions provide a formal means for showing that one problem is at least
+as hard as another, to within a polynomial-time factor. That is, if L1 ≤P L2, then L1 is not more
+than a polynomial factor harder than L2, which is why the "less than or equal to" notation for
+reduction is mnemonic. We can now define the set of NP-complete languages, which are the
+hardest problems in NP.
+A language L
+
+{0, 1}* is NP-complete if
+
+1. L NP, and
+2. L′ ≤P L for every L
+
+NP.
+
+If a language L satisfies property 2, but not necessarily property 1, we say that L is NP-hard.
+We also define NPC to be the class of NP-complete languages.
+As the following theorem shows, NP-completeness is at the crux of deciding whether P is in
+fact equal to NP.
+Theorem 34.4
+If any NP-complete problem is polynomial-time solvable, then P = NP. Equivalently, if any
+problem in NP is not polynomial-time solvable, then no NP-complete problem is polynomialtime solvable.
+Proof Suppose that L P and also that L NPC. For any L′ NP, we have L′ ≤P L by
+property 2 of the definition of NP-completeness. Thus, by Lemma 34.3, we also have that L′
+P, which proves the first statement of the theorem.
+To prove the second statement, note that it is the contrapositive of the first statement.
+
+

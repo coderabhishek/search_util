@@ -1,0 +1,36 @@
+It follows from Theorem B.2 that a forest having k edges contains exactly |V|-k trees. (To
+prove this another way, begin with |V| trees, each consisting of a single vertex, and no edges.
+Then, each edge that is added to the forest reduces the number of trees by one.) Thus, forest
+GA contains |V| - |A| trees, and forest GB contains |V| - |B| trees.
+Since forest GB has fewer trees than forest GA does, forest GB must contain some tree T whose
+vertices are in two different trees in forest GA. Moreover, since T is connected, it must contain
+an edge (u, v) such that vertices u and v are in different trees in forest GA. Since the edge (u, v)
+connects vertices in two different trees in forest GA, the edge (u, v) can be added to forest GA
+without creating a cycle. Therefore, MG satisfies the exchange property, completing the proof
+that MG is a matroid.
+
+Given a matroid M = (S,ℓ), we call an element x ∉ A an extension of A ℓ if x can be added
+to A while preserving independence; that is, x is an extension of A if A {x} ℓ. As an
+example, consider a graphic matroid MG. If A is an independent set of edges, then edge e is an
+extension of A if and only if e is not in A and the addition of e to A does not create a cycle.
+If A is an independent subset in a matroid M, we say that A is maximal if it has no extensions.
+That is, A is maximal if it is not contained in any larger independent subset of M. The
+following property is often useful.
+Theorem 16.6
+All maximal independent subsets in a matroid have the same size.
+Proof Suppose to the contrary that A is a maximal independent subset of M and there exists
+another larger maximal independent subset B of M. Then, the exchange property implies that
+A is extendible to a larger independent set A {x} for some x B - A, contradicting the
+assumption that A is maximal.
+
+As an illustration of this theorem, consider a graphic matroid MG for a connected, undirected
+graph G. Every maximal independent subset of MG must be a free tree with exactly |V| - 1
+edges that connects all the vertices of G. Such a tree is called a spanning tree of G.
+We say that a matroid M = (S,ℓ) is weighted if there is an associated weight function w that
+assigns a strictly positive weight w(x) to each element x S. The weight function w extends
+to subsets of S by summation:
+
+for any A S. For example, if we let w(e) denote the length of an edge e in a graphic matroid
+MG, then w(A) is the total length of the edges in edge set A.
+
+

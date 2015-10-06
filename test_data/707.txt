@@ -1,0 +1,40 @@
+then and are optimal solutions to the primal and dual linear programs, respectively.
+Proof By Lemma 29.8, the objective value of a feasible solution to the primal cannot exceed
+that of a feasible solution to the dual. The primal linear program is a maximization problem
+and the dual is a minimization problem. Thus, if feasible solutions and have the same
+objective value, neither can be improved.
+
+Before proving that there always is a dual solution whose value is equal to that of an optimal
+primal solution, we describe how to find such a solution. When we ran the simplex algorithm
+on the linear program in (29.56)–(29.60), the final iteration yielded the slack form (29.75)–
+(29.78) with B = {1, 2, 4} and N = {3, 5, 6}. As we shall show below, the basic solution
+associated with the final slack form is an optimal solution to the linear program; an optimal
+solution to linear program (29.56)–(29.60) is therefore
+, with objective value
+(3 · 8) + (1 · 4) + (2 · 0) = 28. As we shall also show below, we can read off an optimal dual
+solution: the negatives of the coefficients of the primal objective function are the values of the
+dual variables. More precisely, suppose that the last slack form of the primal is
+
+Then an optimal dual solution is to set
+(29.94)
+Thus, an optimal solution to the dual linear program defined in (29.89)–(29.93) is
+(since
+n + 1 = 4 B),
+, and
+. Evaluating the dual objective function
+(29.89), we obtain an objective value of (30 · 0) + (24 · (1/6)) + (36 · (2/3)) = 28, which
+confirms that the objective value of the primal is indeed equal to the objective value of the
+dual. Combining these calculations with Lemma 29.8, we have a proof that the optimal
+objective value of the primal linear program is 28. We now show that in general, an optimal
+solution to the dual, and a proof of the optimality of a solution to the primal, can be obtained
+in this manner.
+Theorem 29.10: (Linear-programming duality)
+Suppose that SIMPLEX returns values
+on the primal linear program (A, b, c).
+Let N and B denote the nonbasic and basic variables for the final slack form, let c′ denote the
+coefficients in the final slack form, and let
+be defined by equation (29.94). Then
+is an optimal solution to the primal linear program, is an optimal solution to the dual linear
+program, and
+
+

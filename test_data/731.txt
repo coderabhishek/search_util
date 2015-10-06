@@ -1,0 +1,31 @@
+loop of lines 6 –13 iterates n/m = n/2s times for each value of s, and the innermost loop of
+lines 8 –13 iterates m/2 = 2s-1 times. Thus,
+
+A parallel FFT circuit
+We can exploit many of the properties that allowed us to implement an efficient iterative FFT
+algorithm to produce an efficient parallel algorithm for the FFT. We will express the parallel
+FFT algorithm as a circuit that looks much like the comparison networks of Chapter 27.
+Instead of comparators, the FFT circuit uses butterfly operations, as drawn in Figure 30.3(b).
+The notion of depth that we developed in Chapter 27 applies here as well. The circuit
+PARALLEL-FFT that computes the FFT on n inputs is shown in Figure 30.5 for n = 8. It
+begins with a bit-reverse permutation of the inputs, followed by lg n stages, each stage
+consisting of n/2 butterflies executed in parallel. The depth of the circuit is therefore Θ(lg n).
+
+Figure 30.5: A circuit PARALLEL-FFT that computes the FFT, here shown on n = 8 inputs.
+Each butterfly operation takes as input the values on two wires, along with a twiddle factor,
+and it produces as outputs the values on two wires. The stages of butterflies are labeled to
+correspond to iterations of the outermost loop of the ITERATIVE-FFT procedure. Only the
+top and bottom wires passing through a butterfly interact with it; wires that pass through the
+middle of a butterfly do not affect that butterfly, nor are their values changed by that butterfly.
+For example, the top butterfly in stage 2 has nothing to do with wire 1 (the wire whose output
+is labeled y1); its inputs and outputs are only on wires 0 and 2 (labeled y0 and y2, respectively).
+An FFT on n inputs can be computed in Θ(lg n) depth with Θ(n lg n) butterfly operations.
+The leftmost part of the circuit PARALLEL-FFT performs the bit-reverse permutation, and
+the remainder mimics the iterative ITERATIVE-FFT procedure. Because each iteration of the
+outermost for loop performs n/2 independent butterfly operations, the circuit performs them
+in parallel. The value of s in each iteration within ITERATIVE-FFT corresponds to a stage of
+butterflies shown in Figure 30.5. Within stage s, for s = 1, 2,..., lg n, there are n/2s groups of
+butterflies (corresponding to each value of k in ITERATIVE-FFT), with 2s-1 butterflies per
+group (corresponding to each value of j in ITERATIVE-FFT). The butterflies shown in Figure
+
+

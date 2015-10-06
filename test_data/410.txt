@@ -1,0 +1,57 @@
+The following procedure unites Fibonacci heaps H1 and H2, destroying H1 and H2 in the
+process. It simply concatenates the root lists of H1 and H2 and then determines the new
+minimum node.
+FIB-HEAP-UNION(H1, H2)
+1 H ← MAKE-FIB-HEAP()
+2 min[H] ← min[H1]
+3 concatenate the root list of H2 with the root list of H
+4 if (min[H1] = NIL) or (min[H2] ≠ NIL and min[H2] < min[H1])
+5
+then min[H] ← min[H2]
+6 n[H] ← n[H1] + n[H2]
+7 free the objects H1 and H2
+8 return H
+
+Lines 1-3 concatenate the root lists of H1 and H2 into a new root list H. Lines 2, 4, and 5 set
+the minimum node of H , and line 6 sets n[H] to the total number of nodes. The Fibonacci
+heap objects H1 and H2 are freed in line 7, and line 8 returns the resulting Fibonacci heap H.
+As in the FIB-HEAP-INSERT procedure, no consolidation of trees occurs.
+The change in potential is
+Φ(H) - (Φ(H1) + Φ(H2))
+= (t(H) + 2m(H)) - ((t(H1) + 2 m(H1)) + (t(H2) + 2 m(H2)))
+= 0,
+because t(H) = t(H1) + t(H2) and m(H) = m(H1) + m(H2). The amortized cost of FIB-HEAPUNION is therefore equal to its O(1) actual cost.
+Extracting the minimum node
+The process of extracting the minimum node is the most complicated of the operations
+presented in this section. It is also where the delayed work of consolidating trees in the root
+list finally occurs. The following pseudocode extracts the minimum node. The code assumes
+for convenience that when a node is removed from a linked list, pointers remaining in the list
+are updated, but pointers in the extracted node are left unchanged. It also uses the auxiliary
+procedure CONSOLIDATE, which will be presented shortly.
+FIB-HEAP-EXTRACT-MIN(H)
+1 z ← min[H]
+2 if z ≠ NIL
+3
+then for each child x of z
+4
+do add x to the root list of H
+5
+p[x] ← NIL
+6
+remove z from the root list of H
+7
+if z = right[z]
+8
+then min[H] ← NIL
+9
+else min[H] ← right[z]
+10
+CONSOLIDATE(H)
+11
+n[H] ← n[H] - 1
+12 return z
+
+As shown in Figure 20.3, FIB-HEAP-EXTRACT-MIN works by first making a root out of
+each of the minimum node's children and removing the minimum node from the root list. It
+
+

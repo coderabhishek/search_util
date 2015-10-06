@@ -1,0 +1,56 @@
+Unfortunately, we cannot entirely eliminate all the errors by simply checking equation (31.38)
+for a second base number, say a = 3, because there are composite integers n that satisfy
+equation (31.38) for all
+. These integers are known as Carmichael numbers. The first
+three Carmichael numbers are 561, 1105, and 1729. Carmichael numbers are extremely rare;
+there are, for example, only 255 of them less than 100,000,000. Exercise 31.8-2 helps explain
+why they are so rare.
+We next show how to improve our primality test so that it won't be fooled by Carmichael
+numbers.
+The Miller-Rabin randomized primality test
+The Miller-Rabin primality test overcomes the problems of the simple test PSEUDOPRIME
+with two modifications:
+•
+•
+
+It tries several randomly chosen base values a instead of just one base value.
+While computing each modular exponentiation, it notices if a nontrivial square root of
+1, modulo n, is discovered during the final set of squarings. If so, it stops and outputs
+COMPOSITE. Corollary 31.35 justifies detecting composites in this manner.
+
+The pseudocode for the Miller-Rabin primality test follows. The input n > 2 is the odd
+number to be tested for primality, and s is the number of randomly chosen base values from
+to be tried. The code uses the random-number generator RANDOM described on page 94:
+RANDOM(1, n - 1) returns a randomly chosen integer a satisfying 1 ≤ a ≤ n - 1. The code
+uses an auxiliary procedure WITNESS such that WITNESS(a, n) is TRUE if and only if a is a
+"witness" to the compositeness of n—that is, if it is possible using a to prove (in a manner that
+we shall see) that n is composite. The test WITNESS(a, n) is an extension of, but more
+effective than, the test
+an-1 ≢ 1 (mod n)
+that formed the basis (using a = 2) for PSEUDOPRIME. We first present and justify the
+construction of WITNESS, and then show how it is used in the Miller-Rabin primality test.
+Let n -1 = 2tu where t ≥ 1 and u is odd; i.e., the binary representation of n - 1 is the binary
+representation of the odd integer u followed by exactly t zeros. Therefore,
+(mod n),
+so that we can compute an-1 mod n by first computing au mod n and then squaring the result t
+times successively.
+WITNESS(a, n)
+1 let n - 1 = 2tu, where t ≥ 1 and u is odd
+2 x0 ← MODULAR-EXPONENTIATION(a, u, n)
+3 for i ← 1 to t
+mod n
+4
+do
+5
+if xi = 1 and xi-1 ≠ 1 and xi-1 ≠ n - 1
+6
+then return TRUE
+7 if xt ≠ 1
+8
+then return TRUE
+9 return FALSE
+
+This pseudocode for WITNESS computes an-1 mod n by first computing the value x0 = au mod
+n in line 2, and then squaring the result t times in a row in the for loop of lines 3–6. By
+
+

@@ -1,0 +1,55 @@
+The randomized algorithm is analyzed in Section 7.4, where it is shown to run in Θ(n2) time
+in the worst case and in O(n lg n) time on average.
+
+7.1 Description of quicksort
+Quicksort, like merge sort, is based on the divide-and-conquer paradigm introduced in Section
+2.3.1. Here is the three-step divide-and-conquer process for sorting a typical subarray A[p
+r].
+•
+
+•
+•
+
+Divide: Partition (rearrange) the array A[p r] into two (possibly empty) subarrays
+A[p q - 1] and A[q + 1 r] such that each element of A[p q - 1] is less than or
+equal to A[q], which is, in turn, less than or equal to each element of A[q + 1 r].
+Compute the index q as part of this partitioning procedure.
+Conquer: Sort the two subarrays A[p q -1] and A[q +1 r] by recursive calls to
+quicksort.
+Combine: Since the subarrays are sorted in place, no work is needed to combine
+them: the entire array A[p r] is now sorted.
+
+The following procedure implements quicksort.
+QUICKSORT(A, p, r)
+1 if p < r
+2
+then q ← PARTITION(A, p, r)
+3
+QUICKSORT(A, p, q - 1)
+4
+QUICKSORT(A, q + 1, r)
+
+To sort an entire array A, the initial call is QUICKSORT(A, 1, length[A]).
+Partitioning the array
+The key to the algorithm is the PARTITION procedure, which rearranges the subarray A[p
+r] in place.
+PARTITION(A, p, r)
+1 x ← A[r]
+2 i ← p - 1
+3 for j ← p to r - 1
+4
+do if A[j] ≤ x
+5
+then i ← i + 1
+6
+exchange A[i] ↔ A[j]
+7 exchange A[i + 1] ↔ A[r]
+8 return i + 1
+
+Figure 7.1 shows the operation of PARTITION on an 8-element array. PARTITION always
+selects an element x = A[r] as a pivot element around which to partition the subarray A[p r].
+As the procedure runs, the array is partitioned into four (possibly empty) regions. At the start
+of each iteration of the for loop in lines 3-6, each region satisfies certain properties, which we
+can state as a loop invariant:
+
+

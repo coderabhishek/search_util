@@ -1,0 +1,45 @@
+deepened, and modern implementations use significant refinements of the basic techniques
+presented here. In addition, many new techniques have been developed for proving
+cryptosystems to be secure. For example, Goldwasser and Micali [123] show that
+randomization can be an effective tool in the design of secure public-key encryption schemes.
+For signature schemes, Goldwasser, Micali, and Rivest [124] present a digital-signature
+scheme for which every conceivable type of forgery is provably as difficult as factoring.
+Menezes et al. [220] provide an overview of applied cryptography.
+The rho heuristic for integer factorization was invented by Pollard [242]. The version
+presented here is a variant proposed by Brent [48].
+The best algorithms for factoring large numbers have a running time that grows roughly
+exponentially with the cube root of the length of the number n to be factored. The general
+number-field seive factoring algorithm, as developed by Buhler et al. [51] as an extension of
+the ideas in the number-field sieve factoring algorithm by Pollard [243] and Lenstra et al.
+[201] and refined by Coppersmith [69] and others, is perhaps the most efficient such
+algorithm in general for large inputs. Although it is difficult to give a rigorous analysis of this
+algorithm, under reasonable assumptions we can derive a running-time estimate of L(1/3,
+n)1.902+o(1), where
+
+.
+
+The elliptic-curve method due to Lenstra [202] may be more effective for some inputs than
+the number field sieve method, since, like Pollard's rho method, it can find a small prime
+factor p quite quickly. With this method, the time to find p is estimated to be
+.
+
+Chapter 32: String Matching
+Overview
+Finding all occurrences of a pattern in a text is a problem that arises frequently in text-editing
+programs. Typically, the text is a document being edited, and the pattern searched for is a
+particular word supplied by the user. Efficient algorithms for this problem can greatly aid the
+responsiveness of the text-editing program. String-matching algorithms are also used, for
+example, to search for particular patterns in DNA sequences.
+We formalize the string-matching problem as follows. We assume that the text is an array T
+[1 n] of length n and that the pattern is an array P[1 m] of length m ≤ n. We further
+assume that the elements of P and T are characters drawn from a finite alphabet Σ. For
+example, we may have Σ = {0, 1} or Σ = {a, b, . . . , z}. The character arrays P and T are often
+called strings of characters.
+We say that pattern P occurs with shift s in text T (or, equivalently, that pattern P occurs
+beginning at position s + 1 in text T) if 0 ≤ s ≤ n - m and T [s + 1 s + m] = P[1 m] (that
+is, if T [s + j] = P[ j], for 1 ≤ j ≤ m). If P occurs with shift s in T , then we call s a valid shift;
+otherwise, we call s an invalid shift. The string-matching problem is the problem of finding
+all valid shifts with which a given pattern P occurs in a given text T . Figure 32.1 illustrates
+these definitions.
+
+

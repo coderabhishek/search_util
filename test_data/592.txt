@@ -1,0 +1,39 @@
+N[v1] =
+N[v2] =
+N[v3] =
+N[v4] =
+
+,
+
+s, v2, v3 ,
+s, v1, v3, v4
+v1, v2, v4 t ,
+v2, v3, t .
+
+Exercises 26.5.2:
+We would like to implement a push-relabel algorithm in which we maintain a first-in, first-out
+queue of overflowing vertices. The algorithm repeatedly discharges the vertex at the head of
+the queue, and any vertices that were not overflowing before the discharge but are
+overflowing afterward are placed at the end of the queue. After the vertex at the head of the
+queue is discharged, it is removed. When the queue is empty, the algorithm terminates. Show
+that this algorithm can be implemented to compute a maximum flow in O(V3) time.
+
+Exercises 26.5-3
+Show that the generic algorithm still works if RELABEL updates h[u] by simply computing
+h[u] ← h[u] + 1. How would this change affect the analysis of RELABEL-TO-FRONT?
+
+Exercises 26.5-4:
+Show that if we always discharge a highest overflowing vertex, the push-relabel method can
+be made to run in O(V3) time.
+
+Exercises 26.5-5
+Suppose that at some point in the execution of a push-relabel algorithm, there exists an integer
+0 < k ≤ |V| - 1 for which no vertex has h[v] = k. Show that all vertices with h[v] > k are on the
+source side of a minimum cut. If such a k exists, the gap heuristic updates every vertex v V
+- s for which h[v] > k to set h[v] ← max(h[v], |V|+1). Show that the resulting attribute h is a
+height function.(The gap heuristic is crucial in making implementations of the push-relabel
+method perform well in practice.)
+
+Problems 26-1: Escape problem
+
+

@@ -1,0 +1,30 @@
+Use a recursion tree to determine a good asymptotic upper bound on the recurrence T(n) =
+3T(⌊n/2⌋) + n. Use the substitution method to verify your answer.
+
+Exercises 4.2-2
+Argue that the solution to the recurrence T (n) = T (n/3) + T (2n/3) + cn, where c is a constant,
+is Ω(n lg n) by appealing to a recursion tree.
+
+Exercises 4.2-3
+
+Draw the recursion tree for T (n) = 4T (⌊n/2⌋)+cn, where c is a constant, and provide a tight
+asymptotic bound on its solution. Verify your bound by the substitution method.
+
+Exercises 4.2-4
+Use a recursion tree to give an asymptotically tight solution to the recurrence T(n) = T(n - a) +
+T(a) + cn, where a ≥ 1 and c > 0 are constants.
+
+Exercises 4.2-5
+Use a recursion tree to give an asymptotically tight solution to the recurrence T(n) = T(αn) +
+T((1 - α)n) + cn, where α is a constant in the range 0 <α < 1 and c > 0 is also a constant.
+
+4.3 The master method
+The master method provides a "cookbook" method for solving recurrences of the form
+(4.5)
+where a ≥ 1 and b > 1 are constants and f (n) is an asymptotically positive function. The
+master method requires memorization of three cases, but then the solution of many
+recurrences can be determined quite easily, often without pencil and paper.
+The recurrence (4.5) describes the running time of an algorithm that divides a problem of size
+n into a subproblems, each of size n/b, where a and b are positive constants. The a
+
+

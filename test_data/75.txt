@@ -1,0 +1,44 @@
+where i is a positive integer. Then T(n) can be bounded asymptotically for exact powers of b
+as follows.
+1. If
+for some constant > 0, then
+.
+2. If
+, then
+.
+3. If
+for some constant > 0, and if af (n/b) ≤ cf(n) for some constant c <
+1 and all sufficiently large n, then T(n) = Θ(f(n)).
+Proof We use the bounds in Lemma 4.3 to evaluate the summation (4.6) from Lemma 4.2.
+For case 1, we have
+T(n) =
+=
+
+,
+
+and for case 2,
+T(n) =
+=
+
+.
+
+For case 3,
+T(n) =
+= Θ(f(n)),
+because
+
+.
+
+4.4.2 Floors and ceilings
+To complete the proof of the master theorem, we must now extend our analysis to the
+situation in which floors and ceilings are used in the master recurrence, so that the recurrence
+is defined for all integers, not just exact powers of b. Obtaining a lower bound on
+(4.10)
+and an upper bound on
+(4.11)
+is routine, since the bound ⌈n/b⌉ ≥ n/b can be pushed through in the first case to yield the
+desired result, and the bound ⌊n/b⌋ ≤ n/b can be pushed through in the second case. Lower
+bounding the recurrence (4.11) requires much the same technique as upper bounding the
+recurrence (4.10), so we shall present only this latter bound.
+
+

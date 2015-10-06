@@ -1,0 +1,32 @@
+consecutive coin flips i, i + 1, ..., i + k - 1 yield only heads, where 1 ≤ k ≤ n and 1 ≤ i ≤ n -k
++1. Since coin flips are mutually independent, for any given event Aik, the probability that all
+k flips are heads is
+(5.9)
+
+and thus the probability that a streak of heads of length at least 2 ⌈lg n⌉ begins in position i is
+quite small. There are at most n - 2 ⌈lg n⌉ + 1 positions where such a streak can begin. The
+probability that a streak of heads of length at least 2 ⌈lg n⌉ begins anywhere is therefore
+(5.10)
+
+since by Boole's inequality (C.18), the probability of a union of events is at most the sum of
+the probabilities of the individual events. (Note that Boole's inequality holds even for events
+such as these that are not independent.)
+We now use inequality (5.10) to bound the length of the longest streak. For j = 0, 1, 2,..., n, let
+Lj be the event that the longest streak of heads has length exactly j, and let L be the length of
+the longest streak. By the definition of expected value,
+(5.11)
+
+We could try to evaluate this sum using upper bounds on each Pr {Lj} similar to those
+computed in inequality (5.10). Unfortunately, this method would yield weak bounds. We can
+use some intuition gained by the above analysis to obtain a good bound, however. Informally,
+we observe that for no individual term in the summation in equation (5.11) are both the
+factors j and Pr {Lj} large. Why? When j ≥ 2 ⌈lg n⌉, then Pr {Lj} is very small, and when j <
+2 ⌈lgn⌉, then j is fairly small. More formally, we note that the events Lj for j = 0, 1,..., n are
+disjoint, and so the probability that a streak of heads of length at least 2 ⌈lg n⌉ begins
+anywhere is
+. By inequality (5.10), we have
+. Also, noting that
+, we have that
+. Thus, we obtain
+
+

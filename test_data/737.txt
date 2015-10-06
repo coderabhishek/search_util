@@ -1,0 +1,39 @@
+In most of this book, we have found it convenient to think of the elementary arithmetic
+operations (multiplications, divisions, or computing remainders) as primitive operations that
+take one unit of time. By counting the number of such arithmetic operations that an algorithm
+performs, we have a basis for making a reasonable estimate of the algorithm's actual running
+time on a computer. Elementary operations can be time-consuming, however, when their
+inputs are large. It thus becomes convenient to measure how many bit operations a numbertheoretic algorithm requires. In this model, a multiplication of two β-bit integers by the
+ordinary method uses Θ(β2) bit operations. Similarly, the operation of dividing a β-bit integer
+by a shorter integer, or the operation of taking the remainder of a β-bit integer when divided
+by a shorter integer, can be performed in time Θ(β2) by simple algorithms. (See Exercise 31.111.) Faster methods are known. For example, a simple divide-and-conquer method for
+multiplying two β-bit integers has a running time of
+, and the fastest known method
+has a running time of Θ(β lg β lg lg β). For practical purposes, however, the Θ(β2) algorithm is
+often best, and we shall use this bound as a basis for our analyses.
+In this chapter, algorithms are generally analyzed in terms of both the number of arithmetic
+operations and the number of bit operations they require.
+
+31.1 Elementary number-theoretic notions
+This section provides a brief review of notions from elementary number theory concerning the
+set Z = {..., -2, -1, 0, 1, 2,..} of integers and the set N = {0, 1, 2, ...} of natural numbers.
+Divisibility and divisors
+The notion of one integer being divisible by another is a central one in the theory of numbers.
+The notation d | a (read "d divides a") means that a = kd for some integer k. Every integer
+divides 0. If a > 0 and d | a, then |d| ≤ |a|. If d | a, then we also say that a is a multiple of d. If d
+does not divide a, we write d ∤ a.
+If d | a and d ≥ 0, we say that d is a divisor of a. Note that d | a if and only if -d | a, so that no
+generality is lost by defining the divisors to be nonnegative, with the understanding that the
+negative of any divisor of a also divides a. A divisor of an integer a is at least 1 but not
+greater than |a|. For example, the divisors of 24 are 1, 2, 3, 4, 6, 8, 12, and 24.
+Every integer a is divisible by the trivial divisors 1 and a. Nontrivial divisors of a are also
+called factors of a. For example, the factors of 20 are 2, 4, 5, and 10.
+Prime and composite numbers
+An integer a > 1 whose only divisors are the trivial divisors 1 and a is said to be a prime
+number (or, more simply, a prime). Primes have many special properties and play a critical
+role in number theory. The first 20 primes, in order, are
+2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71.
+Exercise 31.1-1 asks you to prove that there are infinitely many primes. An integer a > 1 that
+is not prime is said to be a composite number (or, more simply, a composite). For example, 39
+
+

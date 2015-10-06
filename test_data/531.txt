@@ -1,0 +1,58 @@
+Now we can see the relation to matrix multiplication. Suppose we wish to compute the matrix
+product C = A · B of two n × n matrices A and B. Then, for i, j = 1, 2,..., n, we compute
+(25.4)
+
+Observe that if we make the substitutions
+l(m-1) → a,
+w → b,
+(m)
+l → c,
+min → +,
++→·
+in equation (25.2), we obtain equation (25.4). Thus, if we make these changes to EXTENDSHORTEST-PATHS and also replace ∞ (the identity for min) by 0 (the identity for +), we
+obtain the straightforward Θ(n3)-time procedure for matrix multiplication:
+MATRIX-MULTIPLY(A, B)
+1 n ← rows[A]
+2 let C be an n × n matrix
+3 for i ← 1 to n
+4
+do for j ← 1 to n
+5
+do cij ← 0
+6
+for k ← 1 to n
+7
+do cij ← cij + aik · bkj
+8 return C
+
+Returning to the all-pairs shortest-paths problem, we compute the shortest-path weights by
+extending shortest paths edge by edge. Letting A · B denote the matrix "product" returned by
+EXTEND-SHORTEST-PATHS(A, B), we compute the sequence of n - 1 matrices
+L(1) = L(0) · W = W,
+L(2) = L(1) · W = W2,
+L(3) = L(2) · W = W3,
+(n-1)
+
+L
+
+⋮
+
+(n-2)
+
+=L
+
+· W = Wn-1.
+
+As we argued above, the matrix L(n-1) = Wn-1 contains the shortest-path weights. The following
+procedure computes this sequence in Θ(n4) time.
+SLOW-ALL-PAIRS-SHORTEST-PATHS(W)
+1 n ← rows[W]
+2 L(1) W
+3 for m ← 2 to n - 1
+4
+do L(m) ← EXTEND-SHORTEST-PATHS(L(m-1), W)
+5 return L(n-1)
+
+Figure 25.1 shows a graph and the matrices L(m) computed by the procedure SLOW-ALLPAIRS-SHORTEST-PATHS.
+
+

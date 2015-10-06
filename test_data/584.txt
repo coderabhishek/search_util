@@ -1,0 +1,37 @@
+Proof By the definition of an admissible edge, flow can be pushed from u to v. Since u is
+overflowing, the operation PUSH(u, v) applies. The only new residual edge that can be
+created by pushing flow from u to v is the edge (v, u). Since h[v] = h[u] - 1, edge (v, u) cannot
+become admissible. If the operation is asaturating push, then cf(u, v) = 0 afterward and (u, v)
+becomes inadmissible.
+
+Lemma 26.29
+Let G = (V, E) be a flow network, let f be a preflow in G, and suppose that the attribute h is a
+height function. If a vertex u is overflowing and there are no admissible edges leaving u, then
+RELABEL(u) applies. After the relabel operation, there is at least one admissible edge
+leaving u, but there are no admissible edges entering u.
+Proof If u is overflowing, then by Lemma 26.15, either a push or a relabel operation applies
+to it. If there are no admissible edges leaving u, then no flow can be pushed from u and so
+RELABEL(u) applies. After the relabel operation, h[u] = 1 + min {h[v] : (u, v) Ef}. Thus, if
+v is a vertex that realizes the minimum in this set, the edge (u, v) becomes admissible. Hence,
+after the relabel, there is at least one admissible edge leaving u.
+To show that no admissible edges enter u after a relabel operation, suppose that there is a
+vertex v such that (v, u) is admissible. Then, h[v] = h[u] + 1 after the relabel, and so h[v] >
+h[u] + 1 just before the relabel. But by Lemma 26.13, no residual edges exist between vertices
+whose heights differ by more than 1. Moreover, relabeling a vertex does not change the
+residual network. Thus, (v, u) is not in the residual network, and hence it cannot be in the
+admissible network.
+
+Neighbor lists
+Edges in the relabel-to-front algorithm are organized into "neighbor lists." Given a flow
+network G = (V, E), the neighbor list N[u] for a vertex u V is a singly linked list of the
+neighbors of u in G. Thus, vertex v appears in the list N[u] if (u, v) E or (v, u) E. The
+neighbor list N[u] contains exactly those vertices v for which there may be a residual edge (u,
+v). The first vertex in N[u] is pointed to by head[N[u]]. The vertex following v in a neighbor
+list is pointed to by next-neighbor[v]; this pointer is NIL if v is the last vertex in the neighbor
+list.
+The relabel-to-front algorithm cycles through each neighbor list in an arbitrary order that is
+fixed throughout the execution of the algorithm. For each vertex u, the field current[u] points
+to the vertex currently under consideration in N[u]. Initially, current[u] is set to head[N[u]].
+Discharging an overflowing vertex
+
+

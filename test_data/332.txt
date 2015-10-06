@@ -1,0 +1,50 @@
+these properties hold and then developing pseudocode, we present the pseudocode first. Doing
+so will help clarify how the algorithm makes greedy choices.
+In the pseudocode that follows, we assume that C is a set of n characters and that each
+character c C is an object with a defined frequency f [c]. The algorithm builds the tree T
+corresponding to the optimal code in a bottom-up manner. It begins with a set of |C| leaves
+and performs a sequence of |C| - 1 "merging" operations to create the final tree. A min-priority
+queue Q, keyed on f , is used to identify the two least-frequent objects to merge together. The
+result of the merger of two objects is a new object whose frequency is the sum of the
+frequencies of the two objects that were merged.
+HUFFMAN(C)
+1 n ← |C|
+2 Q ← C
+3 for i 1
+4
+do
+5
+6
+7
+8
+9
+
+to n - 1
+allocate a new node z
+left[z] ← x ← EXTRACT-MIN (Q)
+right[z] ← y ← EXTRACT-MIN (Q)
+f [z] ← f [x] + f [y]
+INSERT(Q, z)
+
+return EXTRACT-MIN(Q)
+
+▹Return the root of the tree.
+
+For our example, Huffman's algorithm proceeds as shown in Figure 16.5. Since there are 6
+letters in the alphabet, the initial queue size is n = 6, and 5 merge steps are required to build
+the tree. The final tree represents the optimal prefix code. The codeword for a letter is the
+sequence of edge labels on the path from the root to the letter.
+
+Figure 16.5: The steps of Huffman's algorithm for the frequencies given in Figure 16.3. Each
+part shows the contents of the queue sorted into increasing order by frequency. At each step,
+the two trees with lowest frequencies are merged. Leaves are shown as rectangles containing a
+character and its frequency. Internal nodes are shown as circles containing the sum of the
+frequencies of its children. An edge connecting an internal node with its children is labeled 0
+if it is an edge to a left child and 1 if it is an edge to a right child. The codeword for a letter is
+the sequence of labels on the edges connecting the root to the leaf for that letter. (a) The initial
+set of n = 6 nodes, one for each letter. (b)–(e) Intermediate stages. (f) The final tree.
+Line 2 initializes the min-priority queue Q with the characters in C. The for loop in lines 3–8
+repeatedly extracts the two nodes x and y of lowest frequency from the queue, and replaces
+them in the queue with a new node z representing their merger. The frequency of z is
+
+

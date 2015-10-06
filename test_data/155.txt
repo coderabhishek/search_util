@@ -1,0 +1,18 @@
+(8.3)
+
+where the last line follows by linearity of expectation. We evaluate the two summations
+separately. Indicator random variable Xij is 1 with probability 1/n and 0 otherwise, and
+therefore
+
+When k ≠ j, the variables Xij and Xik are independent, and hence
+
+Substituting these two expected values in equation (8.3), we obtain
+
+which proves equation (8.2).
+Using this expected value in equation (8.1), we conclude that the expected time for bucket
+sort is Θ(n) + n · O(2 - 1/n) = Θ(n). Thus, the entire bucket sort algorithm runs in linear
+expected time.
+Even if the input is not drawn from a uniform distribution, bucket sort may still run in linear
+time. As long as the input has the property that the sum of the squares of the bucket sizes is
+
+

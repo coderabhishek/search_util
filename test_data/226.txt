@@ -1,0 +1,35 @@
+Suppose that we have numbers between 1 and 1000 in a binary search tree and want to search
+for the number 363. Which of the following sequences could not be the sequence of nodes
+examined?
+a.
+b.
+c.
+d.
+e.
+
+2, 252, 401, 398, 330, 344, 397, 363.
+924, 220, 911, 244, 898, 258, 362, 363.
+925, 202, 911, 240, 912, 245, 363.
+2, 399, 387, 219, 266, 382, 381, 278, 363.
+935, 278, 347, 621, 299, 392, 358, 363.
+
+Exercises 12.2-2
+Write recursive versions of the TREE-MINIMUM and TREE-MAXIMUM procedures.
+
+Exercises 12.2-3
+Write the TREE-PREDECESSOR procedure.
+
+Exercises 12.2-4
+Professor Bunyan thinks he has discovered a remarkable property of binary search trees.
+Suppose that the search for key k in a binary search tree ends up in a leaf. Consider three sets:
+A, the keys to the left of the search path; B, the keys on the search path; and C, the keys to the
+right of the search path. Professor Bunyan claims that any three keys a A, b B, and c C
+must satisfy a ≤ b ≤ c. Give a smallest possible counterexample to the professor's claim.
+
+Exercises 12.2-5
+Show that if a node in a binary search tree has two children, then its successor has no left
+child and its predecessor has no right child.
+
+Exercises 12.2-6
+
+

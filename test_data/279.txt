@@ -1,0 +1,37 @@
+quickly as possible. For rush orders, the chassis still passes through the n stations in order, but
+the factory manager may switch the partially-completed auto from one assembly line to the
+other after any station. The time to transfer a chassis away from assembly line i after having
+gone through station Si,j is ti,j, where i = 1, 2 and j = 1, 2, ..., n - 1 (since after the nth station,
+assembly is complete). The problem is to determine which stations to choose from line 1 and
+which to choose from line 2 in order to minimize the total time through the factory for one
+auto. In the example of Figure 15.2(a), the fastest total time comes from choosing stations 1,
+3, and 6 from line 1 and stations 2, 4, and 5 from line 2.
+
+Figure 15.2: (a) An instance of the assembly-line problem with costs ei, ai,j, ti,j, and xi
+indicated. The heavily shaded path indicates the fastest way through the factory. (b) The
+values of fi[j], f*, li[j], and l* for the instance in part (a).
+The obvious, "brute force" way of minimizing the time through the factory is infeasible when
+there are many stations. If we are given a list of which stations to use in line 1 and which to
+use in line 2, it is easy to compute in Θ(n) time how long it takes a chassis to pass through the
+factory. Unfortunately, there are 2n possible ways to choose stations, which we see by viewing
+the set of stations used in line 1 as a subset of {1, 2, ..., n} and noting that there are 2n such
+subsets. Thus, determining the fastest way through the factory by enumerating all possible
+ways and computing how long each takes would require Ω(2n) time, which is infeasible when
+n is large.
+Step 1: The structure of the fastest way through the factory
+The first step of the dynamic-programming paradigm is to characterize the structure of an
+optimal solution. For the assembly-line scheduling problem, we can perform this step as
+follows. Let us consider the fastest possible way for a chassis to get from the starting point
+through station S1,j. If j = 1, there is only one way that the chassis could have gone, and so it is
+easy to determine how long it takes to get through station S1,j. For j = 2, 3, ..., n, however,
+there are two choices: the chassis could have come from station S1,j-1 and then directly to
+station S1,j, the time for going from station j - 1 to station j on the same line being negligible.
+Alternatively, the chassis could have come from station S2,j-1 and then been transferred to
+station S1,j, the transfer time being t2,j-1. We shall consider these two possibilities separately,
+though we will see that they have much in common.
+First, let us suppose that the fastest way through station S1,j is through station S1,j-1. The key
+observation is that the chassis must have taken a fastest way from the starting point through
+station S1,j-1. Why? If there were a faster way to get through station S1,j-1, we could substitute
+this faster way to yield a faster way through station S1,j: a contradiction.
+
+

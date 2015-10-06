@@ -1,0 +1,33 @@
+evaluation may be in error for small inputs. But for large enough inputs, a Θ(n2) algorithm, for
+example, will run more quickly in the worst case than a Θ(n3) algorithm.
+Exercises 2.2-1
+Express the function n3/1000 - 100n2 - 100n + 3 in terms of Θ-notation.
+
+Exercises 2.2-2
+Consider sorting n numbers stored in array A by first finding the smallest element of A and
+exchanging it with the element in A[1]. Then find the second smallest element of A, and
+exchange it with A[2]. Continue in this manner for the first n - 1 elements of A. Write
+pseudocode for this algorithm, which is known as selection sort. What loop invariant does
+this algorithm maintain? Why does it need to run for only the first n - 1 elements, rather than
+for all n elements? Give the best-case and worst-case running times of selection sort in Θnotation.
+
+Exercises 2.2-3
+Consider linear search again (see Exercise 2.1-3). How many elements of the input sequence
+need to be checked on the average, assuming that the element being searched for is equally
+likely to be any element in the array? How about in the worst case? What are the average-case
+and worst-case running times of linear search in Θ-notation? Justify your answers.
+
+Exercises 2.2-4
+How can we modify almost any algorithm to have a good best-case running time?
+
+[4]
+
+There are some subtleties here. Computational steps that we specify in English are often
+variants of a procedure that requires more than just a constant amount of time. For example,
+later in this book we might say "sort the points by x-coordinate," which, as we shall see, takes
+more than a constant amount of time. Also, note that a statement that calls a subroutine takes
+constant time, though the subroutine, once invoked, may take more. That is, we separate the
+process of calling the subroutine-passing parameters to it, etc.-from the process of executing
+the subroutine.
+
+

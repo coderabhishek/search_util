@@ -1,0 +1,50 @@
+10
+11
+12
+
+then T ← T
+Vi ← Vi
+Ei ← Ei
+
+{(u, v)}
+Vj, destroying Vj
+Ej
+
+Describe how to implement this algorithm using binomial heaps to manage the vertex and
+edge sets. Do you need to change the representation of a binomial heap? Do you need to add
+operations beyond the mergeable-heap operations given in Figure 19.1? Give the running time
+of your implementation.
+
+Chapter notes
+Binomial heaps were introduced in 1978 by Vuillemin [307]. Brown [49, 50] studied their
+properties in detail.
+
+Chapter 20: Fibonacci Heaps
+Overview
+In Chapter 19, we saw how binomial heaps support in O(lg n) worst-case time the mergeableheap operations INSERT, MINIMUM, EXTRACT-MIN, and UNION, plus the operations
+DECREASE-KEY and DELETE. In this chapter, we shall examine Fibonacci heaps, which
+support the same operations but have the advantage that operations that do not involve
+deleting an element run in O(1) amortized time.
+From a theoretical standpoint, Fibonacci heaps are especially desirable when the number of
+EXTRACT-MIN and DELETE operations is small relative to the number of other operations
+performed. This situation arises in many applications. For example, some algorithms for
+graph problems may call DECREASE-KEY once per edge. For dense graphs, which have
+many edges, the O(1) amortized time of each call of DECREASE-KEY adds up to a big
+improvement over the Θ(lg n) worst-case time of binary or binomial heaps. Fast algorithms
+for problems such as computing minimum spanning trees (Chapter 23) and finding singlesource shortest paths (Chapter 24) make essential use of Fibonacci heaps.
+From a practical point of view, however, the constant factors and programming complexity of
+Fibonacci heaps make them less desirable than ordinary binary (or k-ary) heaps for most
+applications. Thus, Fibonacci heaps are predominantly of theoretical interest. If a much
+simpler data structure with the same amortized time bounds as Fibonacci heaps were
+developed, it would be of practical use as well.
+Like a binomial heap, a Fibonacci heap is a collection of trees. Fibonacci heaps, in fact, are
+loosely based on binomial heaps. If neither DECREASE-KEY nor DELETE is ever invoked
+on a Fibonacci heap, each tree in the heap is like a binomial tree. Fibonacci heaps have a more
+relaxed structure than binomial heaps, however, allowing for improved asymptotic time
+bounds. Work that maintains the structure can be delayed until it is convenient to perform.
+Like the dynamic tables of Section 17.4, Fibonacci heaps offer a good example of a data
+structure designed with amortized analysis in mind. The intuition and analyses of Fibonacci
+heap operations in the remainder of this chapter rely heavily on the potential method of
+Section 17.3.
+
+

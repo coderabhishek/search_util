@@ -1,0 +1,28 @@
+Figure 33.9: The operation of Jarvis's march. The first vertex chosen is the lowest point p0.
+The next vertex, p1, has the smallest polar angle of any point with respect to p0. Then, p2 has
+the smallest polar angle with respect to p1. The right chain goes as high as the highest point
+p3. Then, the left chain is constructed by finding smallest polar angles with respect to the
+negative x-axis.
+We could implement Jarvis's march in one conceptual sweep around the convex hull, that is,
+without separately constructing the right and left chains. Such implementations typically keep
+track of the angle of the last convex-hull side chosen and require the sequence of angles of
+hull sides to be strictly increasing (in the range of 0 to 2π radians). The advantage of
+constructing separate chains is that we need not explicitly compute angles; the techniques of
+Section 33.1 suffice to compare angles.
+If implemented properly, Jarvis's march has a running time of O(nh). For each of the h
+vertices of CH(Q), we find the vertex with the minimum polar angle. Each comparison
+between polar angles takes O(1) time, using the techniques of Section 33.1. As Section 9.1
+shows, we can compute the minimum of n values in O(n) time if each comparison takes O(1)
+time. Thus, Jarvis's march takes O(nh) time.
+Exercises 33.3-1
+Prove that in the procedure GRAHAM-SCAN, points p1 and pm must be vertices of CH(Q).
+
+Exercise 33.3-2
+Consider a model of computation that supports addition, comparison, and multiplication and
+for which there is a lower bound of Ω(n lg n) to sort n numbers. Prove that Ω(n lg n) is a
+lower bound for computing, in order, the vertices of the convex hull of a set of n points in
+such a model.
+
+Exercise 33.3-3
+
+

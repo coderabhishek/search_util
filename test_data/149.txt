@@ -1,0 +1,33 @@
+Counting sort beats the lower bound of Ω(n lg n) proved in Section 8.1 because it is not a
+comparison sort. In fact, no comparisons between input elements occur anywhere in the code.
+Instead, counting sort uses the actual values of the elements to index into an array. The Θ(n lg
+n) lower bound for sorting does not apply when we depart from the comparison-sort model.
+An important property of counting sort is that it is stable: numbers with the same value appear
+in the output array in the same order as they do in the input array. That is, ties between two
+numbers are broken by the rule that whichever number appears first in the input array appears
+first in the output array. Normally, the property of stability is important only when satellite
+data are carried around with the element being sorted. Counting sort's stability is important for
+another reason: counting sort is often used as a subroutine in radix sort. As we shall see in the
+next section, counting sort's stability is crucial to radix sort's correctness.
+Exercises 8.2-1
+Using Figure 8.2 as a model, illustrate the operation of COUNTING-SORT on the array A =
+6, 0, 2, 0, 1, 3, 4, 6, 1, 3, 2 .
+
+Exercises 8.2-2
+Prove that COUNTING-SORT is stable.
+
+Exercises 8.2-3
+Suppose that the for loop header in line 9 of the COUNTING-SORT procedure is rewritten as
+9 for j ← 1 to length[A]
+Show that the algorithm still works properly. Is the modified algorithm stable?
+
+Exercises 8.2-4
+Describe an algorithm that, given n integers in the range 0 to k, preprocesses its input and then
+answers any query about how many of the n integers fall into a range [a b] in O(1) time.
+Your algorithm should use Θ(n + k) preprocessing time.
+
+8.3 Radix sort
+Radix sort is the algorithm used by the card-sorting machines you now find only in computer
+museums. The cards are organized into 80 columns, and in each column a hole can be
+
+

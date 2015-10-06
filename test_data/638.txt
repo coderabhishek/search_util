@@ -1,0 +1,37 @@
+A square matrix has full rank if and only if it is nonsingular.
+
+A null vector for a matrix A is a nonzero vector x such that Ax = 0. The following theorem,
+whose proof is left as Exercise 28.1-9, and its corollary relate the notions of column rank and
+singularity to null vectors.
+Theorem 28.2
+A matrix A has full column rank if and only if it does not have a null vector.
+
+Corollary 28.3
+A square matrix A is singular if and only if it has a null vector.
+
+The ijth minor of an n × n matrix A, for n > 1, is the (n-1) × (n-1) matrix A[ij] obtained by
+deleting the ith row and jth column of A. The determinant of an n × n matrix A can be defined
+recursively in terms of its minors by
+(28.7)
+
+The term (-1)i+j det(A[ij]) is known as the cofactor of the element aij.
+The following theorems, whose proofs are omitted here, express fundamental properties of the
+determinant.
+Theorem 28.4: (Determinant properties)
+The determinant of a square matrix A has the following properties:
+•
+•
+•
+•
+•
+
+If any row or any column of A is zero, then det(A) = 0.
+The determinant of A is multiplied by λ if the entries of any one row (or any one
+column) of A are all multiplied by λ.
+The determinant of A is unchanged if the entries in one row (respectively, column) are
+added to those in another row (respectively, column).
+The determinant of A equals the determinant of AT.
+The determinant of A is multiplied by -1 if any two rows (or any two columns) are
+exchanged.
+
+

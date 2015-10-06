@@ -1,0 +1,44 @@
+instance of the decision problem PATH, then PATH(i) = 1 (yes) if a shortest path from u to v
+has at most k edges, and PATH(i) = 0 (no) otherwise. Many abstract problems are not
+decision problems, but rather optimization problems, in which some value must be minimized
+or maximized. As we saw above, however, it is usually a simple matter to recast an
+optimization problem as a decision problem that is no harder.
+Encodings
+If a computer program is to solve an abstract problem, problem instances must be represented
+in a way that the program understands. An encoding of a set S of abstract objects is a mapping
+e from S to the set of binary strings.[2] For example, we are all familiar with encoding the
+natural numbers N = {0, 1, 2, 3, 4,...} as the strings {0, 1, 10, 11, 100,...}. Using this
+encoding, e(17) = 10001. Anyone who has looked at computer representations of keyboard
+characters is familiar with either the ASCII or EBCDIC codes. In the ASCII code, the
+encoding of A is 1000001. Even a compound object can be encoded as a binary string by
+combining the representations of its constituent parts. Polygons, graphs, functions, ordered
+pairs, programs-all can be encoded as binary strings.
+Thus, a computer algorithm that "solves" some abstract decision problem actually takes an
+encoding of a problem instance as input. We call a problem whose instance set is the set of
+binary strings a concrete problem. We say that an algorithm solves a concrete problem in time
+O(T (n)) if, when it is provided a problem instance i of length n = |i|, the algorithm can
+produce the solution in O(T (n)) time.[3] A concrete problem is polynomial-time solvable,
+therefore, if there exists an algorithm to solve it in time O(nk) for some constant k.
+We can now formally define the complexity class P as the set of concrete decision problems
+that are polynomial-time solvable.
+We can use encodings to map abstract problems to concrete problems. Given an abstract
+decision problem Q mapping an instance set I to {0, 1}, an encoding e : I → {0, 1}* can be
+used to induce a related concrete decision problem, which we denote by e(Q).[4] If the solution
+to an abstract-problem instance i I is Q(i) {0, 1}, then the solution to the concreteproblem instance e(i) {0, 1}* is also Q(i). As a technicality, there may be some binary
+strings that represent no meaningful abstract-problem instance. For convenience, we shall
+assume that any such string is mapped arbitrarily to 0. Thus, the concrete problem produces
+the same solutions as the abstract problem on binary-string instances that represent the
+encodings of abstract-problem instances.
+We would like to extend the definition of polynomial-time solvability from concrete problems
+to abstract problems by using encodings as the bridge, but we would like the definition to be
+independent of any particular encoding. That is, the efficiency of solving a problem should
+not depend on how the problem is encoded. Unfortunately, it depends quite heavily on the
+encoding. For example, suppose that an integer k is to be provided as the sole input to an
+algorithm, and suppose that the running time of the algorithm is Θ(k). If the integer k is
+provided in unary-a string of k 1's-then the running time of the algorithm is O(n) on length-n
+inputs, which is polynomial time. If we use the more natural binary representation of the
+integer k, however, then the input length is n = ⌊lg k⌋ + 1. In this case, the running time of the
+algorithm is Θ (k) = Θ(2n), which is exponential in the size of the input. Thus, depending on
+the encoding, the algorithm runs in either polynomial or superpolynomial time.
+
+

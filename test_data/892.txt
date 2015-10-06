@@ -1,0 +1,49 @@
+The first four sections of this chapter present some examples of polynomial-time
+approximation algorithms for NP-complete problems, and the fifth section presents a fully
+polynomial-time approximation scheme. Section 35.1 begins with a study of the vertex-cover
+problem, an NP-complete minimization problem that has an approximation algorithm with an
+approximation ratio of 2. Section 35.2 presents an approximation algorithm with an
+approximation ratio of 2 for the case of the traveling-salesman problem in which the cost
+function satisfies the triangle inequality. It also shows that without the triangle inequality, for
+any constant ρ ≥ 1, a ρ-approximation algorithm cannot exist unless P = NP. In Section 35.3,
+we show how a greedy method can be used as an effective approximation algorithm for the
+set-covering problem, obtaining a covering whose cost is at worst a logarithmic factor larger
+than the optimal cost. Section 35.4 presents two more approximation algorithms. First we
+study the optimization version of 3-CNF satisfiability and give a simple randomized
+algorithm that produces a solution with an expected approximation ratio of 8/7. Then we
+examine a weighted variant of the vertex-cover problem and show how to use linear
+programming to develop a 2-approximatation algorithm. Finally, Section 35.5 presents a fully
+polynomial-time approximation scheme for the subset-sum problem.
+
+35.1 The vertex-cover problem
+The vertex-cover problem was defined and proven NP-complete in Section 34.5.2. A vertex
+cover of an undirected graph G = (V, E) is a subset V′ V such that if (u, v) is an edge of G,
+then either u V′ or v V′ (or both). The size of a vertex cover is the number of vertices in
+it.
+The vertex-cover problem is to find a vertex cover of minimum size in a given undirected
+graph. We call such a vertex cover an optimal vertex cover. This problem is the optimization
+version of an NP-complete decision problem.
+Even though it may be difficult to find an optimal vertex cover in a graph G, it is not too hard
+to find a vertex cover that is near-optimal. The following approximation algorithm takes as
+input an undirected graph G and returns a vertex cover whose size is guaranteed to be no more
+than twice the size of an optimal vertex cover.
+APPROX-VERTEX-COVER(G">
+1 C ← Ø
+2 E′ ← E[G]
+3 while E′ ≠ Ø
+4
+do let (u, v) be an arbitrary edge of E′
+5
+C ← C
+{u, v}
+6
+remove from E′ every edge incident on either u or v
+7 return C
+
+Figure 35.1 illustrates the operation of APPROX-VERTEX-COVER. The variable C contains
+the vertex cover being constructed. Line 1 initializes C to the empty set. Line 2 sets E′ to be a
+copy of the edge set E[G] of the graph. The loop on lines 3-6 repeatedly picks an edge (u, v)
+from E′, adds its endpoints u and v to C, and deletes all edges in E′ that are covered by either u
+or v. The running time of this algorithm is O(V + E), using adjacency lists to represent E′.
+
+

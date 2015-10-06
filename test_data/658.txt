@@ -1,0 +1,29 @@
+line 4 implements the recursion. Each time through the outer loop, lines 5–9 determine the
+element ak'k with largest absolute value of those in the current first column (column k) of the
+(n - k + 1) × (n - k + 1) matrix whose LU decomposition must be found. If all elements in the
+current first column are zero, lines 10–11 report that the matrix is singular. To pivot, we
+exchange π[k'] with π[k] in line 12 and exchange the kth and k'th rows of A in lines 13–14,
+thereby making the pivot element akk. (The entire rows are swapped because in the derivation
+of the method above, not only is A′ - vwT/ak1 multiplied by P′, but so is v/ak1.) Finally, the
+Schur complement is computed by lines 15–18 in much the same way as it is computed by
+lines 4–9 of LU-DECOMPOSITION, except that here the operation is written to work "in
+place."
+
+Figure 28.2: The operation of LUP-DECOMPOSITION. (a) The input matrix A with the
+identity permutation of the rows on the left. The first step of the algorithm determines that the
+element 5 in the black circle in the third row is the pivot for the first column. (b) Rows 1 and
+3 are swapped and the permutation is updated. The shaded column and row represent v and
+wT. (c) The vector v is replaced by v/5, and the lower right of the matrix is updated with the
+Schur complement. Lines divide the matrix into three regions: elements of U (above),
+elements of L (left), and elements of the Schur complement (lower right). (d)–(f) The second
+step. (g)–(i) The third step. No further changes occur on the fourth, and final, step. (j) The
+LUP decomposition PA = LU.
+Because of its triply nested loop structure, LUP-DECOMPOSITION has a running time of
+Θ(n3), which is the same as that of LU-DECOMPOSITION. Thus, pivoting costs us at most a
+constant factor in time.
+Exercises 28.3-1
+Solve the equation
+
+by using forward substitution.
+
+

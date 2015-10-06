@@ -1,0 +1,51 @@
+4
+5
+
+then return COMPOSITE
+
+▹ Definitely.
+
+return PRIME
+
+▹ Almost surely.
+
+The procedure MILLER-RABIN is a probabilistic search for a proof that n is composite. The
+main loop (beginning on line 1) picks s random values of a from (line 2). If one of the a's
+picked is a witness to the compositeness of n, then MILLER-RABIN outputs COMPOSITE
+on line 4. Such an output is always correct, by the correctness of WITNESS. If no witness can
+be found in s trials, MILLER-RABIN assumes that this is because there are no witnesses to be
+found, and therefore n is assumed to be prime. We shall see that this output is likely to be
+correct if s is large enough, but that there is a small chance that the procedure may be unlucky
+in its choice of a's and that witnesses do exist even though none has been found.
+To illustrate the operation of MILLER-RABIN, let n be the Carmichael number 561, so that n
+- 1 = 560 = 24 · 35. Supposing that a = 7 is chosen as a base, Figure 31.4 shows that
+WITNESS computes x0 = a35 = 241 (mod 561) and thus computes the sequence X = 241,
+298, 166, 67, 1 . Thus, a nontrivial square root of 1 is discovered in the last squaring step,
+since a280 ≡ 67 (mod n) and a560 ≡ 1 (mod n). Therefore, a = 7 is a witness to the
+compositeness of n, WITNESS(7, n) returns TRUE, and MILLER-RABIN returns
+COMPOSITE.
+If n is a β-bit number, MILLER-RABIN requires O(sβ) arithmetic operations and O(sβ3) bit
+operations, since it requires asymptotically no more work than s modular exponentiations.
+Error rate of the Miller-Rabin primality test
+If MILLER-RABIN outputs PRIME, then there is a small chance that it has made an error.
+Unlike PSEUDOPRIME, however, the chance of error does not depend on n; there are no bad
+inputs for this procedure. Rather, it depends on the size of s and the "luck of the draw" in
+choosing base values a. Also, since each test is more stringent than a simple check of equation
+(31.38), we can expect on general principles that the error rate should be small for randomly
+chosen integers n. The following theorem presents a more precise argument.
+Theorem 31.38
+If n is an odd composite number, then the number of witnesses to the compositeness of n is at
+least (n - 1)/2.
+Proof The proof shows that the number of nonwitnesses is at most (n - 1)/2, which implies the
+theorem.
+We start by claiming that any nonwitness must be a member of . Why? Consider any
+nonwitness a. It must satisfy an-1 ≡ 1 (mod n) or, equivalently, a · an-2 ≡ 1 (mod n). Thus, there
+is a solution to the equation ax ≡ 1 (mod n), namely an-2. By Corollary 31.21, gcd(a, n) | 1,
+which in turn implies that gcd(a, n) = 1. Therefore, a is a member of ; all nonwitnesses
+belong to .
+To complete the proof, we show that not only are all nonwitnesses contained in , they are all
+contained in a proper subgroup B of (recall that we say B is a proper subgroup of when B
+is subgroup of but B is not equal to ). By Corollary 31.16, we then have
+. Since
+
+

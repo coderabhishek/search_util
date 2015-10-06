@@ -1,0 +1,39 @@
+One solution to this problem is x = (-5, -3, 0, -1, -4), as can be verified directly by checking
+each inequality. In fact, there is more than one solution to this problem. Another is x' = (0, 2,
+5, 4, 1). These two solutions are related: each component of x' is 5 larger than the
+corresponding component of x. This fact is not mere coincidence.
+Lemma 24.8
+Let x = (x1, x2, ..., xn) be a solution to a system Ax ≤ b of difference constraints, and let d be
+any constant. Then x + d = (x1 + d, x2 + d,..., xn + d) is a solution to Ax ≤ b as well.
+Proof For each xi and xj , we have (xj + d) - (xi + d) = xj - xi . Thus, if x satisfies Ax ≤ b, so
+does x + d.
+
+Systems of difference constraints occur in many different applications. For example, the
+unknowns xi may be times at which events are to occur. Each constraint can be viewed as
+stating that there must be at least a certain amount of time, or at most a certain amount of
+time, between two events. Perhaps the events are jobs to be performed during the assembly of
+a product. If we apply an adhesive that takes 2 hours to set at time x1 and we have to wait until
+it sets to install a part at time x2, then we have the constraint that x2 ≥ x1 + 2 or, equivalently,
+that x1 - x2 ≤ -2. Alternatively, we might require that the part be installed after the adhesive
+has been applied but no later than the time that the adhesive has set halfway. In this case, we
+get the pair of constraints x2 ≥ x1 and x2 ≤ x1 + 1 or, equivalently, x1 - x2 ≤ 0 and x2 - x1 ≤ 1.
+Constraint graphs
+It is beneficial to interpret systems of difference constraints from a graph-theoretic point of
+view. The idea is that in a system Ax ≤ b of difference constraints, the m × n linearprogramming matrix A can be viewed as the transpose of an incidence matrix (see Exercise
+22.1-7) for a graph with n vertices and m edges. Each vertex vi in the graph, for i = 1, 2,..., n,
+corresponds to one of the n unknown variables xi . Each directed edge in the graph
+corresponds to one of the m inequalities involving two unknowns.
+More formally, given a system Ax ≤ b of difference constraints, the corresponding constraint
+graph is a weighted, directed graph G = (V, E), where
+V = {v0, v1,..., vn}
+and
+E = {(vi, vj) : xj - xi ≤ bk is a constraint}
+
+{(v0, v1), (v0, v2), (v0, v3),..., (v0, vn)} .
+
+The additional vertex v0 is incorporated, as we shall see shortly, to guarantee that every other
+vertex is reachable from it. Thus, the vertex set V consists of a vertex vi for each unknown xi ,
+plus an additional vertex v0. The edge set E contains an edge for each difference constraint,
+plus an edge (v0, vi) for each unknown xi . If xj - xi ≤ bk is a difference constraint, then the
+
+

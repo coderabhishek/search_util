@@ -1,0 +1,41 @@
+operation reduces the number of sets by one. After n - 1 UNION operations, therefore, only
+one set remains. The number of UNION operations is thus at most n - 1. Note also that since
+the MAKE-SET operations are included in the total number of operations m, we have m ≥ n.
+We assume that the n MAKE-SET operations are the first n operations performed.
+An application of disjoint-set data structures
+One of the many applications of disjoint-set data structures arises in determining the
+connected components of an undirected graph (see Section B.4). Figure 21.1(a), for example,
+shows a graph with four connected components.
+
+Figure 21.1: (a) A graph with four connected components: {a, b, c, d}, {e, f, g}, {h, i}, and
+{j}.(b) The collection of disjoint sets after each edge is processed.
+The procedure CONNECTED-COMPONENTS that follows uses the disjoint-set operations
+to compute the connected components of a graph. Once CONNECTED-COMPONENTS has
+been run as a preprocessing step, the procedure SAME-COMPONENT answers queries about
+whether two vertices are in the same connected component.[1] (The set of vertices of a graph
+G is denoted by V [G], and the set of edges is denoted by E[G].)
+CONNECTED-COMPONENTS(G)
+1 for each vertex v
+V[G]
+2
+do MAKE-SET(v)
+3 for each edge (u, v)
+E[G]
+4
+do if FIND-SET(u) ≠ FIND-SET(v)
+5
+then UNION(u, v)
+SAME-COMPONENT(u, v)
+1 if FIND-SET(u) = FIND-SET(v)
+2
+then return TRUE
+3
+else return FALSE
+
+The procedure CONNECTED-COMPONENTS initially places each vertex v in its own set.
+Then, for each edge (u, v), it unites the sets containing u and v. By Exercise 21.1-2, after all
+the edges are processed, two vertices are in the same connected component if and only if the
+corresponding objects are in the same set. Thus, CONNECTED-COMPONENTS computes
+sets in such a way that the procedure SAME-COMPONENT can determine whether two
+
+

@@ -1,0 +1,42 @@
+CHAINED-HASH-INSERT(T, x)
+insert x at the head of list T[h(key[x])]
+CHAINED-HASH-SEARCH(T, k)
+search for an element with key k in list T[h(k)]
+CHAINED-HASH-DELETE(T, x)
+delete x from the list T[h(key[x])]
+
+The worst-case running time for insertion is O(1). The insertion procedure is fast in part
+because it assumes that the element x being inserted is not already present in the table; this
+assumption can be checked if necessary (at additional cost) by performing a search before
+insertion. For searching, the worst-case running time is proportional to the length of the list;
+we shall analyze this operation more closely below. Deletion of an element x can be
+accomplished in O(1) time if the lists are doubly linked. (Note that CHAINED-HASHDELETE takes as input an element x and not its key k, so we don't have to search for x first. If
+the lists were singly linked, it would not be of great help to take as input the element x rather
+than the key k. We would still have to find x in the list T[h(key[x])], so that the next link of x's
+predecessor could be properly set to splice x out. In this case, deletion and searching would
+have essentially the same running time.)
+Analysis of hashing with chaining
+How well does hashing with chaining perform? In particular, how long does it take to search
+for an element with a given key?
+Given a hash table T with m slots that stores n elements, we define the load factor α for T as
+n/m, that is, the average number of elements stored in a chain. Our analysis will be in terms of
+α, which can be less than, equal to, or greater than 1.
+The worst-case behavior of hashing with chaining is terrible: all n keys hash to the same slot,
+creating a list of length n. The worst-case time for searching is thus Θ(n) plus the time to
+compute the hash function—no better than if we used one linked list for all the elements.
+Clearly, hash tables are not used for their worst-case performance. (Perfect hashing, described
+in Section 11.5, does however provide good worst-case performance when the set of keys is
+static.)
+The average performance of hashing depends on how well the hash function h distributes the
+set of keys to be stored among the m slots, on the average. Section 11.3 discusses these issues,
+but for now we shall assume that any given element is equally likely to hash into any of the m
+slots, independently of where any other element has hashed to. We call this the assumption of
+simple uniform hashing.
+For j = 0, 1, ..., m - 1, let us denote the length of the list T[j] by nj, so that
+(11.1)
+and the average value of nj is E[nj] = α = n/m.
+We assume that the hash value h(k) can be computed in O(1) time, so that the time required to
+search for an element with key k depends linearly on the length nh(k) of the list T[h(k)]. Setting
+aside the O(1) time required to compute the hash function and to access slot h(k), let us
+
+

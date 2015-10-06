@@ -1,0 +1,43 @@
+The procedure HEAP-EXTRACT-MAX implements the EXTRACT-MAX operation. It is
+similar to the for loop body (lines 3-5) of the HEAPSORT procedure.
+HEAP-EXTRACT-MAX(A)
+1 if heap-size[A] < 1
+2
+then error "heap underflow"
+3 max ← A[1]
+4 A[1] ← A[heap-size[A]]
+5 heap-size[A] ← heap-size[A] - 1
+6 MAX-HEAPIFY(A, 1)
+7 return max
+
+The running time of HEAP-EXTRACT-MAX is O(lg n), since it performs only a constant
+amount of work on top of the O(lg n) time for MAX-HEAPIFY.
+The procedure HEAP-INCREASE-KEY implements the INCREASE-KEY operation. The
+priority-queue element whose key is to be increased is identified by an index i into the array.
+The procedure first updates the key of element A[i] to its new value. Because increasing the
+key of A[i] may violate the max-heap property, the procedure then, in a manner reminiscent of
+the insertion loop (lines 5-7) of INSERTION-SORT from Section 2.1, traverses a path from
+this node toward the root to find a proper place for the newly increased key. During this
+traversal, it repeatedly compares an element to its parent, exchanging their keys and
+continuing if the element's key is larger, and terminating if the element's key is smaller, since
+the max-heap property now holds. (See Exercise 6.5-5 for a precise loop invariant.)
+HEAP-INCREASE-KEY(A, i, key)
+1 if key < A[i]
+2
+then error "new key is smaller than current key"
+3 A[i] ← key
+4 while i > 1 and A[PARENT(i)] < A[i]
+5
+do exchange A[i] ↔ A[PARENT(i)]
+6
+i ← PARENT(i)
+
+Figure 6.5 shows an example of a HEAP-INCREASE-KEY operation. The running time of
+HEAP-INCREASE-KEY on an n-element heap is O(lg n), since the path traced from the node
+updated in line 3 to the root has length O(lg n).
+
+Figure 6.5: The operation of HEAP-INCREASE-KEY. (a) The max-heap of Figure 6.4(a)
+with a node whose index is i heavily shaded. (b) This node has its key increased to 15. (c)
+After one iteration of the while loop of lines 4-6, the node and its parent have exchanged keys,
+
+

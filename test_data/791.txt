@@ -1,0 +1,53 @@
+Figure 32.1: The string-matching problem. The goal is to find all occurrences of the pattern P
+= abaa in the text T = abcabaabcabac. The pattern occurs only once in the text, at shift s = 3.
+The shift s = 3 is said to be a valid shift. Each character of the pattern is connected by a
+vertical line to the matching character in the text, and all matched characters are shown
+shaded.
+Except for the naive brute-force algorithm, which we review in Section 32.1, each stringmatching algorithm in this chapter performs some preprocessing based on the pattern and then
+finds all valid shifts; we will call this latter phase "matching." Figure 32.2 shows the
+preprocessing and matching times for each of the algorithms in this chapter. The total running
+time of each algorithm is the sum of the preprocessing and matching times. Section 32.2
+presents an interesting string-matching algorithm, due to Rabin and Karp. Although the Θ((n m + 1)m) worst-case running time of this algorithm is no better than that of the naive method,
+it works much better on average and in practice. It also generalizes nicely to other patternmatching problems. Section 32.3 then describes a string-matching algorithm that begins by
+constructing a finite automaton specifically designed to search for occurrences of the given
+pattern P in a text. This algorithm takes O(m |Σ|) preprocessing time but only Θ(n) matching
+time. The similar but much cleverer Knuth-Morris-Pratt (or KMP) algorithm is presented in
+Section 32.4; the KMP algorithm has the same Θ(n) matching time, and it reduces the
+preprocessing time to only Θ(m).
+
+Algorithm
+
+Preprocessing time Matching time
+
+Naive
+
+0
+
+Rabin-Karp
+Finite automaton
+Knuth-Morris-Pratt
+
+Θ(m)
+O(m |Σ|)
+Θ(m)
+
+O((n - m +
+1)m)
+O((n - m +
+1)m)
+Θ(n)
+Θ(n)
+
+Figure 32.2: The string-matching algorithms in this chapter and their preprocessing and
+matching times.
+Notation and terminology
+We shall let Σ* (read "sigma-star") denote the set of all finite-length strings formed using
+characters from the alphabet Σ. In this chapter, we consider only finite-length strings. The
+zero-length empty string, denoted ε, also belongs to Σ*. The length of a string x is denoted |x|.
+The concatenation of two strings x and y, denoted xy, has length |x| + |y| and consists of the
+characters from x followed by the characters from y.
+We say that a string w is a prefix of a string x, denoted w ⊏ x, if x = wy for some string y
+
+Σ*. Note that if w ⊏ x, then |w| ≤ |x|. Similarly, we say that a string w is a suffix of a string x,
+
+

@@ -1,0 +1,48 @@
+subproblems are solved recursively, each in time T (n/b). The cost of dividing the problem
+and combining the results of the subproblems is described by the function f (n). (That is, using
+the notation from Section 2.3.2, f(n) = D(n)+C(n).) For example, the recurrence arising from
+the MERGE-SORT procedure has a = 2, b = 2, and f (n) = Θ(n).
+As a matter of technical correctness, the recurrence isn't actually well defined because n/b
+might not be an integer. Replacing each of the a terms T (n/b) with either T (⌊n/b⌋) or T
+(⌈n/b⌉) doesn't affect the asymptotic behavior of the recurrence, however. (We'll prove this in
+the next section.) We normally find it convenient, therefore, to omit the floor and ceiling
+functions when writing divide-and-conquer recurrences of this form.
+The master theorem
+The master method depends on the following theorem.
+Theorem 4.1: (Master theorem)
+Let a ≥ 1 and b > 1 be constants, let f (n) be a function, and let T (n) be defined on the
+nonnegative integers by the recurrence
+T(n) = aT(n/b) + f(n),
+where we interpret n/b to mean either ⌊n/b⌋ or ⌈n/b⌉. Then T (n) can be bounded
+asymptotically as follows.
+1. If
+for some constant > 0, then
+2. If
+, then
+.
+3. If
+for some constant > 0, and if a f (n/b) ≤ cf (n) for some constant c <
+1 and all sufficiently large n, then T (n) = Θ(f (n)).
+
+Before applying the master theorem to some examples, let's spend a moment trying to
+understand what it says. In each of the three cases, we are comparing the function f (n) with
+the function
+. Intuitively, the solution to the recurrence is determined by the larger of the
+two functions. If, as in case 1, the function
+is the larger, then the solution is
+.
+If, as in case 3, the function f (n) is the larger, then the solution is T (n) = Θ(f (n)). If, as in
+case 2, the two functions are the same size, we multiply by a logarithmic factor, and the
+solution is
+.
+Beyond this intuition, there are some technicalities that must be understood. In the first case,
+not only must f (n) be smaller than
+, it must be polynomially smaller. That is, f (n) must be
+asymptotically smaller than
+by a factor of n for some constant > 0. In the third case,
+not only must f (n) be larger than
+, it must be polynomially larger and in addition satisfy
+the "regularity" condition that af (n/b) ≤ cf(n). This condition is satisfied by most of the
+polynomially bounded functions that we shall encounter.
+
+

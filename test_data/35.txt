@@ -1,0 +1,35 @@
+fully expanded tree in part (d) has lg n + 1 levels (i.e., it has height lg n, as indicated), and
+each level contributes a total cost of cn. The total cost, therefore, is cn lg n + cn, which is Θ(n
+lg n).
+Next, we add the costs across each level of the tree. The top level has total cost cn, the next
+level down has total cost c(n/2) + c(n/2) = cn, the level after that has total cost c(n/4) + c(n/4)
++ c(n/4) + c(n/4) = cn, and so on. In general, the level i below the top has 2i nodes, each
+contributing a cost of c(n/2i), so that the ith level below the top has total cost 2i c(n/2i) = cn.
+At the bottom level, there are n nodes, each contributing a cost of c, for a total cost of cn.
+The total number of levels of the "recursion tree" in Figure 2.5 is lg n + 1. This fact is easily
+seen by an informal inductive argument. The base case occurs when n = 1, in which case there
+is only one level. Since lg 1 = 0, we have that lg n + 1 gives the correct number of levels.
+Now assume as an inductive hypothesis that the number of levels of a recursion tree for 2i
+nodes is lg 2i + 1 = i + 1 (since for any value of i, we have that lg 2i = i). Because we are
+assuming that the original input size is a power of 2, the next input size to consider is 2i+1. A
+tree with 2i+1 nodes has one more level than a tree of 2i nodes, and so the total number of
+levels is (i + 1) + 1 = lg 2i+1 + 1.
+To compute the total cost represented by the recurrence (2.2), we simply add up the costs of
+all the levels. There are lg n + 1 levels, each costing cn, for a total cost of cn(lg n + 1) = cn lg
+n + cn. Ignoring the low-order term and the constant c gives the desired result of Θ(n lg n).
+Exercises 2.3-1
+Using Figure 2.4 as a model, illustrate the operation of merge sort on the array A =
+52, 26, 38, 57, 9, 49 .
+
+3, 41,
+
+Exercises 2.3-2
+Rewrite the MERGE procedure so that it does not use sentinels, instead stopping once either
+array L or R has had all its elements copied back to A and then copying the remainder of the
+other array back into A.
+
+Exercises 2.3-3
+Use mathematical induction to show that when n is an exact power of 2, the solution of the
+recurrence
+
+

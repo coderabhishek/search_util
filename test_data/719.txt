@@ -1,0 +1,40 @@
+2.
+3.
+
+whenever
+whenever
+
+, and
+.
+
+Exercises 29-3: Integer linear programming
+An integer linear-programming problem is a linear-programming problem with the
+additional constraint that the variables x must take on integral values. Exercise 34.5-3 shows
+that just determining whether an integer linear program has a feasible solution is NP-hard,
+which means that there is unlikely to be a polynomial-time algorithm for this problem.
+a. Show that weak duality (Lemma 29.8) holds for an integer linear program.
+b. Show that duality (Theorem 29.10) does not always hold for an integer linear program.
+c. Given a primal linear program in standard form, let us define P to be the optimal
+objective value for the primal linear program, D to be the optimal objective value for
+its dual, IP to be the optimal objective value for the integer version of the primal (that
+is, the primal with the added constraint that the variables take on integer values), and
+ID to be the optimal objective value for the integer version of the dual. Show that
+IP ≤ P = D ≤ ID.
+
+Exercises 29-4: Farkas's lemma
+Let A be an m × n matrix and b be an m-vector. Then Farkas's lemma states that exactly one of
+the systems
+Ax ≤ 0,
+bx > 0
+and
+yA = b,
+y≥ 0
+is solvable, where x is an n-vector and y is an m-vector. Prove Farkas's lemma.
+
+Chapter notes
+This chapter only begins to study the wide field of linear programming. A number of books
+are devoted exclusively to linear programming, including those by Chv´tal [62], Gass [111],
+Karloff [171], Schrijver [266], and Vanderbei [304]. Many other books give a good coverage
+of linear programming, including those by Papadimitriou and Steiglitz [237] and Ahuja,
+
+

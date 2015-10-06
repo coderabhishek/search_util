@@ -1,0 +1,43 @@
+How can one tell if a greedy algorithm will solve a particular optimization problem? There is
+no way in general, but the greedy-choice property and optimal sub-structure are the two key
+ingredients. If we can demonstrate that the problem has these properties, then we are well on
+the way to developing a greedy algorithm for it.
+Greedy-choice property
+The first key ingredient is the greedy-choice property: a globally optimal solution can be
+arrived at by making a locally optimal (greedy) choice. In other words, when we are
+considering which choice to make, we make the choice that looks best in the current problem,
+without considering results from subproblems.
+Here is where greedy algorithms differ from dynamic programming. In dynamic
+programming, we make a choice at each step, but the choice usually depends on the solutions
+to subproblems. Consequently, we typically solve dynamic-programming problems in a
+bottom-up manner, progressing from smaller subproblems to larger subproblems. In a greedy
+algorithm, we make whatever choice seems best at the moment and then solve the subproblem
+arising after the choice is made. The choice made by a greedy algorithm may depend on
+choices so far, but it cannot depend on any future choices or on the solutions to subproblems.
+Thus, unlike dynamic programming, which solves the subproblems bottom up, a greedy
+strategy usually progresses in a top-down fashion, making one greedy choice after another,
+reducing each given problem instance to a smaller one.
+Of course, we must prove that a greedy choice at each step yields a globally optimal solution,
+and this is where cleverness may be required. Typically, as in the case of Theorem 16.1, the
+proof examines a globally optimal solution to some subproblem. It then shows that the
+solution can be modified to use the greedy choice, resulting in one similar but smaller
+subproblem.
+The greedy-choice property often gains us some efficiency in making our choice in a
+subproblem. For example, in the activity-selection problem, assuming that we had already
+sorted the activities in monotonically increasing order of finish times, we needed to examine
+each activity just once. It is frequently the case that by preprocessing the input or by using an
+appropriate data structure (often a priority queue), we can make greedy choices quickly, thus
+yielding an efficient algorithm.
+Optimal substructure
+A problem exhibits optimal substructure if an optimal solution to the problem contains
+within it optimal solutions to subproblems. This property is a key ingredient of assessing the
+applicability of dynamic programming as well as greedy algorithms. As an example of
+optimal substructure, recall how we demonstrated in Section 16.1 that if an optimal solution
+to subproblem Sij includes an activity ak, then it must also contain optimal solutions to the
+subproblems Sik and Skj. Given this optimal substructure, we argued that if we knew which
+activity to use as ak, we could construct an optimal solution to Sij by selecting ak along with all
+activities in optimal solutions to the subproblems Sik and Skj. Based on this observation of
+optimal substructure, we were able to devise the recurrence (16.3) that described the value of
+an optimal solution.
+
+

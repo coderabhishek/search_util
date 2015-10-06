@@ -1,0 +1,33 @@
+by less than 2 |V|, since no heights change and only vertex v, whose height is at most 2 |V| - 1,
+can possibly become overflowing.
+Now we show that a nonsaturating push from u to v decreases Φ by at least 1. Why? Before
+the nonsaturating push, u was overflowing, and v may or may not have been overflowing. By
+Lemma 26.14, u is no longer overflowing after the push. In addition, v must be overflowing
+after the push, unless it is the source. Therefore, the potential function Φ has decreased by
+exactly h[u], and it has increased by either 0 or h[v]. Since h[u] - h[v] = 1, the net effect is that
+the potential function has decreased by at least 1.
+Thus, during the course of the algorithm, the total amount of increase in Φ is due to
+relabelings and saturated pushes and is constrained by Corollary 26.22 and Lemma 26.23 to
+be less than (2 |V|)(2 |V|2) + (2 |V|)(2 |V||E|) = 4 |V|2 (|V| + |E|). Since Φ ≥ 0, the total amount of
+decrease, and therefore the total number of nonsaturating pushes, is less than 4 |V|2 (|V| + |E|).
+
+Having bounded the number of relabelings, saturating pushes, and nonsaturating push, we
+have set the stage for the following analysis of the GENERIC-PUSH-RELABEL procedure,
+and hence of any algorithm based on the push-relabel method.
+Theorem 26.25
+During the execution of GENERIC>-PUSH-RELABEL on any flow network G = (V, E), the
+number of basic operations is O(V2E).
+Proof Immediate from Corollary 26.22 and Lemmas 26.23 and 26.24.
+
+Thus, the algorithm terminates after O(V2 E) operations. All that remains is to give an
+efficient method for implementing each operation and for choosing an appropriate operation
+to execute.
+Corollary 26.26
+There is an implementation of the generic push-relabel algorithm that runs in O(V2 E) time on
+any flow network G = (V, E).
+Proof Exercise 26.4-1 asks you to show how to implement the generic algorithm with an
+overhead of O(V) per relabel operation and O(1) per push. It also asks you to design a data
+structure that allows you to pick an applicable operation in O(1) time. The corollary then
+follows.
+
+

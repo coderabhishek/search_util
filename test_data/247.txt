@@ -1,0 +1,42 @@
+violation must be because both z and p[z] are red. Moreover, there are no other
+violations of red-black properties.
+•
+
+•
+
+Termination: When the loop terminates, it does so because p[z] is black. (If z is the
+root, then p[z] is the sentinel nil[T], which is black.) Thus, there is no violation of
+property 4 at loop termination. By the loop invariant, the only property that might fail
+to hold is property 2. Line 16 restores this property, too, so that when RB-INSERTFIXUP terminates, all the red-black properties hold.
+Maintenance: There are actually six cases to consider in the while loop, but three of
+them are symmetric to the other three, depending on whether z's parent p[z] is a left
+child or a right child of z's grandparent p[p[z]], which is determined in line 2. We have
+given the code only for the situation in which p[z] is a left child. The node p[p[z]]
+exists, since by part (b) of the loop invariant, if p[z] is the root, then p[z] is black.
+Since we enter a loop iteration only if p[z] is red, we know that p[z] cannot be the root.
+Hence, p[p[z]] exists.
+Case 1 is distinguished from cases 2 and 3 by the color of z's parent's sibling, or
+"uncle." Line 3 makes y point to z's uncle right[p[p[z]]], and a test is made in line 4. If
+y is red, then case 1 is executed. Otherwise, control passes to cases 2 and 3. In all three
+cases, z's grandparent p[p[z]] is black, since its parent p[z] is red, and property 4 is
+violated only between z and p[z].
+
+Case 1: z's uncle y is red
+
+Figure 13.5 shows the situation for case 1 (lines 5–8). Case 1 is executed when both p[z] and y
+are red. Since p[p[z]] is black, we can color both p[z] and y black, thereby fixing the problem
+of z and p[z] both being red, and color p[p[z]] red, thereby maintaining property 5. We then
+repeat the while loop with p[p[z]] as the new node z. The pointer z moves up two levels in the
+tree.
+
+Figure 13.5: Case 1 of the procedure RB-INSERT. Property 4 is violated, since z and its
+parent p[z] are both red. The same action is taken whether (a) z is a right child or (b) z is a left
+child. Each of the subtrees α, β, γ, δ, and ε has a black root, and each has the same blackheight. The code for case 1 changes the colors of some nodes, preserving property 5: all
+downward paths from a node to a leaf have the same number of blacks. The while loop
+continues with node z's grandparent p[p[z]] as the new z. Any violation of property 4 can now
+occur only between the new z, which is red, and its parent, if it is red as well.
+Now we show that case 1 maintains the loop invariant at the start of the next iteration. We use
+z to denote node z in the current iteration, and z′ p[p[z]] to denote the node z at the test in line
+1 upon the next iteration.
+
+

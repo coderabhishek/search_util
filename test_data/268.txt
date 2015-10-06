@@ -1,0 +1,38 @@
+For step 4, we developed the operations OS-SELECT and OS-RANK. After all, the need for
+new operations is why we bother to augment a data structure in the first place. Occasionally,
+rather than developing new operations, we use the additional information to expedite existing
+ones, as in Exercise 14.2-1.
+Augmenting Red-Black Trees
+When red-black trees underlie an augmented data structure, we can prove that certain kinds of
+additional information can always be efficiently maintained by insertion and deletion, thereby
+making step 3 very easy. The proof of the following theorem is similar to the argument from
+Section 14.1 that the size field can be maintained for order-statistic trees.
+Theorem 14.1: (Augmenting a Red-Black Tree)
+Let f be a field that augments a red-black tree T of n nodes, and suppose that the contents of f
+for a node x can be computed using only the information in nodes x, left[x], and right[x],
+including f[left[x]] and f[right[x]]. Then, we can maintain the values of f in all nodes of T
+during insertion and deletion without asymptotically affecting the O(lg n) performance of
+these operations.
+Proof The main idea of the proof is that a change to an f field in a node x propagates only to
+ancestors of x in the tree. That is, changing f[x] may require f[p[x]] to be updated, but nothing
+else; updating f[p[x]] may require f[p[p[x]]] to be updated, but nothing else; and so on up the
+tree. When f[root[T]] is updated, no other node depends on the new value, so the process
+terminates. Since the height of a red-black tree is O(lg n), changing an f field in a node costs
+O(lg n) time in updating nodes dependent on the change.
+Insertion of a node x into T consists of two phases. (See Section 13.3.) During the first phase,
+x is inserted as a child of an existing node p[x]. The value for f[x] can be computed in O(1)
+time since, by supposition, it depends only on information in the other fields of x itself and the
+information in x's children, but x's children are both the sentinel nil[T]. Once f[x] is computed,
+the change propagates up the tree. Thus, the total time for the first phase of insertion is O(lg
+n). During the second phase, the only structural changes to the tree come from rotations. Since
+only two nodes change in a rotation, the total time for updating the f fields is O(lg n) per
+rotation. Since the number of rotations during insertion is at most two, the total time for
+insertion is O(lg n).
+Like insertion, deletion has two phases. (See Section 13.4.) In the first phase, changes to the
+tree occur if the deleted node is replaced by its successor, and when either the deleted node or
+its successor is spliced out. Propagating the updates to f caused by these changes costs at most
+O(lg n) since the changes modify the tree locally. Fixing up the red-black tree during the
+second phase requires at most three rotations, and each rotation requires at most O(lg n) time
+to propagate the updates to f . Thus, like insertion, the total time for deletion is O(lg n).
+
+

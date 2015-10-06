@@ -1,0 +1,37 @@
+was chosen arbitrarily from Ē, every edge of Ē is covered by a vertex in V - V'. Hence, the set
+V - V', which has size |V | - k, forms a vertex cover for .
+Conversely, suppose that has a vertex cover V' V, where |V'| = |V| - k. Then, for all u, v
+V, if (u, v) Ē, then u V' or v V' or both. The contrapositive of this implication is that for
+all u, v V, if u ∉ V' and v ∉ V', then (u, v) E. In other words, V -V' is a clique, and it has size
+|V |-|V'| = k.
+
+Since VERTEX-COVER is NP-complete, we don't expect to find a polynomial-time
+algorithm for finding a minimum-size vertex cover. Section 35.1 presents a polynomial-time
+"approximation algorithm," however, which produces "approximate" solutions for the vertexcover problem. The size of a vertex cover produced by the algorithm is at most twice the
+minimum size of a vertex cover.
+Thus, we shouldn't give up hope just because a problem is NP-complete. There may be a
+polynomial-time approximation algorithm that obtains near-optimal solutions, even though
+finding an optimal solution is NP-complete. Chapter 35 gives several approximation
+algorithms for NP-complete problems.
+
+34.5.3 The hamiltonian-cycle problem
+We now return to the hamiltonian-cycle problem defined in Section 34.2.
+Theorem 34.13
+The hamiltonian cycle problem is NP-complete.
+Proof We first show that HAM-CYCLE belongs to NP. Given a graph G = (V, E), our
+certificate is the sequence of |V| vertices that makes up the hamiltonian cycle. The verification
+algorithm checks that this sequence contains each vertex in V exactly once and that with the
+first vertex repeated at the end, it forms a cycle in G. That is, it checks that there is an edge
+between each pair of consecutive vertices and between the first and last vertices. This
+verification can be performed in polynomial time.
+We now prove that VERTEX-COVER ≤P HAM-CYCLE, which shows that HAM-CYCLE is
+NP-complete. Given an undirected graph G = (V, E) and an integer k, we construct an
+undirected graph G' = (V', E') that has a hamiltonian cycle if and only if G has a vertex cover
+of size k.
+Our construction is based on a widget, which is a piece of a graph that enforces certain
+properties. Figure 34.16(a) shows the widget we use. For each edge (u, v) E, the graph G'
+that we construct will contain one copy of this widget,which we denote by Wuv. We denote
+each vertex in Wuv by [u, v, i] or [v, u, i], where 1 ≤ i ≤ 6, so that each widget Wuv contains 12
+vertices. Widget Wuv also contains the 14 edges shown in Figure 34.16(a).
+
+

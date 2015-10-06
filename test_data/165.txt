@@ -1,0 +1,17 @@
+In order to complete the proof, we need to show that for sufficiently large n, this last
+expression is at most cn or, equivalently, that cn/4 - c/2 - an ≥ 0. If we add c/2 to both sides
+and factor out n, we get n(c/4 - a) ≥ c/2. As long as we choose the constant c so that c/4 - a >
+0, i.e., c > 4a, we can divide both sides by c/4 - a, giving
+
+Thus, if we assume that T(n) = O(1) for n < 2c/(c -4a), we have T(n) = O(n). We conclude that
+any order statistic, and in particular the median, can be determined on average in linear time.
+Exercises 9.2-1
+Show that in RANDOMIZED-SELECT, no recursive call is ever made to a 0-length array.
+
+Exercises 9.2-2
+Argue that the indicator random variable Xk and the value T(max(k - 1, n - k)) are
+independent.
+
+Exercises 9.2-3
+
+

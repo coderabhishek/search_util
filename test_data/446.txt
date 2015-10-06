@@ -1,0 +1,37 @@
+connecting two given vertices. For example, two of the all-pairs shortest-paths algorithms
+presented in Chapter 25 assume that their input graphs are represented by adjacency matrices.
+The adjacency-list representation of a graph G = (V, E) consists of an array Adj of |V| lists,
+one for each vertex in V . For each u V, the adjacency list Adj[u] contains all the vertices v
+such that there is an edge (u, v) E. That is, Adj[u] consists of all the vertices adjacent to u in
+G. (Alternatively, it may contain pointers to these vertices.) The vertices in each adjacency list
+are typically stored in an arbitrary order. Figure 22.1(b) is an adjacency-list representation of
+the undirected graph in Figure 22.1(a). Similarly, Figure 22.2(b) is an adjacency-list
+representation of the directed graph in Figure 22.2(a).
+
+Figure 22.1: Two representations of an undirected graph. (a) An undirected graph G having
+five vertices and seven edges. (b) An adjacency-list representation of G. (c) The adjacencymatrix representation of G.
+
+Figure 22.2: Two representations of a directed graph. (a) A directed graph G having six
+vertices and eight edges. (b) An adjacency-list representation of G. (c) The adjacency-matrix
+representation of G.
+If G is a directed graph, the sum of the lengths of all the adjacency lists is |E|, since an edge of
+the form (u, v) is represented by having v appear in Adj[u]. If G is an undirected graph, the
+sum of the lengths of all the adjacency lists is 2 |E|, since if (u, v) is an undirected edge, then u
+appears in v's adjacency list and vice versa. For both directed and undirected graphs, the
+adjacency-list representation has the desirable property that the amount of memory it requires
+is Θ(V + E).
+Adjacency lists can readily be adapted to represent weighted graphs, that is, graphs for which
+each edge has an associated weight, typically given by a weight function w : E → R. For
+example, let G = (V, E) be a weighted graph with weight function w. The weight w(u, v) of the
+edge (u, v) E is simply stored with vertex v in u's adjacency list. The adjacency-list
+representation is quite robust in that it can be modified to support many other graph variants.
+A potential disadvantage of the adjacency-list representation is that there is no quicker way to
+determine if a given edge (u, v) is present in the graph than to search for v in the adjacency list
+Adj[u]. This disadvantage can be remedied by an adjacency-matrix representation of the
+graph, at the cost of using asymptotically more memory. (See Exercise 22.1-8 for suggestions
+of variations on adjacency lists that permit faster edge lookup.)
+For the adjacency-matrix representation of a graph G = (V, E), we assume that the vertices
+are numbered 1, 2,..., |V| in some arbitrary manner. Then the adjacency-matrix representation
+of a graph G consists of a |V| × |V| matrix A = (aij) such that
+
+

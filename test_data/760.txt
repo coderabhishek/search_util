@@ -1,0 +1,30 @@
+implies ax ≡ 1 (mod n). Thus, we can compute (a-1 mod n) efficiently using EXTENDEDEUCLID.
+Exercises 31.4-1
+Find all solutions to the equation 35x ≡ 10 (mod 50).
+
+Exercises 31.4-2
+Prove that the equation ax ≡ ay (mod n) implies x ≡ y (mod n) whenever gcd(a, n) = 1. Show
+that the condition gcd(a, n) = 1 is necessary by supplying a counterexample with gcd(a, n) >
+1.
+
+Exercises 31.4-3
+Consider the following change to line 3 of the procedure MODULAR-LINEAR-EQUATIONSOLVER:
+3 then x0 ← x′(b/d) mod (n/d)
+
+Will this work? Explain why or why not.
+Exercises 31.4-4:
+Let f(x) ≡ f0 + f1x + ··· + ft xt (mod p) be a polynomial of degree t, with coefficients fi drawn
+from Zp, where p is prime. We say that a Zp is a zero of f if f(a) ≡ 0 (mod p). Prove that if a
+is a zero of f, then f(x) ≡ (x - a)g(x) (mod p) for some polynomial g(x) of degree t - 1. Prove by
+induction on t that a polynomial f(x) of degree t can have at most t distinct zeros modulo a
+prime p.
+
+31.5 The Chinese remainder theorem
+Around A.D. 100, the Chinese mathematician Sun-Tsu solved the problem of finding those
+integers x that leave remainders 2, 3, and 2 when divided by 3, 5, and 7 respectively. One such
+solution is x = 23; all solutions are of the form 23 + 105k for arbitrary integers k. The
+"Chinese remainder theorem" provides a correspondence between a system of equations
+modulo a set of pairwise relatively prime moduli (for example, 3, 5, and 7) and an equation
+modulo their product (for example, 105).
+
+

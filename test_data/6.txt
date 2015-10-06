@@ -1,0 +1,45 @@
+Sparcstations) running and for recompiling whenever we exceeded a compile-time limit.
+Thinking Machines Corporation provided partial support for Charles Leiserson to work on
+this book during a leave of absence from MIT.
+Many colleagues have used drafts of this text in courses at other schools. They have suggested
+numerous corrections and revisions. We particularly wish to thank Richard Beigel, Andrew
+Goldberg, Joan Lucas, Mark Overmars, Alan Sherman, and Diane Souvaine.
+Many teaching assistants in our courses have made significant contributions to the
+development of this material. We especially thank Alan Baratz, Bonnie Berger, Aditi Dhagat,
+Burt Kaliski, Arthur Lent, Andrew Moulton, Marios Papaefthymiou, Cindy Phillips, Mark
+Reinhold, Phil Rogaway, Flavio Rose, Arie Rudich, Alan Sherman, Cliff Stein, Susmita Sur,
+Gregory Troxel, and Margaret Tuttle.
+Additional valuable technical assistance was provided by many individuals. Denise Sergent
+spent many hours in the MIT libraries researching bibliographic references. Maria Sensale,
+the librarian of our reading room, was always cheerful and helpful. Access to Albert Meyer's
+personal library saved many hours of library time in preparing the chapter notes. Shlomo
+Kipnis, Bill Niehaus, and David Wilson proofread old exercises, developed new ones, and
+wrote notes on their solutions. Marios Papaefthymiou and Gregory Troxel contributed to the
+indexing. Over the years, our secretaries Inna Radzihovsky, Denise Sergent, Gayle Sherman,
+and especially Be Blackburn provided endless support in this project, for which we thank
+them.
+Many errors in the early drafts were reported by students. We particularly thank Bobby
+Blumofe, Bonnie Eisenberg, Raymond Johnson, John Keen, Richard Lethin, Mark Lillibridge,
+John Pezaris, Steve Ponzio, and Margaret Tuttle for their careful readings.
+Colleagues have also provided critical reviews of specific chapters, or information on specific
+algorithms, for which we are grateful. We especially thank Bill Aiello, Alok Aggarwal, Eric
+Bach, Vašek Chvátal, Richard Cole, Johan Hastad, Alex Ishii, David Johnson, Joe Kilian,
+Dina Kravets, Bruce Maggs, Jim Orlin, James Park, Thane Plambeck, Hershel Safer, Jeff
+Shallit, Cliff Stein, Gil Strang, Bob Tarjan, and Paul Wang. Several of our colleagues also
+graciously supplied us with problems; we particularly thank Andrew Goldberg, Danny
+Sleator, and Umesh Vazirani.
+It has been a pleasure working with The MIT Press and McGraw-Hill in the development of
+this text. We especially thank Frank Satlow, Terry Ehling, Larry Cohen, and Lorrie Lejeune
+of The MIT Press and David Shapiro of McGraw-Hill for their encouragement, support, and
+patience. We are particularly grateful to Larry Cohen for his outstanding copyediting.
+
+Acknowledgments for the second edition
+When we asked Julie Sussman, P.P.A., to serve as a technical copyeditor for the second
+edition, we did not know what a good deal we were getting. In addition to copyediting the
+technical content, Julie enthusiastically edited our prose. It is humbling to think of how many
+errors Julie found in our earlier drafts, though considering how many errors she found in the
+first edition (after it was printed, unfortunately), it is not surprising. Moreover, Julie sacrificed
+her own schedule to accommodate ours-she even brought chapters with her on a trip to the
+Virgin Islands! Julie, we cannot thank you enough for the amazing job you did.
+
+

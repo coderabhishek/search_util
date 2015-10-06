@@ -1,0 +1,35 @@
+We can now use the potential method to analyze the cost of a sequence of n TABLE-INSERT
+and TABLE-DELETE operations. We start by defining a potential function Φ that is 0
+immediately after an expansion or contraction and builds as the load factor increases to 1 or
+decreases to 1/4. Let us denote the load factor of a nonempty table T by α(T) = num[T]/
+size[T]. Since for an empty table, num[T] = size[T] = 0 and α[T] = 1, we always have num[T]
+= α(T) · size[T], whether the table is empty or not. We shall use as our potential function
+(17.6)
+Observe that the potential of an empty table is 0 and that the potential is never negative. Thus,
+the total amortized cost of a sequence of operations with respect to Φ is an upper bound on the
+actual cost of the sequence.
+Before proceeding with a precise analysis, we pause to observe some properties of the
+potential function. Notice that when the load factor is 1/2, the potential is 0. When the load
+factor is 1, we have size[T] = num[T], which implies Φ(T) = num[T], and thus the potential
+can pay for an expansion if an item is inserted. When the load factor is 1/4, we have size[T] =
+4 · num[T], which implies Φ(T) = num[T], and thus the potential can pay for a contraction if
+an item is deleted. Figure 17.4 illustrates how the potential behaves for a sequence of
+operations.
+
+Figure 17.4: The effect of a sequence of n TABLE-INSERT and TABLE-DELETE operations
+on the number numi of items in the table, the number sizei of slots in the table, and the
+potential
+each being measured after the ith operation. The thin
+line shows numi, the dashed line shows sizei, and the thick line shows Φi. Notice that
+immediately before an expansion, the potential has built up to the number of items in the
+table, and therefore it can pay for moving all the items to the new table. Likewise,
+immediately before a contraction, the potential has built up to the number of items in the
+table.
+To analyze a sequence of n TABLE-INSERT and TABLE-DELETE operations, we let ci
+denote the actual cost of the ith operation, denote its amortized cost with respect to Φ, numi
+denote the number of items stored in the table after the ith operation, sizei denote the total size
+of the table after the ith operation, αi denote the load factor of the table after the ith operation,
+and Φi denote the potential after the ith operation. Initially, num0 = 0, size0 = 0, α0 = 1, and Φ0
+= 0.
+
+

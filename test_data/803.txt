@@ -1,0 +1,26 @@
+definition of σ. Thus, Pr-1 ⊐ x, by dropping the a from the end of Pr and from the end of xa.
+Therefore, r -1 ≤ σ(x), since σ(x) is largest k such that Pk ⊐ x, and σ(xa) = r ≤ σ(x) + 1.
+
+Figure 32.8: An illustration for the proof of Lemma 32.2. The figure shows that r ≤ σ(x) + 1,
+where r = σ(xa).
+Lemma 32.3: (Suffix-function recursion lemma)
+For any string x and character a, if q = σ(x), then σ(xa) = σ(Pqa).
+Proof From the definition of σ, we have Pq ⊐ x. As Figure 32.9 shows, we also have Pqa ⊐
+xa. If we let r = σ (xa), then r ≤ q + 1 by Lemma 32.2. Since Pqa ⊐ xa, Pr ⊐ xa, and |Pr| ≤
+|Pqa|, Lemma 32.1 implies that Pr ⊐ Pqa. Therefore, r ≤ σ(Pqa), that is, σ(xa) ≤ σ(Pqa). But we
+also have σ(Pqa) ≤ σ(xa), since Pqa ⊐ xa. Thus, σ(xa) = σ(Pqa).
+
+Figure 32.9: An illustration for the proof of Lemma 32.3. The figure shows that r = σ(Pqa),
+where q = σ(x) and r = σ(xa).
+
+We are now ready to prove our main theorem characterizing the behavior of a string-matching
+automaton on a given input text. As noted above, this theorem shows that the automaton is
+merely keeping track, at each step, of the longest prefix of the pattern that is a suffix of what
+has been read so far. In other words, the automaton maintains the invariant (32.4).
+Theorem 32.4
+If φ is the final-state function of a string-matching automaton for a given pattern P and T[1
+n] is an input text for the automaton, then
+φ(Ti) = σ(Ti)
+for i = 0, 1, . . . , n.
+
+

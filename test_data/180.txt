@@ -1,0 +1,43 @@
+Figure 10.3(c) shows how an element is deleted from a linked list. LIST-DELETE runs in
+O(1) time, but if we wish to delete an element with a given key, Θ(n) time is required in the
+worst case because we must first call LIST-SEARCH.
+Sentinels
+The code for LIST-DELETE would be simpler if we could ignore the boundary conditions at
+the head and tail of the list.
+LIST-DELET′ (L, x)
+1 next[prev[x]] ← next[x]
+2 prev[next[x]] ← prev[x]
+
+A sentinel is a dummy object that allows us to simplify boundary conditions. For example,
+suppose that we provide with list L an object nil[L] that represents NIL but has all the fields of
+the other list elements. Wherever we have a reference to NIL in list code, we replace it by a
+reference to the sentinel nil[L]. As shown in Figure 10.4, this turns a regular doubly linked list
+into a circular, doubly linked list with a sentinel, in which the sentinel nil[L] is placed
+between the head and tail; the field next[nil[L]] points to the head of the list, and prev[nil[L]]
+points to the tail. Similarly, both the next field of the tail and the prev field of the head point
+to nil[L]. Since next[nil[L]] points to the head, we can eliminate the attribute head[L]
+altogether, replacing references to it by references to next[nil[L]]. An empty list consists of
+just the sentinel, since both next[nil[L]] and prev[nil[L]] can be set to nil[L].
+
+Figure 10.4: A circular, doubly linked list with a sentinel. The sentinel nil[L] appears between
+the head and tail. The attribute head[L] is no longer needed, since we can access the head of
+the list by next[nil[L]]. (a) An empty list. (b) The linked list from Figure 10.3(a), with key 9 at
+the head and key 1 at the tail. (c) The list after executing LIST-INSER′(L, x), where key[x] =
+25. The new object becomes the head of the list. (d) The list after deleting the object with key
+1. The new tail is the object with key 4.
+The code for LIST-SEARCH remains the same as before, but with the references to NIL and
+head[L] changed as specified above.
+LIST-SEARC′(L, k)
+1 x ← next[nil[L]]
+2 while x ≠ nil[L] and key[x] ≠ k
+3
+do x ← next[x]
+4 return x
+
+We use the two-line procedure LIST-DELET′ to delete an element from the list. We use the
+following procedure to insert an element into the list.
+LIST-INSER′ (L, x)
+1 next[x] ← next[nil[L]]
+2 prev[next[nil[L]]] ← x
+
+

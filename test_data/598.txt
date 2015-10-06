@@ -1,0 +1,42 @@
+developed push-relabel maximum-flow algorithms. Ahuja and Orlin [9] and Ahuja, Orlin, and
+Tarjan [10] gave algorithms that used scaling. Cheriyan and Maheshwari [55] proposed
+pushing flow from the overflowing vertex of maximum height. Cheriyan and Hagerup [54]
+suggested randomly permuting the neighbor lists, and several researchers [14, 178, 241]
+developed clever derandomizations of this idea, leading to a sequence of faster algorithms.
+The algorithm of King, Rao, and Tarjan [178] is the fastest such algorithm and runs in O(VE
+logE/(V lg V) V) time.
+The asymptotically fastest algorithm to date for the maximum-flow problem is due to
+Goldberg and Rao [120] and runs in time O(min(V2/3, E1/2) E lg(V2 / E + 2) lg C), where C =
+max(u, v) E C(u, v). This algorithm does not use the push-relabel method but instead is based
+on finding blocking flows. All previous maximum-flow algorithms, including the ones in this
+chapter, use some notion of distance (the push-relabel algorithms use the analogous notion of
+height), with a length of 1 assigned implicitly to each edge. This new algorithm takes a
+different approach and assigns a length of 0 to high-capacity edges and a length of 1 to lowcapacity edges. Informally, with respect to these lengths, shortest paths from the source to the
+sink tend have high capacity, which means that fewer iterations need be performed.
+In practice, push-relabel algorithms currently dominate augmenting-path or linearprogramming based algorithms for the maximum-flow problem. A study by Cherkassky and
+Goldberg [56] underscores the importance of using two heuristics when implementing a pushrelabel algorithm. The first heuristic is to periodically perform a breadth-first search of the
+residual graph in order to obtain more accurate height values. The second heuristic is the gap
+heuristic, described in Exericse 26.5-5. They conclude that the best choice of push-relabel
+variants is the one that chooses to discharge the overflowing vertex with the maximum height.
+The best algorithm to date for maximum bipartite matching, discovered by Hopcroft and Karp
+[152], runs in
+time and is described in Problem 26-7. The book by Lovász and
+Plummer [207] is an excellent reference on matching problems.
+
+Part VII: Selected Topics
+Chapter List
+Chapter 27: Sorting Networks
+Chapter 28: Matrix Operations
+Chapter 29: Linear Programming
+Chapter 30: Polynomials and the FFT
+Chapter 31: Number-Theoretic Algorithms
+Chapter 32: String Matching
+Chapter 33: Computational Geometry
+Chapter 34: NP-Completeness
+Chapter 35: Approximation Algorithms
+
+Introduction
+This part contains a selection of algorithmic topics that extend and complement earlier
+material in this book. Some chapters introduce new models of computation such as
+
+

@@ -1,0 +1,34 @@
+The reduction is based on the observation that when A is an n × n nonsingular matrix, we have
+A-1 = (AT A)-1 AT,
+since ((AT A)-1 AT)A = (AT A)-1(AT A) = In and a matrix inverse is unique. Therefore, we can
+compute A-1 by first multiplying AT by A to obtain AT A, then inverting the symmetric
+positive-definite matrix AT A using the above divide-and-conquer algorithm, and finally
+multiplying the result by AT. Each of these three steps takes O(M(n)) time, and thus any
+nonsingular matrix with real entries can be inverted in O(M(n)) time.
+
+The proof of Theorem 28.8 suggests a means of solving the equation Ax = b by using LU
+decomposition without pivoting, so long as A is nonsingular. We multiply both sides of the
+equation by AT, yielding (AT A)x = ATb. This transformation doesn't affect the solution x, since
+AT is invertible, and so we can factor the symmetric positive-definite matrix AT A by
+computing an LU decomposition. We then use forward and back substitution to solve for x
+with the right-hand side ATb. Although this method is theoretically correct, in practice the
+procedure LUP-DECOMPOSITION works much better. LUP decomposition requires fewer
+arithmetic operations by a constant factor, and it has somewhat better numerical properties.
+Exercises 28.4-1
+Let M(n) be the time to multiply n × n matrices, and let S(n) denote the time required to
+square an n × n matrix. Show that multiplying and squaring matrices have essentially the
+same difficulty: an M(n)-time matrix-multiplication algorithm implies an O(M(n))-time
+squaring algorithm, and an S(n)-time squaring algorithm implies an O(S(n))-time matrixmultiplication algorithm.
+
+Exercises 28.4-2
+Let M(n) be the time to multiply n × n matrices, and let L(n) be the time to compute the LUP
+decomposition of an n × n matrix. Show that multiplying matrices and computing LUP
+decompositions of matrices have essentially the same difficulty: an M(n)-time matrixmultiplication algorithm implies an O(M(n))-time LUP-decomposition algorithm, and an
+L(n)-time LUP-decomposition algorithm implies an O(L(n))-time matrix-multiplication
+algorithm.
+
+Exercises 28.4-3
+Let M(n) be the time to multiply n × n matrices, and let D(n) denote the time required to find
+the determinant of an n × n matrix. Show that multiplying matrices and computing the
+
+

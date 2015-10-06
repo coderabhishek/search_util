@@ -1,0 +1,41 @@
+Suppose computers were infinitely fast and computer memory was free. Would you have any
+reason to study algorithms? The answer is yes, if for no other reason than that you would still
+like to demonstrate that your solution method terminates and does so with the correct answer.
+If computers were infinitely fast, any correct method for solving a problem would do. You
+would probably want your implementation to be within the bounds of good software
+engineering practice (i.e., well designed and documented), but you would most often use
+whichever method was the easiest to implement.
+Of course, computers may be fast, but they are not infinitely fast. And memory may be cheap,
+but it is not free. Computing time is therefore a bounded resource, and so is space in memory.
+These resources should be used wisely, and algorithms that are efficient in terms of time or
+space will help you do so.
+Efficiency
+Algorithms devised to solve the same problem often differ dramatically in their efficiency.
+These differences can be much more significant than differences due to hardware and
+software.
+As an example, in Chapter 2, we will see two algorithms for sorting. The first, known as
+insertion sort, takes time roughly equal to c1n2 to sort n items, where c1 is a constant that does
+not depend on n. That is, it takes time roughly proportional to n2. The second, merge sort,
+takes time roughly equal to c2n lg n, where lg n stands for log2 n and c2 is another constant
+that also does not depend on n. Insertion sort usually has a smaller constant factor than merge
+sort, so that c1 < c2. We shall see that the constant factors can be far less significant in the
+running time than the dependence on the input size n. Where merge sort has a factor of lg n in
+its running time, insertion sort has a factor of n, which is much larger. Although insertion sort
+is usually faster than merge sort for small input sizes, once the input size n becomes large
+enough, merge sort's advantage of lg n vs. n will more than compensate for the difference in
+constant factors. No matter how much smaller c1 is than c2, there will always be a crossover
+point beyond which merge sort is faster.
+For a concrete example, let us pit a faster computer (computer A) running insertion sort
+against a slower computer (computer B) running merge sort. They each must sort an array of
+one million numbers. Suppose that computer A executes one billion instructions per second
+and computer B executes only ten million instructions per second, so that computer A is 100
+times faster than computer B in raw computing power. To make the difference even more
+dramatic, suppose that the world's craftiest programmer codes insertion sort in machine
+language for computer A, and the resulting code requires 2n2 instructions to sort n numbers.
+(Here, c1 = 2.) Merge sort, on the other hand, is programmed for computer B by an average
+programmer using a high-level language with an inefficient compiler, with the resulting code
+taking 50n lg n instructions (so that c2 = 50). To sort one million numbers, computer A takes
+
+while computer B takes
+
+

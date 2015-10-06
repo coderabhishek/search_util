@@ -1,0 +1,31 @@
+If x is the root of an n-node subtree, then the call INORDER-TREE-WALK(x) takes Θ(n)
+time.
+Proof Let T(n) denote the time taken by INORDER-TREE-WALK when it is called on the
+root of an n-node subtree. INORDER-TREE-WALK takes a small, constant amount of time
+on an empty subtree (for the test x ≠ NIL), and so T(0) = c for some positive constant c.
+For n > 0, suppose that INORDER-TREE-WALK is called on a node x whose left subtree has
+k nodes and whose right subtree has n - k - 1 nodes. The time to perform INORDER-TREEWALK(x) is T(n) = T(k) + T(n - k - 1) + d for some positive constant d that reflects the time to
+execute INORDER-TREE-WALK(x), exclusive of the time spent in recursive calls.
+We use the substitution method to show that T(n) = Θ(n) by proving that T(n) = (c + d)n + c.
+For n = 0, we have (c + d) · 0 + c = c = T(0). For n > 0, we have
+T(n) = T(k) + T(n - k - 1) + d
+= ((c + d)k + c) + ((c + d)(n - k - 1) + c) + d
+= (c + d)n + c - (c + d) + c + d
+= (c + d)n + c,
+which completes the proof.
+
+Exercises 12.1-1
+For the set of keys {1, 4, 5, 10, 16, 17, 21}, draw binary search trees of height 2, 3, 4, 5, and
+6.
+
+Exercises 12.1-2
+What is the difference between the binary-search-tree property and the min-heap property (see
+page 129)? Can the min-heap property be used to print out the keys of an n-node tree in sorted
+order in O(n) time? Explain how or why not.
+
+Exercises 12.1-3
+Give a nonrecursive algorithm that performs an inorder tree walk. (Hint: There is an easy
+solution that uses a stack as an auxiliary data structure and a more complicated but elegant
+solution that uses no stack but assumes that two pointers can be tested for equality.)
+
+

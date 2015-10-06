@@ -1,0 +1,60 @@
+where each E represents a single EXTRACT-MIN call and each Ij represents a (possibly
+empty) sequence of INSERT calls. For each subsequence Ij, we initially place the keys
+inserted by these operations into a set Kj , which is empty if Ij is empty. We then do the
+following.
+OFF-LINE-MINIMUM(m, n)
+1 for i ← 1 to n
+2
+do determine j such that i
+Kj
+3
+if j ≠ m + 1
+4
+then extracted[j] ← i
+5
+let l be the smallest value greater than j
+for which set Kl exists
+6
+Kl ← Kj
+Kl, destroying Kj
+7 return extracted
+
+b. Argue that the array extracted returned by OFF-LINE-MINIMUM is correct.
+c. Describe how to implement OFF-LINE-MINIMUM efficiently with a disjoint-set data
+structure. Give a tight bound on the worst-case running time of your implementation.
+
+Problems 21-2: Depth determination
+In the depth-determination problem, we maintain a forest
+operations:
+•
+•
+•
+
+of rooted trees under three
+
+MAKE-TREE(v) creates a tree whose only node is v.
+FIND-DEPTH(v) returns the depth of node v within its tree.
+GRAFT(r, v) makes node r, which is assumed to be the root of a tree, become the
+child of node v, which is assumed to be in a different tree than r but may or may not
+itself be a root.
+a. Suppose that we use a tree representation similar to a disjoint-set forest: p[v] is
+the parent of node v, except that p[v] = v if v is a root. If we implement
+GRAFT(r, v) by setting p[r] ← v and FIND-DEPTH(v) by following the find
+path up to the root, returning a count of all nodes other than v encountered,
+show that the worst-case running time of a sequence of m MAKE-TREE,
+FIND-DEPTH, and GRAFT operations is Θ(m2).
+
+By using the union-by-rank and path-compression heuristics, we can reduce the worst-case
+running time. We use the disjoint-set forest
+, where each set Si (which is itself a tree)
+corresponds to a tree Ti in the forest . The tree structure within a set Si, however, does not
+necessarily correspond to that of Ti. In fact, the implementation of Si does not record the exact
+parent-child relationships but nevertheless allows us to determine any node's depth in Ti.
+The key idea is to maintain in each node v a "pseudodistance" d[v], which is defined so that
+the sum of the pseudodistances along the path from v to the root of its set Si equals the depth
+of v in Ti. That is, if the path from v to its root in Si is v0, v1, ..., vk, where v0 = v and vk is Si's
+root, then the depth of v in Ti is
+.
+b. Give an implementation of MAKE-TREE.
+
+

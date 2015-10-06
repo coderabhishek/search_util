@@ -1,0 +1,38 @@
+Set of Distinct Elements with no Satellite Data. Dictionary Operations Should Run in O(1)
+Time.
+
+Exercises 11.1-3
+Suggest how to implement a direct-address table in which the keys of stored elements do not
+need to be distinct and the elements can have satellite data. All three dictionary operations
+(INSERT, DELETE, and SEARCH) should run in O(1) time. (Don't forget that DELETE
+takes as an argument a pointer to an object to be deleted, not a key.)
+
+Exercises 11.1-4: ⋆
+We wish to implement a dictionary by using direct addressing on a huge array. At the start,
+the array entries may contain garbage, and initializing the entire array is impractical because
+of its size. Describe a scheme for implementing a direct-address dictionary on a huge array.
+Each stored object should use O(1) space; the operations SEARCH, INSERT, and DELETE
+should take O(1) time each; and the initialization of the data structure should take O(1) time.
+(Hint: Use an additional stack, whose size is the number of keys actually stored in the
+dictionary, to help determine whether a given entry in the huge array is valid or not.)
+
+11.2 Hash tables
+The difficulty with direct addressing is obvious: if the universe U is large, storing a table T of
+size |U| may be impractical, or even impossible, given the memory available on a typical
+computer. Furthermore, the set K of keys actually stored may be so small relative to U that
+most of the space allocated for T would be wasted.
+When the set K of keys stored in a dictionary is much smaller than the universe U of all
+possible keys, a hash table requires much less storage than a direct-address table. Specifically,
+the storage requirements can be reduced to Θ(|K|) while we maintain the benefit that searching
+for an element in the hash table still requires only O(1) time. The only catch is that this bound
+is for the average time, whereas for direct addressing it holds for the worst-case time.
+With direct addressing, an element with key k is stored in slot k. With hashing, this element is
+stored in slot h(k); that is, we use a hash function h to compute the slot from the key k. Here h
+maps the universe U of keys into the slots of a hash table T[0 m - 1]:
+h : U → {0, 1, ..., m - 1} .
+We say that an element with key k hashes to slot h(k); we also say that h(k) is the hash value
+of key k. Figure 11.2 illustrates the basic idea. The point of the hash function is to reduce the
+range of array indices that need to be handled. Instead of |U| values, we need to handle only m
+values. Storage requirements are correspondingly reduced.
+
+

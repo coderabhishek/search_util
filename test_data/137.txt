@@ -1,0 +1,37 @@
+T(n) ≤ cn2 - c(2n - 1) + Θ(n)
+≤ cn2,
+since we can pick the constant c large enough so that the c(2n - 1) term dominates the Θ(n)
+term. Thus, T (n) = O(n2). We saw in Section 7.2 a specific case in which quicksort takes
+Θ(n2) time: when partitioning is unbalanced. Alternatively, Exercise 7.4-1 asks you to show
+that recurrence (7.1) has a solution of T (n) = Θ(n2). Thus, the (worst-case) running time of
+quicksort is Θ(n2).
+
+7.4.2 Expected running time
+We have already given an intuitive argument why the average-case running time of
+RANDOMIZED-QUICKSORT is O(n lg n): if, in each level of recursion, the split induced by
+RANDOMIZED-PARTITION puts any constant fraction of the elements on one side of the
+partition, then the recursion tree has depth Θ(lg n), and O(n) work is performed at each level.
+Even if we add new levels with the most unbalanced split possible between these levels, the
+total time remains O(n lg n). We can analyze the expected running time of RANDOMIZEDQUICKSORT precisely by first understanding how the partitioning procedure operates and
+then using this understanding to derive an O(n lg n) bound on the expected running time. This
+upper bound on the expected running time, combined with the Θ(n lg n) best-case bound we
+saw in Section 7.2, yields a Θ(n lg n) expected running time.
+Running time and comparisons
+The running time of QUICKSORT is dominated by the time spent in the PARTITION
+procedure. Each time the PARTITION procedure is called, a pivot element is selected, and
+this element is never included in any future recursive calls to QUICK-SORT and
+PARTITION. Thus, there can be at most n calls to PARTITION over the entire execution of
+the quicksort algorithm. One call to PARTITION takes O(1) time plus an amount of time that
+is proportional to the number of iterations of the for loop in lines 3-6. Each iteration of this
+for loop performs a comparison inline 4, comparing the pivot element to another element of
+the array A. Therefore, if we can count the total number of times that line 4 is executed, we
+can bound the total time spent in the for loop during the entire execution of QUICKSORT.
+Lemma 7.1
+Let X be the number of comparisons performed in line 4 of PARTITION over the entire
+execution of QUICKSORT on an n-element array. Then the running time of QUICKSORT is
+O(n + X).
+Proof By the discussion above, there are n calls to PARTITION, each of which does a
+constant amount of work and then executes the for loop some number of times. Each iteration
+of the for loop executes line 4.
+
+

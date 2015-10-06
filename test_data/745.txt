@@ -1,0 +1,44 @@
+linear combination of b and (a mod b). By equation (31.4), we conclude that d | a. Since d | b
+and d | a, we have that d | gcd(a, b) by Corollary 31.3 or, equivalently, that
+(31.15)
+Using equation (31.5) to combine equations (31.14) and (31.15) completes the proof.
+
+Euclid's algorithm
+The Elements of Euclid (circa 300 B.C.) describes the following gcd algorithm, although it
+may be of even earlier origin. Euclid's algorithm is expressed as a recursive program based
+directly on Theorem 31.9. The inputs a and b are arbitrary nonnegative integers.
+EUCLID(a,
+1 if b =
+2
+then
+3
+else
+
+b)
+0
+return a
+return EUCLID(b, a mod b)
+
+As an example of the running of EUCLID, consider the computation of gcd(30, 21):
+EUCLID(30, 21) = EUCLID(21,9)
+= EUCLID(9,3)
+= EUCLID(3,0)
+= 3.
+In this computation, there are three recursive invocations of EUCLID.
+The correctness of EUCLID follows from Theorem 31.9 and the fact that if the algorithm
+returns a in line 2, then b = 0, so equation (31.9) implies that gcd(a, b) = gcd(a, 0) = a. The
+algorithm cannot recurse indefinitely, since the second argument strictly decreases in each
+recursive call and is always nonnegative. Therefore, EUCLID always terminates with the
+correct answer.
+The running time of Euclid's algorithm
+We analyze the worst-case running time of EUCLID as a function of the size of a and b. We
+assume with no loss of generality that a > b ≥ 0. This assumption can be justified by the
+observation that if b > a ≥ 0, then EUCLID(a, b) immediately makes the recursive call
+EUCLID(b, a). That is, if the first argument is less than the second argument, EUCLID
+spends one recursive call swapping its arguments and then proceeds. Similarly, if b = a > 0,
+the procedure terminates after one recursive call, since a mod b = 0.
+The overall running time of EUCLID is proportional to the number of recursive calls it
+makes. Our analysis makes use of the Fibonacci numbers Fk, defined by the recurrence (3.21).
+Lemma 31.10
+
+

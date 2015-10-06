@@ -1,0 +1,48 @@
+computed by the algorithm is stored in d[u]. The algorithm also uses a first-in, first-out queue
+Q (see Section 10.1) to manage the set of gray vertices.
+BFS(G, s)
+1 for each vertex u
+V [G] - {s}
+2
+do color[u] ← WHITE
+3
+d[u] ← ∞
+4
+π[u] ← NIL
+5 color[s] ← GRAY
+6 d[s] ← 0
+7 π[s] ← NIL
+8 Q ← Ø
+9 ENQUEUE(Q, s)
+10 while Q ≠ Ø
+11
+do u ← DEQUEUE(Q)
+12
+for each v
+Adj[u]
+13
+do if color[v] = WHITE
+14
+then color[v] ← GRAY
+15
+d[v] ← d[u] + 1
+16
+π[v] ← u
+17
+ENQUEUE(Q, v)
+18
+color[u] ← BLACK
+
+Figure 22.3 illustrates the progress of BFS on a sample graph.
+
+Figure 22.3: The operation of BFS on an undirected graph. Tree edges are shown shaded as
+they are produced by BFS. Within each vertex u is shown d[u]. The queue Q is shown at the
+beginning of each iteration of the while loop of lines 10-18. Vertex distances are shown next
+to vertices in the queue.
+The procedure BFS works as follows. Lines 1-4 paint every vertex white, set d[u] to be
+infinity for each vertex u, and set the parent of every vertex to be NIL.Line 5 paints the source
+vertex s gray, since it is considered to be discovered when the procedure begins. Line 6
+initializes d[s] to 0, and line 7 sets the predecessor of the source to be NIL. Lines 8-9 initialize
+Q to the queue containing just the vertex s.
+
+

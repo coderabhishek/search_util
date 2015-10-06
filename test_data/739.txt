@@ -1,0 +1,37 @@
+(31.3)
+More generally, we have that
+(31.4)
+for any integers x and y. Also, if a | b, then either |a| ≤ |b| or b = 0, which implies that
+(31.5)
+The greatest common divisor of two integers a and b, not both zero, is the largest of the
+common divisors of a and b; it is denoted gcd(a, b). For example, gcd(24, 30) = 6, gcd(5, 7) =
+1, and gcd(0, 9) = 9. If a and b are not both 0, then gcd(a, b) is an integer between 1 and
+min(|a|, |b|). We define gcd(0, 0) to be 0; this definition is necessary to make standard
+properties of the gcd function (such as equation (31.9) below) universally valid.
+The following are elementary properties of the gcd function:
+(31.6)
+(31.7)
+(31.8)
+(31.9)
+(31.10)
+The following theorem provides an alternative and useful characterization of gcd(a, b).
+Theorem 31.2
+If a and b are any integers, not both zero, then gcd(a, b) is the smallest positive element of the
+set {ax + by : x, y Z} of linear combinations of a and b.
+Proof Let s be the smallest positive such linear combination of a and b, and let s = ax + by for
+some x, y
+
+Z. Let q = ⌊a/s⌋. Equation (3.8) then implies
+
+a mod s = a - qs
+= a - q(ax + by)
+= a (1 - qx) + b(-qy),
+and so a mod s is a linear combination of a and b as well. But, since a mod s < s, we have that
+a mod s = 0, because s is the smallest positive such linear combination. Therefore, s | a and,
+by analogous reasoning, s | b. Thus, s is a common divisor of a and b, and so gcd(a, b) ≥ s.
+Equation (31.4) implies that gcd(a, b) | s, since gcd(a, b) divides both a and b and s is a linear
+combination of a and b. But gcd(a, b) | s and s > 0 imply that gcd(a, b) ≤ s. Combining gcd(a,
+b) ≥ s and gcd(a, b) ≤ s yields gcd(a, b) = s; we conclude that s is the greatest common divisor
+of a and b.
+
+

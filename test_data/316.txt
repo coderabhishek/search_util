@@ -1,0 +1,42 @@
+Each time you move from square x to square y, you receive p(x, y) dollars. You are given p(x,
+y) for all pairs (x, y) for which a move from x to y is legal. Do not assume that p(x, y) is
+positive.
+Give an algorithm that figures out the set of moves that will move the checker from
+somewhere along the bottom edge to somewhere along the top edge while gathering as many
+dollars as possible. Your algorithm is free to pick any square along the bottom edge as a
+starting point and any square along the top edge as a destination in order to maximize the
+number of dollars gathered along the way. What is the running time of your algorithm?
+
+Problems 15-7: Scheduling to maximize profit
+Suppose you have one machine and a set of n jobs a1, a2, ..., an to process on that machine.
+Each job aj has a processing time tj, a profit pj, and a deadline dj. The machine can process
+only one job at a time, and job aj must run uninterruptedly for tj consecutive time units. If job
+aj is completed by its deadline dj, you receive a profit pj, but if it is completed after its
+deadline, you receive a profit of 0. Give an algorithm to find the schedule that obtains the
+maximum amount of profit, assuming that all processing times are integers between 1 and n.
+What is the running time of your algorithm?
+
+[5]
+
+If the subject of the text is edible mushrooms, we might want "mycophagist" to appear near
+the root.
+
+Chapter notes
+R. Bellman began the systematic study of dynamic programming in 1955. The word
+"programming," both here and in linear programming, refers to the use of a tabular solution
+method. Although optimization techniques incorporating elements of dynamic programming
+were known earlier, Bellman provided the area with a solid mathematical basis [34].
+Hu and Shing [159, 160] give an O(n lg n)-time algorithm for the matrix-chain multiplication
+problem.
+The O(mn)-time algorithm for the longest-common-subsequence problem appears to be a folk
+algorithm. Knuth [63] posed the question of whether subquadratic algorithms for the LCS
+problem exist. Masek and Paterson [212] answered this question in the affirmative by giving
+an algorithm that runs in O(mn/ lg n) time, where n ≤ m and the sequences are drawn from a
+set of bounded size. For the special case in which no element appears more than once in an
+input sequence, Szymanski [288] shows that the problem can be solved in O((n + m) lg(n +
+m)) time. Many of these results extend to the problem of computing string edit distances
+(Problem 15-3).
+An early paper on variable-length binary encodings by Gilbert and Moore [114] had
+applications to constructing optimal binary search trees for the case in which all probabilities
+
+

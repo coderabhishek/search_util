@@ -1,0 +1,33 @@
+maximum-weight independent subset for M′, and the overall operation of GREEDY will find
+a maximum-weight independent subset for M.
+
+Exercises 16.4-1
+Show that (S,ℓk) is a matroid, where S is any finite set andℓk is the set of all subsets of S of
+size at most k, where k ≤ |S|.
+
+Exercises 16.4-2:
+Given an m × n matrix T over some field (such as the reals), show that (S,ℓ) is a matroid,
+where S is the set of columns of T and A ℓ if and only if the columns in A are linearly
+independent.
+
+Exercises 16.4-3:
+Show that if (S,ℓ) is a matroid, then (S,ℓ′) is a matroid, where
+ℓ′ = {A′ : S - A′ contains some maximal A
+
+ℓ}.
+
+That is, the maximal independent sets of (S,ℓ′) are just the complements of the maximal
+independent sets of (S,ℓ).
+
+Exercises 16.4-4:
+Let S be a finite set and let S1, S2, ..., Sk be a partition of S into nonempty disjoint subsets.
+Define the structure (S,ℓ) by the condition thatℓ = {A : |A ∩ Si| ≤ 1 for i = 1, 2, ..., k}. Show
+that (S,ℓ) is a matroid. That is, the set of all sets A that contain at most one member in each
+block of the partition determines the independent sets of a matroid.
+
+Exercises 16.4-5
+Show how to transform the weight function of a weighted matroid problem, where the desired
+optimal solution is a minimum-weight maximal independent subset, to make it an standard
+weighted-matroid problem. Argue carefully that your transformation is correct.
+
+

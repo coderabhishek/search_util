@@ -1,0 +1,71 @@
+3 for each j
+4
+
+N - {e}
+
+do
+
+5
+6 ▹ Compute the coefficients of the remaining constraints.
+7 for each i
+B - {l}
+8
+do
+9
+for each j
+N - {e}
+10
+11
+
+do
+
+12 ▹ Compute the objective function.
+13
+14 for each j
+N - {e}
+15
+
+do
+
+16
+17 ▹ Compute new sets of basic and nonbasic variables.
+18
+19
+20 return
+
+PIVOT works as follows. Lines 2–5 compute the coefficients in the new equation for xe by
+rewriting the equation that has xl on the left-hand side to instead have xe on the left-hand side.
+Lines 7–11 update the remaining equations by substituting the right-hand side of this new
+equation for each occurrence of xe. Lines 13–16 do the same substitution for the objective
+function, and lines 18 and 19 update the sets of nonbasic and basic variables. Line 20 returns
+the new slack form. As given, if ale = 0, PIVOT would cause an error by dividing by 0, but as
+we shall see in the proofs of Lemmas 29.2 and 29.12, PIVOT is called only when ale ≠ 0.
+We now summarize the effect that PIVOT has on the values of the variables in the basic
+solution.
+Lemma 29.1
+Consider a call to PIVOT(N, B, A, b, c, v, l, e) in which ale ≠ 0. Let the values returned from
+the call be
+, and let denote the basic solution after the call. Then
+1.
+2.
+3.
+
+for each
+.
+.
+for each
+
+.
+
+Proof The first statement is true because the basic solution always sets all nonbasic variables
+to 0. When we set each nonbasic variable to 0 in a constraint
+
+we have that
+
+for each
+
+. Since
+
+, by line 2 of PIVOT, we have
+
+

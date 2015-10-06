@@ -1,0 +1,36 @@
+There is one subtle difference between shipments and flows, however. Lucky Puck may ship
+pucks from Edmonton to Calgary, and they may also ship pucks from Calgary to Edmonton.
+Suppose that they ship 8 crates per day from Edmonton (v1 in Figure 26.1) to Calgary (v2) and
+3 crates per day from Calgary to Edmonton. It may seem natural to represent these shipments
+directly by flows, but we cannot. The skew-symmetry constraint requires that f (v1, v2) = - f
+(v2, v1), but this is clearly not the case if we consider f(v1, v2) = 8 and f(v2, v1) = 3.
+Lucky Puck may realize that it is pointless to ship 8 crates per day from Edmonton to Calgary
+and 3 crates from Calgary to Edmonton, when they could achieve the same net effect by
+shipping 5 crates from Edmonton to Calgary and 0 crates from Calgary to Edmonton (and
+presumably use fewer resources in the process). We represent this latter scenario with a flow:
+we have f (v1, v2) = 5 and f(v2, v1) = -5. In effect, 3 of the 8 crates per day from v1 to v2 are
+canceled by 3 crates per day from v2 to v1.
+In general, cancellation allows us to represent the shipments between two cities by a flow that
+is positive along at most one of the two edges between the corresponding vertices. That is,
+any situation in which pucks are shipped in both directions between two cities can be
+transformed using cancellation into an equivalent situation in which pucks are shipped in one
+direction only: the direction of positive flow.
+Given a flow f that arose from, say, physical shipments, we cannot reconstruct the exact
+shipments. If we know that f(u, v) = 5, this flow may be because 5 units were shipped from u
+to v, or it may be because 8 units were shipped from u to v and 3 units were shipped from v to
+u. Typically, we shall not care how the actual physical shipments are set up; for any pair of
+vertices, we care only about the net amount that travels between them. If we do care about the
+underlying shipments, then we should be using a different model, one that retains information
+about shipments in both directions.
+Cancellation will arise implicitly in the algorithms in this chapter. Suppose that edge (u, v) has
+a flow value of f(u, v). In the course of an algorithm, we may increase the flow on edge (v, u)
+by some amount d. Mathematically, this operation must decrease f(u, v) by d and,
+conceptually, we can think of these d units as canceling d units of flow that are already on
+edge (u, v).
+Networks with multiple sources and sinks
+A maximum-flow problem may have several sources and sinks, rather than just one of each.
+The Lucky Puck Company, for example, might actually have a set of m factories {s1, s2, . . . ,
+sm} and a set of n warehouses {t1, t2, . . . , tn}, as shown in Figure 26.2(a). Fortunately, this
+problem is no harder than ordinary maximum flow.
+
+

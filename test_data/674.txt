@@ -1,0 +1,60 @@
+Another important matrix decomposition is the singular value decomposition, or SVD. In the
+SVD, an m × n matrix A is factored into
+, where Σ is an m × n matrix with nonzero
+values only on the diagonal, Q1 is m × m with mutually orthonormal columns, and Q2 is n × n,
+also with mutually orthonormal columns. Two vectors are orthonormal if their inner product
+is 0 and each vector has a norm of 1. The books by Strang [285, 286] and Golub and Van
+Loan [125] contain good treatments of the SVD.
+Strang [286] has an excellent presentation of symmetric positive-definite matrices and of
+linear algebra in general.
+
+Chapter 29: Linear Programming
+Many problems can be formulated as maximizing or minimizing an objective, given limited
+resources and competing constraints. If we can specify the objective as a linear function of
+certain variables, and if we can specify the constraints on resources as equalities or
+inequalities on those variables, then we have a linear-programming problem. Linear
+programs arise in a variety of practical applications. We begin by studying an application in
+electoral politics.
+A political problem
+Suppose that you are a politician trying to win an election. Your district has three different
+types of areas-urban, suburban, and rural. These areas have, respectively, 100,000, 200,000,
+and 50,000 registered voters. To govern effectively, you would like to win a majority of the
+votes in each of the three regions. You are honorable and would never consider supporting
+policies in which you do not believe. You realize, however, that certain issues may be more
+effective in winning votes in certain places. Your primary issues are building more roads, gun
+control, farm subsidies, and a gasoline tax dedicated to improved public transit. According to
+your campaign staff's research, you can estimate how many votes you win or lose from each
+population segment by spending $1,000 on advertising on each issue. This information
+appears in the table of Figure 29.1. In this table, each entry describes the number of thousands
+of either urban, suburban, or rural voters who could be won over by spending $1,000 on
+advertising in support of a particular issue. Negative entries denote votes that would be lost.
+Your task is to figure out the minimum amount of money that you need to spend in order to
+win 50,000 urban votes, 100,000 suburban votes, and 25,000 rural votes.
+
+policy
+
+build roads
+gun control
+farm subsidies
+gasoline tax
+
+urban suburban rura
+l
+-2
+8
+0
+10
+
+5
+2
+0
+0
+
+3
+-5
+10
+-2
+
+Figure 29.1: The effects of policies on voters. Each entry describes the number of thousands
+
+

@@ -1,0 +1,27 @@
+Exercises 34.5-2
+Given an integer m-by-n matrix A and an integer m-vector b, the 0-1 integer-programming
+problem asks whether there is an integer n-vector x with elements in the set {0, 1} such that
+Ax ≤ b. Prove that 0-1 integer programming is NP-complete. (Hint: Reduce from 3-CNFSAT.)
+
+Exercises 34.5-3
+The integer linear-programming problem is like the 0-1 integer-programming problem given
+in Exercise 34.5-2, except that the values of the vector x may be any integers rather than just 0
+or 1. Assuming that the 0-1 integer-programming problem is NP-hard, show that the integer
+linear-programming problem is NP-complete.
+
+Exercises 34.5-4
+Show that the subset-sum problem is solvable in polynomial time if the target value t is
+expressed in unary.
+
+Exercises 34.5-5
+The set-partition problem takes as input a set S of numbers. The question is whether the
+numbers can be partitioned into two sets A and Ā = S - A such that Σx Āx. Show that the setpartition problem is NP-complete.
+
+Exercises 34.5-6
+Show that the hamiltonian-path problem is NP-complete.
+
+Exercises 34.5-7
+The longest-simple-cycle problem is the problem of determining a simple cycle (no repeated
+vertices) of maximum length in a graph. Show that this problem is NP-complete.
+
+

@@ -1,0 +1,18 @@
+Figure 18.8: Deleting keys from a B-tree. The minimum degree for this B-tree is t = 3, so a
+node (other than the root) cannot have fewer than 2 keys. Nodes that are modified are lightly
+shaded. (a) The B-tree of Figure 18.7(e). (b) Deletion of F. This is case 1: simple deletion
+from a leaf. (c) Deletion of M. This is case 2a: the predecessor L of M is moved up to take M's
+position. (d) Deletion of G. This is case 2c: G is pushed down to make node DEGJK, and then
+G is deleted from this leaf (case 1). (e) Deletion of D. This is case 3b: the recursion can't
+descend to node CL because it has only 2 keys, so P is pushed down and merged with CL and
+TX to form CLPTX; then, D is deleted from a leaf (case 1). (e′) After (d), the root is deleted
+and the tree shrinks in height by one. (f) Deletion of B. This is case 3a: C is moved to fill B's
+position and E is moved to fill C's position.
+1. If the key k is in node x and x is a leaf, delete the key k from x.
+2. If the key k is in node x and x is an internal node, do the following.
+a. If the child y that precedes k in node x has at least t keys, then find the
+predecessor k′ of k in the subtree rooted at y. Recursively delete k′, and replace
+k by k′ in x. (Finding k′ and deleting it can be performed in a single downward
+pass.)
+
+

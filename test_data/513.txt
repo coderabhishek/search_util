@@ -1,0 +1,35 @@
+Suppose that there is a solution for x satisfying each of these k inequalities. This solution must
+also satisfy the inequality that results when we sum the k inequalities together. If we sum the
+left-hand sides, each unknown xi is added in once and subtracted out once, so that the lefthand side of the sum is 0. The right-hand side sums to w(c), and thus we obtain 0 ≤ w(c). But
+since c is a negative-weight cycle, w(c) < 0, and we obtain the contradiction that 0 ≤ w(c) < 0.
+
+Solving systems of difference constraints
+Theorem 24.9 tells us that we can use the Bellman-Ford algorithm to solve a system of
+difference constraints. Because there are edges from the source vertex v0 to all other vertices
+in the constraint graph, any negative-weight cycle in the constraint graph is reachable from v0.
+If the Bellman-Ford algorithm returns TRUE, then the shortest-path weights give a feasible
+solution to the system. In Figure 24.8, for example, the shortest-path weights provide the
+feasible solution x = (-5, -3, 0, -1, -4), and by Lemma 24.8, x = (d - 5, d - 3, d, d - 1, d - 4) is
+also a feasible solution for any constant d. If the Bellman-Ford algorithm returns FALSE,
+there is no feasible solution to the system of difference constraints.
+A system of difference constraints with m constraints on n unknowns produces a graph with
+n+1 vertices and n+m edges. Thus, using the Bellman-Ford algorithm, we can solve the
+system in O((n + 1)(n + m)) = O(n2 + nm) time. Exercise 24.4-5 asks you to modify the
+algorithm to run in O(nm) time, even if m is much less than n.
+Exercises 24.4-1
+Find a feasible solution or determine that no feasible solution exists for the following system
+of difference constraints:
+x1 - x2 ≤ 1,
+x1 - x4 ≤ -4,
+x2 - x3 ≤ 2,
+x2 - x5 ≤ 7,
+x2 - x6 ≤ 5,
+x3 - x6 ≤ 10
+,
+x4 - x2 ≤ 2,
+x5 - x1 ≤ -1
+x5 - x4 ≤ 3,
+x6 - x3 ≤ -8.
+Exercises 24.4-2
+
+

@@ -1,0 +1,53 @@
+of all elements in S - {x} whose keys are greater than key[x]. In this problem, we investigate
+how to implement these operations on 2-3-4 trees. We assume for convenience that elements
+consist only of keys and that all key values are distinct.
+a. Show how to maintain, for every node x of a 2-3-4 tree, the height of the subtree
+rooted at x as a field height[x]. Make sure that your implementation does not affect the
+asymptotic running times of searching, insertion, and deletion.
+b. Show how to implement the join operation. Given two 2-3-4 trees T′ and T″ and a key
+k, the join should run in O(1 + |h′ - h″|) time, where h′ and h″ are the heights of T′ and
+T″, respectively.
+c. Consider the path p from the root of a 2-3-4 tree T to a given key k, the set S′ of keys
+in T that are less than k, and the set S″ of keys in T that are greater than k. Show that p
+and a set of keys
+where,
+breaks S′ into a set of trees
+for any keys
+and
+. What is the
+for i = 1, 2, ..., m, we have
+relationship between the heights of and ? Describe how p breaks S″ into sets of
+trees and keys.
+d. Show how to implement the split operation on T. Use the join operation to assemble
+the keys in S′ into a single 2-3-4 tree T′ and the keys in S″ into a single 2-3-4 tree T″.
+The running time of the split operation should be O(lg n), where n is the number of
+keys in T. (Hint: The costs for joining should telescope.)
+
+Chapter notes
+Knuth [185], Aho, Hopcroft, and Ullman [5], and Sedgewick [269] give further discussions of
+balanced-tree schemes and B-trees. Comer [66] provides a comprehensive survey of B-trees.
+Guibas and Sedgewick [135] discuss the relationships among various kinds of balanced-tree
+schemes, including red-black trees and 2-3-4 trees.
+In 1970, J. E. Hopcroft invented 2-3 trees, a precursor to B-trees and 2-3-4 trees, in which
+every internal node has either two or three children. B-trees were introduced by Bayer and
+McCreight in 1972 [32]; they did not explain their choice of name.
+Bender, Demaine, and Farach-Colton [37] studied how to make B-trees perform well in the
+presence of memory-hierarchy effects. Their cache-oblivious algorithms work efficiently
+without explicitly knowing the data transfer sizes within the memory hierarchy.
+
+Chapter 19: Binomial Heaps
+Overview
+This chapter and Chapter 20 present data structures known as mergeable heaps, which
+support the following five operations.
+•
+•
+•
+•
+
+MAKE-HEAP() creates and returns a new heap containing no elements.
+INSERT(H, x) inserts node x, whose key field has already been filled in, into heap H.
+MINIMUM(H) returns a pointer to the node in heap H whose key is minimum.
+EXTRACT-MIN(H) deletes the node from heap H whose key is minimum, returning a
+pointer to the node.
+
+

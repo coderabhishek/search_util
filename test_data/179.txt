@@ -1,0 +1,51 @@
+A list may have one of several forms. It may be either singly linked or doubly linked, it may
+be sorted or not, and it may be circular or not. If a list is singly linked, we omit the prev
+pointer in each element. If a list is sorted, the linear order of the list corresponds to the linear
+order of keys stored in elements of the list; the minimum element is the head of the list, and
+the maximum element is the tail. If the list is unsorted, the elements can appear in any order.
+In a circular list, the prev pointer of the head of the list points to the tail, and the next pointer
+of the tail of the list points to the head. The list may thus be viewed as a ring of elements. In
+the remainder of this section, we assume that the lists with which we are working are unsorted
+and doubly linked.
+Searching a linked list
+The procedure LIST-SEARCH(L, k) finds the first element with key k in list L by a simple
+linear search, returning a pointer to this element. If no object with key k appears in the list,
+then NIL is returned. For the linked list in Figure 10.3(a), the call LIST-SEARCH(L, 4)
+returns a pointer to the third element, and the call LIST-SEARCH(L, 7) returns NIL.
+LIST-SEARCH(L, k)
+1 x ← head[L]
+2 while x ≠ NIL and key[x] ≠ k
+3
+do x ← next[x]
+4 return x
+
+To search a list of n objects, the LIST-SEARCH procedure takes Θ(n) time in the worst case,
+since it may have to search the entire list.
+Inserting into a linked list
+Given an element x whose key field has already been set, the LIST-INSERT procedure
+"splices" x onto the front of the linked list, as shown in Figure 10.3(b).
+LIST-INSERT(L, x)
+1 next[x] ← head[L]
+2 if head[L] ≠ NIL
+3
+then prev[head[L]] ← x
+4 head[L] ← x
+5 prev[x] ← NIL
+
+The running time for LIST-INSERT on a list of n elements is O(1).
+Deleting from a linked list
+The procedure LIST-DELETE removes an element x from a linked list L. It must be given a
+pointer to x, and it then "splices" x out of the list by updating pointers. If we wish to delete an
+element with a given key, we must first call LIST-SEARCH to retrieve a pointer to the
+element.
+LIST-DELETE(L, x)
+1 if prev[x] ≠ NIL
+2
+then next[prev[x]] ← next[x]
+3
+else head[L] ← next[x]
+4 if next[x] ≠ NIL
+5
+then prev[next[x]] ← prev[x]
+
+

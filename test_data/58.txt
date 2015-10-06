@@ -1,0 +1,46 @@
+f(n) c
+a. n - 1 0
+b. lg n 1
+c. n/2 1
+d. n/2 2
+e.
+
+2
+
+f.
+
+1
+
+g. n1/3 2
+h. n/lg n 2
+
+Chapter notes
+Knuth [182] traces the origin of the O-notation to a number-theory text by P. Bachmann in
+1892. The o-notation was invented by E. Landau in 1909 for his discussion of the distribution
+of prime numbers. The Ω and Θ notations were advocated by Knuth [186] to correct the
+popular, but technically sloppy, practice in the literature of using O-notation for both upper
+and lower bounds. Many people continue to use the O-notation where the Θ-notation is more
+technically precise. Further discussion of the history and development of asymptotic notations
+can be found in Knuth [182, 186] and Brassard and Bratley [46].
+Not all authors define the asymptotic notations in the same way, although the various
+definitions agree in most common situations. Some of the alternative definitions encompass
+functions that are not asymptotically nonnegative, as long as their absolute values are
+appropriately bounded.
+Equation (3.19) is due to Robbins [260]. Other properties of elementary mathematical
+functions can be found in any good mathematical reference, such as Abramowitz and Stegun
+[1] or Zwillinger [320], or in a calculus book, such as Apostol [18] or Thomas and Finney
+[296]. Knuth [182] and Graham, Knuth, and Patashnik [132] contain a wealth of material on
+discrete mathematics as used in computer science.
+Technicalities
+In practice, we neglect certain technical details when we state and solve recurrences. A good
+example of a detail that is often glossed over is the assumption of integer arguments to
+functions. Normally, the running time T (n) of an algorithm is only defined when n is an
+integer, since for most algorithms, the size of the input is always an integer. For example, the
+recurrence describing the worst-case running time of MERGE-SORT is really
+(4.2)
+Boundary conditions represent another class of details that we typically ignore. Since the
+running time of an algorithm on a constant-sized input is a constant, the recurrences that arise
+from the running times of algorithms generally have T(n) = Θ(1) for sufficiently small n.
+Consequently, for convenience, we shall generally omit statements of the boundary conditions
+
+

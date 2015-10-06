@@ -1,0 +1,36 @@
+(15.2)
+(15.3)
+Now let us consider how to compute fi[j] for j = 2, 3, ..., n (and i = 1, 2). Focusing on f1[j], we
+recall that the fastest way through station S1,j is either the fastest way through station S1,j-1 and
+then directly through station S1,j, or the fastest way through station S2,j-1, a transfer from line 2
+to line 1, and then through station S1,j. In the first case, we have f1[j] = f1[j - 1] + a1,j, and in the
+latter case, f1[j] = f2[j - 1] + t2,j-1 + a1,j. Thus,
+(15.4)
+for j = 2, 3, ..., n. Symmetrically, we have
+(15.5)
+for j = 2, 3, ..., n. Combining equations (15.2)–(15.5), we obtain the recursive equations
+(15.6)
+(15.7)
+Figure 15.2(b) shows the fi[j] values for the example of part (a), as computed by equations
+(15.6) and (15.7), along with the value of f*.
+The fi[j] values give the values of optimal solutions to subproblems. To help us keep track of
+how to construct an optimal solution, let us define li [j] to be the line number, 1 or 2, whose
+station j - 1 is used in a fastest way through station Si,j . Here, i = 1, 2 and j = 2, 3, ..., n. (We
+avoid defining li[1] because no station precedes station 1 on either line.) We also define l* to
+be the line whose station n is used in a fastest way through the entire factory. The li[j] values
+help us trace a fastest way. Using the values of l* and li[j] shown in Figure 15.2(b), we would
+trace a fastest way through the factory shown in part (a) as follows. Starting with l* = 1, we
+use station S1,6. Now we look at l1[6], which is 2, and so we use station S2,5. Continuing, we
+look at l2[5] = 2 (use station S2,4), l2[4] = 1 (station S1,3), l1[3] = 2 (station S2,2), and l2[2] = 1
+(station S1,1).
+Step 3: Computing the fastest times
+At this point, it would be a simple matter to write a recursive algorithm based on equation
+(15.1) and the recurrences (15.6) and (15.7) to compute the fastest way through the factory.
+There is a problem with such a recursive algorithm: its running time is exponential in n. To
+see why, let ri(j) be the number of references made to fi[j] in a recursive algorithm. From
+equation (15.1), we have
+(15.8)
+From the recurrences (15.6) and (15.7), we have
+(15.9)
+
+

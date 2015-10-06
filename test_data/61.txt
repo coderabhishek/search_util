@@ -1,0 +1,35 @@
+problem is that the inductive assumption isn't strong enough to prove the detailed bound.
+When you hit such a snag, revising the guess by subtracting a lower-order term often permits
+the math to go through.
+Consider the recurrence
+T (n) = T (⌊n/2⌋) + T (⌈n/2⌉) + 1.
+We guess that the solution is O(n), and we try to show that T (n) ≤ cn for an appropriate
+choice of the constant c. Substituting our guess in the recurrence, we obtain
+T (n) ≤ c ⌊n/2⌋ + c ⌈n/2⌉ + 1
+= cn + 1 ,
+which does not imply T (n) ≤ cn for any choice of c. It's tempting to try a larger guess, say T
+(n) = O(n2), which can be made to work, but in fact, our guess that the solution is T (n) = O(n)
+is correct. In order to show this, however, we must make a stronger inductive hypothesis.
+Intuitively, our guess is nearly right: we're only off by the constant 1, a lower-order term.
+Nevertheless, mathematical induction doesn't work unless we prove the exact form of the
+inductive hypothesis. We overcome our difficulty by subtracting a lower-order term from our
+previous guess. Our new guess is T (n) ≤ cn - b, where b ≥ 0 is constant. We now have
+T (n) ≤ (c ⌊n/2⌋ - b) + (c ⌈n/2⌉ - b) + 1
+= cn - 2b + 1
+≤ cn - b ,
+as long as b ≥ 1. As before, the constant c must be chosen large enough to handle the
+boundary conditions.
+Most people find the idea of subtracting a lower-order term counterintuitive. After all, if the
+math doesn't work out, shouldn't we be increasing our guess? The key to understanding this
+step is to remember that we are using mathematical induction: we can prove something
+stronger for a given value by assuming something stronger for smaller values.
+Avoiding pitfalls
+It is easy to err in the use of asymptotic notation. For example, in the recurrence (4.4) we can
+falsely "prove" T (n) = O(n) by guessing T (n) ≤ cn and then arguing
+T (n) ≤ 2(c ⌊n/2⌋) + n
+≤ cn + n
+= O(n) , ⇐wrong!!
+since c is a constant. The error is that we haven't proved the exact form of the inductive
+hypothesis, that is, that T (n) ≤ cn.
+
+

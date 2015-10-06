@@ -1,0 +1,36 @@
+Therefore, B-trees can also be used to implement many dynamic-set operations in time O(lg
+n).
+B-trees generalize binary search trees in a natural manner. Figure 18.1 shows a simple B-tree.
+If an internal B-tree node x contains n[x] keys, then x has n[x] + 1 children. The keys in node
+x are used as dividing points separating the range of keys handled by x into n[x] + 1
+subranges, each handled by one child of x. When searching for a key in a B-tree, we make an
+(n[x] + 1)-way decision based on comparisons with the n[x] keys stored at node x. The
+structure of leaf nodes differs from that of internal nodes; we will examine these differences
+in Section 18.1.
+
+Figure 18.1: A B-tree whose keys are the consonants of English. An internal node x
+containing n[x] keys has n[x] + 1 children. All leaves are at the same depth in the tree. The
+lightly shaded nodes are examined in a search for the letter R.
+Section 18.1 gives a precise definition of B-trees and proves that the height of a B-tree grows
+only logarithmically with the number of nodes it contains. Section 18.2 describes how to
+search for a key and insert a key into a B-tree, and Section 18.3 discusses deletion. Before
+proceeding, however, we need to ask why data structures designed to work on a magnetic disk
+are evaluated differently than data structures designed to work in main random-access
+memory.
+Data structures on secondary storage
+There are many different technologies available for providing memory capacity in a computer
+system. The primary memory (or main memory) of a computer system normally consists of
+silicon memory chips. This technology is typically two orders of magnitude more expensive
+per bit stored than magnetic storage technology, such as tapes or disks. Most computer
+systems also have secondary storage based on magnetic disks; the amount of such secondary
+storage often exceeds the amount of primary memory by at least two orders of magnitude.
+Figure 18.2(a) shows a typical disk drive. The drive consists of several platters, which rotate
+at a constant speed around a common spindle. The surface of each platter is covered with a
+magnetizable material. Each platter is read or written by a head at the end of an arm. The
+arms are physically attached, or "ganged" together,and they can move their heads toward or
+away from the spindle. When a given head is stationary, the surface that passes underneath it
+is called a track. The read/write heads are vertically aligned at all times, and therefore the set
+of tracks underneath them are accessed simultaneously. Figure 18.2(b) shows such a set of
+tracks, which is known as a cylinder.
+
+

@@ -1,0 +1,32 @@
+How many balls must one toss, on the average, until a given bin contains a ball? The number
+of tosses until the given bin receives a ball follows the geometric distribution with probability
+1/b and, by equation (C.31), the expected number of tosses until success is 1/(1/b) = b.
+How many balls must one toss until every bin contains at least one ball? Let us call a toss in
+which a ball falls into an empty bin a "hit." We want to know the expected number n of tosses
+required to get b hits.
+The hits can be used to partition the n tosses into stages. The ith stage consists of the tosses
+after the (i - 1)st hit until the ith hit. The first stage consists of the first toss, since we are
+guaranteed to have a hit when all bins are empty. For each toss during the ith stage, there are i
+- 1 bins that contain balls and b - i + 1 empty bins. Thus, for each toss in the ith stage, the
+probability of obtaining a hit is (b-i +1)/b.
+Let ni denote the number of tosses in the ith stage. Thus, the number of tosses required to get
+b hits is
+. Each random variable ni has a geometric distribution with probability of
+success (b - i + 1)/b and, by equation (C.31),
+
+By linearity of expectation,
+
+The last line follows from the bound (A.7) on the harmonic series. It therefore takes
+approximately b ln b tosses before we can expect that every bin has a ball. This problem is
+also known as the coupon collector's problem, and says that a person trying to collect each of
+b different coupons must acquire approximately b ln b randomly obtained coupons in order to
+succeed.
+
+5.4.3 Streaks
+Suppose you flip a fair coin n times. What is the longest streak of consecutive heads that you
+expect to see? The answer is Θ(lg n), as the following analysis shows.
+We first prove that the expected length of the longest streak of heads is O(lg n). The
+probability that each coin flip is a head is 1/2. Let Aik be the event that a streak of heads of
+length at least k begins with the ith coin flip or, more precisely, the event that the k
+
+

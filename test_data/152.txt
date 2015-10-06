@@ -1,0 +1,33 @@
+we were to decrease r below ⌊lg n⌋, then the b/r term increases and the n + 2r term remains at
+Θ(n).
+Is radix sort preferable to a comparison-based sorting algorithm, such as quick-sort? If b =
+O(lg n), as is often the case, and we choose r ≈ lg n, then radix sort's running time is Θ(n),
+which appears to be better than quicksort's average-case time of Θ(n lg n). The constant
+factors hidden in the Θ-notation differ, however. Although radix sort may make fewer passes
+than quicksort over the n keys, each pass of radix sort may take significantly longer. Which
+sorting algorithm is preferable depends on the characteristics of the implementations, of the
+underlying machine (e.g., quicksort often uses hardware caches more effectively than radix
+sort), and of the input data. Moreover, the version of radix sort that uses counting sort as the
+intermediate stable sort does not sort in place, which many of the Θ(n lg n)-time comparison
+sorts do. Thus, when primary memory storage is at a premium, an in-place algorithm such as
+quicksort may be preferable.
+Exercises 8.3-1
+Using Figure 8.3 as a model, illustrate the operation of RADIX-SORT on the following list of
+English words: COW, DOG, SEA, RUG, ROW, MOB, BOX, TAB, BAR, EAR, TAR, DIG,
+BIG, TEA, NOW, FOX.
+
+Exercises 8.3-2
+Which of the following sorting algorithms are stable: insertion sort, merge sort, heapsort, and
+quicksort? Give a simple scheme that makes any sorting algorithm stable. How much
+additional time and space does your scheme entail?
+
+Exercises 8.3-3
+Use induction to prove that radix sort works. Where does your proof need the assumption that
+the intermediate sort is stable?
+
+Exercises 8.3-4
+Show how to sort n integers in the range 0 to n2 - 1 in O(n) time.
+
+Exercises 8.3-5: ⋆
+
+

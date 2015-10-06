@@ -1,0 +1,26 @@
+The only difficulty with this procedure is that p and ts may be too large to work with
+conveniently. If P contains m characters, then assuming that each arithmetic operation on p
+(which is m digits long) takes "constant time" is unreasonable. Fortunately, there is a simple
+cure for this problem, as shown in Figure 32.5: compute p and the ts's modulo a suitable
+modulus q. Since the computation of p, t0, and the recurrence (32.1) can all be performed
+modulo q, we see that we can compute p modulo q in Θ(m) time and all the ts's modulo q in
+Θ(n - m + 1) time. The modulus q is typically chosen as a prime such that 10q just fits within
+one computer word, which allows all the necessary computations to be performed with singleprecision arithmetic. In general, with a d-ary alphabet {0, 1, . . . , d - 1}, we choose q so that
+dq fits within a computer word and adjust the recurrence equation (32.1) to work modulo q, so
+that it becomes
+(32.2)
+where h = dm-1 (mod q) is the value of the digit "1" in the high-order position of an m-digit
+text window.
+
+Figure 32.5: The Rabin-Karp algorithm. Each character is a decimal digit, and we compute
+values modulo 13. (a) A text string. A window of length 5 is shown shaded. The numerical
+value of the shaded number is computed modulo 13, yielding the value 7. (b) The same text
+string with values computed modulo 13 for each possible position of a length-5 window.
+Assuming the pattern P = 31415, we look for windows whose value modulo 13 is 7, since
+31415 ≡ 7 (mod 13). Two such windows are found, shown shaded in the figure. The first,
+beginning at text position 7, is indeed an occurrence of the pattern, while the second,
+beginning at text position 13, is a spurious hit. (c) Computing the value for a window in
+constant time, given the value for the previous window. The first window has value 31415.
+Dropping the high-order digit 3, shifting left (multiplying by 10), and then adding in the loworder digit 2 gives us the new value 14152. All computations are performed modulo 13,
+
+

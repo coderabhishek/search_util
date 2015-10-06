@@ -1,0 +1,43 @@
+We claim that Sij = Ø whenever i ≥ j. Why? Suppose that there exists an activity ak Sij for
+some i ≥ j, so that ai follows aj in the sorted order. Then we would have fi ≤ sk < fk ≤ sj < fj.
+Thus, fi < fj, which contradicts our assumption that ai follows aj in the sorted order. We can
+conclude that, assuming that we have sorted the activities in monotonically increasing order
+of finish time, our space of subproblems is to select a maximum-size subset of mutually
+compatible activities from Sij, for 0 ≤ i < j ≤ n + 1, knowing that all other Sij are empty.
+To see the substructure of the activity-selection problem, consider some non-empty
+subproblem Sij,[1] and suppose that a solution to Sij includes some activity ak, so that fi ≤ sk < fk
+≤ sj. Using activity ak generates two subproblems, Sik (activities that start after ai finishes and
+finish before ak starts) and Skj (activities that start after ak finishes and finish before aj starts),
+each of which consists of a subset of the activities in Sij. Our solution to Sij is the union of the
+solutions to Sik and Skj, along with the activity ak. Thus, the number of activities in our
+solution to Sij is the size of our solution to Sik, plus the size of our solution to Skj , plus one (for
+ak).
+The optimal substructure of this problem is as follows. Suppose now that an optimal solution
+Aij to Sij includes activity ak. Then the solutions Aik to Sik and Akj to Skj used within this optimal
+solution to Sij must be optimal as well. The usual cut-and-paste argument applies. If we had a
+solution to Sik that included more activities than Aik, we could cut out Aik from Aij and paste
+in , thus producing a another solution to Sij with more activities than Aij. Because we
+assumed that Aij is an optimal solution, we have derived a contradiction. Similarly, if we had a
+solution to Skj with more activities than Akj, we could replace Akj by to produce a solution
+to Sij with more activities than Aij.
+Now we use our optimal substructure to show that we can construct an optimal solution to the
+problem from optimal solutions to subproblems. We have seen that any solution to a
+nonempty subproblem Sij includes some activity ak, and that any optimal solution contains
+within it optimal solutions to subproblem instances Sik and Skj. Thus, we can build an
+maximum-size subset of mutually compatible activities in Sij by splitting the problem into two
+subproblems (finding maximum-size subsets of mutually compatible activities in Sik and Skj),
+finding maximum-size subsets Aik and Akj of mutually compatible activities for these
+subproblems, and forming our maximum-size subset Aij of mutually compatible activities as
+(16.2)
+An optimal solution to the entire problem is a solution to S0,n+1.
+A recursive solution
+The second step in developing a dynamic-programming solution is to recursively define the
+value of an optimal solution. For the activity-selection problem, we let c[i, j] be the number of
+activities in a maximum-size subset of mutually compatible activities in Sij. We have c[i, j] =
+0 whenever Sij = Ø; in particular, c[i, j] = 0 for i ≥ j.
+Now consider a nonempty subset Sij. As we have seen, if ak is used in a maximum-size subset
+of mutually compatible activities of Sij, we also use maximum-size subsets of mutually
+compatible activities for the subproblems Sik and Skj. Using equation (16.2), we have the
+recurrence
+
+

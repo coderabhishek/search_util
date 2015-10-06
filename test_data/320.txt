@@ -1,0 +1,40 @@
+c[i, j ] = c[i, k] + c[k, j ] + 1.
+This recursive equation assumes that we know the value of k, which we do not. There are j - i
+- 1 possible values for k, namely k = i + 1, ..., j - 1. Since the maximum-size subset of Sij must
+use one of these values for k, we check them all to find the best. Thus, our full recursive
+definition of c[i, j] becomes
+(16.3)
+
+Converting a dynamic-programming solution to a greedy solution
+At this point, it would be a straightforward exercise to write a tabular, bottom-up, dynamicprogramming algorithm based on recurrence (16.3). In fact, Exercise 16.1-1 asks you to do
+just that. There are two key observations, however, that allow us to simplify our solution.
+Theorem 16.1
+Consider any nonempty subproblem Sij, and let am be the activity in Sij with the earliest finish
+time:
+fm = min {fk : ak
+
+Sij}.
+
+Then
+1. Activity am is used in some maximum-size subset of mutually compatible activities of
+Sij.
+2. The subproblem Sim is empty, so that choosing am leaves the subproblem Smj as the
+only one that may be nonempty.
+Proof We shall prove the second part first, since it's a bit simpler. Suppose that Sim is
+nonempty, so that there is some activity ak such that fi ≤ sk < fk ≤ sm < fm. Then ak is also in Sij
+and it has an earlier finish time than am, which contradicts our choice of am. We conclude that
+Sim is empty.
+To prove the first part, we suppose that Aij is a maximum-size subset of mutually compatible
+activities of Sij, and let us order the activities in Aij in monotonically increasing order of finish
+time. Let ak be the first activity in Aij. If ak = am, we are done, since we have shown that am is
+used in some maximum-size subset of mutually compatible activities of Sij. If ak ≠ am, we
+The activities in are disjoint, since the activities in Aij
+construct the subset
+are, ak is the first activity in Aij to finish, and fm ≤ fk. Noting that has the same number of
+activities as Aij, we see that is a maximum-size subset of mutually compatible activities of
+Sij that includes am.
+
+Why is Theorem 16.1 so valuable? Recall from Section 15.3 that optimal sub-structure varies
+in how many subproblems are used in an optimal solution to the original problem and in how
+
+

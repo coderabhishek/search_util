@@ -1,0 +1,37 @@
+positive flow. A symmetric argument can be made for each v
+statement of the lemma is therefore a matching.
+
+R. The set M defined in the
+
+To see that |M| = |f|, observe that for every matched vertex u L, we have f(s, u) = 1, and for
+every edge (u, v) E - M, we have f(u, v) = 0. Consequently,
+|M| = f(L, R)
+= f(L, V') - f(L, L) - f(L, s) - f(L, t) (by Lemma 26.1).
+We can simplify the above expression considerably. Flow conservation implies that f(L, V') =
+0; Lemma 26.1 implies that f(L, L) = 0; skew symmetry implies that - f(L, s) = f(s, L); and
+because there are no edges from L to t, we have f(L, t) = 0. Thus,
+|M| = f(s, L)
+= f(s, V') (since all edges out of s go to
+L)
+= |f|
+(by the definition of |f|).
+
+Based on Lemma 26.10, we would like to conclude that a maximum matching in a bipartite
+graph G corresponds to a maximum flow in its corresponding flow network G', and we can
+therefore compute a maximum matching in G by running a maximum-flow algorithm on G'.
+The only hitch in this reasoning is that the maximum-flow algorithm might return a flow in G'
+for which some f(u, v) is not an integer, even though the flow value |f| must be an integer. The
+following theorem shows that if we use the Ford-Fulkerson method, this difficulty cannot
+arise.
+Theorem 26.11: (Integrality theorem)
+If the capacity function c takes on only integral values, then the maximum flow f produced by
+the Ford-Fulkerson method has the property that |f| is integer-valued. Moreover, for all
+vertices u and v, the value of f(u, v) is an integer.
+Proof The proof is by induction on the number of iterations. We leave it as Exercise 26.3-2.
+
+We can now prove the following corollary to Lemma 26.10.
+Corollary 26.12
+The cardinality of a maximum matching M in a bipartite graph G is the value of a maximum
+flow f in its corresponding flow network G'.
+
+

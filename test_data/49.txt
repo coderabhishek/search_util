@@ -1,0 +1,31 @@
+Monotonicity
+A function f(n) is monotonically increasing if m ≤ n implies f(m) ≤ f(n). Similarly, it is
+monotonically decreasing if m ≤ n implies f(m) ≥ f(n). A function f(n) is strictly increasing if
+m < n implies f(m) < f(n) and strictly decreasing if m < n implies f(m) > f(n).
+Floors and ceilings
+For any real number x, we denote the greatest integer less than or equal to x by ⌊x⌋ (read "the
+floor of x") and the least integer greater than or equal to x by ⌈x⌉ (read "the ceiling of x"). For
+all real x,
+(3.3)
+For any integer n,
+⌈n/2⌉ + ⌊n/2⌋ = n,
+and for any real number n ≥ 0 and integers a, b > 0,
+(3.4)
+(3.5)
+(3.6)
+(3.7)
+The floor function f(x) = ⌊x⌋ is monotonically increasing, as is the ceiling function f(x) = ⌈x⌉.
+Modular arithmetic
+For any integer a and any positive integer n, the value a mod n is the remainder (or residue)
+of the quotient a/n:
+(3.8)
+Given a well-defined notion of the remainder of one integer when divided by another, it is
+convenient to provide special notation to indicate equality of remainders. If (a mod n) = (b
+mod n), we write a ≡ b (mod n) and say that a is equivalent to b, modulo n. In other words, a
+≡ b (mod n) if a and b have the same remainder when divided by n. Equivalently, a ≡ b (mod
+n) if and only if n is a divisor of b - a. We write a ≢ b (mod n) if a is not equivalent to b,
+modulo n.
+Polynomials
+Given a nonnegative integer d, a polynomial in n of degree d is a function p(n) of the form
+
+

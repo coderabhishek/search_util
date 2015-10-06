@@ -1,0 +1,35 @@
+Figure 34.17: The reduction of an instance of the vertex-cover problem to an instance of the
+hamiltonian-cycle problem. (a) An undirected graph G with a vertex cover of size 2,
+consisting of the lightly shaded vertices w and y. (b) The undirected graph G' produced by the
+reduction, with the hamiltonian path corresponding to the vertex cover shaded. The vertex
+cover {w, y} corresponds to edges (s1, [w, x, 1]) and (s2, [y, x, 1]) appearing in the hamiltonian
+cycle.
+The intuition behind these edges is that if we choose a vertex u V in the vertex cover of G,
+we can construct a path from [u, u(1), 1] to [u, u(degree(u)), 6] in G' that "covers" all widgets
+, the path
+corresponding to edges incident on u. That is, for each of these widgets, say
+either includes all 12 vertices (if u is in the vertex cover but u(i) is not) or just the six vertices
+[u, u(i), 1], [u, u(i), 2],..., [u, u(i), 6] (if both u and u(i) are in the vertex cover).
+The final type of edge in E' joins the first vertex [u, u(1), 1] and the last vertex [u, u(degree(u)), 6]
+of each of these paths to each of the selector vertices. That is, we include the edges
+{(sj, [u, u(1), 1]) : u
+V and 1 ≤ j ≤ k}
+{(sj, [u, u(degree(u)), 6]) : u
+
+V and 1 ≤ j ≤ k}.
+
+Next, we show that the size of G' is polynomial in the size of G, and hence we can construct
+G' in time polynomial in the size of G. The vertices of G' are those in the widgets, plus the
+selector vertices. Each widget contains 12 vertices, and there are k ≤ |V| selector vertices, for a
+total of
+|V'| = 12 |E| + k
+≤ 12 |E| + |V|
+vertices. The edges of G' are those in the widgets, those that go between widgets, and those
+connecting selector vertices to widgets. There are 14 edges in each widget, or 14 |E| in all
+widgets. For each vertex u V, there are degree(u) - 1 edges between widgets, so that
+summed over all vertices in V, there are
+
+edges between widgets. Finally, there are two edges for each pair consisting of a selector
+vertex and a vertex of V, or 2k |V| such edges. The total number of edges of G' is therefore
+
+

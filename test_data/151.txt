@@ -1,0 +1,37 @@
+The code for radix sort is straightforward. The following procedure assumes that each element
+in the n-element array A has d digits, where digit 1 is the lowest-order digit and digit d is the
+highest-order digit.
+RADIX-SORT(A, d)
+1 for i ← 1 to d
+2
+do use a stable sort to sort array A on digit i
+
+Lemma 8.3
+Given n d-digit numbers in which each digit can take on up to k possible values, RADIXSORT correctly sorts these numbers in Θ(d(n + k)) time.
+Proof The correctness of radix sort follows by induction on the column being sorted (see
+Exercise 8.3-3). The analysis of the running time depends on the stable sort used as the
+intermediate sorting algorithm. When each digit is in the range 0 to k-1 (so that it can take on
+k possible values), and k is not too large, counting sort is the obvious choice. Each pass over n
+d-digit numbers then takes time Θ(n + k). There are d passes, so the total time for radix sort is
+Θ(d(n + k)).
+
+When d is constant and k = O(n), radix sort runs in linear time. More generally, we have some
+flexibility in how to break each key into digits.
+Lemma 8.4
+Given n b-bit numbers and any positive integer r ≤ b, RADIX-SORT correctly sorts these
+numbers in Θ((b/r)(n + 2r)) time.
+Proof For a value r ≤ b, we view each key as having d = ⌈b/r⌉ digits of r bits each. Each digit
+is an integer in the range 0 to 2r - 1, so that we can use counting sort with k = 2r - 1. (For
+example, we can view a 32-bit word as having 4 8-bit digits, so that b = 32, r = 8, k = 2r - 1 =
+255, and d = b/r = 4.) Each pass of counting sort takes time Θ(n + k) = Θ(n + 2r) and there are
+d passes, for a total running time of Θ(d(n + 2r )) = Θ((b/r)(n + 2r)).
+
+For given values of n and b, we wish to choose the value of r, with r ≤ b, that minimizes the
+expression (b/r)(n + 2r). If b < ⌊lg n⌋, then for any value of r b, we have that (n + 2r) = Θ(n).
+Thus, choosing r = b yields a running time of (b/b)(n + 2b) = Θ(n), which is asymptotically
+optimal. If b ≥ ⌊lg n⌋, then choosing r = ⌊lg n⌋ gives the best time to within a constant factor,
+which we can see as follows. Choosing r = ⌊lg n⌋ yields a running time of Θ(bn/ lg n). As we
+increase r above ⌊lg n⌋, the 2r term in the numerator increases faster than the r term in the
+denominator, and so increasing r above ⌊lg n⌋ yields a running time of Θ(bn/ lg n). If instead
+
+

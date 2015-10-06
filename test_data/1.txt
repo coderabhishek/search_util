@@ -1,0 +1,37 @@
+Introduction to Algorithms, Second Edition
+Thomas H. Cormen
+Charles E. Leiserson
+Ronald L. Rivest
+Clifford Stein
+The MIT Press
+Cambridge , Massachusetts London, England
+McGraw-Hill Book Company
+Boston Burr Ridge , IL Dubuque , IA Madison , WI New York San Francisco St. Louis
+Montréal Toronto
+This book is one of a series of texts written by faculty of the Electrical Engineering and
+Computer Science Department at the Massachusetts Institute of Technology. It was edited and
+produced by The MIT Press under a joint production-distribution agreement with the
+McGraw-Hill Book Company.
+Ordering Information:
+North America
+Text orders should be addressed to the McGraw-Hill Book Company. All other orders should
+be addressed to The MIT Press.
+Outside North America
+All orders should be addressed to The MIT Press or its local distributor.
+Copyright © 2001 by The Massachusetts Institute of Technology
+First edition 1990
+All rights reserved. No part of this book may be reproduced in any form or by any electronic
+or mechanical means (including photocopying, recording, or information storage and
+retrieval) without permission in writing from the publisher.
+This book was printed and bound in the United States of America.
+Library of Congress Cataloging-in-Publication Data
+Introduction to algorithms / Thomas H. Cormen ... [et al.].-2nd ed.
+p. cm.
+Includes bibliographical references and index.
+
+ISBN 0-262-03293-7 (hc.: alk. paper, MIT Press).-ISBN 0-07-013151-1 (McGraw-Hill)
+1. Computer programming. 2. Computer algorithms. I. Title: Algorithms. II. Cormen, Thomas
+H.
+QA76.6 I5858 2001
+
+

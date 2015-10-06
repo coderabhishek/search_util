@@ -1,0 +1,44 @@
+12
+
+color[p[z]] ← BLACK
+
+13
+
+color[p[p[z]]] ← RED
+
+14
+15
+
+RIGHT-ROTATE(T, p[p[z]])
+else (same as then clause
+with "right" and "left" exchanged)
+16 color[root[T]] ← BLACK
+
+▹ Case 3
+
+▹ Case 3
+
+▹ Case 3
+
+To understand how RB-INSERT-FIXUP works, we shall break our examination of the code
+into three major steps. First, we shall determine what violations of the red-black properties are
+introduced in RB-INSERT when the node z is inserted and colored red. Second, we shall
+examine the overall goal of the while loop in lines 1–15. Finally, we shall explore each of the
+three cases[1] into which the while loop is broken and see how they accomplish the goal.
+Figure 13.4 shows how RB-INSERT-FIXUP operates on a sample red-black tree.
+
+Figure 13.4: The operation of RB-INSERT-FIXUP. (a) A node z after insertion. Since z and
+its parent p[z] are both red, a violation of property 4 occurs. Since z's uncle y is red, case 1 in
+the code can be applied. Nodes are recolored and the pointer z is moved up the tree, resulting
+in the tree shown in (b). Once again, z and its parent are both red, but z's uncle y is black.
+Since z is the right child of p[z], case 2 can be applied. A left rotation is performed, and the
+tree that results is shown in (c). Now z is the left child of its parent, and case 3 can be applied.
+A right rotation yields the tree in (d), which is a legal red-black tree.
+Which of the red-black properties can be violated upon the call to RB-INSERT-FIXUP?
+Property 1 certainly continues to hold, as does property 3, since both children of the newly
+inserted red node are the sentinel nil[T]. Property 5, which says that the number of black
+nodes is the same on every path from a given node, is satisfied as well, because node z
+replaces the (black) sentinel, and node z is red with sentinel children. Thus, the only
+properties that might be violated are property 2, which requires the root to be black, and
+
+

@@ -1,0 +1,27 @@
+Given a set of points Q, prove that the pair of points farthest from each other must be vertices
+of CH(Q).
+
+Exercise 33.3-4
+For a given polygon P and a point q on its boundary, the shadow of q is the set of points r
+such that the segment is entirely on the boundary or in the interior of P.
+
+A polygon P is star-shaped if there exists a point p in the interior of P that is in the shadow of
+every point on the boundary of P. The set of all such points p is called the kernel of P. (See
+Figure 33.10.) Given an n-vertex, star-shaped polygon P specified by its vertices in
+counterclockwise order, show how to compute CH(P) in O(n) time.
+
+Figure 33.10: The definition of a star-shaped polygon, for use in Exercise 33.3-4. (a) A starshaped polygon. The segment from point p to any point q on the boundary intersects the
+boundary only at q. (b) A non-star-shaped polygon. The shaded region on the left is the
+shadow of q, and the shaded region on the right is the shadow of q′. Since these regions are
+disjoint, the kernel is empty.
+Exercise 33.3-5
+In the on-line convex-hull problem, we are given the set Q of n points one point at a time.
+After receiving each point, we are to compute the convex hull of the points seen so far.
+Obviously, we could run Graham's scan once for each point, with a total running time of O(n2
+lg n). Show how to solve the on-line convex-hull problem in a total of O(n2) time.
+
+Exercise 33.3-6: ⋆
+Show how to implement the incremental method for computing the convex hull of n points so
+that it runs in O(n lg n) time.
+
+

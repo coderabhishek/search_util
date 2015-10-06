@@ -1,0 +1,39 @@
+3. Select a small odd integer e that is relatively prime to φ(n), which, by equation
+(31.19), equals (p - 1)(q - 1).
+4. Compute d as the multiplicative inverse of e, modulo φ(n). (Corollary 31.26
+guarantees that d exists and is uniquely defined. We can use the technique of Section
+31.4 to compute d, given e and φ(n).)
+5. Publish the pair P = (e, n) as his RSA public key.
+6. Keep secret the pair S = (d, n) as his RSA secret key.
+For this scheme, the domain is the set Zn. The transformation of a message M associated
+with a public key P = (e, n) is
+(31.35)
+The transformation of a ciphertext C associated with a secret key S = (d, n) is
+(31.36)
+These equations apply to both encryption and signatures. To create a signature, the signer
+applies his secret key to the message to be signed, rather than to a ciphertext. To verify a
+signature, the public key of the signer is applied to it, rather than to a message to be
+encrypted.
+The public-key and secret-key operations can be implemented using the procedure
+MODULAR-EXPONENTIATION described in Section 31.6. To analyze the running time of
+these operations, assume that the public key (e, n) and secret key (d, n) satisfy lg e = O(1), lg
+d ≤ β, and lg n ≤ β. Then, applying a public key requires O(1) modular multiplications and
+uses O(β2) bit operations. Applying a secret key requires O(β) modular multiplications, using
+O(β3) bit operations.
+Theorem 31.36: (Correctness of RSA)
+The RSA equations (31.35) and (31.36) define inverse transformations of Zn satisfying
+equations (31.33) and (31.34).
+Proof From equations (31.35) and (31.36), we have that for any M
+P(S(M)) = S(P(M)) = Med (mod n).
+Since e and d are multiplicative inverses modulo φ(n) = (p - 1)(q - 1),
+ed = 1 + k(p - 1)(q - 1)
+for some integer k. But then, if M ≢ 0 (mod p), we have
+Med ≡ M (MP-1)k(q-1) (mod p)
+≡ M(1)k (q-1)
+(mod p) (by Theorem 31.31)
+≡M
+(mod p).
+
+Zn,
+
+

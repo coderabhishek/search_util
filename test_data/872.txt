@@ -1,0 +1,44 @@
+which is equivalent to the original clause .
+Each clause of the formula φ' has now been converted into a CNF formula , and thus φ' is
+equivalent to the CNF formula φ" consisting of the conjunction of the . Moreover, each
+clause of φ" has at most 3 literals.
+The third and final step of the reduction further transforms the formula so that each clause has
+exactly 3 distinct literals. The final 3-CNF formula φ"' is constructed from the clauses of the
+CNF formula φ". It also uses two auxiliary variables that we shall call p and q. For each
+clause Ci of φ", we include the following clauses in φ"':
+•
+•
+
+•
+
+If Ci has 3 distinct literals, then simply include Ci as a clause of φ"'.
+If Ci has 2 distinct literals, that is, if Ci = (l1 l2), where l1 and l2 are literals, then
+include (l1 l2 p) (l1 l2 ¬p) as clauses of φ"'. The literals p and ¬ p merely
+fulfill the syntactic requirement that there be exactly 3 distinct literals per clause: (l1
+l2 p) (l1 l2 ¬p) is equivalent to (l1 l2) whether p = 0 or p = 1.
+If Ci has just 1 distinct literal l, then include (l p q) (l p ¬q) (l ¬p
+q) (l ¬p ¬q) as clauses of φ"'. Note that every setting of p and q causes the
+conjunction of these four clauses to evaluate to l.
+
+We can see that the 3-CNF formula φ"' is satisfiable if and only if φ is satisfiable by
+inspecting each of the three steps. Like the reduction from CIRCUIT-SAT to SAT, the
+construction of φ' from φ in the first step preserves satisfiability. The second step produces a
+CNF formula φ" that is algebraically equivalent to φ'. The third step produces a 3-CNF
+formula φ"' that is effectively equivalent to φ", since any assignment to the variables p and q
+produces a formula that is algebraically equivalent to φ".
+We must also show that the reduction can be computed in polynomial time. Constructing φ'
+from φ introduces at most 1 variable and 1 clause per connective in φ. Constructing φ" from φ'
+can introduce at most 8 clauses into φ" for each clause from φ', since each clause of φ' has at
+most 3 variables, and the truth table for each clause has at most 23 = 8 rows. The construction
+of φ"' from φ" introduces at most 4 clauses into φ"' for each clause of φ". Thus, the size of the
+resulting formula φ"' is polynomial in the length of the original formula. Each of the
+constructions can easily be accomplished in polynomial time.
+
+Exercises 34.4-1
+Consider the straightforward (nonpolynomial-time) reduction in the proof of Theorem 34.9.
+Describe a circuit of size n that, when converted to a formula by this method, yields a formula
+whose size is exponential in n.
+
+Exercises 34.4-2
+
+

@@ -1,0 +1,43 @@
+Exercises 15.3-3
+Consider a variant of the matrix-chain multiplication problem in which the goal is to
+parenthesize the sequence of matrices so as to maximize, rather than minimize, the number of
+scalar multiplications. Does this problem exhibit optimal substructure?
+
+Exercises 15.3-4
+Describe how assembly-line scheduling has overlapping subproblems.
+
+Exercises 15.3-5
+As stated, in dynamic programming we first solve the subproblems and then choose which of
+them to use in an optimal solution to the problem. Professor Capulet claims that it is not
+always necessary to solve all the subproblems in order to find an optimal solution. She
+suggests that an optimal solution to the matrix-chain multiplication problem can be found by
+always choosing the matrix Ak at which to split the subproduct Ai Ai+1 Aj (by selecting k to
+minimize the quantity pi-1 pk pj) before solving the subproblems. Find an instance of the
+matrix-chain multiplication problem for which this greedy approach yields a suboptimal
+solution.
+
+[1]
+
+This is not a misspelling. The word really is memoization, not memorization. Memoization
+comes from memo, since the technique consists of recording a value so that we can look it up
+later.
+[2]
+
+We use the term "unweighted" to distinguish this problem from that of finding shortest
+paths with weighted edges, which we shall see in Chapters 24 and 25. We can use the breadthfirst search technique of Chapter 22 to solve the unweighted problem.
+[3]
+
+It may seem strange that dynamic programming relies on subproblems being both
+independent and overlapping. Although these requirements may sound contradictory, they
+describe two different notions, rather than two points on the same axis. Two subproblems of
+the same problem are independent if they do not share resources. Two subproblems are
+overlapping if they are really the same subproblem that occurs as a subproblem of different
+problems.
+
+[4]
+
+This approach presupposes that the set of all possible subproblem parameters is known and
+that the relation between table positions and subproblems is established. Another approach is
+to memoize by using hashing with the subproblem parameters as keys.
+
+

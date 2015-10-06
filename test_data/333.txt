@@ -1,0 +1,34 @@
+computed as the sum of the frequencies of x and y in line 7. The node z has x as its left child
+and y as its right child. (This order is arbitrary; switching the left and right child of any node
+yields a different code of the same cost.) After n - 1 mergers, the one node left in the queue—
+the root of the code tree—is returned in line 9.
+The analysis of the running time of Huffman's algorithm assumes that Q is implemented as a
+binary min-heap (see Chapter 6). For a set C of n characters, the initialization of Q in line 2
+can be performed in O (n) time using the BUILD-MIN-HEAP procedure in Section 6.3. The
+for loop in lines 3–8 is executed exactly n - 1 times, and since each heap operation requires
+time O (lg n), the loop contributes O (n lg n) to the running time. Thus, the total running time
+of HUFFMAN on a set of n characters is O (n lg n).
+Correctness of Huffman's algorithm
+To prove that the greedy algorithm HUFFMAN is correct, we show that the problem of
+determining an optimal prefix code exhibits the greedy-choice and optimal-substructure
+properties. The next lemma shows that the greedy-choice property holds.
+Lemma 16.2
+Let C be an alphabet in which each character c C has frequency f [c]. Let x and y be two
+characters in C having the lowest frequencies. Then there exists an optimal prefix code for C
+in which the codewords for x and y have the same length and differ only in the last bit.
+Proof The idea of the proof is to take the tree T representing an arbitrary optimal prefix code
+and modify it to make a tree representing another optimal prefix code such that the characters
+x and y appear as sibling leaves of maximum depth in the new tree. If we can do this, then
+their codewords will have the same length and differ only in the last bit.
+Let a and b be two characters that are sibling leaves of maximum depth in T. Without loss of
+generality, we assume that f[a] ≤ f[b] and f[x] ≤ f[y]. Since f[x] and f[y] are the two lowest leaf
+frequencies, in order, and f[a] and f[b] are two arbitrary frequencies, in order, we have f [x] ≤
+f[a] and f[y] ≤ f[b]. As shown in Figure 16.6, we exchange the positions in T of a and x to
+produce a tree T′, and then we exchange the positions in T′ of b and y to produce a tree T″. By
+equation (16.5), the difference in cost between T and T′ is
+
+Figure 16.6: An illustration of the key step in the proof of Lemma 16.2. In the optimal tree T,
+leaves a and b are two of the deepest leaves and are siblings. Leaves x and y are the two
+leaves that Huffman's algorithm merges together first; they appear in arbitrary positions in T .
+
+

@@ -1,0 +1,35 @@
+3
+4
+
+next[nil[L]] ← x
+prev[x] ← nil[L]
+
+Figure 10.4 shows the effects of LIST-INSER′ and LIST-DELET′ on a sample list.
+Sentinels rarely reduce the asymptotic time bounds of data structure operations, but they can
+reduce constant factors. The gain from using sentinels within loops is usually a matter of
+clarity of code rather than speed; the linked list code, for example, is simplified by the use of
+sentinels, but we save only O(1) time in the LIST-INSER′ and LIST-DELET′ procedures. In
+other situations, however, the use of sentinels helps to tighten the code in a loop, thus
+reducing the coefficient of, say, n or n2 in the running time.
+Sentinels should not be used indiscriminately. If there are many small lists, the extra storage
+used by their sentinels can represent significant wasted memory. In this book, we use
+sentinels only when they truly simplify the code.
+Exercises 10.2-1
+Can the dynamic-set operation INSERT be implemented on a singly linked list in O(1) time?
+How about DELETE?
+
+Exercises 10.2-2
+Implement a stack using a singly linked list L. The operations PUSH and POP should still
+take O(1) time.
+
+Exercises 10.2-3
+Implement a queue by a singly linked list L. The operations ENQUEUE and DEQUEUE
+should still take O(1) time.
+
+Exercises 10.2-4
+As written, each loop iteration in the LIST-SEARC′ procedure requires two tests: one for x ≠
+nil[L] and one for key[x] ≠ k. Show how to eliminate the test for x ≠ nil[L] in each iteration.
+
+Exercises 10.2-5
+
+

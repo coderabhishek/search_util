@@ -1,0 +1,40 @@
+The prefix function π for a pattern encapsulates knowledge about how the pattern matches
+against shifts of itself. This information can be used to avoid testing useless shifts in the naive
+pattern-matching algorithm or to avoid the precomputation of δ for a string-matching
+automaton.
+Consider the operation of the naive string matcher. Figure 32.10(a) shows a particular shift s
+of a template containing the pattern P = ababaca against a text T. For this example, q = 5 of
+the characters have matched successfully, but the 6th pattern character fails to match the
+corresponding text character. The information that q characters have matched successfully
+determines the corresponding text characters. Knowing these q text characters allows us to
+determine immediately that certain shifts are invalid. In the example of the figure, the shift s +
+1 is necessarily invalid, since the first pattern character (a) would be aligned with a text
+character that is known to match with the second pattern character (b). The shift s′ = s + 2
+shown in part (b) of the figure, however, aligns the first three pattern characters with three
+text characters that must necessarily match. In general, it is useful to know the answer to the
+following question:
+
+Figure 32.10: The prefix function π. (a) The pattern P = ababaca is aligned with a text T so
+that the first q = 5 characters match. Matching characters, shown shaded, are connected by
+vertical lines. (b) Using only our knowledge of the 5 matched characters, we can deduce that a
+shift of s + 1 is invalid, but that a shift of s′ = s + 2 is consistent with everything we know
+about the text and therefore is potentially valid. (c) The useful information for such
+deductions can be precomputed by comparing the pattern with itself. Here, we see that the
+longest prefix of P that is also a proper suffix of P5 is P3. This information is precomputed
+and represented in the array π, so that π[5] = 3. Given that q characters have matched
+successfully at shift s, the next potentially valid shift is at s′ = s + (q - π[q]).
+•
+
+Given that pattern characters P[1
+the least shift s′ > s such that
+(32.5)
+
+•
+
+where s′ + k = s + q?
+
+q] match text characters T[s + 1
+
+s + q], what is
+
+

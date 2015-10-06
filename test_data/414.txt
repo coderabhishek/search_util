@@ -1,0 +1,35 @@
+The actual cost of extracting the minimum node can be accounted for as follows. An O(D(n))
+contribution comes from there being at most D(n) children of the minimum node that are
+processed in FIB-HEAP-EXTRACT-MIN and from the work in lines 1-2 and 14-19 of
+CONSOLIDATE. It remains to analyze the contribution from the for loop of lines 3-13. The
+size of the root list upon calling CONSOLIDATE is at most D(n) + t(H) - 1, since it consists
+of the original t(H) root-list nodes, minus the extracted root node, plus the children of the
+extracted node, which number at most D(n). Every time through the while loop of lines 6-12,
+one of the roots is linked to another, and thus the total amount of work performed in the for
+loop is at most proportional to D(n) + t(H). Thus, the total actual work in extracting the
+minimum node is O(D(n) + t(H)).
+The potential before extracting the minimum node is t(H) + 2m(H), and the potential
+afterward is at most (D(n) + 1) + 2m(H), since at most D(n) + 1 roots remain and no nodes
+become marked during the operation. The amortized cost is thus at most
+O(D(n) + t(H)) + ((D(n) + 1) + 2 m(H)) - (t(H) + 2 m(H))
+= O(D(n)) + O(t(H)) - t(H)
+= O(D(n)),
+since we can scale up the units of potential to dominate the constant hidden in O(t(H).
+Intuitively, the cost of performing each link is paid for by the reduction in potential due to the
+link's reducing the number of roots by one. We shall see in Section 20.4 that D(n) = O(lg n),
+so that the amortized cost of extracting the minimum node is O(lg n).
+Exercises 20.2-1
+Show the Fibonacci heap that results from calling FIB-HEAP-EXTRACT-MIN on the
+Fibonacci heap shown in Figure 20.3(m).
+
+Exercises 20.2-2
+Prove that Lemma 19.1 holds for unordered binomial trees, but with property 4′ in place of
+property 4.
+
+Exercises 20.2-3
+Show that if only the mergeable-heap operations are supported, the maximum degree D(n) in
+an n-node Fibonacci heap is at most ⌊lg n⌋.
+
+Exercises 20.2-4
+
+

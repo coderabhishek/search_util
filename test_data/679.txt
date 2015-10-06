@@ -1,0 +1,48 @@
+algorithm in Section 29.3. Instead, we take an algebraic view. We first write the given linear
+program in slack form, which is a set of linear equalities. These linear equalities will express
+some of the variables, called "basic variables," in terms of other variables, called "nonbasic
+variables." Moving from one vertex to another will be accomplished by making a basic
+variable become nonbasic and making a nonbasic variable become basic. This operation is
+called a "pivot" and, viewed algebraically, is nothing more than a rewriting of the linear
+program in an equivalent slack form.
+The two-variable example described above was a particularly simple one. We shall need to
+address several more details in this chapter. These issues include identifying linear programs
+that have no solutions, linear programs that have no finite optimal solution, and linear
+programs for which the origin is not a feasible solution.
+[1]
+
+An intuitive definition of a convex region is that it fulfills the requirement that for any two
+points in the region, all points on a line segment between them are also in the region.
+Applications of linear programming
+Linear programming has a large number of applications. Any textbook on operations research
+is filled with examples of linear programming, and it is now a standard tool taught to students
+in most business schools. The election scenario is one typical example. Two more examples
+of linear programming are the following:
+•
+
+•
+
+An airline wishes to schedule its flight crews. The Federal Aviation Administration
+imposes many constraints, such as limiting the number of consecutive hours that each
+crew member can work and insisting that a particular crew work only on one model of
+aircraft during each month. The airline wants to schedule crews on all of its flights
+using as few crew members as possible.
+An oil company wants to decide where to drill for oil. Siting a drill at a particular
+location has an associated cost and, based on geological surveys, an expected payoff
+of some number of barrels of oil. The company has a limited budget for locating new
+drills and wants to maximize the amount of oil it expects to find, given this budget.
+
+Linear programs also are useful for modeling and solving graph and combinatorial problems,
+such as ones that appear in this textbook. We have already seen a special case of linear
+programming used to solve systems of difference constraints in Section 24.4. In Section 29.2,
+we shall study how to formulate several graph and network-flow problems as linear programs.
+In Section 35.4, we shall use linear programming as a tool to find an approximate solution to
+another graph problem.
+
+29.1 Standard and slack forms
+This section describes two formats, standard form and slack form, that will be useful in
+specifying and working with linear programs. In standard form, all the constraints are
+inequalities, whereas in slack form, the constraints are equalities.
+Standard form
+
+

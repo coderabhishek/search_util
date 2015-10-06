@@ -1,0 +1,38 @@
+Consider a binary search tree T whose keys are distinct. Show that if the right subtree of a
+node x in T is empty and x has a successor y, then y is the lowest ancestor of x whose left child
+is also an ancestor of x. (Recall that every node is its own ancestor.)
+
+Exercises 12.2-7
+An inorder tree walk of an n-node binary search tree can be implemented by finding the
+minimum element in the tree with TREE-MINIMUM and then making n-1 calls to TREESUCCESSOR. Prove that this algorithm runs in Θ(n) time.
+
+Exercises 12.2-8
+Prove that no matter what node we start at in a height-h binary search tree, k successive calls
+to TREE-SUCCESSOR take O(k + h) time.
+
+Exercises 12.2-9
+Let T be a binary search tree whose keys are distinct, let x be a leaf node, and let y be its
+parent. Show that key[y] is either the smallest key in T larger than key[x] or the largest key in
+T smaller than key[x].
+
+12.3 Insertion and deletion
+The operations of insertion and deletion cause the dynamic set represented by a binary search
+tree to change. The data structure must be modified to reflect this change, but in such a way
+that the binary-search-tree property continues to hold. As we shall see, modifying the tree to
+insert a new element is relatively straight-forward, but handling deletion is somewhat more
+intricate.
+Insertion
+To insert a new value v into a binary search tree T , we use the procedure TREE-INSERT.
+The procedure is passed a node z for which key[z] = v, left[z] = NIL, and right[z] = NIL. It
+modifies T and some of the fields of z in such a way that z is inserted into an appropriate
+position in the tree.
+TREE-INSERT(T, z)
+1 y ← NIL
+2 x ← root[T]
+3 while x ≠ NIL
+4
+do y ← x
+5
+if key[z] < key[x]
+
+

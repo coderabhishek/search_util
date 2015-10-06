@@ -1,0 +1,33 @@
+Like the dynamic-programming algorithm MATRIX-CHAIN-ORDER, the procedure
+MEMOIZED-MATRIX-CHAIN runs in O(n3) time. Each of Θ(n2) table entries is initialized
+once in line 4 of MEMOIZED-MATRIX-CHAIN. We can categorize the calls of LOOKUPCHAIN into two types:
+1. calls in which m[i, j] = ∞, so that lines 3–9 are executed, and
+2. calls in which m[i, j] < ∞, so that LOOKUP-CHAIN simply returns in line 2.
+There are Θ(n2) calls of the first type, one per table entry. All calls of the second type are
+made as recursive calls by calls of the first type. Whenever a given call of LOOKUP-CHAIN
+makes recursive calls, it makes O(n) of them. Therefore, there are O(n3) calls of the second
+type in all. Each call of the second type takes O(1) time, and each call of the first type takes
+O(n) time plus the time spent in its recursive calls. The total time, therefore, is O(n3).
+Memoization thus turns an Ω(2n)-time algorithm into an O(n3)-time algorithm.
+In summary, the matrix-chain multiplication problem can be solved by either a top-down,
+memoized algorithm or a bottom-up, dynamic-programming algorithm in O(n3) time. Both
+methods take advantage of the overlapping-subproblems property. There are only Θ(n2)
+different subproblems in total, and either of these methods computes the solution to each
+subproblem once. Without memoization, the natural recursive algorithm runs in exponential
+time, since solved subproblems are repeatedly solved.
+In general practice, if all subproblems must be solved at least once, a bottom-up dynamicprogramming algorithm usually outperforms a top-down memoized algorithm by a constant
+factor, because there is no overhead for recursion and less overhead for maintaining the table.
+Moreover, there are some problems for which the regular pattern of table accesses in the
+dynamic-programming algorithm can be exploited to reduce time or space requirements even
+further. Alternatively, if some subproblems in the subproblem space need not be solved at all,
+the memoized solution has the advantage of solving only those subproblems that are definitely
+required.
+Exercises 15.3-1
+Which is a more efficient way to determine the optimal number of multiplications in a matrixchain multiplication problem: enumerating all the ways of parenthesizing the product and
+computing the number of multiplications for each, or running RECURSIVE-MATRIXCHAIN? Justify your answer.
+
+Exercises 15.3-2
+Draw the recursion tree for the MERGE-SORT procedure from Section 2.3.1 on an array of
+16 elements. Explain why memoization is ineffective in speeding up a good divide-andconquer algorithm such as MERGE-SORT.
+
+

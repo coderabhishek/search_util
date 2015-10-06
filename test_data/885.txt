@@ -1,0 +1,47 @@
+Interpreting these numbers in base 10, therefore, no carries can occur from lower digits to
+higher digits.[9]
+The reduction can be performed in polynomial time. The set S contains 2n + 2k values, each
+of which has n + k digits, and the time to produce each digit is poly-nomial in n + k. The
+target t has n + k digits, and the reduction produces each in constant time.
+We now show that the 3-CNF formula φ is satisfiable if and only if there is a subset S S
+whose sum is t. First, suppose that φ has a satisfying assignment. For i = 1, 2,..., n, if xi = 1 in
+this assignment, then include vi in S'. Otherwise, include . In other words, we include in S'
+exactly the vi and values that correspond to literals with the value 1 in the satisfying
+assignment. Having included either vi or , but not both, for all i, and having put 0 in the
+digits labeled by variables in all sj and , we see that for each variable-labeled digit, the sum
+of the values of S' must be 1, which matches those digits of the target t. Because each clause is
+satisfied, there is some literal in the clause with the value 1. Therefore, each digit labeled by a
+clause has at least one 1 contributed to its sum by a vi or value in S'. In fact, 1, 2, or 3 literals
+may be 1 in each clause, and so each clause-labeled digit has a sum of 1, 2, or 3 from the vi
+and values in S'. (In Figure 34.19 for example, literals ¬x1, ¬x2, and x3 have the value 1 in a
+satisfying assignment. Each of clauses C1 and C4 contain exactly one of these literals, and so
+together
+, and v3 contribute 1 to the sum in the digits for C1 and C4. Clause C2 contains
+two of these literals, and
+, and v3 contribute 2 to the sum in the digit for C2. Clause C3
+contains all three of these literals, and
+, and v3 contribute 3 to the sum in the digit for C3.)
+We achieve the target of 4 in each digit labeled by clause Cj by including in S' the appropriate
+nonempty subset of slack variables {sj , }. (In Figure 34.19, S' includes
+and .)
+Since we have matched the target in all digits of the sum, and no carries can occur, the values
+of S' sum to t.x
+Now, suppose that there is a subset S' S that sums to t. The subset S' must include exactly
+one of vi and for each i = 1, 2,..., n, for otherwise the digits labeled by variables would not
+S', and we set xi = 0. We claim that every
+sum to 1. If vi S', we set xi = 1. Otherwise,
+clause Cj, for j = 1, 2,..., k, is satisfied by this assignment. To prove this claim, note that to
+achieve a sum of 4 in the digit labeled by Cj, the subset S' must include at least one vi or
+value that has a 1 in the digit labeled by Cj, since the contributions of the slack variables sj
+and together sum to at most 3. If S' includes a vi that has a 1 in that position, then the literal
+xi appears in clause Cj. Since we have set xi = 1 when vi S', clause Cj is satisfied. If S'
+includes a that has a 1 in that position, then the literal ¬xi appears in Cj. Since we have set xi
+= 0 when
+S', clause Cj is again satisfied. Thus, all clauses of φ are satisfied, which
+completes the proof.
+
+Exercises 34.5-1
+The subgraph-isomorphism problem takes two graphs G1 and G2 and asks whether G1 is
+isomorphic to a subgraph of G2. Show that the subgraph-isomorphism problem is NPcomplete.
+
+

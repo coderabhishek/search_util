@@ -1,0 +1,35 @@
+Chapter 25), is a dynamic-programming algorithm. The following lemma states the optimalsubstructure property of shortest paths more precisely.
+Lemma 24.1: (Subpaths of shortest paths are shortest paths)
+Given a weighted, directed graph G = (V, E) with weight function w : E → R, let p = v1,
+v2,..., vk be a shortest path from vertex v1 to vertex vk and, for any i and j such that 1 ≤ i ≤ j ≤
+k, let pij = vi, vi+1,..., vj be the subpath of p from vertex vi to vertex vj . Then, pij is a shortest
+path from vi to vj.
+Proof If we decompose path p into
+, then we have that w(p) = w(p1i) + w(pij) +
+. Then,
+w(pjk). Now, assume that there is a path from vi to vj with weight
+is a path from v1 to vk whose weight
+is less than w(p), which
+contradicts the assumption that p is a shortest path from v1 to vk.
+Negative-weight edges
+In some instances of the single-source shortest-paths problem, there may be edges whose
+weights are negative. If the graph G = (V, E) contains no negative-weight cycles reachable
+from the source s, then for all v V , the shortest-path weight δ(s, v) remains well defined,
+even if it has a negative value. If there is a negative-weight cycle reachable from s, however,
+shortest-path weights are not well defined. No path from s to a vertex on the cycle can be a
+shortest path-a lesser-weight path can always be found that follows the proposed "shortest"
+path and then traverses the negative-weight cycle. If there is a negative-weight cycle on some
+path from s to v, we define δ(s, v) = -∞.
+Figure 24.1 illustrates the effect of negative weights and negative-weight cycles on shortestpath weights. Because there is only one path from s to a (the path s, a ), δ(s, a) = w(s, a) =
+3. Similarly, there is only one path from s to b, and so δ(s, b) = w(s, a) + w(a, b) = 3 + (-4) = 1. There are infinitely many paths from s to c: s, c , s, c, d, c , s, c, d, c, d, c , and so
+on. Because the cycle c, d, c has weight 6 + (-3) = 3 > 0, the shortest path from s to c is
+s, c , with weight δ(s, c) = 5. Similarly, the shortest path from s to d is s, c, d , with
+weight δ(s, d) = w(s, c) + w(c, d) = 11. Analogously, there are infinitely many paths from s to
+e: s, e , s, e, f, e , s, e, f, e, f, e , and so on. Since the cycle e, f, e has weight 3 + (6) = -3 < 0, however, there is no shortest path from s to e. By traversing the negative-weight
+cycle e, f, e arbitrarily many times, we can find paths from s to e with arbitrarily large
+negative weights, and so δ(s, e) = -∞. Similarly, δ(s, f) = -∞. Because g is reachable from f ,
+we can also find paths with arbitrarily large negative weights from s to g, and δ(s, g) = -∞.
+Vertices h, i, and j also form a negative-weight cycle. They are not reachable from s, however,
+and so δ(s, h) = δ(s, i) = δ(s, j) = ∞.
+
+

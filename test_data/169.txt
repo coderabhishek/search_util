@@ -1,0 +1,30 @@
+Suppose that an algorithm uses only comparisons to find the ith smallest element in a set of n
+elements. Show that it can also find the i - 1 smaller elements and the n - i larger elements
+without performing any additional comparisons.
+
+Exercises 9.3-5
+Suppose that you have a "black-box" worst-case linear-time median subroutine. Give a
+simple, linear-time algorithm that solves the selection problem for an arbitrary order statistic.
+
+Exercises 9.3-6
+The kth quantiles of an n-element set are the k - 1 order statistics that divide the sorted set into
+k equal-sized sets (to within 1). Give an O(n lg k)-time algorithm to list the kth quantiles of a
+set.
+
+Exercises 9.3-7
+Describe an O(n)-time algorithm that, given a set S of n distinct numbers and a positive
+integer k ≤ n, determines the k numbers in S that are closest to the median of S.
+
+Exercises 9.3-8
+Let X[1 .. n] and Y [1 .. n] be two arrays, each containing n numbers already in sorted order.
+Give an O(lg n)-time algorithm to find the median of all 2n elements in arrays X and Y.
+
+Exercises 9.3-9
+Professor Olay is consulting for an oil company, which is planning a large pipeline running
+east to west through an oil field of n wells. From each well, a spur pipeline is to be connected
+directly to the main pipeline along a shortest path (either north or south), as shown in Figure
+9.2. Given x- and y-coordinates of the wells, how should the professor pick the optimal
+location of the main pipeline (the one that minimizes the total length of the spurs)? Show that
+the optimal location can be determined in linear time.
+
+

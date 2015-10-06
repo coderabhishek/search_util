@@ -1,0 +1,47 @@
+Professor McGee has devised a new data structure based on Fibonacci heaps. A McGee heap
+has the same structure as a Fibonacci heap and supports the mergeable-heap operations. The
+implementations of the operations are the same as for Fibonacci heaps, except that insertion
+and union perform consolidation as their last step. What are the worst-case running times of
+operations on McGee heaps? How novel is the professor's data structure?
+
+Exercises 20.2-5
+Argue that when the only operations on keys are comparing two keys (as is the case for all the
+implementations in this chapter), not all of the mergeable-heap operations can run in O(1)
+amortized time.
+
+20.3 Decreasing a key and deleting a node
+In this section, we show how to decrease the key of a node in a Fibonacci heap in O(1)
+amortized time and how to delete any node from an n-node Fibonacci heap in O(D(n))
+amortized time. These operations do not preserve the property that all trees in the Fibonacci
+heap are unordered binomial trees. They are close enough, however, that we can bound the
+maximum degree D(n) by O(lg n). Proving this bound, which we shall do in Section 20.4, will
+imply that FIB-HEAP-EXTRACT-MIN and FIB-HEAP-DELETE run in O(lg n) amortized
+time.
+Decreasing a key
+In the following pseudocode for the operation FIB-HEAP-DECREASE-KEY, we assume as
+before that removing a node from a linked list does not change any of the structural fields in
+the removed node.
+FIB-HEAP-DECREASE-KEY(H, x, k)
+1 if k > key[x]
+2
+then error "new key is greater than current key"
+3 key[x] ← k
+4 y ← p[x]
+5 if y ≠ NIL and key[x] < key[y]
+6
+then CUT(H, x, y)
+7
+CASCADING-CUT(H, y)
+8 if key[x] < key[min[H]]
+9
+then min[H] ← x
+CUT(H, x, y)
+1 remove x from the child list of y, decrementing degree[y]
+2 add x to the root list of H
+3 p[x] ← NIL
+4 mark[x] ← FALSE
+CASCADING-CUT(H, y)
+1 z ← p[y]
+2 if z ≠ NIL
+
+

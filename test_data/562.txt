@@ -1,0 +1,41 @@
+The work done within the while loop can be made efficient if we efficiently manage the data
+structure used to implement the network G = (V, E). Let us assume that we keep a data
+structure corresponding to a directed graph G' = (V, E'), where E' = {(u, v) : (u, v) E or (v,
+u) E}. Edges in the network G are also edges in G', and it is therefore a simple matter to
+maintain capacities and flows in this data structure. Given a flow f on G, the edges in the
+residual network Gf consist of all edges (u, v) of G' such that c(u, v)- f[u, v] ≠ 0. The time to
+find a path in a residual network is therefore O(V + E') = O(E) if we use either depth-first
+search or breadth-first search. Each iteration of the while loop thus takes O(E) time, making
+the total running time of FORD-FULKERSON O(E | f*|).
+When the capacities are integral and the optimal flow value | f*| is small, the running time of
+the Ford-Fulkerson algorithm is good. Figure 26.6(a) shows an example of what can happen
+on a simple flow network for which | f*| is large. A maximum flow in this network has value
+2,000,000: 1,000,000 units of flow traverse the path s → u → t, and another 1,000,000 units
+traverse the path s → v → t. If the first augmenting path found by FORD-FULKERSON is s
+→ u → v → t, shown in Figure 26.6(a), the flow has value 1 after the first iteration. The
+resulting residual network is shown in Figure 26.6(b). If the second iteration finds the
+augmenting path s → v → u → t, as shown in Figure 26.6(b), the flow then has value 2.
+Figure 26.6(c) shows the resulting residual network. We can continue, choosing the
+augmenting path s → u → v → t in the odd-numbered iterations and the augmenting path s →
+v → u → t in the even-numbered iterations. We would perform a total of 2,000,000
+augmentations, increasing the flow value by only 1 unit in each.
+
+Figure 26.6: (a) A flow network for which FORD-FULKERSON can take Θ(E |f*|) time,
+where f* is a maximum flow, shown here with |f*| = 2,000,000. An augmenting path with
+residual capacity 1 is shown. (b) The resulting residual network. Another augmenting path
+with residual capacity 1 is shown. (c) The resulting residual network.
+The Edmonds-Karp algorithm
+The bound on FORD-FULKERSON can be improved if we implement the computation of the
+augmenting path p in line 4 with a breadth-first search, that is, if the augmenting path is a
+shortest path from s to t in the residual network, where each edge has unit distance (weight).
+We call the Ford-Fulkerson method so implemented the Edmonds-Karp algorithm. We now
+prove that the Edmonds-Karp algorithm runs in O(V E2) time.
+The analysis depends on the distances to vertices in the residual network Gf. The following
+lemma uses the notation δf (u, v) for the shortest-path distance from u to v in Gf, where each
+edge has unit distance.
+Lemma 26.8
+If the Edmonds-Karp algorithm is run on a flow network G = (V, E) with source s and sink t,
+then for all vertices v V - {s, t}, the shortest-path distance δf (s, v) in the residual network Gf
+increases monotonically with each flow augmentation.
+
+

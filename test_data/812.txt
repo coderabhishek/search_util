@@ -1,0 +1,25 @@
+Exercises 32.4-2
+Give an upper bound on the size of π*[q] as a function of q. Give an example to show that
+your bound is tight.
+
+Exercises 32.4-3
+Explain how to determine the occurrences of pattern P in the text T by examining the π
+function for the string PT (the string of length m + n that is the concatenation of P and T).
+
+Exercises 32.4-4
+Show how to improve KMP-MATCHER by replacing the occurrence of π in line 7 (but not
+line 12) by π′, where π′ is defined recursively for q = 1, 2, . . . , m by the equation
+
+Explain why the modified algorithm is correct, and explain in what sense this modification
+constitutes an improvement.
+
+Exercises 32.4-5
+Give a linear-time algorithm to determine if a text T is a cyclic rotation of another string T′.
+For example, arc and car are cyclic rotations of each other.
+
+Exercises 32.4-6:
+Give an efficient algorithm for computing the transition function δ for the string-matching
+automaton corresponding to a given pattern P. Your algorithm should run in time O(m |Σ|).
+(Hint: Prove that δ(q, a) = δ(π[q], a) if q = m or P[q + 1] ≠ a.)
+
+

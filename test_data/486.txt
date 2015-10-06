@@ -1,0 +1,35 @@
+total time for all calls to EXTRACT-MIN is O(V lg V). The for loop in lines 8-11 is executed
+O(E) times altogether, since the sum of the lengths of all adjacency lists is 2 |E|. Within the
+for loop, the test for membership in Q in line 9 can be implemented in constant time by
+keeping a bit for each vertex that tells whether or not it is in Q, and updating the bit when the
+vertex is removed from Q. The assignment in line 11 involves an implicit DECREASE-KEY
+operation on the min-heap, which can be implemented in a binary min-heap in O(lg V) time.
+Thus, the total time for Prim's algorithm is O(V lg V + E lg V) = O(E lg V), which is
+asymptotically the same as for our implementation of Kruskal's algorithm.
+The asymptotic running time of Prim's algorithm can be improved, however, by using
+Fibonacci heaps. Chapter 20 shows that if |V| elements are organized into a Fibonacci heap,
+we can perform an EXTRACT-MIN operation in O(lg V) amortized time and a DECREASEKEY operation (to implement line 11) in O(1) amortized time. Therefore, if we use a
+Fibonacci heap to implement the min-priority queue Q, the running time of Prim's algorithm
+improves to O(E + V lg V).
+Exercises 23.2-1
+Kruskal's algorithm can return different spanning trees for the same input graph G, depending
+on how ties are broken when the edges are sorted into order. Show that for each minimum
+spanning tree T of G, there is a way to sort the edges of G in Kruskal's algorithm so that the
+algorithm returns T.
+
+Exercises 23.2-2
+Suppose that the graph G = (V, E) is represented as an adjacency matrix. Give a simple
+implementation of Prim's algorithm for this case that runs in O(V2) time.
+
+Exercises 23.2-3
+Is the Fibonacci-heap implementation of Prim's algorithm asymptotically faster than the
+binary-heap implementation for a sparse graph G = (V, E), where |E| = Θ(V)? What about for
+a dense graph, where |E| = Θ(V2)? How must |E| and |V| be related for the Fibonacci-heap
+implementation to be asymptotically faster than the binary-heap implementation?
+
+Exercises 23.2-4
+Suppose that all edge weights in a graph are integers in the range from 1 to |V|. How fast can
+you make Kruskal's algorithm run? What if the edge weights are integers in the range from 1
+to W for some constant W?
+
+

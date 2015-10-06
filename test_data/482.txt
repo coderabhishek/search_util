@@ -1,0 +1,43 @@
+Given a graph G and a minimum spanning tree T, suppose that we decrease the weight of one
+of the edges in T. Show that T is still a minimum spanning tree for G. More formally, let T be
+a minimum spanning tree for G with edge weights given by weight function w. Choose one
+edge (x, y) T and a positive number k, and define the weight function w′ by
+
+Show that T is a minimum spanning tree for G with edge weights given by w′.
+
+Exercises 23.1-11:
+Given a graph G and a minimum spanning tree T, suppose that we decrease the weight of one
+of the edges not in T. Give an algorithm for finding the minimum spanning tree in the
+modified graph.
+
+23.2 The algorithms of Kruskal and Prim
+The two minimum-spanning-tree algorithms described in this section are elaborations of the
+generic algorithm. They each use a specific rule to determine a safe edge in line 3 of
+GENERIC-MST. In Kruskal's algorithm, the set A is a forest. The safe edge added to A is
+always a least-weight edge in the graph that connects two distinct components. In Prim's
+algorithm, the set A forms a single tree. The safe edge added to A is always a least-weight
+edge connecting the tree to a vertex not in the tree.
+Kruskal's algorithm
+Kruskal's algorithm is based directly on the generic minimum-spanning-tree algorithm given
+in Section 23.1. It finds a safe edge to add to the growing forest by finding, of all the edges
+that connect any two trees in the forest, an edge (u, v) of least weight. Let C1 and C2 denote
+the two trees that are connected by (u, v). Since (u, v) must be a light edge connecting C1 to
+some other tree, Corollary 23.2 implies that (u, v) is a safe edge for C1. Kruskal's algorithm is
+a greedy algorithm, because at each step it adds to the forest an edge of least possible weight.
+Our implementation of Kruskal's algorithm is like the algorithm to compute connected
+components from Section 21.1. It uses a disjoint-set data structure to maintain several disjoint
+sets of elements. Each set contains the vertices in a tree of the current forest. The operation
+FIND-SET(u) returns a representative element from the set that contains u. Thus, we can
+determine whether two vertices u and v belong to the same tree by testing whether FINDSET(u) equals FIND-SET(v). The combining of trees is accomplished by the UNION
+procedure.
+MST-KRUSKAL(G, w)
+1 A ← Ø
+2 for each vertex v
+V[G]
+3
+do MAKE-SET(v)
+4 sort the edges of E into nondecreasing order by weight w
+5 for each edge (u, v)
+E, taken in nondecreasing order by weight
+
+

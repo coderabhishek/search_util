@@ -1,0 +1,32 @@
+f(n) = O(g(n)) ≈ a ≤ b,
+f(n) = Ω(g(n)) ≈ a ≥ b,
+f(n) = Θ(g(n)) ≈ a = b,
+f(n) = o(g(n)) ≈ a < b,
+f(n) = ω(g(n)) ≈ a > b.
+We say that f(n) is asymptotically smaller than g(n) if f(n) = o(g(n)), and f(n) is
+asymptotically larger than g(n) if f(n) = ω(g(n)).
+One property of real numbers, however, does not carry over to asymptotic notation:
+•
+
+Trichotomy: For any two real numbers a and b, exactly one of the following must
+hold: a < b, a = b, or a > b.
+
+Although any two real numbers can be compared, not all functions are asymptotically
+comparable. That is, for two functions f(n) and g(n), it may be the case that neither f(n) =
+O(g(n)) nor f(n) = Ω(g(n)) holds. For example, the functions n and n1+sin n cannot be compared
+using asymptotic notation, since the value of the exponent in n1+sin n oscillates between 0 and
+2, taking on all values in between.
+Exercises 3.1-1
+Let f(n) and g(n) be asymptotically nonnegative functions. Using the basic definition of Θnotation, prove that max(f(n), g(n)) = Θ(f(n) + g(n)).
+
+Exercises 3.1-2
+Show that for any real constants a and b, where b > 0,
+(3.2)
+Exercises 3.1-3
+Explain why the statement, "The running time of algorithm A is at least O(n2)," is
+meaningless.
+
+Exercises 3.1-4
+Is 2n+1 = O(2n)? Is 22n = O(2n)?
+
+

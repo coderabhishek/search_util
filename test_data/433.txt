@@ -1,0 +1,39 @@
+Lemma 21.3
+For any integer j ≥ 1, we have A2(j) = 2j+1(j + 1) - 1.
+Proof We first use induction on i to show that
+. For the inductive step, assume that
+that
+
+. For the base case, we have
+. Then
+. Finally, we note
+
+.
+
+Now we can see how quickly Ak(j) grows by simply examining Ak (1) for levels k = 0, 1, 2, 3,
+4. From the definition of A0(k) and the above lemmas, we have A0(1) = 1 + 1 = 2, A1(1) = 2 · 1
++ 1 = 3, and A2(1) = 21+1 · (1 + 1) - 1 = 7. We also have
+A3(1) =
+= A2(A2(1))
+= A2(7)
+= 28 · 8 - 1
+= 211 - 1
+= 2047
+and
+A4(1) =
+= A3(A3(1))
+= A3(2047)
+=
+A2(2047)
+= 12048· 2048 - 1
+> 22048
+= (24)512
+= 16512
+1080,
+which is the estimated number of atoms in the observable universe.
+We define the inverse of the function Ak (n), for integer n ≥ 0, by
+α(n) = min {k : Ak(1) = n} .
+In words, α(n) is the lowest level k for which Ak(1) is at least n. From the above values of
+Ak(1), we see that
+
+

@@ -1,0 +1,36 @@
+Figure 4.2: A recursion tree for the recurrence T(n) = T (n/3) + T (2n/3) + cn.
+(Again, we omit floor and ceiling functions for simplicity.) As before, we let c represent the
+constant factor in the O(n) term. When we add the values across the levels of the recursion
+tree, we get a value of cn for every level. The longest path from the root to a leaf is n →
+(2/3)n → (2/3)2n → ··· → 1. Since (2/3)kn = 1 when k = log3/2 n, the height of the tree is log3/2
+n.
+Intuitively, we expect the solution to the recurrence to be at most the number of levels times
+the cost of each level, or O(cn log3/2 n) = O(n lg n). The total cost is evenly distributed
+throughout the levels of the recursion tree. There is a complication here: we have yet to
+consider the cost of the leaves. If this recursion tree were a complete binary tree of height
+log3/2 n, there would be
+leaves. Since the cost of each leaf is a constant, the total
+cost of all leaves would then be
+, which is ω(n lg n). This recursion tree is not a
+complete binary tree, however, and so it has fewer than
+leaves. Moreover, as we go down
+from the root, more and more internal nodes are absent. Consequently, not all levels
+contribute a cost of exactly cn; levels toward the bottom contribute less. We could work out
+an accurate accounting of all costs, but remember that we are just trying to come up with a
+guess to use in the substitution method. Let us tolerate the sloppiness and attempt to show that
+a guess of O(n lg n) for the upper bound is correct.
+Indeed, we can use the substitution method to verify that O(n lg n) is an upper bound for the
+solution to the recurrence. We show that T (n) ≤ dn lg n, where d is a suitable positive
+constant. We have
+T(n) ≤ T(n/3) + T(2n/3) + cn
+≤ d(n/3)lg(n/3) + d(2n/3)lg(2n/3) + cn
+= (d(n/3)lgn - d(n/3)lg 3) + (d(2n/3) lg n - d(2n/3)lg(3/2)) + cn
+= dn lg n - d((n/3) lg 3 + (2n/3) lg(3/2)) + cn
+= dn lg n - d((n/3) lg 3 + (2n/3) lg 3 - (2n/3)lg 2) + cn
+= dn lg n - dn(lg 3 - 2/3) + cn
+≤ dn lg n,
+as long as d ≥ c/(lg 3 - (2/3)). Thus, we did not have to perform a more accurate accounting of
+costs in the recursion tree.
+Exercises 4.2-1
+
+

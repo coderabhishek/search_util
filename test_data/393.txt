@@ -1,0 +1,31 @@
+As shown in Figure 19.3(b), each binomial tree within a binomial heap is stored in the leftchild, right-sibling representation of Section 10.4. Each node has a key field and any other
+satellite information required by the application. In addition, each node x contains pointers
+p[x] to its parent, child[x] to its leftmost child, and sibling[x] to the sibling of x immediately to
+its right. If node x is a root, then p[x] = NIL. If node x has no children, then child[x] = NIL,
+and if x is the rightmost child of its parent, then sibling[x] = NIL. Each node x also contains
+the field degree[x], which is the number of children of x.
+As Figure 19.3 also shows, the roots of the binomial trees within a binomial heap are
+organized in a linked list, which we refer to as the root list. The degrees of the roots strictly
+increase as we traverse the root list. By the second binomial-heap property, in an n-node
+binomial heap the degrees of the roots are a subset of {0, 1, ..., ⌊lg n⌋}. The sibling field has a
+different meaning for roots than for nonroots. If x is a root, then sibling[x] points to the next
+root in the root list. (As usual, sibling[x] = NIL if x is the last root in the root list.)
+A given binomial heap H is accessed by the field head[H], which is simply a pointer to the
+first root in the root list of H . If binomial heap H has no elements, then head[H] = NIL.
+Exercises 19.1-1
+Suppose that x is a node in a binomial tree within a binomial heap, and assume that sibling[x]
+≠ NIL. If x is not a root, how does degree[sibling[x]] compare to degree[x]? How about if x is
+a root?
+
+Exercises 19.1-2
+If x is a nonroot node in a binomial tree within a binomial heap, how does degree[x] compare
+to degree[p[x]]?
+
+Exercises 19.1-3
+Suppose we label the nodes of binomial tree Bk in binary by a postorder walk, as in Figure
+19.4. Consider a node x labeled l at depth i, and let j = k - i. Show that x has j 1's in its binary
+representation. How many binary k-strings are there that contain exactly j 1's? Show that the
+degree of x is equal to the number of 1's to the right of the rightmost 0 in the binary
+representation of l.
+
+

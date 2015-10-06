@@ -1,0 +1,29 @@
+Problems 12-3: Average node depth in a randomly built binary search tree
+In this problem, we prove that the average depth of a node in a randomly built binary search
+tree with n nodes is O(lg n). Although this result is weaker than that of Theorem 12.4, the
+technique we shall use reveals a surprising similarity between the building of a binary search
+tree and the running of RANDOMIZED-QUICKSORT from Section 7.3.
+We define the total path length P(T) of a binary tree T as the sum, over all nodes x in T , of
+the depth of node x, which we denote by d(x, T).
+a. Argue that the average depth of a node in T is
+
+Thus, we wish to show that the expected value of P(T) is O(n lg n).
+b. Let TL and TR denote the left and right subtrees of tree T, respectively. Argue that if T
+has n nodes, then
+P(T) = P(TL) + P(TR) + n - 1.
+c. Let P(n) denote the average total path length of a randomly built binary search tree
+with n nodes. Show that
+
+d. Show that P(n) can be rewritten as
+
+e. Recalling the alternative analysis of the randomized version of quicksort given in
+Problem 7-2, conclude that P(n) = O(n lg n).
+At each recursive invocation of quicksort, we choose a random pivot element to partition the
+set of elements being sorted. Each node of a binary search tree partitions the set of elements
+that fall into the subtree rooted at that node.
+f. Describe an implementation of quicksort in which the comparisons to sort a set of
+elements are exactly the same as the comparisons to insert the elements into a binary
+search tree. (The order in which comparisons are made may differ, but the same
+comparisons must be made.)
+
+

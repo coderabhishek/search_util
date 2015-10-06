@@ -1,0 +1,38 @@
+consisting only of white vertices:
+. By the white-path theorem, all vertices in C
+and C′ become descendants of x in the depth-first tree. By Corollary 22.8, f[x] = f(C) > f(C′).
+If instead we have d(C) > d(C′), let y be the first vertex discovered in C′. At time d[y], all
+vertices in C′ are white and there is a path in G from y to each vertex in C′ consisting only of
+white vertices. By the white-path theorem, all vertices in C′ become descendants of y in the
+depth-first tree, and by Corollary 22.8, f[y] = f(C′). At time d[y], all vertices in C are white.
+Since there is an edge (u, v) from C to C′, Lemma 22.13 implies that there cannot be a path
+from C′ to C. Hence, no vertex in C is reachable from y. At time f[y], therefore, all vertices in
+C are still white. Thus, for any vertex w C, we have f[w] > f[y], which implies that f(C) >
+f(C′).
+
+The following corollary tells us that each edge in GT that goes between different strongly
+connected components goes from a component with an earlier finishing time (in the first
+depth-first search) to a component with a later finishing time.
+Corollary 22.15
+Let C and C′ be distinct strongly connected components in directed graph G = (V, E). Suppose
+that there is an edge (u, v) ET, where u C and v C′. Then f(C) < f(C′).
+Proof Since (u, v) ET, we have (v, u) E. Since the strongly connected components of G
+and GT are the same, Lemma 22.14 implies that f(C) < f(C′).
+
+Corollary 22.15 provides the key to understanding why the STRONGLY-CONNECTEDCOMPONENTS procedure works. Let us examine what happens when we perform the
+second depth-first search, which is on GT. We start with the strongly connected component C
+whose finishing time f(C) is maximum. The search starts from some vertex x C, and it visits
+all vertices in C. By Corollary 22.15, there are no edges in GT from C to any other strongly
+connected component, and so the search from x will not visit vertices in any other component.
+Thus, the tree rooted at x contains exactly the vertices of C. Having completed visiting all
+vertices in C, the search in line 3 selects as a root a vertex from some other strongly connected
+component C′ whose finishing time f(C′) is maximum over all components other than C.
+Again, the search will visit all vertices in C′, but by Corollary 22.15, the only edges in GT
+from C′ to any other component must be to C, which we have already visited. In general,
+when the depth-first search of GT in line 3 visits any strongly connected component, any
+edges out of that component must be to components that were already visited. Each depth-first
+tree, therefore, will be exactly one strongly connected component. The following theorem
+formalizes this argument.
+Theorem 22.16
+
+

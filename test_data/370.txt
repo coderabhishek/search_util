@@ -1,0 +1,45 @@
+This part returns to the examination of data structures that support operations on dynamic sets
+but at a more advanced level than Part III. Two of the chapters, for example, make extensive
+use of the amortized analysis techniques we saw in Chapter 17.
+Chapter 18 presents B-trees, which are balanced search trees specifically designed to be
+stored on magnetic disks. Because magnetic disks operate much more slowly than randomaccess memory, we measure the performance of B-trees not only by how much computing
+time the dynamic-set operations consume but also by how many disk accesses are performed.
+For each B-tree operation, the number of disk accesses increases with the height of the B-tree,
+which is kept low by the B-tree operations.
+Chapters 19 and 20 give implementations of mergeable heaps, which support the operations
+INSERT, MINIMUM, EXTRACT-MIN, and UNION.[1] The UNION operation unites, or
+merges, two heaps. The data structures in these chapters also support the operations DELETE
+and DECREASE-KEY.
+Binomial heaps, which appear in Chapter 19, support each of these operations in O(lg n)
+worst-case time, where n is the total number of elements in the input heap (or in the two input
+heaps together in the case of UNION). When the UNION operation must be supported,
+binomial heaps are superior to the binary heaps introduced in Chapter 6, because it takes Θ(n)
+time to unite two binary heaps in the worst case.
+Fibonacci heaps, in Chapter 20, improve upon binomial heaps, at least in a theoretical sense.
+We use amortized time bounds to measure the performance of Fibonacci heaps. The
+operations INSERT, MINIMUM, and UNION take only O(1) actual and amortized time on
+Fibonacci heaps, and the operations EXTRACT-MIN and DELETE take O(lg n) amortized
+time. The most significant advantage of Fibonacci heaps, however, is that DECREASE-KEY
+takes only O(1) amortized time. The low amortized time of the DECREASE-KEY operation
+is why Fibonacci heaps are key components of some of the asymptotically fastest algorithms
+to date for graph problems.
+Finally, Chapter 21 presents data structures for disjoint sets. We have a universe of n elements
+that are grouped into dynamic sets. Initially, each element belongs to its own singleton set.
+The operation UNION unites two sets, and the query FIND-SET identifies the set that a given
+element is in at the moment. By representing each set by a simple rooted tree, we obtain
+surprisingly fast operations: a sequence of m operations runs in O(m α(n)) time, where α(n) is
+an incredibly slowly growing function—α(n) is at most 4 in any conceivable application. The
+amortized analysis that proves this time bound is as complex as the data structure is simple.
+The topics covered in this part are by no means the only examples of "advanced" data
+structures. Other advanced data structures include the following:
+•
+
+Dynamic trees, introduced by Sleator and Tarjan [281] and discussed by Tarjan [292],
+maintain a forest of disjoint rooted trees. Each edge in each tree has a real-valued cost.
+Dynamic trees support queries to find parents, roots, edge costs, and the minimum
+edge cost on a path from a node up to a root. Trees may be manipulated by cutting
+edges, updating all edge costs on a path from a node up to a root, linking a root into
+another tree, and making a node the root of the tree it appears in. One implementation
+of dynamic trees gives an O(lg n) amortized time bound for each operation; a more
+
+

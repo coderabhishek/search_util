@@ -1,0 +1,29 @@
+Theorem 22.10
+In a depth-first search of an undirected graph G, every edge of G is either a tree edge or a
+back edge.
+Proof Let (u, v) be an arbitrary edge of G, and suppose without loss of generality that d[u] <
+d[v]. Then, v must be discovered and finished before we finish u (while u is gray), since v is
+on u's adjacency list. If the edge (u, v) is explored first in the direction from u to v, then v is
+undiscovered (white) until that time, for otherwise we would have explored this edge already
+in the direction from v to u. Thus, (u, v) becomes a tree edge. If (u, v) is explored first in the
+direction from v to u, then (u, v) is a back edge, since u is still gray at the time the edge is first
+explored.
+
+We shall see several applications of these theorems in the following sections.
+Exercises 22.3-1
+Make a 3-by-3 chart with row and column labels WHITE, GRAY, and BLACK. In each cell
+(i, j), indicate whether, at any point during a depth-first search of a directed graph, there can
+be an edge from a vertex of color i to a vertex of color j. For each possible edge, indicate what
+edge types it can be. Make a second such chart for depth-first search of an undirected graph.
+
+Exercises 22.3-2
+Show how depth-first search works on the graph of Figure 22.6. Assume that the for loop of
+lines 5-7 of the DFS procedure considers the vertices in alphabetical order, and assume that
+each adjacency list is ordered alphabetically. Show the discovery and finishing times for each
+vertex, and show the classification of each edge.
+
+Figure 22.6: A directed graph for use in Exercises 22.3-2 and 22.5-2.
+Exercises 22.3-3
+Show the parenthesis structure of the depth-first search shown in Figure 22.4.
+
+

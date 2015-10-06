@@ -1,0 +1,57 @@
+in which a2 runs first, followed by a1. Then c2 = 5, c1 = 8, and the average completion time
+is (5 + 8)/2 = 6.5.
+a. Give an algorithm that schedules the tasks so as to minimize the
+average completion time. Each task must run non-preemptively, that
+is, once task ai is started, it must run continuously for pi units of time.
+Prove that your algorithm minimizes the average completion time,
+and state the running time of your algorithm.
+b. Suppose now that the tasks are not all available at once. That is,
+each task has a release time ri before which it is not available to be
+processed. Suppose also that we allow preemption, so that a task
+can be suspended and restarted at a later time. For example, a task
+ai with processing time pi = 6 may start running at time 1 and be
+preempted at time 4. It can then resume at time 10 but be preempted
+at time 11 and finally resume at time 13 and complete at time 15.
+Task ai has run for a total of 6 time units, but its running time has
+been divided into three pieces. We say that the completion time of ai
+is 15. Give an algorithm that schedules the tasks so as to minimize
+the average completion time in this new scenario. Prove that your
+algorithm minimizes the average completion time, and state the
+running time of your algorithm.
+
+Problems 16-3: Acyclic subgraphs
+a. Let G = (V, E) be an undirected graph. Using the definition of a
+matroid, show that (E,ℓ) is a matroid, where A ∈ℓ if and only if A is
+an acyclic subset of E.
+b. The incidence matrix for an undirected graph G = (V, E) is a |V | ×
+|E| matrix M such that Mve = 1 if edge e is incident on vertex v, and
+Mve = 0 otherwise. Argue that a set of columns of M is linearly
+independent over the field of integers modulo 2 if and only if the
+corresponding set of edges is acyclic. Then, use the result of
+
+c.
+
+Exercise 16.4-2 to provide an alternate proof that (E,ℓ) of part (a) is
+matroid.
+Suppose that a nonnegative weight w(e) is associated with each
+edge in an undirected graph G = (V, E). Give an efficient algorithm to
+find an acyclic subset of E of maximum total weight.
+
+d. Let G(V, E) be an arbitrary directed graph, and let (E,ℓ) be defined so
+that A ∈ℓ if and only if A does not contain any directed cycles. Give
+an example of a directed graph G such that the associated system
+(E,ℓ) is not a matroid. Specify which defining condition for a matroid
+fails to hold.
+e. The incidence matrix for a directed graph G = (V, E) is a |V |×|E|
+matrix M such that Mve = -1 if edge e leaves vertex v, Mve = 1 if edge
+e enters vertex v, and Mve = 0 otherwise. Argue that if a set of
+columns of M is linearly independent, then the corresponding set of
+edges does not contain a directed cycle.
+f. Exercise 16.4-2 tells us that the set of linearly independent sets of
+columns of any matrix M forms a matroid. Explain carefully why the
+results of parts (d) and (e) are not contradictory. How can there fail to
+be a perfect correspondence between the notion of a set of edges
+being acyclic and the notion of the associated set of columns of the
+incidence matrix being linearly independent?
+
+

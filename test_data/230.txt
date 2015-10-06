@@ -1,0 +1,29 @@
+Theorem 12.3
+The dynamic-set operations INSERT and DELETE can be made to run in O(h) time on a
+binary search tree of height h.
+
+Exercises 12.3-1
+Give a recursive version of the TREE-INSERT procedure.
+
+Exercises 12.3-2
+Suppose that a binary search tree is constructed by repeatedly inserting distinct values into the
+tree. Argue that the number of nodes examined in searching for a value in the tree is one plus
+the number of nodes examined when the value was first inserted into the tree.
+
+Exercises 12.3-3
+We can sort a given set of n numbers by first building a binary search tree containing these
+numbers (using TREE-INSERT repeatedly to insert the numbers one by one) and then
+printing the numbers by an inorder tree walk. What are the worst-case and best-case running
+times for this sorting algorithm?
+
+Exercises 12.3-4
+Suppose that another data structure contains a pointer to a node y in a binary search tree, and
+suppose that y's predecessor z is deleted from the tree by the procedure TREE-DELETE.
+What problem can arise? How can TREE-DELETE be rewritten to solve this problem?
+
+Exercises 12.3-5
+Is the operation of deletion "commutative" in the sense that deleting x and then y from a
+binary search tree leaves the same tree as deleting y and then x? Argue why it is or give a
+counterexample.
+
+

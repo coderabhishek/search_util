@@ -1,0 +1,29 @@
+Problems 27-2: Batcher's odd-even merging network
+In Section 27.4, we saw how to construct a merging network based on bitonic sorting. In this
+problem, we shall construct an odd-even merging network. We assume that n is an exact
+power of 2, and we wish to merge the sorted sequence of elements on lines a1, a2,..., an
+with those on lines an+1, an+2,..., a2n . If n = 1, we put a comparator between lines a1 and a2.
+Otherwise, we recursively construct two odd-even merging networks that operate in parallel.
+The first merges the sequence on lines a1, a3,..., an-1 with the sequence on lines an+1,
+an+3,..., a2n-1 (the odd elements). The second merges a2, a4,..., an with an+2, an+4,...,
+a2n (the even elements). To combine the two sorted subsequences, we put a comparator
+between a2i and a2i + 1 for i = 1, 2,..., n - 1.
+a. Draw a 2n-input merging network for n = 4.
+b. Professor Corrigan suggests that to combine the two sorted subsequences produced by
+the recursive merging, instead of putting a comparator between a2i and a2i+1 for i = 1,
+2,..., n - 1, one should put a comparator between a2i-1 and a2i for i = 1, 2,..., n. Draw
+such a 2n-input network for n = 4, and give a counterexample to show that the
+professor is mistaken in thinking that the network produced is a merging network.
+Show that the 2n-input merging network from part (a) works properly on your
+example.
+c. Use the zero-one principle to prove that any 2n-input odd-even merging network is
+indeed a merging network.
+d. What is the depth of a 2n-input odd-even merging network? What is its size?
+
+Problems 27-3: Permutation networks
+A permutation network on n inputs and n outputs has switches that allow it to connect its
+inputs to its outputs according to any of the n! possible permutations. Figure 27.14(a) shows
+the 2-input, 2-output permutation network P2, which consists of a single switch that can be set
+either to feed its inputs straight through to its outputs or to cross them.
+
+

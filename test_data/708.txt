@@ -1,0 +1,30 @@
+(29.95)
+
+Proof By Corollary 29.9, if we can find feasible solutions and that satisfy equation (29.95),
+then and must be optimal primal and dual solutions. We shall now show that the solutions
+and described in the statement of the theorem satisfy equation (29.95).
+Suppose that we run SIMPLEX on a primal linear program, as given in lines (29.16)–(29.18).
+The algorithm proceeds through a series of slack forms until it terminates with a final slack
+form with objective function
+(29.96)
+Since SIMPLEX terminated with a solution, by the condition in line 2 we know that
+(29.97)
+If we define
+(29.98)
+we can rewrite equation (29.96) as
+(29.99)
+
+For the basic solution associated with this final slack form,
+for all j N, and z = v′.
+Since all slack forms are equivalent, if we evaluate the original objective function on , we
+must obtain the same objective value, i.e.,
+(29.100)
+
+(29.101)
+
+We shall now show that , defined by equation (29.94), is feasible for the dual linear program
+and that its objective value
+equals
+. Equation (29.100) says that the first and last
+
+

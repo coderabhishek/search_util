@@ -1,0 +1,21 @@
+Let us define an essential term to be one of the eight terms appearing on the right-hand side
+of one of the equations (28.9)–(28.12). We have now used 4 products to compute the two
+submatrices s and t whose essential terms are af, bh, ce, and dg. Note that P1 computes the
+essential term af, P2 computes the essential term bh, P3 computes the essential term ce, and P4
+computes the essential term dg. Thus, it remains for us to compute the remaining two
+submatrices r and u, whose essential terms are ae, bg, cf, and dh, without using more than 3
+additional products. We now try the innovation P5 in order to compute two essential terms at
+once:
+P5 = A5B5
+= (a + d) · (e + h)
+= ae + ah + de + dh
+
+In addition to computing both of the essential terms ae and dh, P5 computes the inessential
+terms ah and de, which need to be canceled somehow. We can use P4 and P2 to cancel them,
+but two other inessential terms then appear:
+
+By adding an additional product
+
+however, we obtain
+
+

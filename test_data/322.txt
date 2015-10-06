@@ -1,0 +1,27 @@
+1 m ← i + 1
+2 while m < j and sm < fi ▹ Find the first activity in Sij.
+3
+do m ← m + 1
+4 if m < j
+5
+then return {am}
+RECURSIVE-ACTIVITY-SELECTOR(s, f, m, j)
+6
+else return Ø
+
+Figure 16.1 shows the operation of the algorithm. In a given recursive call RECURSIVEACTIVITY-SELECTOR(s, f, i, j), the while loop of lines 2–3 looks for the first activity in Sij.
+The loop examines ai+1, ai+2, ..., aj-1, until it finds the first activity am that is compatible with
+ai; such an activity has sm ≥ fi. If the loop terminates because it finds such an activity, the
+procedure returns in line 5 the union of {am} and the maximum-size subset of Smj returned by
+the recursive call RECURSIVE-ACTIVITY-SELECTOR(s, f, m, j). Alternatively, the loop
+may terminate because m ≥ j, in which case we have examined all activities whose finish
+times are before that of aj without finding one that is compatible with ai. In this case, Sij = Ø,
+and so the procedure returns Ø in line 6.
+
+Figure 16.1: The operation of RECURSIVE-ACTIVITY-SELECTOR on the 11 activities
+given earlier. Activities considered in each recursive call appear between horizontal lines. The
+fictitious activity a0 finishes at time 0, and in the initial call, RECURSIVE-ACTIVITYSELECTOR(s, f, 0, 12), activity a1 is selected. In each recursive call, the activities that have
+already been selected are shaded, and the activity shown in white is being considered. If the
+starting time of an activity occurs before the finish time of the most recently added activity
+
+

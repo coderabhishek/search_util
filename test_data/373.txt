@@ -1,0 +1,40 @@
+Figure 18.2: (a) A typical disk drive. It is composed of several platters that rotate around a
+spindle. Each platter is read and written with a head at the end of an arm. The arms are ganged
+together so that they move their heads in unison. Here, the arms rotate around a common
+pivot axis. A track is the surface that passes beneath the read/write head when it is stationary.
+(b) A cylinder consists of a set of covertical tracks.
+Although disks are cheaper and have higher capacity than main memory, they are much,
+much slower because they have moving parts. There are two components to the mechanical
+motion: platter rotation and arm movement. As of this writing, commodity disks rotate at
+speeds of 5400–15,000 revolutions per minute (RPM), with 7200 RPM being the most
+common. Although 7200 RPM may seem fast, one rotation takes 8.33 milliseconds, which is
+almost 5 orders of magnitude longer than the 100 nanosecond access times commonly found
+for silicon memory. In other words, if we have to wait a full rotation for a particular item to
+come under the read/write head, we could access main memory almost 100,000 times during
+that span! On average we have to wait for only half a rotation, but still, the difference in
+access times for silicon memory vs. disks is enormous. Moving the arms also takes some
+time. As of this writing, average access times for commodity disks are in the range of 3 to 9
+milliseconds.
+In order to amortize the time spent waiting for mechanical movements, disks access not just
+one item but several at a time. Information is divided into a number of equal-sized pages of
+bits that appear consecutively within cylinders, and each disk read or write is of one or more
+entire pages. For a typical disk, a page might be 211 to 214 bytes in length. Once the read/write
+head is positioned correctly and the disk has rotated to the beginning of the desired page,
+reading or writing a magnetic disk is entirely electronic (aside from the rotation of the disk),
+and large amounts of data can be read or written quickly.
+Often, it takes more time to access a page of information and read it from a disk than it takes
+for the computer to examine all the information read. For this reason, in this chapter we shall
+look separately at the two principal components of the running time:
+•
+•
+
+the number of disk accesses, and
+the CPU (computing) time.
+
+The number of disk accesses is measured in terms of the number of pages of information that
+need to be read from or written to the disk. We note that disk access time is not constant—it
+depends on the distance between the current track and the desired track and also on the initial
+rotational state of the disk. We shall nonetheless use the number of pages read or written as a
+first-order approximation of the total time spent accessing the disk.
+
+

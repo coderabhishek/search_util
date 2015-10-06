@@ -1,0 +1,55 @@
+•
+
+The prune-and-search method is similar to the worst-case linear-time median
+algorithm of Section 9.3. It finds the upper portion (or "upper chain") of the convex
+hull by repeatedly throwing out a constant fraction of the remaining points until only
+the upper chain of the convex hull remains. It then does the same for the lower chain.
+This method is asymptotically the fastest: if the convex hull contains h vertices, it runs
+in only O(n lg h) time.
+
+Computing the convex hull of a set of points is an interesting problem in its own right.
+Moreover, algorithms for some other computational-geometry problems start by computing a
+convex hull. Consider, for example, the two-dimensional farthest-pair problem: we are given
+a set of n points in the plane and wish to find the two points whose distance from each other is
+maximum. As Exercise 33.3-3 asks you to prove, these two points must be vertices of the
+convex hull. Although we won't prove it here, the farthest pair of vertices of an n-vertex
+convex polygon can be found in O(n) time. Thus, by computing the convex hull of the n input
+points in O(n lg n) time and then finding the farthest pair of the resulting convex-polygon
+vertices, we can find the farthest pair of points in any set of n points in O(n lg n) time.
+Graham's scan
+Graham's scan solves the convex-hull problem by maintaining a stack S of candidate points.
+Each point of the input set Q is pushed once onto the stack, and the points that are not vertices
+of CH(Q) are eventually popped from the stack. When the algorithm terminates, stack S
+contains exactly the vertices of CH(Q), in counterclockwise order of their appearance on the
+boundary.
+The procedure GRAHAM-SCAN takes as input a set Q of points, where |Q| ≥ 3. It calls the
+functions TOP(S), which returns the point on top of stack S without changing S, and NEXTTO-TOP(S), which returns the point one entry below the top of stack S without changing S.
+As we shall prove in a moment, the stack S returned by GRAHAM-SCAN contains, from
+bottom to top, exactly the vertices of CH(Q) in counterclockwise order.
+GRAHAM-SCAN(Q)
+1 let p0 be the point in Q with the minimum y-coordinate,
+or the leftmost such point in case of a tie
+2 let p1, p2, ..., pm be the remaining points in Q,
+sorted by polar angle in counterclockwise order around p0
+(if more than one point has the same angle, remove all but
+the one that is farthest from p0)
+3 PUSH(p0, S)
+4 PUSH(p1, S)
+5 PUSH(p2, S)
+6 for i ← 3 to m
+7
+do while the angle formed by points NEXT-TO-TOP(S), TOP(S),
+and pi makes a nonleft turn
+8
+do POP(S)
+9
+PUSH(pi, S)
+10 return S
+
+Figure 33.7 illustrates the progress of GRAHAM-SCAN. Line 1 chooses point p0 as the point
+with the lowest y-coordinate, picking the leftmost such point in case of a tie. Since there is no
+point in Q that is below p0 and any other points with the same y-coordinate are to its right, p0
+is a vertex of CH(Q). Line 2 sorts the remaining points of Q by polar angle relative to p0,
+using the same method-comparing cross products-as in Exercise 33.1-3. If two or more points
+
+

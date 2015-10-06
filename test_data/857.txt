@@ -1,0 +1,37 @@
+Intuitively, a problem Q can be reduced to another problem Q′ if any instance of Q can be
+"easily rephrased" as an instance of Q′, the solution to which provides a solution to the
+instance of Q. For example, the problem of solving linear equations in an indeterminate x
+reduces to the problem of solving quadratic equations. Given an instance ax + b = 0, we
+transform it to 0x2 + ax + b = 0, whose solution provides a solution to ax + b = 0. Thus, if a
+problem Q reduces to another problem Q′, then Q is, in a sense, "no harder to solve" than Q′.
+Returning to our formal-language framework for decision problems, we say that a language L1
+is polynomial-time reducible to a language L2, written L1 ≤P L2, if there exists a polynomialtime computable function f : {0, 1}* → {0,1}* such that for all x {0, 1}*,
+(34.1)
+We call the function f the reduction function, and a polynomial-time algorithm F that
+computes f is called a reduction algorithm.
+Figure 34.4 illustrates the idea of a polynomial-time reduction from a language L1 to another
+language L2. Each language is a subset of {0, 1}*. The reduction function f provides a
+polynomial-time mapping such that if x L1, then f(x) L2. Moreover, if x ∉ L1, then f (x) ∉
+L2. Thus, the reduction function maps any instance x of the decision problem represented by
+the language L1 to an instance f (x) of the problem represented by L2. Providing an answer to
+whether f(x) L2 directly provides the answer to whether x L1.
+
+Figure 34.4: An illustration of a polynomial-time reduction from a language L1 to a language
+L2 via a reduction function f. For any input x {0, 1}*, the question of whether x L1 has
+the same answer as the question of whether f(x) L2.
+Polynomial-time reductions give us a powerful tool for proving that various languages belong
+to P.
+Lemma 34.3
+If L1, L2
+
+{0,1}* are languages such that L1 ≤P L2, then L2
+
+P implies L1 P.
+
+Proof Let A2 be a polynomial-time algorithm that decides L2, and let F be a polynomial-time
+reduction algorithm that computes the reduction function f. We shall construct a polynomialtime algorithm A1 that decides L1.
+Figure 34.5 illustrates the construction of A1. For a given input x {0, 1}*, the algorithm A1
+uses F to transform x into f (x), and then it uses A2 to test whether f(x) L2. The output of A2 is
+the value provided as the output from A1.
+
+

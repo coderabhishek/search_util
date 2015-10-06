@@ -1,0 +1,19 @@
+We can obtain u in a similar manner from P5 by using P1 and P3 to move the inessential terms
+of P5 in a different direction:
+
+By subtracting an additional product
+
+we now obtain
+
+The 7 submatrix products P1, P2, . . . , P7 can thus be used to compute the product C = AB,
+which completes the description of Strassen's method.
+Discussion
+From a practical point of view, Strassen's algorithm is often not the method of choice for
+matrix multiplication, for four reasons:
+1. The constant factor hidden in the running time of Strassen's algorithm is larger than
+the constant factor in the naive Θ(n3) method.
+2. When the matrices are sparse, methods tailored for sparse matrices are faster.
+3. Strassen's algorithm is not quite as numerically stable as the naive method.
+4. The submatrices formed at the levels of recursion consume space.
+
+

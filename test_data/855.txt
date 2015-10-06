@@ -1,0 +1,31 @@
+Show that if HAM-CYCLE P, then the problem of listing the vertices of a hamiltonian
+cycle, in order, is polynomial-time solvable.
+
+Exercises 34.2-4
+Prove that the class NP of languages is closed under union, intersection, concatenation, and
+Kleene star. Discuss the closure of NP under complement.
+
+Exercises 34.2-5
+Show that any language in NP can be decided by an algorithm running in time
+constant k.
+
+for some
+
+Exercises 34.2-6
+A hamiltonian path in a graph is a simple path that visits every vertex exactly once. Show
+that the language HAM-PATH = { G, u, v : there is a hamiltonian path from u to v in graph
+G} belongs to NP.
+
+Exercises 34.2-7
+Show that the hamiltonian-path problem can be solved in polynomial time on directed acyclic
+graphs. Give an efficient algorithm for the problem.
+
+Exercises 34.2-8
+Let φ be a boolean formula constructed from the boolean input variables x1, x2, ..., xk,
+negations (¬), AND's ( ), OR's ( ), and parentheses. The formula φ is a tautology if it
+evaluates to 1 for every assignment of 1 and 0 to the input variables.Define TAUTOLOGY as
+the language of boolean formulas that are tautologies. Show that TAUTOLOGY co-NP.
+
+Exercises 34.2-9
+
+

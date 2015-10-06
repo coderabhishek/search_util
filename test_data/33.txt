@@ -1,0 +1,44 @@
+When an algorithm contains a recursive call to itself, its running time can often be described
+by a recurrence equation or recurrence, which describes the overall running time on a
+problem of size n in terms of the running time on smaller inputs. We can then use
+mathematical tools to solve the recurrence and provide bounds on the performance of the
+algorithm.
+A recurrence for the running time of a divide-and-conquer algorithm is based on the three
+steps of the basic paradigm. As before, we let T (n) be the running time on a problem of size
+n. If the problem size is small enough, say n ≤ c for some constant c, the straightforward
+solution takes constant time, which we write as Θ(1). Suppose that our division of the
+problem yields a subproblems, each of which is 1/b the size of the original. (For merge sort,
+both a and b are 2, but we shall see many divide-and-conquer algorithms in which a ≠ b.) If
+we take D(n) time to divide the problem into subproblems and C(n) time to combine the
+solutions to the subproblems into the solution to the original problem, we get the recurrence
+
+In Chapter 4, we shall see how to solve common recurrences of this form.
+Analysis of merge sort
+Although the pseudocode for MERGE-SORT works correctly when the number of elements is
+not even, our recurrence-based analysis is simplified if we assume that the original problem
+size is a power of 2. Each divide step then yields two subsequences of size exactly n/2. In
+Chapter 4, we shall see that this assumption does not affect the order of growth of the solution
+to the recurrence.
+We reason as follows to set up the recurrence for T (n), the worst-case running time of merge
+sort on n numbers. Merge sort on just one element takes constant time. When we have n > 1
+elements, we break down the running time as follows.
+•
+•
+•
+
+Divide: The divide step just computes the middle of the subarray, which takes
+constant time. Thus, D(n) = Θ(1).
+Conquer: We recursively solve two subproblems, each of size n/2, which contributes
+2T (n/2) to the running time.
+Combine: We have already noted that the MERGE procedure on an n-element
+subarray takes time Θ(n), so C(n) = Θ(n).
+
+When we add the functions D(n) and C(n) for the merge sort analysis, we are adding a
+function that is Θ(n) and a function that is Θ(1). This sum is a linear function of n, that is,
+Θ(n). Adding it to the 2T (n/2) term from the "conquer" step gives the recurrence for the
+worst-case running time T (n) of merge sort:
+(2.1)
+In Chapter 4, we shall see the "master theorem," which we can use to show that T (n) is Θ(n lg
+n), where lg n stands for log2 n. Because the logarithm function grows more slowly than any
+
+

@@ -1,0 +1,39 @@
+a. Give an efficient algorithm to determine whether or not there exists a sequence of
+currencies
+such that
+R[i1, i2] · R[i2, i3] R[ik-1, ik] · R[ik, i1] > 1.
+Analyze the running time of your algorithm.
+b. Give an efficient algorithm to print out such a sequence if one exists. Analyze the
+running time of your algorithm.
+
+Problems 24-4: Gabow's scaling algorithm for single-source shortest paths
+A scaling algorithm solves a problem by initially considering only the highest-order bit of
+each relevant input value (such as an edge weight). It then refines the initial solution by
+looking at the two highest-order bits. It progressively looks at more and more high-order bits,
+refining the solution each time, until all bits have been considered and the correct solution has
+been computed.
+In this problem, we examine an algorithm for computing the shortest paths from a single
+source by scaling edge weights. We are given a directed graph G = (V, E) with nonnegative
+integer edge weights w. Let W = max(u, v) E {w(u, v)}. Our goal is to develop an algorithm that
+runs in O(E lg W) time. We assume that all vertices are reachable from the source.
+The algorithm uncovers the bits in the binary representation of the edge weights one at a time,
+from the most significant bit to the least significant bit. Specifically, let k = ⌈lg(W + 1)⌉ be
+the number of bits in the binary representation of W , and for i = 1, 2,...,k, let wi (u, v) = ⌊w(u,
+v)/2k-i⌋. That is, wi(u, v) is the "scaled-down" version of w(u, v) given by the i most significant
+bits of w(u, v). (Thus, wk(u, v) = w(u, v) for all (u, v) E.) For example, if k = 5 and w(u, v) =
+25, which has the binary representation 11001 , then w3(u, v) = 110 = 6. As another
+example with k = 5, if w(u, v) = 00100 = 4, then w3(u, v) = 001 = 1. Let us define δi (u,
+v) as the shortest-path weight from vertex u to vertex v using weight function wi. Thus, δk(u,
+v) = δ(u, v) for all u, v V. For a given source vertex s, the scaling algorithm first computes
+the shortest-path weights δ1(s, v) for all v V, then computes δ2(s, v) for all v V, and so on,
+until it computes δk(s, v) for all v V. We assume throughout that |E| ≥ |V| - 1, and we shall
+see that computing δi from δi-1 takes O(E) time, so that the entire algorithm takes O(k E) =
+O(E lg W) time.
+a. Suppose that for all vertices v V, we have δ(s, v) ≤ |E|. Show that we can compute
+δ(s, v) for all v V in O(E) time.
+b. Show that we can compute δ1(s, v) for all v V in O(E) time.
+Let us now focus on computing δi from δi-1.
+c. Prove that for i = 2, 3,..., k, we have either wi(u, v) = 2wi-1(u, v) or wi(u, v) = 2wi-1(u, v)
++ 1. Then, prove that
+
+

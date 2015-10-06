@@ -1,0 +1,31 @@
+d[v] = δ(s, v)
+≤ δ(s, u) + w(u, v) (by the triangle inequality)
+= d[u] + w(u, v),
+Conversely, suppose that graph G contains a negative-weight cycle that is reachable from the
+source s; let this cycle be c = v0, v1,..., vk , where v0 = vk. Then,
+(24.1)
+
+Assume for the purpose of contradiction that the Bellman-Ford algorithm returns TRUE.
+Thus, d[vi] ≤ d[vi-1] + w(vi-1, vi) for i = 1, 2,..., k. Summing the inequalities around cycle c
+gives us
+
+Since v0 = vk, each vertex in c appears exactly once in each of the summations
+, and so
+
+and
+
+Moreover, by Corollary 24.3, d[vi] is finite for i = 1, 2,..., k. Thus,
+
+which contradicts inequality (24.1). We conclude that the Bellman-Ford algorithm returns
+TRUE if graph G contains no negative-weight cycles reachable from the source, and FALSE
+otherwise.
+
+Exercises 24.1-1
+Run the Bellman-Ford algorithm on the directed graph of Figure 24.4, using vertex z as the
+source. In each pass, relax edges in the same order as in the figure, and show the d and π
+values after each pass. Now, change the weight of edge (z, x) to 4 and run the algorithm again,
+using s as the source.
+
+Exercise 24.1-2
+
+

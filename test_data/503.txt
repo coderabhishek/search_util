@@ -1,0 +1,38 @@
+reachable from s, so that there is a shortest path p = v0, v1,..., vk , where v0 = s and vk = v.
+Because we process the vertices in topologically sorted order, the edges on p are relaxed in
+the order (v0, v1), (v1, v2),..., (vk-1, vk). The path-relaxation property implies that d[vi] = δ(s, vi)
+at termination for i = 0, 1,..., k. Finally, by the predecessor-subgraph property, Gπ is a
+shortest-paths tree.
+
+An interesting application of this algorithm arises in determining critical paths in PERT
+chart[2] analysis. Edges represent jobs to be performed, and edge weights represent the times
+required to perform particular jobs. If edge (u, v) enters vertex v and edge (v, x) leaves v, then
+job (u, v) must be performed prior to job (v, x). A path through this dag represents a sequence
+of jobs that must be performed in a particular order. A critical path is a longest path through
+the dag, corresponding to the longest time to perform an ordered sequence of jobs. The weight
+of a critical path is a lower bound on the total time to perform all the jobs. We can find a
+critical path by either
+•
+•
+
+negating the edge weights and running DAG-SHORTEST-PATHS, or
+running DAG-SHORTEST-PATHS, with the modification that we replace "∞" by "∞" in line 2 of INITIALIZE-SINGLE-SOURCE and ">" by "<" in the RELAX
+procedure.
+
+Exercises 24.2-1
+Run DAG-SHORTEST-PATHS on the directed graph of Figure 24.5, using vertex r as the
+source.
+
+Exercise 24.2-2
+Suppose we change line 3 of DAG-SHORTEST-PATHS to read
+3 for the first |V| - 1 vertices, taken in topologically sorted order
+Show that the procedure would remain correct.
+
+Exercise 24.2-3
+The PERT chart formulation given above is somewhat unnatural. It would be more natural for
+vertices to represent jobs and edges to represent sequencing constraints; that is, edge (u, v)
+would indicate that job u must be performed before job v. Weights would then be assigned to
+vertices, not edges. Modify the DAG-SHORTEST-PATHS procedure so that it finds a longest
+path in a directed acyclic graph with weighted vertices in linear time.
+
+

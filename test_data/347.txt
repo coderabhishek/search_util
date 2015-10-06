@@ -1,0 +1,48 @@
+Problems 16-4: Scheduling variations
+Consider the following algorithm for the problem from Section 16.5 of scheduling unit-time
+tasks with deadlines and penalties. Let all n time slots be initially empty, where time slot i
+is the unit-length slot of time that finishes at time i. We consider the tasks in order of
+monotonically decreasing penalty. When considering task aj , if there exists a time slot at
+or before aj 's deadline dj that is still empty, assign aj to the latest such slot, filling it. If
+there is no such slot, assign task aj to the latest of the as yet unfilled slots.
+a. Argue that this algorithm always gives an optimal answer.
+b. Use the fast disjoint-set forest presented in Section 21.3 to implement
+the algorithm efficiently. Assume that the set of input tasks has
+already been sorted into monotonically decreasing order by penalty.
+Analyze the running time of your implementation.
+
+Chapter notes
+Much more material on greedy algorithms and matroids can be found in Lawler [196]
+and Papadimitriou and Steiglitz [237].
+The greedy algorithm first appeared in the combinatorial optimization literature in a
+1971 article by Edmonds [85], though the theory of matroids dates back to a 1935
+article by Whitney [314].
+Our proof of the correctness of the greedy algorithm for the activity-selection problem is
+based on that of Gavril [112]. The task-scheduling problem is studied in Lawler [196],
+Horowitz and Sahni [157], and Brassard and Bratley [47].
+Huffman codes were invented in 1952 [162]; Lelewer and Hirschberg [200] surveys
+data-compression techniques known as of 1987.
+An extension of matroid theory to greedoid theory was pioneered by Korte and Lovász
+[189, 190, 191, 192], who greatly generalize the theory presented here.
+
+Chapter 17: Amortized Analysis
+Overview
+In an amortized analysis, the time required to perform a sequence of data-structure operations
+is averaged over all the operations performed. Amortized analysis can be used to show that
+the average cost of an operation is small, if one averages over a sequence of operations, even
+though a single operation within the sequence might be expensive. Amortized analysis differs
+from average-case analysis in that probability is not involved; an amortized analysis
+guarantees the average performance of each operation in the worst case.
+The first three sections of this chapter cover the three most common techniques used in
+amortized analysis. Section 17.1 starts with aggregate analysis, in which we determine an
+upper bound T (n) on the total cost of a sequence of n operations. The average cost per
+operation is then T (n)/n. We take the average cost as the amortized cost of each operation, so
+that all operations have the same amortized cost.
+Section 17.2 covers the accounting method, in which we determine an amortized cost of each
+operation. When there is more than one type of operation, each type of operation may have a
+different amortized cost. The accounting method overcharges some operations early in the
+sequence, storing the overcharge as "prepaid credit" on specific objects in the data structure.
+The credit is used later in the sequence to pay for operations that are charged less than they
+actually cost.
+
+

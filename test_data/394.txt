@@ -1,0 +1,40 @@
+Figure 19.4: The binomial tree B4 with nodes labeled in binary by a postorder walk.
+
+19.2 Operations on binomial heaps
+In this section, we show how to perform operations on binomial heaps in the time bounds
+shown in Figure 19.1. We shall only show the upper bounds; the lower bounds are left as
+Exercise 19.2-10.
+Creating a new binomial heap
+To make an empty binomial heap, the MAKE-BINOMIAL-HEAP procedure simply allocates
+and returns an object H , where head[H ] = NIL. The running time is Θ(1).
+Finding the minimum key
+The procedure BINOMIAL-HEAP-MINIMUM returns a pointer to the node with the
+minimum key in an n-node binomial heap H. This implementation assumes that there are no
+keys with value ∞. (See Exercise 19.2-5.)
+BINOMIAL-HEAP-MINIMUM(H)
+1 y ← NIL
+2 x ← head[H]
+3 min ← ∞
+4 while x ≠ NIL
+5
+do if key[x] < min
+6
+then min ← key[x]
+7
+y ← x
+8
+x ← sibling[x]
+9 return y
+
+Since a binomial heap is min-heap-ordered, the minimum key must reside in a root node. The
+BINOMIAL-HEAP-MINIMUM procedure checks all roots, which number at most⌊lg n⌋ + 1,
+saving the current minimum in min and a pointer to the current minimum in y. When called on
+the binomial heap of Figure 19.3, BINOMIAL-HEAP-MINIMUM returns a pointer to the
+node with key 1.
+Because there are at most ⌊lg n⌋ + 1 roots to check, the running time of BINOMIAL-HEAPMINIMUM is O(lg n).
+Uniting two binomial heaps
+The operation of uniting two binomial heaps is used as a subroutine by most of the remaining
+operations. The BINOMIAL-HEAP-UNION procedure repeatedly links binomial trees whose
+roots have the same degree. The following procedure links the Bk-1 tree rooted at node y to the
+
+

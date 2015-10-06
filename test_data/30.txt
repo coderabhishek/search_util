@@ -1,0 +1,62 @@
+Our MERGE procedure takes time Θ(n), where n = r - p + 1 is the number of elements being
+merged, and it works as follows. Returning to our card-playing motif, suppose we have two
+piles of cards face up on a table. Each pile is sorted, with the smallest cards on top. We wish
+to merge the two piles into a single sorted output pile, which is to be face down on the table.
+Our basic step consists of choosing the smaller of the two cards on top of the face-up piles,
+removing it from its pile (which exposes a new top card), and placing this card face down
+onto the output pile. We repeat this step until one input pile is empty, at which time we just
+take the remaining input pile and place it face down onto the output pile. Computationally,
+each basic step takes constant time, since we are checking just two top cards. Since we
+perform at most n basic steps, merging takes Θ(n) time.
+The following pseudocode implements the above idea, but with an additional twist that avoids
+having to check whether either pile is empty in each basic step. The idea is to put on the
+bottom of each pile a sentinel card, which contains a special value that we use to simplify our
+code. Here, we use ∞ as the sentinel value, so that whenever a card with ∞ is exposed, it
+cannot be the smaller card unless both piles have their sentinel cards exposed. But once that
+happens, all the nonsentinel cards have already been placed onto the output pile. Since we
+know in advance that exactly r - p + 1 cards will be placed onto the output pile, we can stop
+once we have performed that many basic steps.
+MERGE(A, p, q, r)
+1 n1 ← q - p + 1
+2 n2 ← r - q
+3 create arrays L[1
+n1 + 1] and R[1
+4 for i ← 1 to n1
+5
+do L[i] ← A[p + i - 1]
+6 for j ← 1 to n2
+7
+do R[j] ← A[q + j]
+8 L[n1 + 1] ← ∞
+9 R[n2 + 1] ← ∞
+10 i ← 1
+11 j ← 1
+12 for k ← p to r
+13
+do if L[i] ≤ R[j]
+14
+then A[k] ← L[i]
+15
+i ← i + 1
+16
+else A[k] ← R[j]
+17
+j ← j + 1
+
+n2 + 1]
+
+In detail, the MERGE procedure works as follows. Line 1 computes the length n1 of the
+subarray A[p q], and line 2 computes the length n2 of the subarray A[q + 1 r]. We create
+arrays L and R ("left" and "right"), of lengths n1 + 1 and n2 + 1, respectively, in line 3. The for
+loop of lines 4-5 copies the subarray A[p q] into L[1 n1], and the for loop of lines 6-7
+copies the subarray A[q + 1 r] into R[1 n2]. Lines 8-9 put the sentinels at the ends of the
+arrays L and R. Lines 10-17, illustrated in Figure 2.3, perform the r - p + 1 basic steps by
+maintaining the following loop invariant:
+•
+
+At the start of each iteration of the for loop of lines 12-17, the subarray A[p k - 1]
+contains the k - p smallest elements of L[1 n1 + 1] and R[1 n2 + 1], in sorted
+order. Moreover, L[i] and R[j] are the smallest elements of their arrays that have not
+been copied back into A.
+
+

@@ -1,0 +1,32 @@
+Noting that for i = 1, 2, ..., n - 1, each term T (i) appears once as T (k) and once as T (n - k),
+and collecting the n - 1 1's in the summation together with the 1 out front, we can rewrite the
+recurrence as
+(15.13)
+
+We shall prove that T (n) = Ω(2n) using the substitution method. Specifically, we shall show
+that T (n) ≥ 2n-1 for all n ≥ 1. The basis is easy, since T (1) ≥ 1 = 20. Inductively, for n ≥ 2 we
+have
+
+which completes the proof. Thus, the total amount of work performed by the call
+RECURSIVE-MATRIX-CHAIN(p, 1, n) is at least exponential in n.
+Compare this top-down, recursive algorithm with the bottom-up, dynamic-programming
+algorithm. The latter is more efficient because it takes advantage of the overlappingsubproblems property. There are only Θ(n2) different subproblems, and the dynamicprogramming algorithm solves each exactly once. The recursive algorithm, on the other hand,
+must repeatedly resolve each subproblem each time it reappears in the recursion tree.
+Whenever a recursion tree for the natural recursive solution to a problem contains the same
+subproblem repeatedly, and the total number of different subproblems is small, it is a good
+idea to see if dynamic programming can be made to work.
+Reconstructing an optimal solution
+As a practical matter, we often store which choice we made in each subproblem in a table so
+that we do not have to reconstruct this information from the costs that we stored. In assemblyline scheduling, we stored in li [j] the station preceding Si,j in a fastest way through Si,j .
+Alternatively, having filled in the entire fi[j] table, we could determine which station precedes
+S1,j in a fastest way through Si,j with a little extra work. If f1[j] = f1[j - 1] + a1, j, then station S1, j
+-1 precedes S1, j in a fastest way through S1, j. Otherwise, it must be the case that f1[j] = f2[j - 1]
++ t2, j -1 + a1, j, and so S2, j - 1 precedes S1, j. For assembly-line scheduling, reconstructing the
+predecessor stations takes only O(1) time per station, even without the li[j] table.
+For matrix-chain multiplication, however, the table s[i, j] saves us a significant amount of
+work when reconstructing an optimal solution. Suppose that we did not maintain the s[i, j]
+table, having filled in only the table m[i, j] containing optimal subproblem costs. There are j i choices in determining which subproblems to use in an optimal solution to parenthesizing Ai
+Ai+1 Aj, and j - i is not a constant. Therefore, it would take Θ(j - i) = ω(1) time to reconstruct
+which subproblems we chose for a solution to a given problem. By storing in s[i, j] the index
+
+

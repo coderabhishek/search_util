@@ -1,0 +1,32 @@
+It is often desirable to keep all elements of a doubly linked list compact in storage, using, for
+example, the first m index locations in the multiple-array representation. (This is the case in a
+paged, virtual-memory computing environment.) Explain how the procedures ALLOCATE>OBJECT and FREE-OBJECT can be implemented so that the representation is compact.
+Assume that there are no pointers to elements of the linked list outside the list itself. (Hint:
+Use the array implementation of a stack.)
+
+Exercises 10.3-5
+Let L be a doubly linked list of length m stored in arrays key, prev, and next of length n.
+Suppose that these arrays are managed by ALLOCATE-OBJECT and FREE-OBJECT
+procedures that keep a doubly linked free list F. Suppose further that of the n items, exactly m
+are on list L and n-m are on the free list. Write a procedure COMPACTIFY-LIST(L, F) that,
+given the list L and the free list F, moves the items in L so that they occupy array positions 1,
+2,..., m and adjusts the free list F so that it remains correct, occupying array positions m + 1, m
++ 2,..., n. The running time of your procedure should be Θ(m), and it should use only a
+constant amount of extra space. Give a careful argument for the correctness of your
+procedure.
+
+10.4 Representing rooted trees
+The methods for representing lists given in the previous section extend to any homogeneous
+data structure. In this section, we look specifically at the problem of representing rooted trees
+by linked data structures. We first look at binary trees, and then we present a method for
+rooted trees in which nodes can have an arbitrary number of children.
+We represent each node of a tree by an object. As with linked lists, we assume that each node
+contains a key field. The remaining fields of interest are pointers to other nodes, and they vary
+according to the type of tree.
+Binary trees
+As shown in Figure 10.9, we use the fields p, left, and right to store pointers to the parent, left
+child, and right child of each node in a binary tree T . If p[x] = NIL, then x is the root. If node
+x has no left child, then left[x] = NIL, and similarly for the right child. The root of the entire
+tree T is pointed to by the attribute root[T]. If root[T] = NIL, then the tree is empty.
+
+

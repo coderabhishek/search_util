@@ -1,0 +1,37 @@
+The single-array representation is flexible in that it permits objects of different lengths to be
+stored in the same array. The problem of managing such a heterogeneous collection of objects
+is more difficult than the problem of managing a homogeneous collection, where all objects
+have the same fields. Since most of the data structures we shall consider are composed of
+homogeneous elements, it will be sufficient for our purposes to use the multiple-array
+representation of objects.
+Allocating and freeing objects
+To insert a key into a dynamic set represented by a doubly linked list, we must allocate a
+pointer to a currently unused object in the linked-list representation. Thus, it is useful to
+manage the storage of objects not currently used in the linked-list representation so that one
+can be allocated. In some systems, a garbage collector is responsible for determining which
+objects are unused. Many applications, however, are simple enough that they can bear
+responsibility for returning an unused object to a storage manager. We shall now explore the
+problem of allocating and freeing (or deallocating) homogeneous objects using the example of
+a doubly linked list represented by multiple arrays.
+Suppose that the arrays in the multiple-array representation have length m and that at some
+moment the dynamic set contains n ≤ m elements. Then n objects represent elements currently
+in the dynamic set, and the remaining m–n objects are free; the free objects can be used to
+represent elements inserted into the dynamic set in the future.
+We keep the free objects in a singly linked list, which we call the free list. The free list uses
+only the next array, which stores the next pointers within the list. The head of the free list is
+held in the global variable free. When the dynamic set represented by linked list L is
+nonempty, the free list may be intertwined with list L, as shown in Figure 10.7. Note that each
+object in the representation is either in list L or in the free list, but not in both.
+
+Figure 10.7: The effect of the ALLOCATE-OBJECT and FREE-OBJECT procedures. (a) The
+list of Figure 10.5 (lightly shaded) and a free list (heavily shaded). Arrows show the free-list
+structure. (b) The result of calling ALLOCATE-OBJECT() (which returns index 4), setting
+key[4] to 25, and calling LIST-INSERT(L, 4). The new free-list head is object 8, which had
+been next[4] on the free list. (c) After executing LIST-DELETE(L, 5), we call FREEOBJECT(5). Object 5 becomes the new free-list head, with object 8 following it on the free
+list.
+The free list is a stack: the next object allocated is the last one freed. We can use a list
+implementation of the stack operations PUSH and POP to implement the procedures for
+allocating and freeing objects, respectively. We assume that the global variable free used in
+the following procedures points to the first element of the free list.
+
+

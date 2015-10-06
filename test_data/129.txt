@@ -1,0 +1,28 @@
+Figure 7.1: The operation of PARTITION on a sample array. Lightly shaded array elements
+are all in the first partition with values no greater than x. Heavily shaded elements are in the
+second partition with values greater than x. The unshaded elements have not yet been put in
+one of the first two partitions, and the final white element is the pivot. (a) The initial array and
+variable settings. None of the elements have been placed in either of the first two partitions.
+(b) The value 2 is "swapped with itself" and put in the partition of smaller values. (c)-(d) The
+values 8 and 7 are added to the partition of larger values. (e) The values 1 and 8 are swapped,
+and the smaller partition Grows. (f) The values 3 and 8 are swapped, and the smaller partition
+grows. (g)-(h) The larger partition grows to include 5 and 6 and the loop terminates. (i) In
+lines 7-8, the pivot element is swapped so that it lies between the two partitions.
+•
+
+At the beginning of each iteration of the loop of lines 3-6, for any array index k,
+1. If p ≤ k ≤ i, then A[k] ≤ x.
+2. If i + 1 ≤ k ≤ j - 1, then A[k] > x.
+3. If k = r, then A[k] = x.
+
+Figure 7.2 summarizes this structure. The indices between j and r - 1 are not covered by any
+of the three cases, and the values in these entries have no particular relationship to the pivot x.
+
+Figure 7.2: The four regions maintained by the procedure PARTITION on a subarray A[p
+r]. The values in A[p i] are all less than or equal to x, the values in A[i + 1 j - 1] are all
+greater than x, and A[r] = x. The values in A[j r - 1] can take on any values.
+We need to show that this loop invariant is true prior to the first iteration, that each iteration of
+the loop maintains the invariant, and that the invariant provides a useful property to show
+correctness when the loop terminates.
+
+

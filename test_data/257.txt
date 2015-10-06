@@ -1,0 +1,42 @@
+a. Given a red-black tree T, we store its black-height as the field bh[T]. Argue that this
+field can be maintained by RB-INSERT and RB-DELETE without requiring extra
+storage in the nodes of the tree and without increasing the asymptotic running times.
+Show that while descending through T, we can determine the black-height of each
+node we visit in O(1) time per node visited.
+We wish to implement the operation RB-JOIN(T1, x, T2), which destroys T1 and T2 and returns
+a red-black tree T = T1 {x} T2. Let n be the total number of nodes in T1 and T2.
+b. Assume that bh[T1] ≥ bh[T2]. Describe an O(lg n)-time algorithm that finds a black
+node y in T1 with the largest key from among those nodes whose black-height is
+bh[T2].
+c. Let Ty be the subtree rooted at y. Describe how Ty {x} T2 can replace Ty in O(1)
+time without destroying the binary-search-tree property.
+d. What color should we make x so that red-black properties 1, 3, and 5 are maintained?
+Describe how properties 2 and 4 can be enforced in O(lg n) time.
+e. Argue that no generality is lost by making the assumption in part (b). Describe the
+symmetric situation that arises when bh[T1] = bh[T2].
+f. Argue that the running time of RB-JOIN is O(lg n).
+
+Problems 13-3: AVL trees
+An AVL tree is a binary search tree that is height balanced: for each node x, the heights of the
+left and right subtrees of x differ by at most 1. To implement an AVL tree, we maintain an
+extra field in each node: h[x] is the height of node x. As for any other binary search tree T, we
+assume that root[T] points to the root node.
+a. Prove that an AVL tree with n nodes has height O(lg n). (Hint: Prove that in an AVL
+tree of height h, there are at least Fh nodes, where Fh is the hth Fibonacci number.)
+b. To insert into an AVL tree, a node is first placed in the appropriate place in binary
+search tree order. After this insertion, the tree may no longer be height balanced.
+Specifically, the heights of the left and right children of some node may differ by 2.
+Describe a procedure BALANCE(x), which takes a subtree rooted at x whose left and
+right children are height balanced and have heights that differ by at most 2, i.e.,
+|h[right[x]] - h[left[x]]| ≤ 2, and alters the subtree rooted at x to be height balanced.
+(Hint: Use rotations.)
+c. Using part (b), describe a recursive procedure AVL-INSERT(x, z), which takes a node
+x within an AVL tree and a newly created node z (whose key has already been filled
+in), and adds z to the subtree rooted at x, maintaining the property that x is the root of
+an AVL tree. As in TREE-INSERT from Section 12.3, assume that key[z] has already
+been filled in and that left[z] = NIL and right[z] = NIL; also assume that h[z] = 0.
+Thus, to insert the node z into the AVL tree T, we call AVL-INSERT(root[T], z).
+d. Give an example of an n-node AVL tree in which an AVL-INSERT operation causes
+Ω(lg n) rotations to be performed.
+
+

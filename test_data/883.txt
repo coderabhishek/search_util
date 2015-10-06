@@ -1,0 +1,46 @@
+a tour h' of cost at most 0. Since the costs of the edges in E' are 0 and 1, the cost of tour h' is
+exactly 0 and each edge on the tour must have cost 0. Therefore, h' contains only edges in E.
+We conclude that h' is a hamiltonian cycle in graph G.
+
+34.5.5 The subset-sum problem
+The next NP-complete problem we consider is an arithmetic one. In the subset-sum problem,
+we are given a finite set S N and a target t N. We ask whether there is a subset S' S
+whose elements sum to t. For example, if S = {1, 2, 7, 14, 49, 98, 343, 686, 2409, 2793,
+16808, 17206, 117705, 117993} and t = 138457, then the subset S' = {1, 2, 7, 98, 343, 686,
+2409, 17206, 117705} is a solution.
+As usual, we define the problem as a language:
+SUBSET-SUM = { S, t
+
+: there exists a subset S
+
+S such that t = Σs
+
+S'
+
+S}.
+
+As with any arithmetic problem, it is important to recall that our standard encoding assumes
+that the input integers are coded in binary. With this assumption in mind, we can show that
+the subset-sum problem is unlikely to have a fast algorithm.
+Theorem 34.15
+The subset-sum problem is NP-complete.
+Proof To show that SUBSET-SUM is in NP, for an instance S, t of the problem, we let the
+subset S' be the certificate. Checking whether t = Σs S' S can be accomplished by a verification
+algorithm in polynomial time.
+We now show that 3-CNF-SAT ≤P SUBSET-SUM. Given a 3-CNF formula φ over variables
+x1, x2,..., xn with clauses C1, C2,..., Ck, each containing exactly three distinct literals, the
+reduction algorithm constructs an instance S, t of the subset-sum problem such that φ is
+satisfiable if and only if there is a subset of S whose sum is exactly t. Without loss of
+generality, we make two simplifying assumptions about the formula φ. First, no clause
+contains both a variable and its negation, for such a clause is automatically satisfied by any
+assignment of values to the variables. Second, each variable appears in at least one clause, for
+otherwise it does not matter what value is assigned to the variable.
+The reduction creates two numbers in set S for each variable xi and two numbers in S for each
+clause Cj. We shall create numbers in base 10, where each number contains n +k digits and
+each digit corresponds to either one variable or one clause. Base 10 (and other bases, as we
+shall see) has the property we need of preventing carries from lower digits to higher digits.
+As Figure 34.19 shows, we construct set S and target t as follows. We label each digit position
+by either a variable or a clause. The least significant k digits are labeled by the clauses, and
+the most significant n digits are labeled by variables.
+
+

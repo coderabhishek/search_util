@@ -1,0 +1,35 @@
+(Hint: Use a divide-and-conquer approach, obtaining the top and bottom halves of the result
+with separate recursions.)
+
+31.2 Greatest common divisor
+In this section, we describe Euclid's algorithm for computing the greatest common divisor of
+two integers efficiently. The analysis of running time brings up a surprising connection with
+the Fibonacci numbers, which yield a worst-case input for Euclid's algorithm.
+We restrict ourselves in this section to nonnegative integers. This restriction is justified by
+equation (31.8), which states that gcd(a, b) = gcd(|a|, |b|).
+In principle, we can compute gcd(a, b) for positive integers a and b from the prime
+factorizations of a and b. Indeed, if
+(31.11)
+(31.12)
+with zero exponents being used to make the set of primes p1, p2, ..., pr the same for both a and
+b, then, as Exercise 31.2-1 asks you to show,
+(31.13)
+As we shall show in Section 31.9, however, the best algorithms to date for factoring do not
+run in polynomial time. Thus, this approach to computing greatest common divisors seems
+unlikely to yield an efficient algorithm.
+Euclid's algorithm for computing greatest common divisors is based on the following
+theorem.
+Theorem 31.9: (GCD recursion theorem)
+For any nonnegative integer a and any positive integer b,
+gcd(a, b) = gcd(b, a mod b).
+Proof We shall show that gcd(a, b) and gcd(b, a mod b) divide each other, so that by equation
+(31.5) they must be equal (since they are both nonnegative).
+We first show that gcd(a, b) | gcd(b, a mod b). If we let d = gcd(a, b), then d | a and d | b. By
+equation (3.8), (a mod b) = a - qb, where q = ⌊a/b⌋. Since (a mod b) is thus a linear
+combination of a and b, equation (31.4) implies that d | (a mod b). Therefore, since d | b and d
+| (a mod b), Corollary 31.3 implies that d | gcd(b, a mod b) or, equivalently, that
+(31.14)
+Showing that gcd(b, a mod b) | gcd(a, b) is almost the same. If we now let d = gcd(b, a mod
+b), then d | b and d | (a mod b). Since a = qb + (a mod b), where q = ⌊a/b⌋, we have that a is a
+
+

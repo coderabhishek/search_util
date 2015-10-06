@@ -1,0 +1,62 @@
+The key to implementing Prim's algorithm efficiently is to make it easy to select a new edge
+to be added to the tree formed by the edges in A. In the pseudocode below, the connected
+graph G and the root r of the minimum spanning tree to be grown are inputs to the algorithm.
+During execution of the algorithm, all vertices that are not in the tree reside in a min-priority
+queue Q based on a key field. For each vertex v, key[v] is the minimum weight of any edge
+connecting v to a vertex in the tree; by convention, key[v] = ∞ if there is no such edge. The
+field π[v] names the parent of v in the tree. During the algorithm, the set A from GENERICMST is kept implicitly as
+A = {(v, π[v]) : v
+
+V - {r} - Q}.
+
+When the algorithm terminates, the min-priority queue Q is empty; the minimum spanning
+tree A for G is thus
+A = {(v, π[v]) : v
+
+V - {r}}.
+
+MST-PRIM(G, w, r)
+1 for each u
+V [G]
+2
+do key[u] ← ∞
+3
+π[u] ← NIL
+4 key[r] ← 0
+5
+Q ← V [G]
+6
+while Q ≠ Ø
+7
+do u ← EXTRACT-MIN(Q)
+8
+for each v
+Adj[u]
+9
+do if v
+Q and w(u, v) < key[v]
+10
+then π[v] ← u
+11
+key[v] ← w(u, v)
+
+Prim's algorithm works as shown in Figure 23.5. Lines 1-5 set the key of each vertex to ∞
+(except for the root r, whose key is set to 0 so that it will be the first vertex processed), set the
+parent of each vertex to NIL, and initialize the min-priority queue Q to contain all the
+vertices. The algorithm maintains the following three-part loop invariant:
+Prior to each iteration of the while loop of lines 6-11,
+1. A = {(v, π[v]) : v V - {r} - Q}.
+2. The vertices already placed into the minimum spanning tree are those in V - Q.
+3. For all vertices v Q, if π[v] ≠ NIL, then key[v] < ∞ and key[v] is the weight of a light
+edge (v, π[v]) connecting v to some vertex already placed into the minimum spanning
+tree.
+Line 7 identifies a vertex u Q incident on a light edge crossing the cut (V -Q, Q) (with the
+exception of the first iteration, in which u = r due to line 4). Removing u from the set Q adds
+it to the set V - Q of vertices in the tree, thus adding (u, π[u]) to A. The for loop of lines 8-11
+update the key and π fields of every vertex v adjacent to u but not in the tree. The updating
+maintains the third part of the loop invariant.
+The performance of Prim's algorithm depends on how we implement the min-priority queue
+Q. If Q is implemented as a binary min-heap (see Chapter 6), we can use the BUILD-MINHEAP procedure to perform the initialization in lines 1-5 in O(V) time. The body of the while
+loop is executed |V| times, and since each EXTRACT-MIN operation takes O(lg V) time, the
+
+

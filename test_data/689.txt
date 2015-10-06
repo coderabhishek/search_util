@@ -1,0 +1,38 @@
+Minimum-cost flow
+In this section, we have used linear programming to solve problems for which we already
+knew efficient algorithms. In fact, an efficient algorithm designed specifically for a problem,
+such as Dijkstra's algorithm for the single-source shortest-paths problem, or the push-relabel
+method for maximum flow, will often be more efficient than linear programming, both in
+theory and in practice.
+The real power of linear programming comes from the ability to solve new problems. Recall
+the problem faced by the politician in the beginning of this chapter. The problem of obtaining
+a sufficient number of votes, while not spending too much money, is not solved by any of the
+algorithms that we have studied in this book, yet it is solved by linear programming. Books
+abound with such real-world problems that linear programming can solve. Linear
+programming is also particularly useful for solving variants of problems for which we may
+not already know of an efficient algorithm.
+Consider, for example, the following generalization of the maximum-flow problem. Suppose
+that each edge (u, v) has, in addition to a capacity c(u, v), a real-valued cost a(u, v). If we send
+f (u, v) units of flow over edge (u, v), we incur a cost of a(u, v) f (u, v). We are also given a
+flow target d. We wish to send d units of flow from s to t in such a way that the total cost
+incurred by the flow, Σ(u, v) E a(u, v)f(u v), is minimized. This problem is known as the
+minimum-cost-flow problem.
+Figure 29.3(a) shows an example of the minimum-cost-flow problem. We wish to send 4 units
+of flow from s to t, while incurring the minimum total cost. Any particular legal flow, that is,
+a function f satisfying constraints (29.48)–(29.50), incurs a total cost of Σ(u, v) E a(u, v) f (u, v).
+We wish to find the particular 4-unit flow that minimizes this cost. An optimal solution is
+given in Figure 29.3(b), and it has total cost Σ(u, v) E a(u, v) f (u, v) =
+(2·2)+(5·2)+(3·1)+(7·1)+(1·3) = 27.
+
+Figure 29.3: (a) An example of a minimum-cost-flow problem. We denote the capacities by c
+and the costs by a. Vertex s is the source and vertex t is the sink, and we wish to send 4 units
+of flow from s to t. (b) A solution to the minimum-cost flow problem in which 4 units of flow
+are sent from s to t. For each edge, the flow and capacity are written as flow/capacity.
+There are polynomial-time algorithms specifically designed for the minimum-cost-flow
+problem, but they are beyond the scope of this book. We can, however, express the minimumcost-flow problem as a linear program. The linear program looks similar to the one for the
+maximum-flow problem with the additional constraint that the value of the flow be exactly d
+units, and with the new objective function of minimizing the cost:
+(29.51)
+subject to
+
+

@@ -1,0 +1,34 @@
+denote the matrix of values of the basis functions at the given points; that is, aij = fj(xi). Let c =
+(ck) denote the desired size-n vector of coefficients. Then,
+
+is the size-m vector of "predicted values" for y. Thus,
+η = Ac - y
+is the size-m vector of approximation errors.
+To minimize approximation errors, we choose to minimize the norm of the error vector η,
+which gives us a least-squares solution, since
+
+Since
+
+we can minimize
+result to 0:
+
+η
+
+by differentiating
+
+η
+
+2
+
+with respect to each ck and then setting the
+
+(28.32)
+
+The n equations (28.32) for k = 1, 2, . . . , n are equivalent to the single matrix equation
+(Ac - y)T A = 0
+or, equivalently (using Exercise 28.1-2), to
+AT(Ac - y) = 0,
+which implies
+(28.33)
+
+

@@ -1,0 +1,40 @@
+without affecting the correctness or asymptotic performance of the generic push-relabel
+algorithm.
+
+Exercises 26.4-7
+Let δf (u, v) be the distance (number of edges) from u to v in the residual network Gf. Show
+that GENERIC-PUSH-RELABEL maintains the properties that h[u] < |V| implies h[u] ≤ δf(u,
+t) and that h[u] ≥ |V| implies h[u] -|V| ≤ δf(u, s).
+
+Exercises 26.4-8:
+As in the previous exercise, let δf(u, v) be the distance from u to v in the residual network Gf.
+Show how the generic push-relabel algorithm can be modified to maintain the property that
+h[u] < |V| implies h[u] = δf(u, t) and that h[u] ≥ |V| implies h[u] - |V| = δf(u, s). The total time
+that your implementation dedicates to maintaining this property should be O(V E).
+
+Exercise 26.4-9
+Show that the number of nonsaturating pushes executed by GENERIC-PUSH-RELABEL on
+a flow network G = (V, E) is at most 4 |V|2|E| for |V| ≥ 4.
+
+[3]
+
+In the literature, a height function is typically called a "distance function," and the height of
+a vertex is called a "distance label." We use the term "height" because it is more suggestive of
+the intuition behind the algorithm. We retain the use of the term "relabel" to refer to the
+operation that increases the height of a vertex. The height of a vertex is related to its distance
+from the sink t, as would be found in a breadth-first search of the transpose GT.
+
+26.5
+
+The relabel-to-front algorithm
+
+The push-relabel method allows us to apply the basic operations in any order at all. By
+choosing the order carefully and managing the network data structure efficiently, however, we
+can solve the maximum-flow problem faster than the O(V2E) bound given by Corollary 26.26.
+We shall now examine the relabel-to-front algorithm, a push-relabel algorithm whose running
+time is O(V3), which is asymptotically at least as good as O(V2E), and better for dense
+networks.
+The relabel-to-front algorithm maintains a list of the vertices in the network. Beginning at the
+front, the algorithm scans the list, repeatedly selecting an over-flowing vertex u and then
+
+

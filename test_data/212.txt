@@ -1,0 +1,24 @@
+Computing the expected number of probes for a successful search requires a little more work.
+Theorem 11.8
+Given an open-address hash table with load factor α < 1, the expected number of probes in a
+successful search is at most
+
+assuming uniform hashing and assuming that each key in the table is equally likely to be
+searched for.
+Proof A search for a key k follows the same probe sequence as was followed when the
+element with key k was inserted. By Corollary 11.7, if k was the (i + 1)st key inserted into the
+hash table, the expected number of probes made in a search for k is at most 1/(1 - i/m) = m/(m
+- i). Averaging over all n keys in the hash table gives us the average number of probes in a
+successful search:
+
+where
+is the ith harmonic number (as defined in equation (A.7)). Using the
+technique of bounding a summation by an integral, as described in Section A.2, we obtain
+
+for a bound on the expected number of probes in a successful search.
+
+If the hash table is half full, the expected number of probes in a successful search is less than
+1.387. If the hash table is 90 percent full, the expected number of probes is less than 2.559.
+Exercises 11.4-1
+
+

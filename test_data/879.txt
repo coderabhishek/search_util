@@ -1,0 +1,34 @@
+Figure 34.16: The widget used in reducing the vertex-cover problem to the hamiltonian-cycle
+problem. An edge (u, v) of graph G corresponds to widget Wuv in the graph G' created in the
+reduction. (a) The widget, with individual vertices labeled. (b)-(d) The shaded paths are the
+only possible ones through the widget that include all vertices, assuming that the only
+connections from the widget to the remainder of G' are through vertices [u, v, 1], [u, v, 6], [v,
+u, 1], and [v, u, 6].
+Along with the internal structure of the widget, we enforce the properties we want by limiting
+the connections between the widget and the remainder of the graph G' that we construct. In
+particular, only vertices [u, v, 1], [u, v, 6], [v, u, 1], and [v, u, 6] will have edges incident from
+outside Wuv. Any hamiltonian cycle of G' will have to traverse the edges of Wuv in one of the
+three ways shown in Figures 34.16(b)-(d). If the cycle enters through vertex [u, v, 1], it must
+exit through vertex [u, v, 6], and it either visits all 12 of the widget's vertices (Figure 34.16(b))
+or the six vertices [u, v, 1] through [u, v, 6] (Figure 34.16(c)). In the latter case, the cycle will
+have to reenter the widget to visit vertices [v, u, 1] through [v, u, 6]. Similarly, if the cycle
+enters through vertex [v, u, 1], it must exit through vertex [v, u, 6], and it either visits all 12 of
+the widget's vertices (Figure 34.16(d)) or the six vertices [v, u, 1] through [v, u, 6] (Figure
+34.16(c)). No other paths through the widget that visit all 12 vertices are possible. In
+particular, it is impossible to construct two vertex-disjoint paths, one of which connects [u, v,
+1] to [v, u, 6] and the other of which connects [v, u, 1] to [u, v, 6], such that the union of the
+two paths contain all of the widget's vertices.
+The only other vertices in V' other than those of widgets are selector vertices s1, s2,..., sk. We
+use edges incident on selector vertices in G' to select the k vertices of the cover in G.
+In addition to the edges in widgets, there are two other types of edges in E', which Figure
+34.17 shows. First, for each vertex u V, we add edges to join pairs of widgets in order to
+form a path containing all widgets corresponding to edges incident on u in G. We arbitrarily
+order the vertices adjacent to each vertex u V as u(1), u(2),..., u(degree(u)), where degree(u) is
+the number of vertices adjacent to u. We create a path in G' through all the widgets
+corresponding to edges incident on u by adding to E' the edges {([u, u(i), 6], [u, u(i+1), 1]) : 1 ≤
+i ≤ degree(u) - 1}. In Figure 34.17, for example, we order the vertices adjacent to w as x, y, z,
+and so graph G' in part (b) of the figure includes the edges ([w, x, 6], [w, y, 1]) and ([w, y, 6],
+[w, z, 1]). For each vertex u V, these edges in G' fill in a path containing all widgets
+corresponding to edges incident on u in G.
+
+

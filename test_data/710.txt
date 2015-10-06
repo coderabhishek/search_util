@@ -1,0 +1,29 @@
+which satisfies the constraints (29.87) of the dual. Finally, since
+when we set according to equation (29.94), we have that each
+constraints are satisfied as well.
+
+for each j N B,
+, and so the nonnegativity
+
+We have shown that, given a feasible linear program, if INITIALIZE-SIMPLEX returns a
+feasible solution, and if SIMPLEX terminates without returning "unbounded," then the
+solution returned is indeed an optimal solution. We have also shown how to construct an
+optimal solution to the dual linear program.
+Exercises 29.4-1
+Formulate the dual of the linear program given in Exercise 29.3-4.
+
+Exercises 29.4-2
+Suppose that we have a linear program that is not in standard form. We could produce the
+dual by first converting it to standard form, and then taking the dual. It would be more
+convenient, however, to be able to produce the dual directly. Explain how, given an arbitrary
+linear program, we can directly take the dual of that linear program.
+
+Exercises 29.4-3
+Write down the dual of the maximum-flow linear program, as given in lines (29.47)–(29.50).
+Explain how to interpret this formulation as a minimum-cut problem.
+
+Exercises 29.4-4
+Write down the dual of the minimum-cost-flow linear program, as given in lines (29.51)–
+(29.55). Explain how to interpret this problem in terms of graphs and flows.
+
+

@@ -1,0 +1,46 @@
+[1]
+
+In Chapters 24 and 25, we shall generalize our study of shortest paths to weighted graphs, in
+which every edge has a real-valued weight and the weight of a path is the sum of the weights
+of its constituent edges. The graphs considered in the present chapter are unweighted or,
+equivalently, all edges have unit weight.
+
+22.3 Depth-first search
+The strategy followed by depth-first search is, as its name implies, to search "deeper" in the
+graph whenever possible. In depth-first search, edges are explored out of the most recently
+discovered vertex v that still has unexplored edges leaving it. When all of v's edges have been
+explored, the search "backtracks" to explore edges leaving the vertex from which v was
+discovered. This process continues until we have discovered all the vertices that are reachable
+from the original source vertex. If any undiscovered vertices remain, then one of them is
+selected as a new source and the search is repeated from that source. This entire process is
+repeated until all vertices are discovered.
+As in breadth-first search, whenever a vertex v is discovered during a scan of the adjacency
+list of an already discovered vertex u, depth-first search records this event by setting v's
+predecessor field π[v] to u. Unlike breadth-first search, whose predecessor subgraph forms a
+tree, the predecessor subgraph produced by a depth-first search may be composed of several
+trees, because the search may be repeated from multiple sources.[2] The predecessor subgraph
+of a depth-first search is therefore defined slightly differently from that of a breadth-first
+search: we let Gπ = (V, Eπ), where
+Eπ = {(π[v], v) : v
+
+V and π[v] ≠ NIL}.
+
+The predecessor subgraph of a depth-first search forms a depth-first forest composed of
+several depth-first trees. The edges in Eπ are called tree edges.
+As in breadth-first search, vertices are colored during the search to indicate their state. Each
+vertex is initially white, is grayed when it is discovered in the search, and is blackened when it
+is finished, that is, when its adjacency list has been examined completely. This technique
+guarantees that each vertex ends up in exactly one depth-first tree, so that these trees are
+disjoint.
+Besides creating a depth-first forest, depth-first search also timestamps each vertex. Each
+vertex v has two timestamps: the first timestamp d[v] records when v is first discovered (and
+grayed), and the second timestamp f [v] records when the search finishes examining v's
+adjacency list (and blackens v). These timestamps are used in many graph algorithms and are
+generally helpful in reasoning about the behavior of depth-first search.
+The procedure DFS below records when it discovers vertex u in the variable d[u] and when it
+finishes vertex u in the variable f [u]. These timestamps are integers between 1 and 2 |V|, since
+there is one discovery event and one finishing event for each of the |V| vertices. For every
+vertex u,
+(22.2)
+
+

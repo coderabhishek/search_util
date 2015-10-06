@@ -1,0 +1,38 @@
+Let d = gcd(a, n), and suppose that d = ax′ + ny′ for some integers x′ and y′ (for example, as
+computed by EXTENDED-EUCLID). If d | b, then the equation ax ≡ b (mod n) has as one of
+its solutions the value x0, where
+x0 = x′(b/d) mod n.
+Proof We have
+ax0 ≡ ax′(b/d) (mod n)
+≡ d(b/d) (mod n) (because ax′ ≡ d (mod n))
+≡b
+(mod n),
+and thus x0 is a solution to ax ≡ b (mod n).
+
+Theorem 31.24
+Suppose that the equation ax ≡ b (mod n) is solvable (that is, d | b, where d = gcd(a, n)) and
+that x0 is any solution to this equation. Then, this equation has exactly d distinct solutions,
+modulo n, given by xi = x0 + i(n/d) for i = 0, 1, ..., d - 1.
+Proof Since n/d > 0 and 0 ≤ i(n/d) < n for i = 0, 1, ..., d - 1, the values x0, x1, ..., xd-1 are all
+distinct, modulo n. Since x0 is a solution of ax ≡ b (mod n), we have ax0 mod n = b. Thus, for i
+= 0, 1, ..., d - 1, we have
+axi mod n = a(x0 + in/d) mod n
+= (ax0 + ain/d) mod n
+= ax0 mod n
+(because d | a)
+= b,
+and so xi is a solution, too. By Corollary 31.22, there are exactly d solutions, so that x0, x1, ...,
+xd-1 must be all of them.
+
+We have now developed the mathematics needed to solve the equation ax ≡ b (mod n); the
+following algorithm prints all solutions to this equation. The inputs a and n are arbitrary
+positive integers, and b is an arbitrary integer.
+MODULAR-LINEAR-EQUATION-SOLVER(a, b, n)
+1 (d, x′, y′) ← EXTENDED-EUCLID(a, n)
+2 if d | b
+3
+then x0 ← x′(b/d) mod n
+4
+for i ← 0 to d - 1
+
+

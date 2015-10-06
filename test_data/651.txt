@@ -1,0 +1,32 @@
+ln1y1 + ln2y2 + ln3y3 + · · · + yn = bπ[n].
+We can solve for y1 directly, since the first equation tells us that y1 = bπ[1]. Having solved for
+y1, we can substitute it into the second equation, yielding
+y2 = bπ[2] - l21y1.
+Now, we can substitute both y1 and y2 into the third equation, obtaining
+y3 = bπ[3] - (l31y1 + l32y2).
+In general, we substitute y1, y2, . . . , yi-1 "forward" into the ith equation to solve for yi:
+
+Back substitution is similar to forward substitution. Given U and y, we solve the nth equation
+first and work backward to the first equation. Like forward substitution, this process runs in
+Θ(n2) time. Since U is upper-triangular, we can rewrite the system (28.21) as
+u11x1 + u12x2 + · · · + u1, n-2xn-2 + u1, n-1xn-1 + u1nxn = y1,
+u22x2 + · · · + u2, n-2xn-2 + u2, n-1xn-1 + u2nxn = y2,
+⋮
+un-2, n-2xn-2 + un-2, n-1xn-1 + un-2, nxn = yn-2,
+un-1,n-1xn-1 + un-1, nxn = yn-1,
+un,nxn = yn.
+Thus, we can solve for xn, xn-1, . . . , x1 successively as follows:
+xn = yn/un,n,
+xn-1 = (yn-1 - un-1,nxn)/un-1,n-1,
+xn-2 = (yn-2 - (un-2,n-1xn-1 + un-2,nxn))/un-2,n-2,
+⋮
+or, in general,
+
+Given P, L, U , and b, the procedure LUP-SOLVE solves for x by combining forward and
+back substitution. The pseudocode assumes that the dimension n appears in the attribute
+rows[L] and that the permutation matrix P is represented by the array π.
+LUP-SOLVE(L, U, π, b)
+1 n ← rows[L]
+2 for i ← 1 to n
+
+

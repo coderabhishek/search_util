@@ -1,0 +1,43 @@
+Before seeing an example of a network-flow problem, let us briefly explore the three flow
+properties. The capacity constraint simply says that the flow from one vertex to another must
+not exceed the given capacity. Skew symmetry is a notational convenience that says that the
+flow from a vertex u to a vertex v is the negative of the flow in the reverse direction. The
+flow-conservation property says that the total flow out of a vertex other than the source or
+sink is 0. By skew symmetry, we can rewrite the flow-conservation property as
+
+for all v
+
+V - {s, t}. That is, the total flow into a vertex is 0.
+
+When neither (u, v) nor (v, u) is in E, there can be no flow between u and v, and f(u, v) = f(v,
+u) = 0. (Exercise 26.1-1 asks you to prove this property formally.)
+Our last observation concerning the flow properties deals with flows that are positive. The
+total positive flow entering a vertex v is defined by
+(26.2)
+
+The total positive flow leaving a vertex is defined symmetrically. We define the total net flow
+at a vertex to be the total positive flow leaving a vertex minus the total positive flow entering
+a vertex. One interpretation of the flow-conservation property is that the total positive flow
+entering a vertex other than the source or sink must equal the total positive flow leaving that
+vertex. This property, that the total net flow at a vertex must equal 0, is often informally
+referred to as "flow in equals flow out."
+An example of flow
+A flow network can model the trucking problem shown in Figure 26.1(a). The Lucky Puck
+Company has a factory (source s) in Vancouver that manufactures hockey pucks, and it has a
+warehouse (sink t) in Winnipeg that stocks them. Lucky Puck leases space on trucks from
+another firm to ship the pucks from the factory to the warehouse. Because the trucks travel
+over specified routes (edges) between cities (vertices) and have a limited capacity, Lucky
+Puck can ship at most c(u, v) crates per day between each pair of cities u and v in Figure
+26.1(a). Lucky Puck has no control over these routes and capacities and so cannot alter the
+flow network shown in Figure 26.1(a). Their goal is to determine the largest number p of
+crates per day that can be shipped and then to produce this amount, since there is no point in
+producing more pucks than they can ship to their warehouse. Lucky Puck is not concerned
+with how long it takes for a given puck to get from the factory to the warehouse; they care
+only that p crates per day leave the factory and p crates per day arrive at the warehouse.
+On the surface, it seems appropriate to model the "flow" of shipments with a flow in this
+network because the number of crates shipped per day from one city to another is subject to a
+capacity constraint. Additionally, flow conservation must be obeyed, for in a steady state, the
+rate at which pucks enter an intermediate city must equal the rate at which they leave.
+Otherwise, crates would accumulate at intermediate cities.
+
+

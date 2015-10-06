@@ -1,0 +1,64 @@
+We can express the body of the loop (line 3) as more precise pseudocode. We copy the for
+loop from the RECURSIVE-FFT procedure, identifying y[0] with A[k k + 2s-1 - 1] and y[1]
+with A[k + 2s-1 k + 2s - 1]. The twiddle factor used in each butterfly operation depends on
+the value of s; it is a power of wm, where m = 2s. (We introduce the variable m solely for the
+sake of readability.) We introduce another temporary variable u that allows us to perform the
+butterfly operation in place. When we replace line 3 of the overall structure by the loop body,
+we get the following pseudocode, which forms the basis of the parallel implementation we
+shall present later. The code first calls the auxiliary procedure BIT-REVERSE-COPY (a, A)
+to copy vector a into array A in the initial order in which we need the values.
+ITERATIVE-FFT (a)
+1 BIT-REVERSE-COPY (a, A)
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+
+n ← length[a]
+▹ n is a power of 2.
+for s ← 1 to lg n
+do m ← 2s
+ωm ← e2πi/m
+for k ← 0 to n - 1 by m
+do ω ← 1
+for j ← 0 to m/2 - 1
+do t ← ωA[k + j + m/2]
+u ← A[k + j]
+A[k + j] ← u + t
+A[k + j + m/2] ← u - t
+ω ← ω ωm
+
+How does BIT-REVERSE-COPY get the elements of the input vector a into the desired order
+in the array A? The order in which the leaves appear in Figure 30.4 is a bit-reversal
+permutation. That is, if we let rev(k) be the lg n-bit integer formed by reversing the bits of the
+binary representation of k, then we want to place vector element ak in array position A[rev(k)].
+In Figure 30.4, for example, the leaves appear in the order 0, 4, 2, 6, 1, 5, 3, 7; this sequence
+in binary is 000, 100, 010, 110, 001, 101, 011, 111, and when we reverse the bits of each
+value we get the sequence 000, 001, 010, 011, 100, 101, 110, 111. To see that we want a bitreversal permutation in general, we note that at the top level of the tree, indices whose loworder bit is 0 are placed in the left subtree and indices whose low-order bit is 1 are placed in
+the right subtree. Stripping off the low-order bit at each level, we continue this process down
+the tree, until we get the order given by the bit-reversal permutation at the leaves.
+Since the function rev(k) is easily computed, the BIT-REVERSE-COPY procedure can be
+written as follows.
+BIT-REVERSE-COPY(a, A)
+1 n ← length[a]
+2 for k ← 0 to n - 1
+3
+do A[rev(k)] ← ak
+
+The iterative FFT implementation runs in time Θ(n lg n). The call to BIT-REVERSECOPY(a, A) certainly runs in O(n lg n) time, since we iterate n times and can reverse an
+integer between 0 and n - 1, with lg n bits, in O(lg n) time. (In practice, we usually know the
+initial value of n in advance, so we would probably code a table mapping k to rev(k), making
+BIT-REVERSE-COPY run in Θ(n) time with a low hidden constant. Alternatively, we could
+use the clever amortized reverse binary counter scheme described in Problem 17-1.) To
+complete the proof that ITERATIVE-FFT runs in time Θ(n lg n), we show that L(n), the
+number of times the body of the innermost loop (lines 8 –13) is executed, is Θ(n lg n). The for
+
+

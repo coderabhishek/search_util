@@ -1,0 +1,35 @@
+Our goal, therefore is to compute X, the total number of comparisons performed in all calls to
+PARTITION. We will not attempt to analyze how many comparisons are made in each call to
+PARTITION. Rather, we will derive an overall bound on the total number of comparisons. To
+do so, we must understand when the algorithm compares two elements of the array and when
+it does not. For ease of analysis, we rename the elements of the array A as z1, z2,..., zn, with zi
+being the ith smallest element. We also define the set Zij = {zi, zi+1,..., zj} to be the set of
+elements between zi and zj, inclusive.
+When does the algorithm compare zi and zj? To answer this question, we first observe that
+each pair of elements is compared at most once. Why? Elements are compared only to the
+pivot element and, after a particular call of PARTITION finishes, the pivot element used in
+that call is never again compared to any other elements.
+Our analysis uses indicator random variables (see Section 5.2). We define
+Xij = I {zi is compared to zj} ,
+where we are considering whether the comparison takes place at any time during the
+execution of the algorithm, not just during one iteration or one call of PARTITION. Since
+each pair is compared at most once, we can easily characterize the total number of
+comparisons performed by the algorithm:
+
+Taking expectations of both sides, and then using linearity of expectation and Lemma 5.1, we
+obtain
+(7.2)
+
+It remains to compute Pr {zi is compared to zj}.
+It is useful to think about when two items are not compared. Consider an input to quicksort of
+the numbers 1 through 10 (in any order), and assume that the first pivot element is 7. Then the
+first call to PARTITION separates the numbers into two sets: {1, 2, 3, 4, 5, 6} and {8, 9, 10}.
+In doing so, the pivot element 7 is compared to all other elements, but no number from the
+first set (e.g., 2) is or ever will be compared to any number from the second set (e.g., 9).
+In general, once a pivot x is chosen with zi < x < zj, we know that zi and zj cannot be compared
+at any subsequent time. If, on the other hand, zi is chosen as a pivot before any other item in
+Zij, then zi will be compared to each item in Zij, except for itself. Similarly, if zj is chosen as a
+pivot before any other item in Zij, then zj will be compared to each item in Zij , except for
+itself. In our example, the values 7 and 9 are compared because 7 is the first item from Z7,9 to
+
+

@@ -1,0 +1,94 @@
+variable and a conjunction of clauses describing the operation of each node. For the formula
+(34.3), the resulting expression is
+φ' = y1
+
+(y1 ↔ (y2 ¬x2))
+(y2 ↔ (y3 y4))
+(y3 ↔ (x1 → x2))
+(y4 ↔ ¬y5)
+(y5 ↔ (y6 x4))
+(y6 ↔ (¬x1 → x3))
+
+Observe that the formula φ' thus obtained is a conjunction of clauses , each of which has at
+most 3 literals. The only additional requirement is that each clause be an OR of literals.
+The second step of the reduction converts each clause into conjunctive normal form. We
+construct a truth table for by evaluating all possible assignments to its variables. Each row
+of the truth table consists of a possible assignment of the variables of the clause, together with
+the value of the clause under that assignment. Using the truth-table entries that evaluate to 0,
+we build a formula in disjunctive normal form (or DNF)-an OR of AND's-that is equivalent
+to . We then convert this formula into a CNF formula by using DeMorgan's laws
+(equations (B.2)) to complement all literals and change OR's into AND's and AND's into
+OR's.
+In our example, we convert the clause
+into CNF as follows. The truth
+table for is given in Figure 34.12. The DNF formula equivalent to is
+(y1
+
+y2
+
+y1 y2 x2
+
+1
+1
+1
+1
+0
+0
+0
+0
+
+1
+1
+0
+0
+1
+1
+0
+0
+
+1
+0
+1
+0
+1
+0
+1
+0
+
+x2)
+
+(y1
+
+¬y2
+
+x2)
+
+(y1
+
+¬y2
+
+¬x2)
+
+(¬y1
+
+(y1 ↔ (y2
+¬x2))
+0
+1
+0
+0
+1
+0
+1
+1
+
+Figure 34.12: The truth table for the clause (y1 ↔ (y2
+Applying DeMorgan's laws, we get the CNF formula
+
+¬x2)).
+
+y2
+
+¬x2).
+
+

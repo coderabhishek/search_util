@@ -1,0 +1,29 @@
+Fundamental theorem of linear programming
+We conclude this chapter by showing that the SIMPLEX procedure works. In particular, any
+linear program either is infeasible, is unbounded, or has an optimal solution with a finite
+objective value, and in each case, SIMPLEX will act appropriately.
+Theorem 29.13: (Fundamental theorem of linear programming)
+Any linear program L, given in standard form, either
+1. has an optimal solution with a finite objective value,
+2. is infeasible, or
+3. is unbounded.
+If L is infeasible, SIMPLEX returns "infeasible." If L is unbounded, SIMPLEX returns
+"unbounded." Otherwise, SIMPLEX returns an optimal solution with a finite objective value.
+
+Proof By Lemma 29.12, if linear program L is infeasible, then SIMPLEX returns "infeasible."
+Now suppose that the linear program L is feasible. By Lemma 29.12, INITIALIZE-SIMPLEX
+returns a slack form for which the basic solution is feasible. By Lemma 29.7, therefore,
+SIMPLEX either returns "unbounded" or terminates with a feasible solution. If it terminates
+with a finite solution, then Theorem 29.10 tells us that this solution is optimal. On the other
+hand, if SIMPLEX returns "un-bounded," Lemma 29.2 tells us the linear program L is indeed
+unbounded. Since SIMPLEX always terminates in one of these ways, the proof is complete.
+Exercises 29.5-1
+Give detailed pseudocode to implement lines 5 and 11 of INITIALIZE-SIMPLEX.
+
+Exercises 29.5-2
+Show that when INITIALIZE-SIMPLEX runs the main loop of SIMPLEX, "unbounded" will
+never be returned.
+
+Exercises 29.5-3
+
+

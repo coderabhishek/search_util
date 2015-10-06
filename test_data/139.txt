@@ -1,0 +1,23 @@
+be chosen as a pivot. In contrast, 2 and 9 will never be compared because the first pivot
+element chosen from Z2,9 is 7. Thus, zi and zj are compared if and only if the first element to
+be chosen as a pivot from Zij is either zi or zj.
+We now compute the probability that this event occurs. Prior to the point at which an element
+from Zij has been chosen as a pivot, the whole set Zij is together in the same partition.
+Therefore, any element of Zij is equally likely to be the first one chosen as a pivot. Because
+the set Zij has j - i + 1 elements, the probability that any given element is the first one chosen
+as a pivot is 1/(j - i + 1). Thus, we have
+(7.3)
+
+The second line follows because the two events are mutually exclusive. Combining equations
+(7.2) and (7.3), we get that
+
+We can evaluate this sum using a change of variables (k = j - i) and the bound on the
+harmonic series in equation (A.7):
+(7.4)
+
+Thus we conclude that, using RANDOMIZED-PARTITION, the expected running time of
+quicksort is O(n lg n).
+Exercises 7.4-1
+Show that in the recurrence
+
+

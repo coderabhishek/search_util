@@ -1,0 +1,39 @@
+Figure 25.3: Path p is a shortest path from vertex i to vertex j, and k is the highestnumbered intermediate vertex of p. Path p1, the portion of path p from vertex i to
+vertex k, has all intermediate vertices in the set {1, 2,..., k - 1}. The same holds for
+path p2 from vertex k to vertex j.
+A recursive solution to the all-pairs shortest-paths problem
+Based on the above observations, we define a recursive formulation of shortest-path estimates
+that is different from the one in Section 25.1. Let be the weight of a shortest path from
+vertex i to vertex j for which all intermediate vertices are in the set {1, 2,..., k}. When k = 0, a
+path from vertex i to vertex j with no intermediate vertex numbered higher than 0 has no
+. A recursive
+intermediate vertices at all. Such a path has at most one edge, and hence
+definition following the above discussion is given by
+(25.5)
+
+Because for any path, all intermediate vertices are in the set {1, 2,..., n}, the matrix
+gives the final answer:
+for all i, j V.
+Computing the shortest-path weights bottom up
+Based on recurrence (25.5), the following bottom-up procedure can be used to compute the
+values in order of increasing values of k. Its input is an n × n matrix W defined as in
+equation (25.1). The procedure returns the matrix D(n) of shortest-path weights.
+FLOYD-WARSHALL(W)
+1 n ← rows[W]
+2 D(0) ← W
+3 for k ← 1 to n
+4
+do for i ← 1 to n
+5
+do for j ← 1 to n
+6
+7
+
+return D(n)
+
+do
+
+Figure 25.4 shows the matrices D(k) computed by the Floyd-Warshall algorithm for the graph
+in Figure 25.1.
+
+

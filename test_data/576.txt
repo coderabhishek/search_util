@@ -1,0 +1,36 @@
+During the execution of GENERIC-PUSH-RELABEL on a flow network G = (V, E), for each
+vertex u V, the height h[u] never decreases. Moreover, whenever a relabel operation is
+applied to a vertex u, its height h[u] increases by at least 1.
+Proof Because vertex heights change only during relabel operations, it suffices to prove the
+second statement of the lemma. If vertex u is about to be relabeled, then for all vertices v such
+that (u, v) Ef, we have h[u] ≤ h[v]. Thus, h[u] < 1 + min {h[v] : (u, v) Ef}, and so the
+operation must increase h[u].
+
+Lemma 26.17
+Let G = (V, E) be a flow network with source s and sink t. During the execution of
+GENERIC-PUSH-RELABEL on G, the attribute h is maintained as a height function.
+Proof The proof is by induction on the number of basic operations performed. Initially, h is a
+height function, as we have already observed.
+We claim that if h is a height function, then an operation RELABEL(u) leaves h a height
+function. If we look at a residual edge (u, v) Ef that leaves u, then the operation
+RELABEL(u) ensures that h[u] ≤ h[v] + 1 afterward. Now consider a residual edge (w, u) that
+enters u. By Lemma 26.16, h[w] ≤ h[u] + 1 before the operation RELABEL(u) implies h[w] <
+h[u] + 1 afterward. Thus, the operation RELABEL(u) leaves h a height function.
+Now, consider an operation PUSH(u, v). This operation may add the edge (v, u) to Ef, and it
+may remove (u, v) from Ef. In the former case, we have h[v] = h[u] - 1 < h[u] + 1, and so h
+remains a height function. In the latter case,the removal of (u, v) from the residual network
+removes the corresponding constraint, and h again remains a height function.
+
+The following lemma gives an important property of height functions.
+Lemma 26.18
+Let G = (V, E) be a flow network with source s and sink t, let f be a preflow in G, and let h be
+a height function on V. Then there is no path from the source s to the sink t in the residual
+network Gf.
+Proof Assume for the sake of contradiction that there is a path p = v0, v1, . . . , vk from s to
+t in Gf, where v0 = s and vk = t. Without loss of generality, p is a simple path, and so k < |V|.
+For i = 0, 1, . . . , k - 1, edge (vi, vi+1) Ef. Because h is a height function, h(vi) ≤ h(vi+1) + 1
+for i = 0, 1, . . . , k - 1. Combining these inequalities over path p yields h(s) ≤ h(t) + k. But
+because h(t) = 0, we have h(s) ≤ k < |V|, which contradicts the requirement that h(s) = |V| in a
+height function.
+
+

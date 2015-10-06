@@ -1,0 +1,38 @@
+a. Consider the ordinary "paper and pencil" algorithm for long division: dividing a by b,
+which yields a quotient q and remainder r. Show that this method requires O((1 + lg q)
+lg b) bit operations.
+b. Define µ(a, b) = (1 + lg a)(1 + lg b). Show that the number of bit operations performed
+by EUCLID in reducing the problem of computing gcd(a, b) to that of computing
+gcd(b, a mod b) is at most c(µ(a, b) - µ(b, a mod b)) for some sufficiently large
+constant c > 0.
+c. Show that EUCLID(a, b) requires O(µ(a, b)) bit operations in general and O(β2) bit
+operations when applied to two β-bit inputs.
+
+Exercises 31-3: Three algorithms for Fibonacci numbers
+This problem compares the efficiency of three methods for computing the nth Fibonacci
+number Fn, given n. Assume that the cost of adding, subtracting, or multiplying two numbers
+is O(1), independent of the size of the numbers.
+a. Show that the running time of the straightforward recursive method for computing Fn
+based on recurrence (3.21) is exponential in n.
+b. Show how to compute Fn in O(n) time using memoization.
+c. Show how to compute Fn in O(lg n) time using only integer addition and
+multiplication. (Hint: Consider the matrix
+
+and its powers.)
+d. Assume now that adding two β-bit numbers takes Θ(β) time and that multiplying two
+β-bit numbers takes Θ(β2) time. What is the running time of these three methods under
+this more reasonable cost measure for the elementary arithmetic operations?
+
+Problems 31-4: Quadratic residues
+Let p be an odd prime. A number
+has a solution for the unknown x.
+
+is a quadratic residue if the equation x2 = a (mod p)
+
+a. Show that there are exactly (p - 1)/2 quadratic residues, modulo p.
+b. If p is prime, we define the Legendre symbol , for
+, to be 1 if a is a quadratic
+residue modulo p and -1 otherwise. Prove that if
+, then
+
+

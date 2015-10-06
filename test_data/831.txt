@@ -1,0 +1,44 @@
+•
+
+Termination: When the loop terminates, we have i = m + 1, and so the loop invariant
+implies that stack S consists of exactly the vertices of CH(Qm), which is CH(Q), in
+counterclockwise order from bottom to top. This completes the proof.
+
+We now show that the running time of GRAHAM-SCAN is O(n lg n), where n = |Q|. Line 1
+takes Θ(n) time. Line 2 takes O(n lg n) time, using merge sort or heapsort to sort the polar
+angles and the cross-product method of Section 33.1 to compare angles. (Removing all but the
+farthest point with the same polar angle can be done in a total of O(n) time.) Lines 3-5 take
+O(1) time. Because m ≤ n - 1, the for loop of lines 6-9 is executed at most n - 3 times. Since
+PUSH takes O(1) time, each iteration takes O(1) time exclusive of the time spent in the while
+loop of lines 7-8, and thus overall the for loop takes O(n) time exclusive of the nested while
+loop.
+We use aggregate analysis to show that the while loop takes O(n) time overall. For i = 0, 1, ...,
+m, each point pi is pushed onto stack S exactly once. As in the analysis of the MULTIPOP
+procedure of Section 17.1, we observe that there is at most one POP operation for each PUSH
+operation. At least three points-p0, p1, and pm-are never popped from the stack, so that in fact
+at most m - 2 POP operations are performed in total. Each iteration of the while loop performs
+one POP, and so there are at most m - 2 iterations of the while loop altogether. Since the test
+in line 7 takes O(1) time, each call of POP takes O(1) time, and since m ≤ n - 1, the total time
+taken by the while loop is O(n). Thus, the running time of GRAHAM-SCAN is O(n lg n).
+Jarvis's march
+Jarvis's march computes the convex hull of a set Q of points by a technique known as
+package wrapping (or gift wrapping). The algorithm runs in time O(nh), where h is the
+number of vertices of CH(Q). When h is o(lg n), Jarvis's march is asymptotically faster than
+Graham's scan.
+Intuitively, Jarvis's march simulates wrapping a taut piece of paper around the set Q. We start
+by taping the end of the paper to the lowest point in the set, that is, to the same point p0 with
+which we start Graham's scan. This point is a vertex of the convex hull. We pull the paper to
+the right to make it taut, and then we pull it higher until it touches a point. This point must
+also be a vertex of the convex hull. Keeping the paper taut, we continue in this way around
+the set of vertices until we come back to our original point p0.
+More formally, Jarvis's march builds a sequence H = p0, p1, ..., ph-1 of the vertices of
+CH(Q). We start with p0. As Figure 33.9 shows, the next convex hull vertex p1 has the
+smallest polar angle with respect to p0. (In case of ties, we choose the point farthest from p0.)
+Similarly, p2 has the smallest polar angle with respect to p1, and so on. When we reach the
+highest vertex, say pk (breaking ties by choosing the farthest such vertex), we have
+constructed, as Figure 33.9 shows, the right chain of CH(Q). To construct the left chain, we
+start at pk and choose pk+1 as the point with the smallest polar angle with respect to pk, but
+from the negative x-axis. We continue on, forming the left chain by taking polar angles from
+the negative x-axis, until we come back to our original vertex p0.
+
+

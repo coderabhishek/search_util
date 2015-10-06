@@ -1,0 +1,26 @@
+The FORD-FULKERSON algorithm simply expands on the FORD-FULKERSONMETHOD pseudocode given earlier. Figure 26.5 shows the result of each iteration in a
+sample run. Lines 1-3 initialize the flow f to 0. The while loop of lines 4-8 repeatedly finds an
+augmenting path p in Gf and augments flow f along p by the residual capacity cf (p). When no
+augmenting paths exist, the flow f is a maximum flow.
+
+Figure 26.5: The execution of the basic Ford-Fulkerson algorithm. (a)-(d) Successive
+iterations of the while loop. The left side of each part shows the residual network Gf from line
+4 with a shaded augmenting path p. The right side of each part shows the new flow f that
+results from adding fp to f. The residual network in (a) is the input network G. (e) The residual
+network at the last while loop test. It has no augmenting paths, and the flow f shown in (d) is
+therefore a maximum flow.
+Analysis of Ford-Fulkerson
+The running time of FORD-FULKERSON depends on how the augmenting path p in line 4 is
+determined. If it is chosen poorly, the algorithm might not even terminate: the value of the
+flow will increase with successive augmentations, but it need not even converge to the
+maximum flow value.[2] If the augmenting path is chosen by using a breadth-first search
+(which we saw in Section 22.2), however, the algorithm runs in polynomial time. Before
+proving this result, however, we obtain a simple bound for the case in which the augmenting
+path is chosen arbitrarily and all capacities are integers.
+Most often in practice, the maximum-flow problem arises with integral capacities. If the
+capacities are rational numbers, an appropriate scaling transformation can be used to make
+them all integral. Under this assumption, a straightforward implementation of FORDFULKERSON runs in time O(E | f*|), where f* is the maximum flow found by the algorithm.
+The analysis is as follows. Lines 1-3 take time Θ(E). The while loop of lines 4-8 is executed
+at most |f*| times, since the flow value increases by at least one unit in each iteration.
+
+

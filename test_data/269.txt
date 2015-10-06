@@ -1,0 +1,29 @@
+In many cases, such as maintenance of the size fields in order-statistic trees, the cost of
+updating after a rotation is O(1), rather than the O(lg n) derived in the proof of Theorem 14.1.
+Exercise 14.2-4 gives an example.
+Exercises 14.2-1
+Show how the dynamic-set queries MINIMUM, MAXIMUM, SUCCESSOR, and
+PREDECESSOR can each be supported in O(1) worst-case time on an augmented orderstatistic tree. The asymptotic performance of other operations on order-statistic trees should
+not be affected. (Hint: Add pointers to nodes.)
+
+Exercises 14.2-2
+Can the black-heights of nodes in a red-black tree be maintained as fields in the nodes of the
+tree without affecting the asymptotic performance of any of the red-black tree operations?
+Show how, or argue why not.
+
+Exercises 14.2-3
+Can the depths of nodes in a red-black tree be efficiently maintained as fields in the nodes of
+the tree? Show how, or argue why not.
+
+Exercises 14.2-4: ⋆
+Let ⊗ be an associative binary operator, and let a be a field maintained in each node of a redblack tree. Suppose that we want to include in each node x an additional field f such that f[x] =
+a[x1] ⊗ a[x2] ⊗ ··· ⊗ a[xm], where x1, x2,..., xm is the inorder listing of nodes in the subtree
+rooted at x. Show that the f fields can be properly updated in O(1) time after a rotation.
+Modify your argument slightly to show that the size fields in order-statistic trees can be
+maintained in O(1) time per rotation.
+
+Exercises 14.2-5: ⋆
+We wish to augment red-black trees with an operation RB-ENUMERATE(x, a, b) that outputs
+all the keys k such that a ≤ k ≤ b in a red-black tree rooted at x. Describe how RBENUMERATE can be implemented in Θ(m +lg n) time, where m is the number of keys that
+
+

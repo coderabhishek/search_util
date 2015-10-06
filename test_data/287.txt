@@ -1,0 +1,47 @@
+computing the matrix product Ai
+obtain
+
+k
+
+Ak+1 j takes pi-1 pk pj scalar multiplications. Thus, we
+
+m[i, j ] = m[i, k] + m[k + 1, j ] + pi-1 pk pj.
+This recursive equation assumes that we know the value of k, which we do not. There are only
+j - i possible values for k, however, namely k = i, i + 1, ..., j - 1. Since the optimal
+parenthesization must use one of these values for k, we need only check them all to find the
+best. Thus, our recursive definition for the minimum cost of parenthesizing the product Ai Ai+1
+Aj becomes
+(15.12)
+
+The m[i, j] values give the costs of optimal solutions to subproblems. To help us keep track of
+how to construct an optimal solution, let us define s[i, j] to be a value of k at which we can
+split the product Ai Ai+1 Aj to obtain an optimal parenthesization. That is, s[i, j] equals a value
+k such that m[i, j] = m[i, k] + m[k + 1, j] + pi-1 pk pj.
+Step 3: Computing the optimal costs
+At this point, it is a simple matter to write a recursive algorithm based on recurrence (15.12)
+to compute the minimum cost m[1, n] for multiplying A1 A2 An. As we shall see in Section
+15.3, however, this algorithm takes exponential time, which is no better than the brute-force
+method of checking each way of parenthesizing the product.
+The important observation that we can make at this point is that we have relatively few
+subproblems: one problem for each choice of i and j satisfying 1 ≤ i ≤ j ≤ n, or
+in
+all. A recursive algorithm may encounter each subproblem many times in different branches
+of its recursion tree. This property of overlapping subproblems is the second hallmark of the
+applicability of dynamic programming (the first hallmark being optimal substructure).
+Instead of computing the solution to recurrence (15.12) recursively, we perform the third step
+of the dynamic-programming paradigm and compute the optimal cost by using a tabular,
+bottom-up approach. The following pseudocode assumes that matrix Ai has dimensions pi-1 ×
+pi for i = 1, 2, ..., n. The input is a sequence p = p0, p1, ..., pn , where length[p] = n + 1. The
+procedure uses an auxiliary table m[1 n, 1 n] for storing the m[i, j] costs and an auxiliary
+table s[1 n, 1 n] that records which index of k achieved the optimal cost in computing
+m[i, j]. We will use the table s to construct an optimal solution.
+In order to correctly implement the bottom-up approach, we must determine which entries of
+the table are used in computing m[i, j]. Equation (15.12) shows that the cost m[i, j] of
+computing a matrix-chain product of j - i + 1 matrices depends only on the costs of computing
+matrix-chain products of fewer than j - i + 1 matrices. That is, for k = i, i + 1, ..., j - 1, the
+matrix Ai k is a product of k - i + 1 < j - i + 1 matrices and the matrix Ak+1 j is a product of j k < j - i + 1 matrices. Thus, the algorithm should fill in the table m in a manner that
+corresponds to solving the parenthesization problem on matrix chains of increasing length.
+MATRIX-CHAIN-ORDER(p)
+1 n ← length[p] - 1
+
+

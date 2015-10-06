@@ -1,0 +1,39 @@
+permuting its characters, then x and y hash to the same value. Give an example of an
+application in which this property would be undesirable in a hash function.
+
+Exercises 11.3-4
+
+Consider a hash table of size m = 1000 and a corresponding hash function h(k) = ⌊m(k A mod
+1)⌋ for
+mapped.
+
+. Compute the locations to which the keys 61, 62, 63, 64, and 65 are
+
+Exercises 11.3-5: ⋆
+Define a family ℋ of hash functions from a finite set U to a finite set B to be
+for all pairs of distinct elements k and l in U,
+Pr {h(k) = h(l)} ≤
+
+-universal if
+
+,
+
+where the probability is taken over the drawing of hash function h at random from the family
+ℋ. Show that an
+
+-universal family of hash functions must have
+
+Exercises 11.3-6: ⋆
+Let U be the set of n-tuples of values drawn from Zp, and let B = Zp, where p is prime. Define
+the hash function hb : U → B for b Zp on an input n-tuple a0, a1, ..., an-1 from U as
+
+and let ℋ = {hb : b Zp}. Argue that ℋ is ((n - 1)/p)-universal according to the definition of
+-universal in Exercise 11.3-5. (Hint: See Exercise 31.4-4.)
+
+11.4 Open addressing
+In open addressing, all elements are stored in the hash table itself. That is, each table entry
+contains either an element of the dynamic set or NIL. When searching for an element, we
+systematically examine table slots until the desired element is found or it is clear that the
+element is not in the table. There are no lists and no elements stored outside the table, as there
+
+

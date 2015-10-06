@@ -1,0 +1,48 @@
+applicant was among the first k interviewed, then we will hire the nth applicant. This strategy
+is formalized in the procedure ON-LINE-MAXIMUM(k, n), which appears below. Procedure
+ON-LINE-MAXIMUM returns the index of the candidate we wish to hire.
+ON-LINE-MAXIMUM(k, n)
+1 bestscore ← -∞
+2 for i ← to k
+3
+do if score(i) > bestscore
+4
+then bestscore ← score(i)
+5 for i ← k + 1 to n
+6
+do if score(i) > bestscore
+7
+then return i
+8 return n
+
+We wish to determine, for each possible value of k, the probability that we hire the most
+qualified applicant. We will then choose the best possible k, and implement the strategy with
+that value. For the moment, assume that k is fixed. Let M(j) = max≤i≤j {score(i)} denote the
+maximum score among applicants 1 through j. Let S be the event that we succeed in choosing
+the best-qualified applicant, and let Si be the event that we succeed when the best-qualified
+applicant is the ith one interviewed. Since the various Si are disjoint, we have that
+. Noting that we never succeed when the best-qualified applicant is one of the
+first k, we have that Pr {Si} = 0 for i = 1, 2,..., k. Thus, we obtain
+(5.13)
+
+We now compute Pr {Si}. In order to succeed when the best-qualified applicant is the ith one,
+two things must happen. First, the best-qualified applicant must be in position i, an event
+which we denote by Bi. Second, the algorithm must not select any of the applicants in
+positions k + 1 through i - 1, which happens only if, for each j such that k + 1 ≤ j ≤ i - 1, we
+find that score(j) < bestscore in line 6. (Because scores are unique, we can ignore the
+possibility of score(j) = bestscore.) In other words, it must be the case that all of the values
+score(k + 1) through score(i - 1) are less than M(k); if any are greater than M(k) we will
+instead return the index of the first one that is greater. We use Oi to denote the event that none
+of the applicants in position k + 1 through i - 1 are chosen. Fortunately, the two events Bi and
+Oi are independent. The event Oi depends only on the relative ordering of the values in
+positions 1 through i - 1, whereas Bi depends only on whether the value in position i is greater
+than all the values 1 through i - 1. The ordering of positions 1 through i - 1 does not affect
+whether i is greater than all of them, and the value of i does not affect the ordering of
+positions 1 through i - 1. Thus we can apply equation (C.15) to obtain
+Pr {Si} = Pr {Bi ∩ Oi} = Pr {Bi} Pr {Oi}.
+The probability Pr {Bi} is clearly 1/n, since the maximum is equally likely to be in any one of
+the n positions. For event Oi to occur, the maximum value in positions 1 through i - 1 must be
+in one of the first k positions, and it is equally likely to be in any of these i - 1 positions.
+Consequently, Pr {Oi} = k/(i - 1) and Pr {Si} = k/(n(i - 1)). Using equation (5.13), we have
+
+

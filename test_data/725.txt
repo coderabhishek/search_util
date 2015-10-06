@@ -1,0 +1,36 @@
+Thus, the time to add two polynomials of degree-bound n in point-value form is Θ(n).
+Similarly, the point-value representation is convenient for multiplying polynomials. If C(x) =
+A(x) B(x), then C(xk) = A(xk)B(xk) for any point xk, and we can pointwise multiply a pointvalue representation for A by a point-value representation for B to obtain a point-value
+representation for C. We must face the problem, however, that the degree-bound of C is the
+sum of the degree-bounds for A and B. A standard point-value representation for A and B
+consists of n point-value pairs for each polynomial. Multiplying these together gives us n
+point-value pairs for C, but since the degree-bound of C is 2n, we need 2n point-value pairs
+for a point-value representation of C. (See Exercise 30.1-4.) We must therefore begin with
+"extended" point-value representations for A and for B consisting of 2n point-value pairs each.
+Given an extended point-value representation for A,
+{(x0,y0),(x1,y1),...,(x2n-1,y2n-1)},
+and a corresponding extended point-value representation for B,
+
+then a point-value representation for C is
+
+Given two input polynomials in extended point-value form, we see that the time to multiply
+them to obtain the point-value form of the result is Θ(n), much less than the time required to
+multiply polynomials in coefficient form.
+Finally, we consider how to evaluate a polynomial given in point-value form at a new point.
+For this problem, there is apparently no approach that is simpler than converting the
+polynomial to coefficient form first, and then evaluating it at the new point.
+Fast multiplication of polynomials in coefficient form
+Can we use the linear-time multiplication method for polynomials in point-value form to
+expedite polynomial multiplication in coefficient form? The answer hinges on our ability to
+convert a polynomial quickly from coefficient form to point-value form (evaluate) and viceversa (interpolate).
+We can use any points we want as evaluation points, but by choosing the evaluation points
+carefully, we can convert between representations in only Θ(n lg n) time. As we shall see in
+Section 30.2, if we choose "complex roots of unity" as the evaluation points, we can produce
+a point-value representation by taking the Discrete Fourier Transform (or DFT) of a
+coefficient vector. The inverse operation, interpolation, can be performed by taking the
+"inverse DFT" of point-value pairs, yielding a coefficient vector. Section 30.2 will show how
+the FFT performs the DFT and inverse DFT operations in Θ(n lg n) time.
+Figure 30.1 shows this strategy graphically. One minor detail concerns degree-bounds. The
+product of two polynomials of degree-bound n is a polynomial of degree-bound 2n. Before
+
+

@@ -1,0 +1,49 @@
+idea of a greedy algorithm is to make each choice in a locally optimal manner. A simple
+example is coin-changing: to minimize the number of U.S. coins needed to make change for a
+given amount, it suffices to select repeatedly the largest-denomination coin that is not larger
+than the amount still owed. There are many such problems for which a greedy approach
+provides an optimal solution much more quickly than would a dynamic-programming
+approach. It is not always easy to tell whether a greedy approach will be effective, however.
+Chapter 16 reviews matroid theory, which can often be helpful in making such a
+determination.
+Amortized analysis is a tool for analyzing algorithms that perform a sequence of similar
+operations. Instead of bounding the cost of the sequence of operations by bounding the actual
+cost of each operation separately, an amortized analysis can be used to provide a bound on the
+actual cost of the entire sequence. One reason this idea can be effective is that it may be
+impossible in a sequence of operations for all of the individual operations to run in their
+known worst-case time bounds. While some operations are expensive, many others might be
+cheap. Amortized analysis is not just an analysis tool, however; it is also a way of thinking
+about the design of algorithms, since the design of an algorithm and the analysis of its running
+time are often closely intertwined. Chapter 17 introduces three ways to perform an amortized
+analysis of an algorithm.
+
+Chapter 15: Dynamic Programming
+Overview
+Dynamic programming, like the divide-and-conquer method, solves problems by combining
+the solutions to subproblems. ("Programming" in this context refers to a tabular method, not
+to writing computer code.) As we saw in Chapter 2, divide-and-conquer algorithms partition
+the problem into independent subproblems, solve the subproblems recursively, and then
+combine their solutions to solve the original problem. In contrast, dynamic programming is
+applicable when the subproblems are not independent, that is, when subproblems share
+subsubproblems. In this context, a divide-and-conquer algorithm does more work than
+necessary, repeatedly solving the common subsubproblems. A dynamic-programming
+algorithm solves every subsubproblem just once and then saves its answer in a table, thereby
+avoiding the work of recomputing the answer every time the subsubproblem is encountered.
+Dynamic programming is typically applied to optimization problems. In such problems there
+can be many possible solutions. Each solution has a value, and we wish to find a solution with
+the optimal (minimum or maximum) value. We call such a solution an optimal solution to the
+problem, as opposed to the optimal solution, since there may be several solutions that achieve
+the optimal value.
+The development of a dynamic-programming algorithm can be broken into a sequence of four
+steps.
+1.
+2.
+3.
+4.
+
+Characterize the structure of an optimal solution.
+Recursively define the value of an optimal solution.
+Compute the value of an optimal solution in a bottom-up fashion.
+Construct an optimal solution from computed information.
+
+

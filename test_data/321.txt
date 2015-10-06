@@ -1,0 +1,48 @@
+many choices we have in determining which subproblems to use. In our dynamicprogramming solution, two subproblems are used in an optimal solution, and there are j-i-1
+choices when solving the subproblem Sij. Theorem 16.1 reduces both of these quantities
+significantly: only one subproblem is used in an optimal solution (the other subproblem is
+guaranteed to be empty), and when solving the subproblem Sij, we need consider only one
+choice: the one with the earliest finish time in Sij. Fortunately, we can easily determine which
+activity this is.
+In addition to reducing the number of subproblems and the number of choices, Theorem 16.1
+yields another benefit: we can solve each subproblem in a top-down fashion, rather than the
+bottom-up manner typically used in dynamic programming. To solve the subproblem Sij, we
+choose the activity am in Sij with the earliest finish time and add to this solution the set of
+activities used in an optimal solution to the subproblem Sij. Because we know that, having
+chosen am, we will certainly be using a solution to Smj in our optimal solution to Sij, we do not
+need to solve Smj before solving Sij. To solve Sij, we can first choose am as the activity in Sij
+with the earliest finish time and then solve Smj.
+Note also that there is a pattern to the subproblems that we solve. Our original problem is S =
+S0.n+1. Suppose that we choose as the activity in S0.n+1 with the earliest finish time. (Since
+we have sorted activities by monotonically increasing finish times and f0 = 0, we must have
+m1 = 1.) Our next subproblem is
+. Now suppose that we choose as the activity in
+with the earliest finish time. (It is not necessarily the case that m2 = 2.) Our next subproblem
+. Continuing, we see that each subproblem will be of the form
+for some activity
+is
+number mi. In other words, each subproblem consists of the last activities to finish, and the
+number of such activities varies from subproblem to subproblem.
+There is also a pattern to the activities that we choose. Because we always choose the activity
+with the earliest finish time in
+, the finish times of the activities chosen over all
+subproblems will be strictly increasing over time. More-over, we can consider each activity
+just once overall, in monotonically increasing order of finish times.
+The activity am that we choose when solving a subproblem is always the one with the earliest
+finish time that can be legally scheduled. The activity picked is thus a "greedy" choice in the
+sense that, intuitively, it leaves as much opportunity as possible for the remaining activities to
+be scheduled. That is, the greedy choice is the one that maximizes the amount of unscheduled
+time remaining.
+A recursive greedy algorithm
+Now that we have seen how to streamline our dynamic-programming solution, and how to
+treat it as a top-down method, we are ready to see an algorithm that works in a purely greedy,
+top-down fashion. We give a straightforward, recursive solution as the procedure
+RECURSIVE-ACTIVITY-SELECTOR. It takes the start and finish times of the activities,
+represented as arrays s and f, as well as the starting indices i and j of the subproblem Si.j it is to
+solve. It returns a maximum-size set of mutually compatible activities in Si.j. We assume that
+the n input activities are ordered by monotonically increasing finish time, according to
+equation (16.1). If not, we can sort them into this order in O(n lg n) time, breaking ties
+arbitrarily. The initial call is RECURSIVE-ACTIVITY-SELECTOR(s, f, 0, n + 1).
+RECURSIVE-ACTIVITY-SELECTOR(s, f, i, j)
+
+

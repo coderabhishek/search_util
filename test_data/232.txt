@@ -1,0 +1,25 @@
+Because Rn is equally likely to be any element of {1, 2, ..., n}, we have that Pr{Rn = i} = 1/n
+for i = 1,2, ..., n, and hence, by Lemma 5.1,
+(12.1)
+for i = 1, 2, ..., n. Because exactly one value of Zn,i is 1 and all others are 0, we also have
+
+We will show that E[Yn] is polynomial in n, which will ultimately imply that E[Xn] = O(lg n).
+The indicator random variable Zn,i = I{Rn = i} is independent of the values of Yi-1 and Yn-i.
+Having chosen Rn = i, the left subtree, whose exponential height is Yi-1, is randomly built on
+the i - 1 keys whose ranks are less than i. This subtree is just like any other randomly built
+binary search tree on i - 1 keys. Other than the number of keys it contains, this subtree's
+structure is not affected at all by the choice of Rn = i; hence the random variables Yi-1 and Zn,i
+are independent. Likewise, the right subtree, whose exponential height is Yn-i, is randomly
+built on the n - i keys whose ranks are greater than i. Its structure is independent of the value
+of Rn, and so the random variables Yn-i and Zn,i are independent. Hence,
+
+Each term E[Y0], E[Y1], ..., E[Yn-1] appears twice in the last summation, once as E[Yi-1] and
+once as E[Yn-i], and so we have the recurrence
+(12.2)
+
+Using the substitution method, we will show that for all positive integers n, the recurrence
+(12.2) has the solution
+
+In doing so, we will use the identity
+
+

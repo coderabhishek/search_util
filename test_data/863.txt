@@ -1,0 +1,28 @@
+The basic idea of the proof is to represent the computation of A as a sequence of
+configurations. As shown in Figure 34.9, each configuration can be broken into parts
+consisting of the program for A, the program counter and auxiliary machine state, the input x,
+the certificate y, and working storage. Starting with an initial configuration c0, each
+configuration ci is mapped to a subsequent configuration ci+1 by the combinational circuit M
+implementing the computer hardware. The output of the algorithm A-0 or 1-is written to some
+designated location in the working storage when A finishes executing, and if we assume that
+thereafter A halts, the value never changes. Thus, if the algorithm runs for at most T(n) steps,
+the output appears as one of the bits in cT (n).
+
+Figure 34.9: The sequence of configurations produced by an algorithm A running on an input
+x and certificate y. Each configuration represents the state of the computer for one step of the
+computation and, besides A, x, and y, includes the program counter (PC), auxiliary machine
+state, and working storage. Except for the certificate y, the initial configuration c0 is constant.
+Each configuration is mapped to the next configuration by a boolean combinational circuit M.
+The output is a distinguished bit in the working storage.
+The reduction algorithm F constructs a single combinational circuit that computes all
+configurations produced by a given initial configuration. The idea is to paste together T(n)
+copies of the circuit M. The output of the ith circuit, which produces configuration ci, is fed
+directly into the input of the (i +1)st circuit. Thus, the configurations, rather than ending up in
+a state register, simply reside as values on the wires connecting copies of M.
+Recall what the polynomial-time reduction algorithm F must do. Given an input x, it must
+compute a circuit C = f(x) that is satisfiable if and only if there exists a certificate y such that
+A(x, y) = 1. When F obtains an input x, it first computes n = |x| and constructs a combinational
+circuit C′ consisting of T(n) copies of M. The input to C′ is an initial configuration
+corresponding to a computation on A(x, y), and the output is the configuration cT(n).
+
+

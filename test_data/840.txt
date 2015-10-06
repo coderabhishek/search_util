@@ -1,0 +1,39 @@
+b. Show that the convex hull of a set of n points drawn independently according to a
+sparse-hulled distribution can be computed in O(n) expected time. (Hint: Recursively
+find the convex hulls of the first n/2 points and the second n/2 points, and then
+combine the results.)
+
+Chapter notes
+This chapter barely scratches the surface of computational-geometry algorithms and
+techniques. Books on computational geometry include those by Preparata and Shamos [247],
+Edelsbrunner [83], and O'Rourke [235].
+Although geometry has been studied since antiquity, the development of algorithms for
+geometric problems is relatively new. Preparata and Shamos note that the earliest notion of
+the complexity of a problem was given by E. Lemoine in 1902. He was studying euclidean
+constructions-those using a compass and a ruler-and devised a set of five primitives: placing
+one leg of the compass on a given point, placing one leg of the compass on a given line,
+drawing a circle, passing the ruler's edge through a given point, and drawing a line. Lemoine
+was interested in the number of primitives needed to effect a given construction; he called this
+amount the "simplicity" of the construction.
+The algorithm of Section 33.2, which determines whether any segments intersect, is due to
+Shamos and Hoey [275].
+The original version of Graham's scan is given by Graham [130]. The package-wrapping
+algorithm is due to Jarvis [165]. Using a decision-tree model of computation, Yao [318]
+proved a lower bound of Ω(n lg n) for the running time of any convex-hull algorithm. When
+the number of vertices h of the convex hull is taken into account, the prune-and-search
+algorithm of Kirkpatrick and Seidel [180], which takes O(n lg h) time, is asymptotically
+optimal.
+The O(n lg n)-time divide-and-conquer algorithm for finding the closest pair of points is by
+Shamos and appears in Preparata and Shamos [247]. Preparata and Shamos also show that the
+algorithm is asymptotically optimal in a decision-tree model.
+
+Chapter 34: NP-Completeness
+Overview
+Almost all the algorithms we have studied thus far have been polynomial-time algorithms: on
+inputs of size n, their worst-case running time is O(nk) for some constant k. It is natural to
+wonder whether all problems can be solved in polynomial time. The answer is no. For
+example, there are problems, such as Turing's famous "Halting Problem," that cannot be
+solved by any computer, no matter how much time is provided. There are also problems that
+can be solved, but not in time O(nk) for any constant k. Generally, we think of problems that
+
+

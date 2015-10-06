@@ -1,0 +1,47 @@
+A shortest path from vertex u to vertex v is then defined as any path p with weight w(p) = δ(u,
+v).
+In the Chicago-to-Boston example, we can model the road map as a graph: vertices represent
+intersections, edges represent road segments between intersections, and edge weights
+represent road distances. Our goal is to find a shortest path from a given intersection in
+Chicago (say, Clark St. and Addison Ave.) to a given inter-section in Boston (say, Brookline
+Ave. and Yawkey Way).
+Edge weights can be interpreted as metrics other than distances. They are often used to
+represent time, cost, penalties, loss, or any other quantity that accumulates linearly along a
+path and that one wishes to minimize.
+The breadth-first-search algorithm from Section 22.2 is a shortest-paths algorithm that works
+on unweighted graphs, that is, graphs in which each edge can be considered to have unit
+weight. Because many of the concepts from breadth-first search arise in the study of shortest
+paths in weighted graphs, the reader is encouraged to review Section 22.2 before proceeding.
+Variants
+In this chapter, we shall focus on the single-source shortest-paths problem: given a graph G
+= (V, E), we want to find a shortest path from a given source vertex s V to each vertex v
+V . Many other problems can be solved by the algorithm for the single-source problem,
+including the following variants.
+•
+
+•
+
+•
+
+Single-destination shortest-paths problem: Find a shortest path to a given
+destination vertex t from each vertex v. By reversing the direction of each edge in the
+graph, we can reduce this problem to a single-source problem.
+Single-pair shortest-path problem: Find a shortest path from u to v for given
+vertices u and v. If we solve the single-source problem with source vertex u, we solve
+this problem also. Moreover, no algorithms for this problem are known that run
+asymptotically faster than the best single-source algorithms in the worst case.
+All-pairs shortest-paths problem: Find a shortest path from u to v for every pair of
+vertices u and v. Although this problem can be solved by running a single-source
+algorithm once from each vertex, it can usually be solved faster. Additionally, its
+structure is of interest in its own right. Chapter 25 addresses the all-pairs problem in
+detail.
+
+Optimal substructure of a shortest path
+Shortest-paths algorithms typically rely on the property that a shortest path between two
+vertices contains other shortest paths within it. (The Edmonds-Karp maximum-flow algorithm
+in Chapter 26 also relies on this property.) This optimal-substructure property is a hallmark of
+the applicability of both dynamic programming (Chapter 15) and the greedy method (Chapter
+16). Dijkstra's algorithm, which we shall see in Section 24.3, is a greedy algorithm, and the
+Floyd-Warshall algorithm, which finds shortest paths between all pairs of vertices (see
+
+

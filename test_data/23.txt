@@ -1,0 +1,47 @@
+Exercises 2.1-4
+Consider the problem of adding two n-bit binary integers, stored in two n-element arrays A
+and B. The sum of the two integers should be stored in binary form in an (n + 1)-element
+array C. State the problem formally and write pseudocode for adding the two integers.
+
+[1]
+
+When the loop is a for loop, the moment at which we check the loop invariant just prior to
+the first iteration is immediately after the initial assignment to the loop-counter variable and
+just before the first test in the loop header. In the case of INSERTION-SORT, this time is
+after assigning 2 to the variable j but before the first test of whether j ≤ length[A].
+
+[2]
+
+In real programming languages, it is generally not advisable to use indentation alone to
+indicate block structure, since levels of indentation are hard to determine when code is split
+across pages.
+[3]
+
+Most block-structured languages have equivalent constructs, though the exact syntax may
+differ from that of Pascal.
+
+2.2 Analyzing algorithms
+Analyzing an algorithm has come to mean predicting the resources that the algorithm
+requires. Occasionally, resources such as memory, communication bandwidth, or computer
+hardware are of primary concern, but most often it is computational time that we want to
+measure. Generally, by analyzing several candidate algorithms for a problem, a most efficient
+one can be easily identified. Such analysis may indicate more than one viable candidate, but
+several inferior algorithms are usually discarded in the process.
+Before we can analyze an algorithm, we must have a model of the implementation technology
+that will be used, including a model for the resources of that technology and their costs. For
+most of this book, we shall assume a generic one-processor, random-access machine (RAM)
+model of computation as our implementation technology and understand that our algorithms
+will be implemented as computer programs. In the RAM model, instructions are executed one
+after another, with no concurrent operations. In later chapters, however, we shall have
+occasion to investigate models for digital hardware.
+Strictly speaking, one should precisely define the instructions of the RAM model and their
+costs. To do so, however, would be tedious and would yield little insight into algorithm
+design and analysis. Yet we must be careful not to abuse the RAM model. For example, what
+if a RAM had an instruction that sorts? Then we could sort in just one instruction. Such a
+RAM would be unrealistic, since real computers do not have such instructions. Our guide,
+therefore, is how real computers are designed. The RAM model contains instructions
+commonly found in real computers: arithmetic (add, subtract, multiply, divide, remainder,
+floor, ceiling), data movement (load, store, copy), and control (conditional and unconditional
+branch, subroutine call and return). Each such instruction takes a constant amount of time.
+
+

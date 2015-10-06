@@ -1,0 +1,48 @@
+An iteration of the while loop exchanges the role of a basic and a nonbasic variable.
+The only operations performed involve solving equations and substituting one
+equation into another, and therefore the slack form is equivalent to the one from the
+previous iteration which, by the loop invariant, is equivalent to the initial slack form.
+We now demonstrate the second part of the loop invariant. We assume that at the start
+of each iteration of the while loop, bi ≥ 0 for each i B, and we shall show that that
+these inequalities remain true after the call to PIVOT in line 11. Since the only
+changes to the variables bi and the set B of basic variables occur in this assignment, it
+suffices to show that line 11 maintains this part of the invariant. We let bi, aij, and B
+refer to values before the call of PIVOT, and refer to values returned from PIVOT.
+First, we observe that
+SIMPLEX, and
+
+because bl ≥ 0 by the loop invariant, ale > 0 by line 5 of
+by line 2 of PIVOT.
+
+For the remaining indices i
+
+B - l, we have that
+
+(29.79)
+
+We have two cases to consider, depending on whether aie > 0 or aie ≤ 0. If aie > 0, then
+since we chose l such that
+(29.80)
+we have
+= bi - aie(bl/ale) (by equation (29.79))
+≥ bi - aie(bi/aie) (by inequality (29.80))
+= bi - bi
+= 0,
+. If aie = 0, then because ale, bi, and bl are all nonnegative, equation
+and thus
+(29.79) implies that must be nonnegative, too.
+We now argue that the basic solution is feasible, i.e., that all variables have
+nonnegative values. The nonbasic variables are set to 0 and thus are nonnegative. Each
+basic variable xi is defined by the equation
+
+The basic solution sets
+. Using the second part of the loop invariant, we conclude
+that each basic variable is nonnegative.
+•
+
+Termination: The while loop can terminate in one of two ways. If it terminates
+because of the condition in line 2, then the current basic solution is feasible and this
+solution is returned in line 16. The other way to terminate is to return "unbounded" in
+line 10. In this case, for each iteration of the for loop in lines 4–7, when line 5 is
+
+

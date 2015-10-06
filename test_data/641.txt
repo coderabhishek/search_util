@@ -1,0 +1,23 @@
+Let A be a nonsingular n × n matrix with complex entries. Show that every entry of A-1 is real
+if and only if every entry of A is real.
+
+Exercises 28.1-8
+Show that if A is a nonsingular, symmetric, n × n matrix, then A-1 is symmetric. Show that if B
+is an arbitrary m × n matrix, then the m × m matrix given by the product B ABT is symmetric.
+
+Exercises 28.1-9
+Prove Theorem 28.2. That is, show that a matrix A has full column rank if and only if Ax = 0
+implies x = 0. (Hint: Express the linear dependence of one column on the others as a matrixvector equation.)
+
+Exercises 28.1-10
+Prove that for any two compatible matrices A and B,
+rank(AB) ≤ min(rank(A), rank(B)),
+where equality holds if either A or B is a nonsingular square matrix. (Hint: Use the alternate
+definition of the rank of a matrix.)
+
+Exercises 28.1-11
+Given numbers x0, x1, . . . , xn-1, prove that the determinant of the Vandermonde matrix
+
+is
+
+

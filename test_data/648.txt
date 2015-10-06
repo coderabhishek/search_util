@@ -1,0 +1,29 @@
+V. Pan has discovered a way of multiplying 68 × 68 matrices using 132,464 multiplications, a
+way of multiplying 70 × 70 matrices using 143,640 multiplications, and a way of multiplying
+72 × 72 matrices using 155,424 multiplications. Which method yields the best asymptotic
+running time when used in a divide-and-conquer matrix-multiplication algorithm? How does
+it compare to Strassen's algorithm?
+
+Exercises 28.2-5
+How quickly can you multiply a kn × n matrix by an n × kn matrix, using Strassen's algorithm
+as a subroutine? Answer the same question with the order of the input matrices reversed.
+
+Exercises 28.2-6
+Show how to multiply the complex numbers a + bi and c + di using only three real
+multiplications. The algorithm should take a, b, c, and d as input and produce the real
+component ac - bd and the imaginary component ad + bc separately.
+
+28.3 Solving systems of linear equations
+Solving a set of simultaneous linear equations is a fundamental problem that occurs in diverse
+applications. A linear system can be expressed as a matrix equation in which each matrix or
+vector element belongs to a field, typically the real numbers R. This section discusses how to
+solve a system of linear equations using a method called LUP decomposition.
+We start with a set of linear equations in n unknowns x1, x2, . . . , xn:
+(28.16)
+
+A set of values for x1, x2, . . . , xn that satisfy all of the equations (28.16) simultaneously is said
+to be a solution to these equations. In this section, we treat only the case in which there are
+exactly n equations in n unknowns.
+We can conveniently rewrite equations (28.16) as the matrix-vector equation
+
+

@@ -1,0 +1,45 @@
+Section 25.1 presents a dynamic-programming algorithm based on matrix multiplication to
+solve the all-pairs shortest-paths problem. Using the technique of "repeated squaring," this
+algorithm can be made to run in Θ(V3 lg V) time. Another dynamic-programming algorithm,
+the Floyd-Warshall algorithm, is given in Section 25.2. The Floyd-Warshall algorithm runs in
+time Θ(V3). Section 25.2 also covers the problem of finding the transitive closure of a directed
+graph, which is related to the all-pairs shortest-paths problem. Finally, Section 25.3 presents
+Johnson's algorithm. Unlike the other algorithms in this chapter, Johnson's algorithm uses the
+adjacency-list representation of a graph. It solves the all-pairs shortestpaths problem in O(V2
+lg V + V E) time, which makes it a good algorithm for large, sparse graphs.
+Before proceeding, we need to establish some conventions for adjacency-matrix
+representations. First, we shall generally assume that the input graph G = (V, E) has n vertices,
+so that n = |V|. Second, we shall use the convention of denoting matrices by uppercase letters,
+such as W , L, or D, and their individual elements by subscripted lowercase letters, such as
+Wij, lij, or dij. Some matrices will have parenthesized superscripts, as in
+or
+,
+to indicate iterates. Finally, for a given n × n matrix A, we shall assume that the value of n is
+stored in the attribute rows[A].
+
+25.1 Shortest paths and matrix multiplication
+This section presents a dynamic-programming algorithm for the all-pairs shortestpaths
+problem on a directed graph G = (V, E). Each major loop of the dynamic program will invoke
+an operation that is very similar to matrix multiplication, so that the algorithm will look like
+repeated matrix multiplication. We shall start by developing a Θ(V4)-time algorithm for the
+all-pairs shortest-paths problem and then improve its running time to Θ(V3 lg V).
+Before proceeding, let us briefly recap the steps given in Chapter 15 for developing a
+dynamic-programming algorithm.
+1. Characterize the structure of an optimal solution.
+2. Recursively define the value of an optimal solution.
+3. Compute the value of an optimal solution in a bottom-up fashion.
+(The fourth step, constructing an optimal solution from computed information, is dealt with in
+the exercises.)
+The structure of a shortest path
+We start by characterizing the structure of an optimal solution. For the all-pairs shortest-paths
+problem on a graph G = (V, E), we have proven (Lemma 24.1) that all subpaths of a shortest
+path are shortest paths. Suppose that the graph is represented by an adjacency matrix W =
+(wij). Consider a shortest path p from vertex i to vertex j, and suppose that p contains at most
+m edges. Assuming that there are no negative-weight cycles, m is finite. If i = j, then p has
+weight 0 and no edges. If vertices i and j are distinct, then we decompose path p into
+,
+where path p′ now contains at most m - 1 edges. By Lemma 24.1, p′ is a shortest path from i
+to k, and so δ(i, j) = δ(i, k) + wkj.
+A recursive solution to the all-pairs shortest-paths problem
+
+

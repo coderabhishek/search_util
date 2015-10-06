@@ -1,0 +1,47 @@
+Solve the following linear program using SIMPLEX:
+minimize
+subject to
+
+x1 +
+
+x2 +
+
+x3
+
+2x1 + 7.5x2 + 3x3 ≥ 10000
+20x1 + 5x2 + 10x3 ≥ 30000
+x1, x2, x3
+≥
+0.
+
+29.4 Duality
+We have proven that, under certain assumptions, SIMPLEX will terminate. We have not yet
+shown that it actually finds the optimal solution to a linear program, however. In order to do
+so, we introduce a powerful concept called linear-programming duality.
+Duality is a very important property. In an optimization problem, the identification of a dual
+problem is almost always coupled with the discovery of a polynomial-time algorithm. Duality
+is also powerful in its ability to provide a proof that a solution is indeed optimal.
+For example, suppose that, given an instance of a maximum-flow problem, we find a flow f of
+value |f|. How do we know whether f is a maximum flow? By the max-flow min-cut theorem
+(Theorem 26.7), if we can find a cut whose value is also |f|, then we have verified that f is
+indeed a maximum flow. This is an example of duality: given a maximization problem, we
+define a related minimization problem such that the two problems have the same optimal
+objective values.
+Given a linear program in which the objective is to maximize, we shall describe how to
+formulate a dual linear program in which the objective is to minimize and whose optimal
+value is identical to that of the original linear program. When referring to dual linear
+programs, we call the original linear program the primal.
+Given a primal linear program in standard form, as in (29.16)–(29.18), we define the dual
+linear program as
+minimize
+(29.86)
+
+subject to
+(29.87)
+(29.88)
+To form the dual, we change the maximization to a minimization, exchange the roles of the
+right-hand sides and the objective-function coefficients, and replace the less-than-or-equal-to
+by a greater-than-or-equal-to. Each of the m constraints in the primal has an associated
+variable yi in the dual, and each of the n constraints in the dual has an associated variable xj in
+
+

@@ -1,0 +1,45 @@
+If g is a primitive root of
+x ≡ y (mod φ(n)) holds.
+
+, then the equation gx ≡ gy (mod n) holds if and only if the equation
+
+Proof Suppose first that x ≡ y (mod φ(n)). Then, x = y + kφ(n) for some integer k. Therefore,
+(mod n)
+gx ≡ gy+kφ(n)
+y
+φ(n))k
+≡ g · (g
+(mod n)
+y
+k
+(mod n) (by Euler's theorem)
+≡g ·1
+y
+≡g
+(mod n).
+Conversely, suppose that gx ≡ gy (mod n). Because the sequence of powers of g generates
+every element of g and | g | = φ(n), Corollary 31.18 implies that the sequence of powers
+of g is periodic with period φ(n). Therefore, if gx ≡ gy (mod n), then we must have x ≡ y (mod
+φ(n)).
+
+Taking discrete logarithms can sometimes simplify reasoning about a modular equation, as
+illustrated in the proof of the following theorem.
+Theorem 31.34
+If p is an odd prime and e ≥ 1, then the equation
+(31.30)
+has only two solutions, namely x = 1 and x = -1.
+Proof Let n = pe. Theorem 31.32 implies that
+written
+
+has a primitive root g. Equation (31.30) can be
+
+(31.31)
+After noting that indn,g(1) = 0, we observe that Theorem 31.33 implies that equation (31.31) is
+equivalent to
+(31.32)
+To solve this equation for the unknown indn,g(x), we apply the methods of Section 31.4. By
+equation (31.19), we have φ(n) = pe(1 - 1/p) = (p - 1)pe-1. Letting d = gcd(2, φ(n)) = gcd(2, (p 1) pe-1) = 2, and noting that d | 0, we find from Theorem 31.24 that equation (31.32) has
+exactly d = 2 solutions. Therefore, equation (31.30) has exactly 2 solutions, which are x = 1
+and x = -1 by inspection.
+
+

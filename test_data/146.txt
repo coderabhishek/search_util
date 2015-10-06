@@ -1,0 +1,42 @@
+the permutation 3, 1, 2 at the leaf indicates that the sorted ordering is a3 = 5 a1 = 6 a2 = 8.
+There are 3! = 6 possible permutations of the input elements, so the decision tree must have at
+least 6 leaves.
+In a decision tree, each internal node is annotated by i: j for some i and j in the range 1 ≤ i, j n,
+where n is the number of elements in the input sequence. Each leaf is annotated by a
+permutation π(1), π(2), . . ., π(n) . (See Section C.1 for background on permutations.) The
+execution of the sorting algorithm corresponds to tracing a path from the root of the decision
+tree to a leaf. At each internal node, a comparison ai aj is made. The left subtree then dictates
+subsequent comparisons for ai aj, and the right subtree dictates subsequent comparisons for ai
+> aj. When we come to a leaf, the sorting algorithm has established the ordering aπ(1) aπ(2) ···
+aπ(n). Because any correct sorting algorithm must be able to produce each permutation of its
+input, a necessary condition for a comparison sort to be correct is that each of the n!
+permutations on n elements must appear as one of the leaves of the decision tree, and that
+each of these leaves must be reachable from the root by a path corresponding to an actual
+execution of the comparison sort. (We shall refer to such leaves as "reachable.") Thus, we
+shall consider only decision trees in which each permutation appears as a reachable leaf.
+A lower bound for the worst case
+The length of the longest path from the root of a decision tree to any of its reachable leaves
+represents the worst-case number of comparisons that the corresponding sorting algorithm
+performs. Consequently, the worst-case number of comparisons for a given comparison sort
+algorithm equals the height of its decision tree. A lower bound on the heights of all decision
+trees in which each permutation appears as a reachable leaf is therefore a lower bound on the
+running time of any comparison sort algorithm. The following theorem establishes such a
+lower bound.
+Theorem 8.1
+Any comparison sort algorithm requires Ω(n lg n) comparisons in the worst case.
+Proof From the preceding discussion, it suffices to determine the height of a decision tree in
+which each permutation appears as a reachable leaf. Consider a decision tree of height h with l
+reachable leaves corresponding to a comparison sort on n elements. Because each of the n!
+permutations of the input appears as some leaf, we have n! ≤ l. Since a binary tree of height h
+has no more than 2h leaves, we have
+n! ≤ l 2h,
+which, by taking logarithms, implies
+h ≤ lg(n!)
+
+(since the lg function is monotonically
+increasing)
+= Ω(n lg n) (by equation (3.18)).
+
+Corollary 8.2
+
+

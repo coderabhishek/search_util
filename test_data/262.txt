@@ -1,0 +1,40 @@
+14.1 Dynamic order statistics
+Chapter 9 introduced the notion of an order statistic. Specifically, the ith order statistic of a set
+of n elements, where i {1, 2,..., n}, is simply the element in the set with the ith smallest key.
+We saw that any order statistic could be retrieved in O(n) time from an unordered set. In this
+section, we shall see how red-black trees can be modified so that any order statistic can be
+determined in O(lg n) time. We shall also see how the rank of an element—its position in the
+linear order of the set—can likewise be determined in O(lg n) time.
+A data structure that can support fast order-statistic operations is shown in Figure 14.1. An
+order-statistic tree T is simply a red-black tree with additional information stored in each
+node. Besides the usual red-black tree fields key[x], color[x], p[x], left[x], and right[x] in a
+node x, we have another field size[x]. This field contains the number of (internal) nodes in the
+subtree rooted at x (including x itself), that is, the size of the subtree. If we define the
+sentinel's size to be 0, that is, we set size[nil[T]] to be 0, then we have the identity
+size[x] = size[left[x]] + size[right[x]] + 1.
+
+Figure 14.1: An order-statistic tree, which is an augmented red-black tree. Shaded nodes are
+red, and darkened nodes are black. In addition to its usual fields, each node x has a field
+size[x], which is the number of nodes in the subtree rooted at x.
+We do not require keys to be distinct in an order-statistic tree. (For example, the tree in Figure
+14.1 has two keys with value 14 and two keys with value 21.) In the presence of equal keys,
+the above notion of rank is not well defined. We remove this ambiguity for an order-statistic
+tree by defining the rank of an element as the position at which it would be printed in an
+inorder walk of the tree. In Figure 14.1, for example, the key 14 stored in a black node has
+rank 5, and the key 14 stored in a red node has rank 6.
+Retrieving an element with a given rank
+Before we show how to maintain this size information during insertion and deletion, let us
+examine the implementation of two order-statistic queries that use this additional information.
+We begin with an operation that retrieves an element with a given rank. The procedure OSSELECT(x, i) returns a pointer to the node containing the ith smallest key in the subtree
+rooted at x. To find the ith smallest key in an order-statistic tree T , we call OSSELECT(root[T], i).
+OS-SELECT(x, i)
+1 r ← size[left[x]]+1
+2 if i = r
+3
+then return x
+4 elseif i< r
+5
+then return OS-SELECT(left[x], i)
+6 else return OS-SELECT(right[x], i – r)
+
+

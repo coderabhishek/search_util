@@ -1,0 +1,27 @@
+the primal. For example, consider the linear program given in (29.56)–(29.60). The dual of
+this linear program is
+minimize
+(29.89)
+subject to
+(29.90)
+(29.91)
+(29.92)
+(29.93)
+We will show, in Theorem 29.10, that the optimal value of the dual linear program is always
+equal to the optimal value of the primal linear program. Further-more, the simplex algorithm
+actually implicitly solves both the primal and the dual linear programs simultaneously,
+thereby providing a proof of optimality.
+We begin by demonstrating weak duality, which states that any feasible solution to the primal
+linear program has a value no greater than that of any feasible solution to the dual linear
+program.
+Lemma 29.8: (Weak linear-programming duality
+Let be any feasible solution to the primal linear program in (29.16)–(29.18) and let be any
+feasible solution to the dual linear program in (29.86)–(29.88). Then
+
+Proof We have
+
+Corollary 29.9
+Let be a feasible solution to a primal linear program (A, b, c), and let be a feasible solution
+to the corresponding dual linear program. If
+
+

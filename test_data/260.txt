@@ -1,0 +1,29 @@
+Figure 13.11: Spines of a binary search tree. The left spine is shaded in (a), and the right spine
+is shaded in (b).
+e. Consider the treap T immediately after x is inserted using TREAP-INSERT. Let C be
+the length of the right spine of the left subtree of x. Let D be the length of the left spine
+of the right subtree of x. Prove that the total number of rotations that were performed
+during the insertion of x is equal to C + D.
+We will now calculate the expected values of C and D. Without loss of generality, we assume
+that the keys are 1, 2, ..., n, since we are comparing them only to one another.
+For nodes x and y, where y ≠ x, let k = key[x] and i = key[y]. We define indicator random
+variables
+Xi,k = I {y is in the right spine of the left subtree of x (in T)}.
+f. Show that Xi,k = 1 if and only if priority[y] > priority[x], key[y] < key[x], and, for every
+z such that key[y] < key[z] < key[x], we have priority[y] < priority[z].
+g. Show that
+
+h. Show that
+
+i. Use a symmetry argument to show that
+
+j. Conclude that the expected number of rotations performed when inserting a node into
+a treap is less than 2.
+
+[2]
+
+As in RB-INSERT-FIXUP, the cases in RB-DELETE-FIXUP are not mutually exclusive.
+
+Chapter notes
+
+

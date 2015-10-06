@@ -1,0 +1,36 @@
+Leaves a and x are swapped to obtain tree T′. Then, leaves b and y are swapped to obtain tree
+T″. Since each swap does not increase the cost, the resulting tree T″ is also an optimal tree.
+because both f[a] - f[x] and dT (a) - dT (x) are nonnegative. More specifically, f[a] - f[x] is
+nonnegative because x is a minimum-frequency leaf, and dT (a) - dT (x) is nonnegative
+because a is a leaf of maximum depth in T. Similarly, exchanging y and b does not increase
+the cost, and so B(T′) - B(T″) is nonnegative. Therefore, B(T″) ≤ B(T), and since T is optimal,
+B(T) ≤ B(T″), which implies B(T″) = B(T). Thus, T″ is an optimal tree in which x and y appear
+as sibling leaves of maximum depth, from which the lemma follows.
+
+Lemma 16.2 implies that the process of building up an optimal tree by mergers can, without
+loss of generality, begin with the greedy choice of merging together those two characters of
+lowest frequency. Why is this a greedy choice? We can view the cost of a single merger as
+being the sum of the frequencies of the two items being merged. Exercise 16.3-3 shows that
+the total cost of the tree constructed is the sum of the costs of its mergers. Of all possible
+mergers at each step, HUFFMAN chooses the one that incurs the least cost.
+The next lemma shows that the problem of constructing optimal prefix codes has the optimalsubstructure property.
+Lemma 16.3
+Let C be a given alphabet with frequency f[c] defined for each character c C. Let x and y be
+two characters in C with minimum frequency. Let C′ be the alphabet C with characters x, y
+removed and (new) character z added, so that C′ = C - {x, y} {z}; define f for C′ as for C,
+except that f[z] = f[x] + f[y]. Let T′ be any tree representing an optimal prefix code for the
+alphabet C′. Then the tree T, obtained from T′ by replacing the leaf node for z with an internal
+node having x and y as children, represents an optimal prefix code for the alphabet C.
+Proof We first show that the cost B(T) of tree T can be expressed in terms of the cost B(T′) of
+tree T′ by considering the component costs in equation (16.5). For each c C - {x, y}, we
+have dT (c) = dT′ (c), and hence f[c]dT(c) = f[c]d′(c). Since dT (x) = dT (y) = d′(z) + 1, we have
+f[x]dT (x) + f[y]dT (y) = (f[x] + f[y])(d′ (z) + 1)
+= f[z]d′(z) + (f[x] + f[y]),
+from which we conclude that
+B(T) = B(T′) + f[x] + f[y]
+or, equivalently,
+B(T′) = B(T) - f[x] - f[y].
+We now prove the lemma by contradiction. Suppose that T does not represent an optimal
+prefix code for C. Then there exists a tree T″ such that B(T″) < B(T). Without loss of
+
+

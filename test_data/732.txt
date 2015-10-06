@@ -1,0 +1,31 @@
+30.5 correspond to the butterfly operations of the innermost loop (lines 9 –12 of ITERATIVEFFT). Note also that the twiddle factors used in the butterflies correspond to those used in
+ITERATIVE-FFT: in stage s, we use
+, where m = 2s.
+Exercises 30.3-1
+Show how ITERATIVE-FFT computes the DFT of the input vector (0, 2, 3, -1, 4, 5, 7, 9).
+
+Exercises 30.3-2
+Show how to implement an FFT algorithm with the bit-reversal permutation occurring at the
+end, rather than at the beginning, of the computation. (Hint: Consider the inverse DFT.)
+
+Exercises 30.3-3
+How many times does ITERATIVE-FFT compute twiddle factors in each stage? Rewrite
+ITERATIVE-FFT to compute twiddle factors only 2s-1 times in stage s.
+
+Exercises 30.3-4: ⋆
+Suppose that the adders within the butterfly operations of the FFT circuit sometimes fail in
+such a manner that they always produce a zero output, independent of their inputs. Suppose
+that exactly one adder has failed, but that you don't know which one. Describe how you can
+identify the failed adder by supplying inputs to the overall FFT circuit and observing the
+outputs. How efficient is your method?
+
+Problems 30-1: Divide-and-conquer multiplication
+1. Show how to multiply two linear polynomials ax + b and cx + d using only three
+multiplications. (Hint: One of the multiplications is (a + b) · (c + d).)
+2. Give two divide-and-conquer algorithms for multiplying two polynomials of degreebound n that run in time Θ(nlg 3). The first algorithm should divide the input
+polynomial coefficients into a high half and a low half, and the second algorithm
+should divide them according to whether their index is odd or even.
+Show that two n-bit integers can be multiplied in O(nlg 3) steps, where each step
+operates on at most a constant number of 1-bit values.
+
+

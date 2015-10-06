@@ -1,0 +1,42 @@
+BINOMIAL-HEAP-MERGE is thus O(lg n). Each iteration of the while loop takes O(1) time,
+and there are at most ⌊lg n1⌋ + ⌊lgn2⌋ + 2 iterations because each iteration either advances the
+pointers one position down the root list of H or removes a root from the root list. The total
+time is thus O(lg n).
+Inserting a node
+The following procedure inserts node x into binomial heap H , assuming that x has already
+been allocated and key[x] has already been filled in.
+BINOMIAL-HEAP-INSERT(H, x)
+1 H′ ← MAKE-BINOMIAL-HEAP()
+2 p[x] ← NIL
+3 child[x] ← NIL
+4 sibling[x] ← NIL
+5 degree[x] ← 0
+6 head[H′] ← x
+7 H ← BINOMIAL-HEAP-UNION(H, H′)
+
+The procedure simply makes a one-node binomial heap H′ in O(1) time and unites it with the
+n-node binomial heap H in O(lg n) time. The call to BINOMIAL-HEAP-UNION takes care of
+freeing the temporary binomial heap H′. (A direct implementation that does not call
+BINOMIAL-HEAP-UNION is given as Exercise 19.2-8.)
+Extracting the node with minimum key
+The following procedure extracts the node with the minimum key from binomial heap H and
+returns a pointer to the extracted node.
+BINOMIAL-HEAP-EXTRACT-MIN(H)
+1 find the root x with the minimum key in the root list of H,
+and remove x from the root list of H
+2 H′ ← MAKE-BINOMIAL-HEAP()
+3 reverse the order of the linked list of x's children,
+and set head[H′] to point to the head of the resulting list
+4 H ← BINOMIAL-HEAP-UNION(H, H′)
+5 return x
+
+This procedure works as shown in Figure 19.7. The input binomial heap H is shown in Figure
+19.7(a). Figure 19.7(b) shows the situation after line 1: the root x with the minimum key has
+been removed from the root list of H . If x is the root of a Bk-tree, then by property 4 of
+Lemma 19.1, x's children, from left to right, are roots of Bk-1-, Bk-2-, ..., B0-trees. Figure
+19.7(c) shows that by reversing the list of x's children in line 3, we have a binomial heap H′
+that contains every node in x's tree except for x itself. Because x's tree was removed from H in
+line 1, the binomial heap that results from uniting H and H′ in line 4, shown in Figure 19.7(d),
+contains all the nodes originally in H except for x. Finally, line 5 returns x.
+
+

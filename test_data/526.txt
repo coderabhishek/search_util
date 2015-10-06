@@ -1,0 +1,35 @@
+c. Let c be a 0-weight cycle, and let u and v be any two vertices on c. Suppose that µ* =
+0 and that the weight of the path from u to v along the cycle is x. Prove that δ(s, v) =
+δ(s, u) + x. (Hint: The weight of the path from v to u along the cycle is -x.)
+d. Show that if µ* = 0, then on each minimum mean-weight cycle there exists a vertex v
+such that
+
+(Hint: Show that a shortest path to any vertex on a minimum mean-weight cycle can
+be extended along the cycle to make a shortest path to the next vertex on the cycle.)
+e. Show that if µ* = 0, then
+
+f. Show that if we add a constant t to the weight of each edge of G, then µ* is increased
+by t. Use this fact to show that
+
+g. Give an O(V E)-time algorithm to compute µ*.
+
+Problems 24-6: Bitonic shortest paths
+A sequence is bitonic if it monotonically increases and then monotonically decreases, or if it
+can be circularly shifted to monotonically increase and then monotonically decrease. For
+example the sequences 1, 4, 6, 8, 3, -2 , 9, 2, -4, -10, -5 , and 1, 2, 3, 4 are bitonic,
+but 1, 3, 12, 4, 2, 10 is not bitonic. (See Chapter 27 for a discussion of bitonic sorters, and
+see Problem 15-1 for the bitonic euclidean traveling-salesman problem.)
+Suppose that we are given a directed graph G = (V, E) with weight function w : E → R, and
+we wish to find single-source shortest paths from a source vertex s. We are given one
+additional piece of information: for each vertex v V, the weights of the edges along any
+shortest path from s to v form a bitonic sequence.
+Give the most efficient algorithm you can to solve this problem, and analyze its running time.
+
+Chapter notes
+Dijkstra's algorithm [75] appeared in 1959, but it contained no mention of a priority queue.
+The Bellman-Ford algorithm is based on separate algorithms by Bellman [35] and Ford [93].
+Bellman describes the relation of shortest paths to difference constraints. Lawler [196]
+describes the linear-time algorithm for shortest paths in a dag, which he considers part of the
+folklore.
+
+

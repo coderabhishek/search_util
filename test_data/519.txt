@@ -1,0 +1,33 @@
+Let G = (V, E) be a weighted, directed graph with weight function w : E → R, let s V be a
+source vertex, and assume that G contains no negative-weight cycles that are reachable from
+s. Then, after the graph is initialized by INITIALIZE-SINGLE-SOURCE(G, s), the
+predecessor subgraph Gπ forms a rooted tree with root s, and any sequence of relaxation steps
+on edges of G maintains this property as an invariant.
+Proof Initially, the only vertex in Gπ is the source vertex, and the lemma is trivially true.
+Consider a predecessor subgraph Gπ that arises after a sequence of relaxation steps. We shall
+first prove that Gπ is acyclic. Suppose for the sake of contradiction that some relaxation step
+creates a cycle in the graph Gπ . Let the cycle be c = v0, v1,..., vk , where vk = v0. Then, π[vi]
+= vi-1 for i = 1, 2,..., k and, without loss of generality, we can assume that it was the relaxation
+of edge (vk-1, vk) that created the cycle in Gπ.
+We claim that all vertices on cycle c are reachable from the source s. Why? Each vertex on c
+has a non-NIL predecessor, and so each vertex on c was assigned a finite shortest-path
+estimate when it was assigned its non-NIL π value. By the upper-bound property, each vertex
+on cycle c has a finite shortest-path weight, which implies that it is reachable from s.
+We shall examine the shortest-path estimates on c just prior to the call RELAX(vk-1, vk, w) and
+show that c is a negative-weight cycle, thereby contradicting the assumption that G contains
+no negative-weight cycles that are reachable from the source. Just before the call, we have
+π[vi] = vi-1 for i = 1, 2,..., k - 1. Thus, for i = 1, 2,..., k - 1, the last update to d[vi] was by the
+assignment d[vi] ← d[vi-1] + w(vi-1, vi). If d[vi-1] changed since then, it decreased. Therefore,
+just before the call RELAX(vk-1, vk, w), we have
+(24.12)
+Because π[vk] is changed by the call, immediately beforehand we also have the strict
+inequality
+d[vk] > d[vk-1] + w(vk-1, vk).
+Summing this strict inequality with the k - 1 inequalities (24.12), we obtain the sum of the
+shortest-path estimates around cycle c:
+
+But
+
+since each vertex in the cycle c appears exactly once in each summation. This equality implies
+
+

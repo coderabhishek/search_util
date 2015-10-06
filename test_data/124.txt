@@ -1,0 +1,32 @@
+and the index i moves up to the parent. (d) The max-heap after one more iteration of the while
+loop. At this point, A[PARENT(i)] ≥ A[i]. The max-heap property now holds and the
+procedure terminates.
+The procedure MAX-HEAP-INSERT implements the INSERT operation. It takes as an input
+the key of the new element to be inserted into max-heap A. The procedure first expands the
+max-heap by adding to the tree a new leaf whose key is -∞. Then it calls HEAP-INCREASEKEY to set the key of this new node to its correct value and maintain the max-heap property.
+MAX-HEAP-INSERT(A, key)
+1 heap-size[A] ← heap-size[A] + 1
+2 A[heap-size[A]] ← -∞
+3 HEAP-INCREASE-KEY(A, heap-size[A], key)
+
+The running time of MAX-HEAP-INSERT on an n-element heap is O(lg n).
+In summary, a heap can support any priority-queue operation on a set of size n in O(lg n)
+time.
+Exercises 6.5-1
+Illustrate the operation of HEAP-EXTRACT-MAX on the heap A =
+0, 6, 2, 1 .
+
+15, 13, 9, 5, 12, 8, 7, 4,
+
+Exercises 6.5-2
+Illustrate the operation of MAX-HEAP-INSERT(A, 10) on the heap A = 15, 13, 9, 5, 12, 8,
+7, 4, 0, 6, 2, 1 . Use the heap of Figure 6.5 as a model for the HEAP-INCREASE-KEY call.
+
+Exercises 6.5-3
+Write pseudocode for the procedures HEAP-MINIMUM, HEAP-EXTRACT-MIN, HEAPDECREASE-KEY, and MIN-HEAP-INSERT that implement a min-priority queue with a
+min-heap.
+
+Exercises 6.5-4
+Why do we bother setting the key of the inserted node to -∞ in line 2 of MAX-HEAPINSERT when the next thing we do is increase its key to the desired value?
+
+

@@ -1,0 +1,57 @@
+As long as we implicitly use an encoding that is polynomially related to this standard
+encoding, we can talk directly about abstract problems without reference to any particular
+encoding, knowing that the choice of encoding has no effect on whether the abstract problem
+is polynomial-time solvable. Henceforth, we shall generally assume that all problem instances
+are binary strings encoded using the standard encoding, unless we explicitly specify the
+contrary. We shall also typically neglect the distinction between abstract and concrete
+problems. The reader should watch out for problems that arise in practice, however, in which
+a standard encoding is not obvious and the encoding does make a difference.
+A formal-language framework
+One of the convenient aspects of focusing on decision problems is that they make it easy to
+use the machinery of formal-language theory. It is worthwhile at this point to review some
+definitions from that theory. An alphabet Σ is a finite set of symbols. A language L over Σ is
+any set of strings made up of symbols from Σ. For example, if Σ = {0, 1}, the set L = {10, 11,
+101, 111, 1011, 1101, 10001,...} is the language of binary representations of prime numbers.
+We denote the empty string by ε, and the empty language by Ø. The language of all strings
+over Σ is denoted Σ*. For example, if Σ = {0, 1}, then Σ* = {ε, 0, 1, 00, 01, 10, 11, 000,...} is
+the set of all binary strings. Every language L over Σ is a subset of Σ*.
+There are a variety of operations on languages. Set-theoretic operations, such as union and
+intersection, follow directly from the set-theoretic definitions. We define the complement of
+L by
+. The concatenation of two languages L1 and L2 is the language
+L = {x1x2 : x1
+
+L1 and x2
+
+L2}.
+
+The closure or Kleene star of a language L is the language
+L*= {ε}
+
+L
+
+L2
+
+L3
+
+···,
+
+where Lk is the language obtained by concatenating L to itself k times.
+From the point of view of language theory, the set of instances for any decision problem Q is
+simply the set Σ*, where Σ = {0, 1}. Since Q is entirely characterized by those problem
+instances that produce a 1 (yes) answer, we can view Q as a language L over Σ = {0, 1},
+where
+L = {x
+
+Σ*: Q(x) = 1}.
+
+For example, the decision problem PATH has the corresponding language
+PATH = { G, u, v, k : G = (V, E) is an undirected graph, u, v V, k ≥ 0 is an integer, and
+there exists a path from u to v in G consisting of at most k edges}.
+(Where convenient, we shall sometimes use the same name-PATH in this case- to refer to
+both a decision problem and its corresponding language.)
+The formal-language framework allows us to express the relation between decision problems
+and algorithms that solve them concisely. We say that an algorithm A accepts a string x {0,
+1}* if, given input x, the algorithm's output A(x) is 1. The language accepted by an algorithm
+
+

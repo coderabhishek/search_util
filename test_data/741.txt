@@ -1,0 +1,28 @@
+Multiplying these equations and rearranging, we have
+ab(x x′) + p(ybx′ + y′ax + pyy′) = 1.
+Since 1 is thus a positive linear combination of ab and p, an appeal to Theorem 31.2
+completes the proof.
+
+We say that integers n1, n2, ..., nk are pairwise relatively prime if, whenever i ≠ j, we have
+gcd(ni, nj) = 1.
+Unique factorization
+An elementary but important fact about divisibility by primes is the following.
+Theorem 31.7
+For all primes p and all integers a, b, if p | ab, then p | a or p | b (or both).
+Proof Assume for the purpose of contradiction that p | ab but that p ∤ a and p ∤ b. Thus,
+gcd(a, p) = 1 and gcd(b, p) = 1, since the only divisors of p are 1 and p, and by assumption p
+divides neither a nor b. Theorem 31.6 then implies that gcd(ab, p) = 1, contradicting our
+assumption that p | ab, since p | ab implies gcd(ab, p) = p. This contradiction completes the
+proof.
+
+A consequence of Theorem 31.7 is that an integer has a unique factorization into primes.
+Theorem 31.8: (Unique factorization)
+A composite integer a can be written in exactly one way as a product of the form
+
+where the pi are prime, p1 < p2 < ··· < pr, and the ei are positive integers.
+Proof The proof is left as Exercise 31.1-10.
+
+As an example, the number 6000 can be uniquely factored as 24 · 3 · 53.
+Exercises 31.1-1
+
+

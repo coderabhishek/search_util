@@ -1,0 +1,30 @@
+2. Using Θ(n2) scalar additions and subtractions, compute 14 matrices A1, B1, A2, B2, . . . ,
+A7, B7, each of which is n/2 × n/2.
+3. Recursively compute the seven matrix products Pi = Ai Bi for i = 1, 2, . . . , 7.
+4. Compute the desired submatrices r, s, t, u of the result matrix C by adding and/or
+subtracting various combinations of the Pi matrices, using only Θ(n2) scalar additions
+and subtractions.
+Such a procedure satisfies the recurrence (28.14). All that we have to do now is fill in the
+missing details.
+Determining the submatrix products
+It is not clear exactly how Strassen discovered the submatrix products that are the key to
+making his algorithm work. Here, we reconstruct one plausible discovery method.
+Let us guess that each matrix product Pi can be written in the form
+(28.15)
+where the coefficients αij, βij are all drawn from the set {-1, 0, 1}. That is, we guess that each
+product is computed by adding or subtracting some of the submatrices of A, adding or
+subtracting some of the submatrices of B, and then multiplying the two results together. While
+more general strategies are possible, this simple one turns out to work.
+If we form all of our products in this manner, then we can use this method recursively without
+assuming commutativity of multiplication, since each product has all of the A submatrices on
+the left and all of the B submatrices on the right. This property is essential for the recursive
+application of this method, since matrix multiplication is not commutative.
+For convenience, we shall use 4 × 4 matrices to represent linear combinations of products of
+submatrices, where each product combines one submatrix of A with one submatrix of B as in
+equation (28.15). For example, we can rewrite equation (28.9) as
+
+The last expression uses an abbreviated notation in which "+" represents +1, "·" represents 0,
+and "-" represents -1. (From here on, we omit the row and column labels.) Using this notation,
+we have the following equations for the other submatrices of the result matrix C:
+
+

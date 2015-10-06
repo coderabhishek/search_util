@@ -1,0 +1,29 @@
+Exercises 15.2-2
+Give a recursive algorithm MATRIX-CHAIN-MULTIPLY(A, s, i, j) that actually performs
+the optimal matrix-chain multiplication, given the sequence of matrices A1, A2, ..., An , the
+s table computed by MATRIX-CHAIN-ORDER, and the indices i and j. (The initial call
+would be MATRIX-CHAIN-MULTIPLY(A, s, 1, n).)
+
+Exercises 15.2-3
+Use the substitution method to show that the solution to the recurrence (15.11) is Ω(2n).
+
+Exercises 15.2-4
+Let R(i, j) be the number of times that table entry m[i, j] is referenced while computing other
+table entries in a call of MATRIX-CHAIN-ORDER. Show that the total number of references
+for the entire table is
+
+(Hint: You may find equation (A.3) useful.)
+
+Exercises 15.2-5
+Show that a full parenthesization of an n-element expression has exactly n - 1 pairs of
+parentheses.
+
+15.3 Elements of dynamic programming
+Although we have just worked through two examples of the dynamic-programming method,
+you might still be wondering just when the method applies. From an engineering perspective,
+when should we look for a dynamic-programming solution to a problem? In this section, we
+examine the two key ingredients that an optimization problem must have in order for dynamic
+programming to be applicable: optimal substructure and overlapping subproblems. We also
+look at a variant method, called memoization,[1] for taking advantage of the overlappingsubproblems property.
+
+

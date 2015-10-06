@@ -1,0 +1,47 @@
+are merely equivalent modulo p, rather than equivalent modulo n. See Figure 31.7, parts (b)
+and (c), for an illustration.
+Let t denote the index of the first repeated value in the sequence, and let u > 0 denote the
+length of the cycle that has been thereby produced. That is, t and u > 0 are the smallest values
+such that
+for all i ≥ 0. By the above arguments, the expected values of t and u are
+both
+. Note that if
+, then p |(xt+u+i - xt+i). Thus, gcd(xt+u+i - xt+i, n) > 1.
+Therefore, once POLLARD-RHO has saved as y any value xk such that k ≥ t, then y mod p is
+always on the cycle modulo p. (If a new value is saved as y, that value is also on the cycle
+modulo p.) Eventually, k is set to a value that is greater than u, and the procedure then makes
+an entire loop around the cycle modulo p without changing the value of y. A factor of n is
+then discovered when xi "runs into" the previously stored value of y, modulo p, that is, when xi
+≢ y (mod p).
+Presumably, the factor found is the factor p, although it may occasionally happen that a
+multiple of p is discovered. Since the expected values of both t and u are
+, the expected
+number of steps required to produce the factor p is
+.
+There are two reasons why this algorithm may not perform quite as expected. First, the
+heuristic analysis of the running time is not rigorous, and it is possible that the cycle of values,
+modulo p, could be much larger than . In this case, the algorithm performs correctly but
+much more slowly than desired. In practice, this issue seems to be moot. Second, the divisors
+of n produced by this algorithm might always be one of the trivial factors 1 or n. For example,
+suppose that n = pq, where p and q are prime. It can happen that the values of t and u for p are
+identical with the values of t and u for q, and thus the factor p is always revealed in the same
+gcd operation that reveals the factor q. Since both factors are revealed at the same time, the
+trivial factor pq = n is revealed, which is useless. Again, this problem seems to be
+insignificant in practice. If necessary, the heuristic can be restarted with a different recurrence
+mod n. (The values c = 0 and c = 2 should be avoided for reasons we
+of the form
+won't go into here, but other values are fine.)
+Of course, this analysis is heuristic and not rigorous, since the recurrence is not really
+"random." Nonetheless, the procedure performs well in practice, and it seems to be as
+efficient as this heuristic analysis indicates. It is the method of choice for finding small prime
+factors of a large number. To factor a β-bit composite number n completely, we only need to
+find all prime factors less than ⌊n1/2⌋, and so we expect POLLARD-RHO to require at most
+n1/4 = 2β/4 arithmetic operations and at most n1/4β2 = 2β/4β2 bit operations. POLLARD-RHO's
+ability to find a small factor p of n with an expected number
+of arithmetic operations is
+often its most appealing feature.
+Exercises 31.9-1
+Referring to the execution history shown in Figure 31.7(a), when does POLLARD-RHO print
+the factor 73 of 1387?
+
+

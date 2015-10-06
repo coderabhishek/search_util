@@ -1,0 +1,36 @@
+Figures 22.1(c) and 22.2(c) are the adjacency matrices of the undirected and directed graphs
+in Figures 22.1(a) and 22.2(a), respectively. The adjacency matrix of a graph requires Θ(V2)
+memory, independent of the number of edges in the graph.
+Observe the symmetry along the main diagonal of the adjacency matrix in Figure 22.1(c). We
+define the transpose of a matrix A = (aij) to be the matrix
+given by
+. Since in an
+undirected graph, (u, v) and (v, u) represent the same edge, the adjacency matrix A of an
+undirected graph is its own transpose: A = AT. In some applications, it pays to store only the
+entries on and above the diagonal of the adjacency matrix, thereby cutting the memory needed
+to store the graph almost in half.
+Like the adjacency-list representation of a graph, the adjacency-matrix representation can be
+used for weighted graphs. For example, if G = (V, E) is a weighted graph with edge-weight
+function w, the weight w(u, v) of the edge (u, v) E is simply stored as the entry in row u and
+column v of the adjacency matrix. If an edge does not exist, a NIL value can be stored as its
+corresponding matrix entry, though for many problems it is convenient to use a value such as
+0 or ∞.
+Although the adjacency-list representation is asymptotically at least as efficient as the
+adjacency-matrix representation, the simplicity of an adjacency matrix may make it preferable
+when graphs are reasonably small. Moreover, if the graph is unweighted, there is an additional
+advantage in storage for the adjacency-matrix representation. Rather than using one word of
+computer memory for each matrix entry, the adjacency matrix uses only one bit per entry.
+Exercises 22.1-1
+Given an adjacency-list representation of a directed graph, how long does it take to compute
+the out-degree of every vertex? How long does it take to compute the in-degrees?
+
+Exercises 22.1-2
+Give an adjacency-list representation for a complete binary tree on 7 vertices. Give an
+equivalent adjacency-matrix representation. Assume that vertices are numbered from 1 to 7 as
+in a binary heap.
+
+Exercises 22.1-3
+The transpose of a directed graph G = (V, E) is the graph GT = (V, ET), where ET = {(v, u)
+V × V : (u, v) E}. Thus, GT is G with all its edges reversed. Describe efficient algorithms for
+
+

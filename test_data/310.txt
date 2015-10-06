@@ -1,0 +1,44 @@
+first iteration, when l = 1, the loop computes e[i, i] and w[i, i] for i = 1, 2, ..., n. The second
+iteration, with l = 2, computes e[i, i + 1] and w[i, i +1] for i = 1, 2, ..., n - 1, and so forth. The
+innermost for loop, in lines 9–13, tries each candidate index r to determine which key kr to
+use as the root of an optimal binary search tree containing keys ki, ..., kj. This for loop saves
+the current value of the index r in root[i, j] whenever it finds a better key to use as the root.
+Figure 15.8 shows the tables e[i, j], w[i, j], and root[i, j] computed by the procedure
+OPTIMAL-BST on the key distribution shown in Figure 15.7. As in the matrix-chain
+multiplication example, the tables are rotated to make the diagonals run horizontally.
+OPTIMAL-BST computes the rows from bottom to top and from left to right within each row.
+
+Figure 15.8: The tables e[i, j], w[i, j], and root[i, j] computed by OPTIMAL-BST on the key
+distribution shown in Figure 15.7. The tables are rotated so that the diagonals run
+horizontally.
+The OPTIMAL-BST procedure takes Θ(n3) time, just like MATRIX-CHAIN-ORDER. It is
+easy to see that the running time is O(n3), since its for loops are nested three deep and each
+loop index takes on at most n values. The loop indices in OPTIMAL-BST do not have exactly
+the same bounds as those in MATRIX-CHAIN-ORDER, but they are within at most 1 in all
+directions. Thus, like MATRIX-CHAIN-ORDER, the OPTIMAL-BST procedure takes Ω(n3)
+time.
+Exercises 15.5-1
+Write pseudocode for the procedure CONSTRUCT-OPTIMAL-BST(root) which, given the
+table root, outputs the structure of an optimal binary search tree. For the example in Figure
+15.8, your procedure should print out the structure
+•
+•
+•
+•
+•
+•
+•
+•
+•
+
+k2 is the root
+k1 is the left child of k2
+d0 is the left child of k1
+d1 is the right child of k1
+k5 is the right child of k2
+k4 is the left child of k5
+k3 is the left child of k4
+d2 is the left child of k3
+d3 is the right child of k3
+
+

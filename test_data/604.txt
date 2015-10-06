@@ -1,0 +1,26 @@
+Exercises 27.1-4
+Prove that any sorting network on n inputs has depth at least lg n.
+
+Exercises 27.1-5
+Prove that the number of comparators in any sorting network is Ω(n lg n).
+
+Exercises 27.1-6
+Consider the comparison network shown in Figure 27.3. Prove that it is in fact a sorting
+network, and describe how its structure is related to that of insertion sort (Section 2.1).
+
+Figure 27.3: A sorting network based on insertion sort for use in Exercise 27.1-6.
+Exercises 27.1-7
+We can represent an n-input comparison network with c comparators as a list of c pairs of
+integers in the range from 1 to n. If two pairs contain an integer in common, the order of the
+corresponding comparators in the network is determined by the order of the pairs in the list.
+Given this representation, describe an O(n + c)-time (serial) algorithm for determining the
+depth of a comparison network.
+
+Exercises 27.1-8:
+Suppose that in addition to the standard kind of comparator, we introduce an "upside-down"
+comparator that produces its minimum output on the bottom wire and its maximum output on
+the top wire. Show how to convert any sorting network that uses a total of c standard and
+upside-down comparators to one that uses c standard ones. Prove that your conversion method
+is correct.
+
+

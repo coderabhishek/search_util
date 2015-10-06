@@ -1,0 +1,37 @@
+salesman tour. We will then use the minimum spanning tree to create a tour whose cost is no
+more than twice that of the minimum spanning tree's weight, as long as the cost function
+satisfies the triangle inequality. The following algorithm implements this approach, calling the
+minimum-spanning-tree algorithm MST-PRIM from Section 23.2 as a subroutine.
+APPROX-TSP-TOUR(G, c">
+1 select a vertex r
+V [G] to be a "root" vertex
+2 compute a minimum spanning tree T for G from root r
+using MST-PRIM(G, c, r)
+3 let L be the list of vertices visited in a preorder tree walk of T
+4 return the hamiltonian cycle H that visits the vertices in the order L
+
+Recall from Section 12.1 that a preorder tree walk recursively visits every vertex in the tree,
+listing a vertex when it is first encountered, before any of its children are visited.
+Figure 35.2 illustrates the operation of APPROX-TSP-TOUR. Part (a) of the figure shows the
+given set of vertices, and part (b) shows the minimum spanning tree T grown from root vertex
+a by MST-PRIM. Part (c) shows how the vertices are visited by a preorder walk of T , and
+part (d) displays the corresponding tour, which is the tour returned by APPROX-TSP-TOUR.
+Part (e) displays an optimal tour, which is about 23% shorter.
+
+Figure 35.2: The operation of APPROX-TSP-TOUR. (a) The given set of points, which lie on
+vertices of an integer grid. For example, f is one unit to the right and two units up from h. The
+ordinary euclidean distance is used as the cost function between two points. (b) A minimum
+spanning tree T of these points, as computed by MST-PRIM. Vertex a is the root vertex. The
+vertices happen to be labeled in such a way that they are added to the main tree by MSTPRIM in alphabetical order. (c) A walk of T , starting at a. A full walk of the tree visits the
+vertices in the order a, b, c, b, h, b, a, d, e, f, e, g, e, d, a. A preorder walk of T lists a vertex
+just when it is first encountered, as indicated by the dot next to each vertex, yielding the
+ordering a, b, c, h, d, e, f, g. (d) A tour of the vertices obtained by visiting the vertices in the
+order given by the preorder walk. This is the tour H returned by APPROX-TSP-TOUR. Its
+total cost is approximately 19.074. (e) An optimal tour H* for the given set of vertices. Its
+total cost is approximately 14.715.
+By Exercise 23.2-2, even with a simple implementation of MST-PRIM, the running time of
+APPROX-TSP-TOUR is 0398(V2). We now show that if the cost function for an instance of
+the traveling-salesman problem satisfies the triangle inequality, then APPROX-TSP-TOUR
+returns a tour whose cost is not more than twice the cost of an optimal tour.
+
+

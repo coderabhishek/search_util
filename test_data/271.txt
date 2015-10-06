@@ -1,0 +1,24 @@
+Figure 14.4 shows how an interval tree represents a set of intervals. We shall track the fourstep method from Section 14.2 as we review the design of an interval tree and the operations
+that run on it.
+
+Figure 14.4: An interval tree. (a) A set of 10 intervals, shown sorted bottom to top by left
+endpoint. (b) The interval tree that represents them. An inorder tree walk of the tree lists the
+nodes in sorted order by left endpoint.
+Step 1: Underlying Data Structure
+We choose a red-black tree in which each node x contains an interval int[x] and the key of x is
+the low endpoint, low[int[x]], of the interval. Thus, an inorder tree walk of the data structure
+lists the intervals in sorted order by low endpoint.
+Step 2: Additional Information
+In addition to the intervals themselves, each node x contains a value max[x], which is the
+maximum value of any interval endpoint stored in the subtree rooted at x.
+Step 3: Maintaining the Information
+We must verify that insertion and deletion can be performed in O(lg n) time on an interval
+tree of n nodes. We can determine max[x] given interval int[x] and the max values of node x's
+children:
+max[x] = max(high[int[x]], max[left[x]], max[right[x]]).
+Thus, by Theorem 14.1, insertion and deletion run in O(lg n) time. In fact, updating the max
+fields after a rotation can be accomplished in O(1) time, as is shown in Exercises 14.2-4 and
+14.3-1.
+Step 4: Developing New Operations
+
+

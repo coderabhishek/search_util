@@ -1,0 +1,50 @@
+•
+
+•
+
+Unweighted shortest path: [2] Find a path from u to v consisting of the fewest edges.
+Such a path must be simple, since removing a cycle from a path produces a path with
+fewer edges.
+Unweighted longest simple path: Find a simple path from u to v consisting of the
+most edges. We need to include the requirement of simplicity because otherwise we
+can traverse a cycle as many times as we like to create paths with an arbitrarily large
+number of edges.
+
+The unweighted shortest-path problem exhibits optimal substructure, as follows. Suppose that
+u ≠ v, so that the problem is nontrivial. Then any path p from u to v must contain an
+intermediate vertex, say w. (Note that w may be u or v.) Thus we can decompose the path
+into subpaths
+. Clearly, the number of edges in p is equal to the sum of the
+number of edges in p1 and the number of edges in p2. We claim that if p is an optimal (i.e.,
+shortest) path from u to v, then p1 must be a shortest path from u to w. Why? We use a "cutand-paste" argument: if there were another path, say , from u to w with fewer edges than p1,
+then we could cut out p1 and paste in to produce a path
+with fewer edges than p,
+thus contradicting p's optimality. Symmetrically, p2 must be a shortest path from w to v. Thus,
+we can find a shortest path from u to v by considering all intermediate vertices w, finding a
+shortest path from u to w and a shortest path from w to v, and choosing an intermediate vertex
+w that yields the overall shortest path. In Section 25.2, we use a variant of this observation of
+optimal substructure to find a shortest path between every pair of vertices on a weighted,
+directed graph.
+It is tempting to assume that the problem of finding an unweighted longest simple path
+exhibits optimal substructure as well. After all, if we decompose a longest simple path
+into subpaths
+, then mustn't p1 be a longest simple path from u to w, and mustn't p2 be
+a longest simple path from w to v? The answer is no! Figure 15.4 gives an example. Consider
+the path q → r → t, which is a longest simple path from q to t. Is q → r a longest simple path
+from q to r? No, for the path q → s → t → r is a simple path that is longer. Is r → t a longest
+simple path from r to t? No again, for the path r → q → s → t is a simple path that is longer.
+
+Figure 15.4: A directed graph showing that the problem of finding a longest simple path in an
+unweighted directed graph does not have optimal substructure. The path q → r → t is a
+longest simple path from q to t, but the subpath q → r is not a longest simple path from q to r,
+nor is the subpath r → t a longest simple path from r to t.
+This example shows that for longest simple paths, not only is optimal substructure lacking,
+but we cannot necessarily assemble a "legal" solution to the problem from solutions to
+subproblems. If we combine the longest simple paths q → s → t → r and r → q → s → t, we
+get the path q → s → t → r → q → s → t, which is not simple. Indeed, the problem of finding
+an unweighted longest simple path does not appear to have any sort of optimal substructure.
+No efficient dynamic-programming algorithm for this problem has ever been found. In fact,
+this problem is NP-complete, which—as we shall see in Chapter 34—means that it is unlikely
+that it can be solved in polynomial time.
+
+

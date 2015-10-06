@@ -1,0 +1,41 @@
+The density of prime numbers
+For many applications (such as cryptography), we need to find large "random" primes.
+Fortunately, large primes are not too rare, so that it is not too time-consuming to test random
+integers of the appropriate size until a prime is found. The prime distribution function π(n)
+specifies the number of primes that are less than or equal to n. For example, π(10) = 4, since
+there are 4 prime numbers less than or equal to 10, namely, 2, 3, 5, and 7. The prime number
+theorem gives a useful approximation to π(n).
+Theorem 31.37: (Prime number theorem)
+
+The approximation n/ ln n gives reasonably accurate estimates of π(n) even for small n. For
+example, it is off by less than 6% at n = 109, where π(n) = 50,847,534 and n/ ln n ≈
+48,254,942. (To a number theorist, 109 is a small number.)
+We can use the prime number theorem to estimate the probability that a randomly chosen
+integer n will turn out to be prime as 1/ ln n. Thus, we would need to examine approximately
+ln n integers chosen randomly near n in order to find a prime that is of the same length as n.
+For example, to find a 512-bit prime might require testing approximately ln 2512 ≈ 355
+randomly chosen 512-bit numbers for primality. (This figure can be cut in half by choosing
+only odd integers.)
+In the remainder of this section, we consider the problem of determining whether or not a
+large odd integer n is prime. For notational convenience, we assume that n has the prime
+factorization
+(31.37)
+where r ≥ 1, p1, p2, ..., pr are the prime factors of n, and e1, e2, ..., er are positive integers. Of
+course, n is prime if and only if r = 1 and e1 = 1.
+One simple approach to the problem of testing for primality is trial division. We try dividing
+n by each integer 2, 3, ...,
+. (Again, even integers greater than 2 may be skipped.) It is
+easy to see that n is prime if and only if none of the trial divisors divides n. Assuming that
+each trial division takes constant time, the worst-case running time is
+, which is
+exponential in the length of n. (Recall that if n is encoded in binary using β bits, then β =
+⌈lg(n + 1)⌉, and so
+.) Thus, trial division works well only if n is very small or
+happens to have a small prime factor. When it works, trial division has the advantage that it
+not only determines whether n is prime or composite, but also determines one of n's prime
+factors if n is composite.
+In this section, we are interested only in finding out whether a given number n is prime; if n is
+composite, we are not concerned with finding its prime factorization. As we shall see in
+Section 31.9, computing the prime factorization of a number is computationally expensive. It
+
+

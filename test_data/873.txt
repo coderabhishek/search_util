@@ -1,0 +1,30 @@
+Show the 3-CNF formula that results when we use the method of Theorem 34.10 on the
+formula (34.3).
+
+Exercises 34.4-3
+Professor Jagger proposes to show that SAT ≤P 3-CNF-SAT by using only the truth-table
+technique in the proof of Theorem 34.10, and not the other steps. That is, the professor
+proposes to take the boolean formula φ, form a truth table for its variables, derive from the
+truth table a formula in 3-DNF that is equivalent to ¬φ, and then negate and apply
+DeMorgan's laws to produce a 3-CNF formula equivalent to φ. Show that this strategy does
+not yield a polynomial-time reduction.
+
+Exercises 34.4-4
+Show that the problem of determining whether a boolean formula is a tautology is complete
+for co-NP. (Hint: See Exercise 34.3-7.)
+
+Exercises 34.4-5
+Show that the problem of determining the satisfiability of boolean formulas in disjunctive
+normal form is polynomial-time solvable.
+
+Exercises 34.4-6
+Suppose that someone gives you a polynomial-time algorithm to decide formula satisfiability.
+Describe how to use this algorithm to find satisfying assignments in polynomial time.
+
+Exercises 34.4-7
+Let 2-CNF-SAT be the set of satisfiable boolean formulas in CNF with exactly 2 literals per
+clause. Show that 2-CNF-SAT P. Make your algorithm as efficient as possible. (Hint:
+Observe that x y is equivalent to ¬x → y. Reduce 2-CNF-SAT to a problem on a directed
+graph that is efficiently solvable.)
+
+

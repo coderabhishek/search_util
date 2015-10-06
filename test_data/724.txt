@@ -1,0 +1,30 @@
+(30.4)
+
+The matrix on the left is denoted V (x0, x1,..., xn-1) and is known as a Vander-monde matrix.
+By Exercise 28.1-11, this matrix has determinant
+
+and therefore, by Theorem 28.5, it is invertible (that is, nonsingular) if the xk are distinct.
+Thus, the coefficients aj can be solved for uniquely given the point-value representation:
+a = V (x0, x1,..., xn-1)-1 y.
+
+The proof of Theorem 30.1 describes an algorithm for interpolation based on solving the set
+(30.4) of linear equations. Using the LU decomposition algorithms of Chapter 28, we can
+solve these equations in time O(n3).
+A faster algorithm for n-point interpolation is based on Lagrange's formula:
+(30.5)
+
+You may wish to verify that the right-hand side of equation (30.5) is a polynomial of degreebound n that satisfies A(xi) = yi for all i. Exercise 30.1-5 asks you how to compute the
+coefficients of A using Lagrange's formula in time Θ(n2).
+Thus, n-point evaluation and interpolation are well-defined inverse operations that transform
+between the coefficient representation of a polynomial and a point-value representation.[1] The
+algorithms described above for these problems take time Θ(n2).
+The point-value representation is quite convenient for many operations on polynomials. For
+addition, if C(x) = A(x) + B(x), then C(xk) = A(xk) + B(xk) for any point xk. More precisely, if
+we have a point-value representation for A,
+{(x0, y0), (x1, y1),..., (xn-1, yn-1)},
+and for B,
+
+(note that A and B are evaluated at the same n points), then a point-value representation for C
+is
+
+

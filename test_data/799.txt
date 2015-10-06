@@ -1,0 +1,47 @@
+Alice has a copy of a long n-bit file A = an-1, an-2, . . . , a0 , and Bob similarly has an n-bit
+file B = bn-1, bn-2, . . . , b0 . Alice and Bob wish to know if their files are identical. To avoid
+transmitting all of A or B, they use the following fast probabilistic check. Together, they select
+a prime q > 1000n and randomly select an integer x from {0, 1, . . . , q - 1}. Then, Alice
+evaluates
+
+and Bob similarly evaluates B(x). Prove that if A ≠ B, there is at most one chance in 1000 that
+A(x) = B(x), whereas if the two files are the same, A(x) is necessarily the same as B(x). (Hint:
+See Exercise 31.4-4.)
+
+[1]
+
+We write Θ(n - m + 1) instead of Θ(n - m) because there are n - m + 1 different values that s
+takes on. The "+1" is significant in an asymptotic sense because when m = n, computing the
+lone ts value takes Θ(1) time, not Θ(0) time.
+
+32.3 String matching with finite automata
+Many string-matching algorithms build a finite automaton that scans the text string T for all
+occurrences of the pattern P. This section presents a method for building such an automaton.
+These string-matching automata are very efficient: they examine each text character exactly
+once, taking constant time per text character. The matching time used-after preprocessing the
+pattern to build the automaton-is therefore Θ(n). The time to build the automaton, however,
+can be large if Σ is large. Section 32.4 describes a clever way around this problem.
+We begin this section with the definition of a finite automaton. We then examine a special
+string-matching automaton and show how it can be used to find occurrences of a pattern in a
+text. This discussion includes details on how to simulate the behavior of a string-matching
+automaton on a given text. Finally, we shall show how to construct the string-matching
+automaton for a given input pattern.
+Finite automata
+A finite automaton M is a 5-tuple (Q, q0, A, Σ, δ), where
+•
+•
+•
+•
+•
+
+Q is a finite set of states,
+q0 Q is the start state,
+A Q is a distinguished set of accepting states,
+Σ is a finite input alphabet,
+δ is a function from Q × Σ into Q, called the transition function of M.
+
+The finite automaton begins in state q0 and reads the characters of its input string one at a
+time. If the automaton is in state q and reads input character a, it moves ("makes a transition")
+from state q to state δ(q, a). Whenever its current state q is a member of A, the machine M is
+
+

@@ -1,0 +1,47 @@
+use as an efficient priority queue. As with heaps, there are two kinds of priority queues: maxpriority queues and min-priority queues. We will focus here on how to implement maxpriority queues, which are in turn based on max-heaps; Exercise 6.5-3 asks you to write the
+procedures for min-priority queues.
+A priority queue is a data structure for maintaining a set S of elements, each with an
+associated value called a key. A max-priority queue supports the following operations.
+•
+•
+•
+•
+
+INSERT(S, x) inserts the element x into the set S. This operation could be written as S
+← S {x}.
+MAXIMUM(S) returns the element of S with the largest key.
+EXTRACT-MAX(S) removes and returns the element of S with the largest key.
+INCREASE-KEY(S, x, k) increases the value of element x's key to the new value k,
+which is assumed to be at least as large as x's current key value.
+
+One application of max-priority queues is to schedule jobs on a shared computer. The maxpriority queue keeps track of the jobs to be performed and their relative priorities. When a job
+is finished or interrupted, the highest-priority job is selected from those pending using
+EXTRACT-MAX. A new job can be added to the queue at any time using INSERT.
+Alternatively, a min-priority queue supports the operations INSERT, MINIMUM,
+EXTRACT-MIN, and DECREASE-KEY. A min-priority queue can be used in an eventdriven simulator. The items in the queue are events to be simulated, each with an associated
+time of occurrence that serves as its key. The events must be simulated in order of their time
+of occurrence, because the simulation of an event can cause other events to be simulated in
+the future. The simulation program uses EXTRACT-MIN at each step to choose the next
+event to simulate. As new events are produced, they are inserted into the min-priority queue
+using INSERT. We shall see other uses for min-priority queues, highlighting the
+DECREASE-KEY operation, in Chapters 23 and 24.
+Not surprisingly, we can use a heap to implement a priority queue. In a given application,
+such as job scheduling or event-driven simulation, elements of a priority queue correspond to
+objects in the application. It is often necessary to determine which application object
+corresponds to a given priority-queue element, and vice-versa. When a heap is used to
+implement a priority queue, therefore, we often need to store a handle to the corresponding
+application object in each heap element. The exact makeup of the handle (i.e., a pointer, an
+integer, etc.) depends on the application. Similarly, we need to store a handle to the
+corresponding heap element in each application object. Here, the handle would typically be an
+array index. Because heap elements change locations within the array during heap operations,
+an actual implementation, upon relocating a heap element, would also have to update the
+array index in the corresponding application object. Because the details of accessing
+application objects depend heavily on the application and its implementation, we shall not
+pursue them here, other than noting that in practice, these handles do need to be correctly
+maintained.
+Now we discuss how to implement the operations of a max-priority queue. The procedure
+HEAP-MAXIMUM implements the MAXIMUM operation in Θ(1) time.
+HEAP-MAXIMUM(A)
+1 return A[1]
+
+

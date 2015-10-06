@@ -1,0 +1,39 @@
+Problems 26-3: Space shuttle experiments
+Professor Spock is consulting for NASA, which is planning a series of space shuttle flights
+and must decide which commercial experiments to perform and which instruments to have on
+board each flight. For each flight, NASA considers a set E = {E1, E2, . . . ,Em} of experiments,
+and the commercial sponsor of experiment Ej has agreed to pay NASA pj dollars for the
+results of the experiment. The experiments use a set I = {I1, I2, . . . ,In} of instruments; each
+experiment Ej requires all the instruments in a subset Rj I. The cost of carrying instrument Ik
+is ck dollars. The professor's job is to find an efficient algorithm to determine which
+experiments to perform and which instruments to carry for a given flight in order to maximize
+the net revenue, which is the total income from experiments performed minus the total cost of
+all instruments carried.
+Consider the following network G. The network contains a source vertex s, vertices I1, I2, . . .
+,In, vertices E1, E2, . . . ,Em, and a sink vertex t. For k = 1, 2. . . ,n, there is an edge (s, Ik) of
+capacity ck, and for j = 1, 2,. . . ,m, there is an edge (Ej, t) of capacity pj. For k = 1, 2, . . . ,n
+and j = 1, 2, . . . ,m, if Ik Rj , then there is an edge (Ik, Ej) of infinite capacity.
+a. Show that if Ej T for a finite-capacity cut (S, T) of G, then Ik T for each Ik Rj.
+b. Show how to determine the maximum net revenue from the capacity of the minimum
+cut of G and the given pj values.
+c. Give an efficient algorithm to determine which experiments to perform and which
+instruments to carry. Analyze the running time of your algorithm in terms of m, n, and
+.
+
+Problem 26-4: Updating maximum flow
+Let G = (V,E) be a flow network with source s, sink t, and integer capacities. Suppose that we
+are given a maximum flow in G.
+a. Suppose that the capacity of a single edge (u, v)
+E)-time algorithm to update the maximum flow.
+b. Suppose that the capacity of a single edge (u, v)
+E)-time algorithm to update the maximum flow.
+
+E is increased by 1. Give an O(V +
+E is decreased by 1. Give an O(V +
+
+Problem 26-5: Maximum flow by scaling
+Let G = (V, E) be a flow network with source s, sink t, and an integer capacity c(u, v) on each
+edge (u, v) E. Let C = max(u, v) Ec(u, v).
+a. Argue that a minimum cut of G has capacity at most C |E|.
+
+

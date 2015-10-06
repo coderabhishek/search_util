@@ -1,0 +1,43 @@
+Exercises 30.1-7
+Consider two sets A and B, each having n integers in the range from 0 to 10n. We wish to
+compute the Cartesian sum of A and B, defined by
+C = {x + y : x
+
+A and y
+
+B}.
+
+Note that the integers in C are in the range from 0 to 20n. We want to find the elements of C
+and the number of times each element of C is realized as a sum of elements in A and B. Show
+that the problem can be solved in O(n lg n) time. (Hint: Represent A and B as polynomials of
+degree at most 10n.)
+
+[1]
+
+Interpolation is a notoriously tricky problem from the point of view of numerical stability.
+Although the approaches described here are mathematically correct, small differences in the
+inputs or round-off errors during computation can cause large differences in the result.
+
+30.3 Efficient FFT implementations
+Since the practical applications of the DFT, such as signal processing, demand the utmost
+speed, this section examines two efficient FFT implementations. First, we shall examine an
+iterative version of the FFT algorithm that runs in Θ(n lg n) time but has a lower constant
+hidden in the Θ-notation than the recursive implementation in Section 30.2. Then, we shall
+use the insights that led us to the iterative implementation to design an efficient parallel FFT
+circuit.
+An iterative FFT implementation
+We first note that the for loop of lines 10 –13 of RECURSIVE-FFT involves computing the
+value
+twice. In compiler terminology, this value is known as a common subexpression.
+We can change the loop to compute it only once, storing it in a temporary variable t.
+for k ← 0 to n/2 - 1
+do
+
+wn ← w wn
+
+The operation in this loop, multiplying the twiddle factor
+by , storing the product into
+t, and adding and subtracting t from , is known as a butterfly operation and is shown
+schematically in Figure 30.3.
+
+

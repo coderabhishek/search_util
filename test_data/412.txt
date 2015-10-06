@@ -1,0 +1,69 @@
+We start in line 1 by saving a pointer z to the minimum node; this pointer is returned at the
+end. If z = NIL, then Fibonacci heap H is already empty and we are done. Otherwise, as in the
+BINOMIAL-HEAP-EXTRACT-MIN procedure, we delete node z from H by making all of z's
+children roots of H in lines 3-5 (putting them into the root list) and removing z from the root
+list in line 6. If z = right[z] after line 6, then z was the only node on the root list and it had no
+children, so all that remains is to make the Fibonacci heap empty in line 8 before returning z.
+Otherwise, we set the pointer min[H] into the root list to point to a node other than z (in this
+case, right[z]), which is not necessarily going to be the new minimum node when FIB-HEAPEXTRACT-MIN is done. Figure 20.3(b) shows the Fibonacci heap of Figure 20.3(a) after line
+9 has been performed.
+The next step, in which we reduce the number of trees in the Fibonacci heap, is consolidating
+the root list of H; this is performed by the call CONSOLIDATE(H). Consolidating the root
+list consists of repeatedly executing the following steps until every root in the root list has a
+distinct degree value.
+1. Find two roots x and y in the root list with the same degree, where key[x] ≤ key[y].
+2. Link y to x: remove y from the root list, and make y a child of x. This operation is
+performed by the FIB-HEAP-LINK procedure. The field degree[x] is incremented,
+and the mark on y, if any, is cleared.
+The procedure CONSOLIDATE uses an auxiliary array A[0
+currently a root with degree[y] = i.
+
+D(n[H])]; if A[i] = y, then y is
+
+CONSOLIDATE(H)
+1 for i ← 0 to D(n[H])
+2
+do A[i] ← NIL
+3 for each node w in the root list of H
+4
+do x ← w
+5
+d ← degree[x]
+6
+while A[d] ≠ NIL
+7
+do y ← A[d]
+▹ Another node with the same degree as x.
+8
+if key[x] > key[y]
+9
+then exchange x ↔ y
+10
+FIB-HEAP-LINK(H, y, x)
+11
+A[d] ← NIL
+12
+d ← d + 1
+13
+A[d] ← x
+14 min[H] ← NIL
+15 for i ← 0 to D(n[H])
+16
+do if A[i] ≠ NIL
+17
+then add A[i] to the root list of H
+18
+if min[H] = NIL or key[A[i]] < key[min[H]]
+19
+then min[H] ← A[i]
+FIB-HEAP-LINK(H, y, x)
+1 remove y from the root list of H
+2 make y a child of x, incrementing degree[x]
+3 mark[y] ← FALSE
+
+In detail, the CONSOLIDATE procedure works as follows. Lines 1-2 initialize A by making
+each entry NIL. The for loop of lines 3-13 processes each root w in the root list. After
+processing each root w, it ends up in a tree rooted at some node x, which may or may not be
+identical to w. Of the processed roots, no others will have the same degree as x, and so we will
+
+

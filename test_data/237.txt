@@ -1,0 +1,27 @@
+Problems 12-4: Number of different binary trees
+Let bn denote the number of different binary trees with n nodes. In this problem, you will find
+a formula for bn, as well as an asymptotic estimate.
+a. Show that b0 = 1 and that, for n ≥ 1,
+
+b. Referring to Problem 4-5 for the definition of a generating function, let B(x) be the
+generating function
+
+Show that B(x) = xB(x)2 + 1, and hence one way to express B(x) in closed form is
+
+The Taylor expansion of f(x) around the point x = a is given by
+
+where f(k)(x) is the kth derivative of f evaluated at x.
+c. Show that
+
+(the nth Catalan number) by using the Taylor expansion of
+around x = 0. (If
+you wish, instead of using the Taylor expansion, you may use the generalization of the
+binomial expansion (C.4) to nonintegral exponents n, where for any real number n and
+for any integer k, we interpret to be n(n - 1) (n - k + 1)/k! if k ≥ 0, and 0 otherwise.)
+d. Show that
+
+Chapter notes
+Knuth [185] contains a good discussion of simple binary search trees as well as many
+variations. Binary search trees seem to have been independently discovered by a number of
+
+

@@ -1,0 +1,44 @@
+Intuitively, the lower-order terms of an asymptotically positive function can be ignored in
+determining asymptotically tight bounds because they are insignificant for large n. A tiny
+fraction of the highest-order term is enough to dominate the lower-order terms. Thus, setting
+c1 to a value that is slightly smaller than the coefficient of the highest-order term and setting
+c2 to a value that is slightly larger permits the inequalities in the definition of Θ-notation to be
+satisfied. The coefficient of the highest-order term can likewise be ignored, since it only
+changes c1 and c2 by a constant factor equal to the coefficient.
+As an example, consider any quadratic function f(n) = an2 + bn + c, where a, b, and c are
+constants and a > 0. Throwing away the lower-order terms and ignoring the constant yields
+f(n) = Θ(n2). Formally, to show the same thing, we take the constants c1 = a/4, c2 = 7a/4, and
+. The reader may verify that 0 ≤ c1n2 ≤ an2 + bn + c ≤ c2n2 for all n ≥ n0.
+In general, for any polynomial
+, where the ai are constants and ad > 0, we have
+d
+p(n) = Θ(n ) (see Problem 3-1).
+Since any constant is a degree-0 polynomial, we can express any constant function as Θ(n0),
+or Θ(1). This latter notation is a minor abuse, however, because it is not clear what variable is
+tending to infinity.[2] We shall often use the notation Θ(1) to mean either a constant or a
+constant function with respect to some variable.
+O-notation
+The Θ-notation asymptotically bounds a function from above and below. When we have only
+an asymptotic upper bound, we use O-notation. For a given function g(n), we denote by
+O(g(n)) (pronounced "big-oh of g of n" or sometimes just "oh of g of n") the set of functions
+O(g(n)) = {f(n): there exist positive constants c and n0 such that 0 ≤ f(n) ≤ cg(n) for all n ≥
+n0}.
+We use O-notation to give an upper bound on a function, to within a constant factor. Figure
+3.1(b) shows the intuition behind O-notation. For all values n to the right of n0, the value of
+the function f(n) is on or below g(n).
+We write f(n) = O(g(n)) to indicate that a function f(n) is a member of the set O(g(n)). Note
+that f(n) = Θ(g(n)) implies f(n) = O(g(n)), since Θ-notation is a stronger notion than Onotation. Written set-theoretically, we have Θ(g(n)) O(g(n)). Thus, our proof that any
+quadratic function an2 + bn + c, where a > 0, is in Θ(n2) also shows that any quadratic
+function is in O(n2). What may be more surprising is that any linear function an + b is in
+O(n2), which is easily verified by taking c = a + |b| and n0 = 1.
+Some readers who have seen O-notation before may find it strange that we should write, for
+example, n = O(n2). In the literature, O-notation is sometimes used informally to describe
+asymptotically tight bounds, that is, what we have defined using Θ-notation. In this book,
+however, when we write f(n) = O(g(n)), we are merely claiming that some constant multiple
+of g(n) is an asymptotic upper bound on f(n), with no claim about how tight an upper bound it
+is. Distinguishing asymptotic upper bounds from asymptotically tight bounds has now
+become standard in the algorithms literature.
+Using O-notation, we can often describe the running time of an algorithm merely by
+inspecting the algorithm's overall structure. For example, the doubly nested loop structure of
+
+

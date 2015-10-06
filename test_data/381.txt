@@ -1,0 +1,50 @@
+The auxiliary recursive procedure B-TREE-INSERT-NONFULL inserts key k into node x,
+which is assumed to be nonfull when the procedure is called. The operation of B-TREEINSERT and the recursive operation of B-TREE-INSERT-NONFULL guarantee that this
+assumption is true.
+B-TREE-INSERT-NONFULL(x, k)
+1 i ← n[x]
+2 if leaf[x]
+3
+then while i ≥ 1 and k < keyi[x]
+4
+do keyi+1[x] ← keyi[x]
+5
+i ← i - 1
+6
+keyi+1[x] ← k
+7
+n[x] ← n[x] + 1
+8
+DISK-WRITE(x)
+9
+else while i ≥ 1 and k < keyi[x]
+10
+do i ← i - 1
+11
+i ← i + 1
+12
+DISK-READ(ci[x])
+13
+if n[ci[x]] = 2t - 1
+14
+then B-TREE-SPLIT-CHILD(x, i, ci[x])
+15
+if k> keyi[x]
+16
+then i ← i + 1
+17
+B-TREE-INSERT-NONFULL(ci[x], k)
+
+The B-TREE-INSERT-NONFULL procedure works as follows. Lines 3-8 handle the case in
+which x is a leaf node by inserting key k into x. If x is not a leaf node, then we must insert k
+into the appropriate leaf node in the subtree rooted at internal node x. In this case, lines 9-11
+determine the child of x to which the recursion descends. Line 13 detects whether the
+recursion would descend to a full child, in which case line 14 uses B-TREE-SPLIT-CHILD to
+split that child into two nonfull children, and lines 15-16 determine which of the two children
+is now the correct one to descend to. (Note that there is no need for a DISK-READ(ci [x])
+after line 16 increments i, since the recursion will descend in this case to a child that was just
+created by B-TREE-SPLIT-CHILD.) The net effect of lines 13-16 is thus to guarantee that the
+procedure never recurses to a full node. Line 17 then recurses to insert k into the appropriate
+subtree. Figure 18.7 illustrates the various cases of inserting into a B-tree.
+
+

@@ -1,0 +1,42 @@
+The relabel-to-front algorithm
+In the relabel-to-front algorithm, we maintain a linked list L consisting of all vertices in V - {s,
+t}. A key property is that the vertices in L are topologically sorted according to the admissible
+network, as we shall see in the loop invariant below. (Recall from Lemma 26.27 that the
+admissible network is a dag.)
+The pseudocode for the relabel-to-front algorithm assumes that the neighbor lists N[u] have
+already been created for each vertex u. It also assumes that next[u] points to the vertex that
+follows u in list L and that, as usual, next[u] = NIL if u is the last vertex in the list.
+RELABEL-TO-FRONT(G, s, t)
+1 INITIALIZE-PREFLOW(G, s)
+2 L ← V[G] - {s, t}, in any order
+3 for each vertex u
+V[G] - {s, t}
+4
+do current[u] ← head[N[u]]
+5 u ← head[L]
+6 while u ≠ NIL
+7
+do old-height ← h[u]
+8
+DISCHARGE(u)
+9
+if h[u] > old-height
+10
+then move u to the front of list L
+11
+u ← next[u]
+
+The relabel-to-front algorithm works as follows. Line 1 initializes the preflow and heights to
+the same values as in the generic push-relabel algorithm. Line 2 initializes the list L to contain
+all potentially overflowing vertices, in any order. Lines 3-4 initialize the current pointer of
+each vertex u to the first vertex in u's neighbor list.
+As shown in Figure 26.10, the while loop of lines 6-11 runs through the list L, discharging
+vertices. Line 5 makes it start with the first vertex in the list. Each time through the loop, a
+vertex u is discharged in line 8. If u was relabeled by the DISCHARGE procedure, line 10
+moves it to the front of list L. This determination is made by saving u's height in the variable
+old-height before the discharge operation (line 7) and comparing this saved height to u's
+height afterward (line 9). Line 11 makes the next iteration of the while loop use the vertex
+following u in list L. If u was moved to the front of the list, the vertex used in the next
+iteration is the one following u in its new position in the list.
+
+

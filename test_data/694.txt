@@ -1,0 +1,36 @@
+can increase x1. We will, therefore, switch the roles of x1 and x6. We solve equation (29.64)
+for x1 and obtain
+(29.65)
+To rewrite the other equations with x6 on the right-hand side, we substitute for x1 using
+equation (29.65). Doing so for equation (29.62), we obtain
+(29.66)
+
+Similarly, we can combine equation (29.65) with constraint (29.63) and with objective
+function (29.61) to rewrite our linear program in the following form:
+(29.67)
+(29.68)
+(29.69)
+(29.70)
+We call this operation a pivot. As demonstrated above, a pivot chooses a nonbasic variable xe,
+called the entering variable, and a basic variable xl, called the leaving variable, and
+exchanges their roles.
+The linear program described in (29.67)–(29.70) is equivalent to the linear program described
+in equations (29.61)–(29.64). The operations we perform in the simplex algorithm are
+rewriting equations so that variables move between the left-hand side and the right-hand side,
+and substituting one equation into another. The first operation trivially creates an equivalent
+problem, and the second, by elementary linear algebra, also creates an equivalent problem.
+To demonstrate this equivalence, observe that our original basic solution (0, 0, 0, 30, 24, 36)
+satisfies the new equations (29.68)–(29.70) and has objective value 27 + (1/4) · 0 + (1/2) · 0 (3/4) · 36 = 0. The basic solution associated with the new linear program sets the nonbasic
+values to 0 and is (9, 0, 0, 21, 6, 0), with objective value z = 27. Simple arithmetic verifies
+that this solution also satisfies equations (29.62)–(29.64) and, when plugged into objective
+function (29.61), has objective value (3 · 9) + (1 · 0) + (2 · 0) = 27.
+Continuing the example, we wish to find a new variable whose value we wish to increase. We
+do not want to increase x6, since as its value increases, the objective value decreases. We can
+attempt to increase either x2 or x3; we will choose x3. How far can we increase x3 without
+violating any of the constraints? Constraint (29.68) limits it to 18, constraint (29.69) limits it
+to 42/5, and constraint (29.70) limits it to 3/2. The third constraint is again the tightest one,
+and we will therefore rewrite the third constraint so that x3 is on the left-hand side and x5 is on
+the right-hand side. We then substitute this new equation into equations (29.67)–(29.69) and
+obtain the new, but equivalent, system
+
+

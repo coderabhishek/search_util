@@ -1,0 +1,62 @@
+Our next question is whether two consecutive line segments
+and
+turn left or right at
+point p1. Equivalently, we want a method to determine which way a given angle p0p1p2
+turns. Cross products allow us to answer this question without computing the angle. As shown
+is clockwise or
+in Figure 33.2, we simply check whether directed segment
+counterclockwise relative to directed segment
+. To do this, we compute the cross product
+is counterclockwise
+(p2 - p0) × (p1 - p0). If the sign of this cross product is negative, then
+with respect to
+, and thus we make a left turn at p1. A positive cross product indicates a
+clockwise orientation and a right turn. A cross product of 0 means that points p0, p1, and p2 are
+collinear.
+
+Figure 33.2: Using the cross product to determine how consecutive line segments
+and
+turn at point p1. We check whether the directed segment is clockwise or counterclockwise
+relative to the directed segment . (a) If counterclockwise, the points make a left turn. (b) If
+clockwise, they make a right turn.
+Determining whether two line segments intersect
+To determine whether two line segments intersect, we check whether each segment straddles
+straddles a line if point p1 lies on one side of the
+the line containing the other. A segment
+line and point p2 lies on the other side. A boundary case arises if p1 or p2 lies directly on the
+line. Two line segments intersect if and only if either (or both) of the following conditions
+holds:
+1. Each segment straddles the line containing the other.
+2. An endpoint of one segment lies on the other segment. (This condition comes from the
+boundary case.)
+The following procedures implement this idea. SEGMENTS-INTERSECT returns TRUE if
+segments
+and
+intersect and FALSE if they do not. It calls the subroutines
+DIRECTION, which computes relative orientations using the cross-product method above,
+and ON-SEGMENT, which determines whether a point known to be collinear with a segment
+lies on that segment.
+SEGMENTS-INTERSECT(p1, p2, p3, p4)
+1 d1 ← DIRECTION(p3, p4, p1)
+2 d2 ← DIRECTION(p3, p4, p2)
+3 d3 ← DIRECTION(p1, p2, p3)
+4 d4 ← DIRECTION(p1, p2, p4)
+5 if ((d1 > 0 and d2 < 0) or (d1 <
+((d3 > 0 and d4 < 0) or
+6
+then return TRUE
+7 elseif d1 = 0 and ON-SEGMENT(p3,
+8
+then return TRUE
+9 elseif d2 = 0 and ON-SEGMENT(p3,
+10
+then return TRUE
+11 elseif d3 = 0 and ON-SEGMENT(p1,
+
+0 and d2 > 0)) and
+(d3 < 0 and d4 > 0))
+p4, p1)
+p4, p2)
+p2, p3)
+
+

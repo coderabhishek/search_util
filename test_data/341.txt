@@ -1,0 +1,41 @@
+Corollary 16.9
+Let M = (S,ℓ) be any matroid. If x is an element of S such that x is not an extension of Ø, then
+x is not an extension of any independent subset A of S.
+Proof This corollary is simply the contrapositive of Lemma 16.8.
+
+Corollary 16.9 says that any element that cannot be used immediately can never be used.
+Therefore, GREEDY cannot make an error by passing over any initial elements in S that are
+not an extension of Ø, since they can never be used.
+Lemma 16.10: Matroids exhibit the optimal-substructure property
+Let x be the first element of S chosen by GREEDY for the weighted matroid M = (S,ℓ). The
+remaining problem of finding a maximum-weight independent subset containing x reduces to
+finding a maximum-weight independent subset of the weighted matroid M′ = (S′,ℓ), where
+S′ = {y
+ℓ′ = {B
+
+S : {x, y} ℓ},
+S - {x} : B {x}
+
+ℓ}, and
+
+the weight function for M′ is the weight function for M, restricted to S′. (We call M′ the
+contraction of M by the element x.)
+Proof If A is any maximum-weight independent subset of M containing x, then A′ = A - {x} is
+an independent subset of M′. Conversely, any independent subset A′ of M′ yields an
+independent subset A = A′ {x} of M. Since we have in both cases that w(A) = w(A′) + w(x),
+a maximum-weight solution in M containing x yields a maximum-weight solution in M′, and
+vice versa.
+
+Theorem 16.11: (Correctness of the greedy algorithm on matroids
+If M = (S,ℓ) is a weighted matroid with weight function w, then GREEDY(M, w) returns an
+optimal subset.
+Proof By Corollary 16.9, any elements that are passed over initially because they are not
+extensions of Ø can be forgotten about, since they can never be useful. Once the first element
+x is selected, Lemma 16.7 implies that GREEDY does not err by adding x to A, since there
+exists an optimal subset containing x. Finally, Lemma 16.10 implies that the remaining
+problem is one of finding an optimal subset in the matroid M′ that is the contraction of M by
+x. After the procedure GREEDY sets A to {x}, all of its remaining steps can be interpreted as
+acting in the matroid M′ = (S′,ℓ′), because B is independent in M′ if and only if B {x} is
+independent in M, for all sets B ℓ′. Thus, the subsequent operation of GREEDY will find a
+
+

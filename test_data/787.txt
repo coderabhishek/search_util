@@ -1,0 +1,38 @@
+Exercises 31.9-2
+Suppose that we are given a function f : Zn Zn and an initial value x0 Zn. Define xi = f (xi1) for i = 1, 2, .... Let t and u > 0 be the smallest values such that xt+i = xt+u+i for i = 0, 1, .... In
+the terminology of Pollard's rho algorithm, t is the length of the tail and u is the length of the
+cycle of the rho. Give an efficient algorithm to determine t and u exactly, and analyze its
+running time.
+
+Exercises 31.9-3
+How many steps would you expect POLLARD-RHO to require to discover a factor of the
+form pe, where p is prime and e > 1?
+
+Exercises 31.9-4:
+One disadvantage of POLLARD-RHO as written is that it requires one gcd computation for
+each step of the recurrence. It has been suggested that we might batch the gcd computations
+by accumulating the product of several xi values in a row and then using this product instead
+of xi in the gcd computation. Describe carefully how you would implement this idea, why it
+works, and what batch size you would pick as the most effective when working on a β-bit
+number n.
+
+Problems 31-1: Binary gcd algorithm
+On most computers, the operations of subtraction, testing the parity (odd or even) of a binary
+integer, and halving can be performed more quickly than computing remainders. This
+problem investigates the binary gcd algorithm, which avoids the remainder computations
+used in Euclid's algorithm.
+a.
+b.
+c.
+d.
+
+Prove that if a and b are both even, then gcd(a, b) = 2 gcda/2, b/2).
+Prove that if a is odd and b is even, then gcd(a, b) = gcd(a, b/2).
+Prove that if a and b are both odd, then gcd(a, b) = gcd((a - b)/2, b).
+Design an efficient binary gcd algorithm for input integers a and b, where a ≥ b, that
+runs in O(lg a) time. Assume that each subtraction, parity test, and halving can be
+performed in unit time.
+
+Problems 31-2: Analysis of bit operations in Euclid's algorithm
+
+

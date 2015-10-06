@@ -1,0 +1,38 @@
+1
+= {1} ,
+2
+= {1,2,4} ,
+3 3 = {1,2,3,4,5,6} .
+The order of a (in the group S), denoted ord(a), is defined as the smallest positive integer t
+such that a(t) = e.
+Theorem 31.17
+For any finite group (S, ) and any a S, the order of an element is equal to the size of the
+subgroup it generates, or ord(a) = | a |.
+Proof Let t = ord(a). Since a(t) = e and a(t+k) = a(t) a(k) = a(k) for k ≥ 1, if i ≥ > t, then a(i)> =
+a(j) for some j < i. Thus, no new elements are seen after a(t), so that a = {a(1), a(2), ..., a(t)}
+and | a | ≤ t. To show that | a | ≥ t, suppose for the purpose of contradiction that a(i) = a(j)
+for some i, j satisfying 1 ≤ i < j ≤ t. Then, a(i+k) = a(j+k) for k ≥ 0. But this implies that a(i+(t - j)) =
+a(j+(t - j)) = e, a contradiction, since i + (t - j) < t but t is the least positive value such that a(t) = e.
+Therefore, each element of the sequence a(1), a(2), ..., a(t) is distinct, and | a | ≥ t. We
+conclude that ord(a) = | a |.
+
+Corollary 31.18
+The sequence a(1), a(2), ... is periodic with period t = ord(a); that is, a(i) = a(j) if and only if i ≡ j
+(mod t).
+
+It is consistent with the above corollary to define a(0) as e and a(i) as a(i mod t), where t = ord(a),
+for all integers i.
+Corollary 31.19
+If (S,
+
+) is a finite group with identity e, then for all a
+
+S,
+
+a(|S|) = e .
+Proof Lagrange's theorem implies that ord(a) | |S|, and so |S| ≡ 0 (mod t), where t = ord(a).
+Therefore, a(|S|) = a(0) = e.
+
+Exercises 31.3-1
+
+

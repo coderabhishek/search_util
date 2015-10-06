@@ -1,0 +1,35 @@
+ω(g(n)) = {f(n): for any positive constant c > 0, there exists a constant n0 > 0 such that 0 ≤
+cg(n) < f(n) for all n ≥ n0}.
+For example, n2/2 = ω(n), but n2/2 ≠ ω(n2). The relation f(n) = ω(g(n)) implies that
+
+if the limit exists. That is, f(n) becomes arbitrarily large relative to g(n) as n approaches
+infinity.
+Comparison of functions
+Many of the relational properties of real numbers apply to asymptotic comparisons as well.
+For the following, assume that f(n) and g(n) are asymptotically positive.
+Transitivity:
+•
+
+f(n) = Θ(g(n)) and g(n) = Θ(h(n)) imply f(n) = Θ(h(n)),
+f(n) = O(g(n)) and g(n) = O(h(n)) imply f(n) = O(h(n)),
+f(n) = Ω(g(n)) and g(n) = Ω(h(n)) imply f(n) = Ω(h(n)),
+f(n) = o(g(n)) and g(n) = o(h(n)) imply f(n) = o(h(n)),
+f(n) = ω(g(n)) and g(n) = ω(h(n)) imply f(n) = ω(h(n)).
+Reflexivity:
+•
+
+f(n) = Θ(f(n)),
+f(n) = O(f(n)),
+f(n) = Ω(f(n)).
+Symmetry:
+f(n) = Θ(g(n)) if and only if g(n) = Θ(f(n)).
+Transpose symmetry:
+•
+
+f(n) = O(g(n)) if and only if g(n) = Ω(f(n)),
+f(n) = o(g(n)) if and only if g(n) = ω(f(n)).
+Because these properties hold for asymptotic notations, one can draw an analogy between the
+asymptotic comparison of two functions f and g and the comparison of two real numbers a
+and b:
+
+

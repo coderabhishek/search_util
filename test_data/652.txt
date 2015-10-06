@@ -1,0 +1,23 @@
+3
+do
+4 for i ← n downto 1
+5
+do
+6 return x
+
+Procedure LUP-SOLVE solves for y using forward substitution in lines 2–3, and then it solves
+for x using backward substitution in lines 4–5. Since there is an implicit loop in the
+summations within each of the for loops, the running time is Θ(n2).
+As an example of these methods, consider the system of linear equations defined by
+
+where
+
+and we wish to solve for the unknown x. The LUP decomposition is
+
+(The reader can verify that P A = LU.) Using forward substitution, we solve Ly = Pb for y:
+
+obtaining
+
+by computing first y1, then y2, and finally y3. Using back substitution, we solve U x = y for x:
+
+

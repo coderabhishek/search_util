@@ -1,0 +1,27 @@
+Exercises 31.1-7
+For any integer k > 0, we say that an integer n is a kth power if there exists an integer a such
+that ak = n. We say that n > 1 is a nontrivial power if it is a kth power for some integer k > 1.
+Show how to determine if a given β-bit integer n is a nontrivial power in time polynomial in
+β.
+
+Exercises 31.1-8
+Prove equations (31.6)–(31.10).
+
+Exercises 31.1-9
+Show that the gcd operator is associative. That is, prove that for all integers a, b, and c,
+gcd(a, gcd(b, c)) = gcd(gcd(a, b), c).
+
+Exercises 31.1-10:
+Prove Theorem 31.8.
+
+Exercises 31.1-11
+Give efficient algorithms for the operations of dividing a β-bit integer by a shorter integer and
+of taking the remainder of a β-bit integer when divided by a shorter integer. Your algorithms
+should run in time O(β2).
+
+Exercises 31.1-12
+Give an efficient algorithm to convert a given β-bit (binary) integer to a decimal
+representation. Argue that if multiplication or division of integers whose length is at most β
+takes time M(β), then binary-to-decimal conversion can be performed in time Θ(M(β) lg β).
+
+

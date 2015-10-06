@@ -1,0 +1,43 @@
+Figure 34.20: The widget corresponding to a clause (x
+
+y
+
+z), used in Problem 34-3.
+
+Problems 34-4: Scheduling with profits and deadlines
+Suppose you have one machine and a set of n tasks a1, a2,..., an. Each task aj has a processing
+time tj, a profit pj, and a deadline dj. The machine can process only one task at a time, and task
+aj must run uninterruptedly for tj consecutive time units. If you complete task aj by its
+deadline dj, you receive a profit pj, but if you complete it after its deadline, you receive no
+profit. As an optimization problem, you are given the processing times, profits, and deadlines
+for a set of n tasks, and you wish to find a schedule that completes all the tasks and returns the
+greatest amount of profit.
+a. State this problem as a decision problem.
+b. Show that the decision problem is NP-complete.
+c. Give a polynomial-time algorithm for the decision problem, assuming that all
+processing times are integers from 1 to n. (Hint: Use dynamic programming.)
+d. Give a polyomial-time algorithm for the optimization problem, assuming that all
+processing times are integers from 1 to n.
+
+[8]
+
+Technically, we define a cycle in terms of vertices rather than edges (see Section B.4). In
+the interest of clarity, we abuse notation here and define the hamiltonian cycle in terms of
+edges.
+[9]
+
+In fact, any base b, where b ≥ 7, would work. The instance at the beginning of this
+subsection is the set S and target t in Figure 34.19 interpreted in base 7, with S listed in sorted
+order.
+
+Chapter notes
+The book by Garey and Johnson [110] provides a wonderful guide to NP-completeness,
+discussing the theory at length and providing a catalogue of many problems that were known
+to be NP-complete in 1979. The proof of Theorem 34.13 is adapted from their book, and the
+list of NP-complete problem domains at the beginning of Section 34.5 is drawn from their
+table of contents. Johnson wrote a series of 23 columns in the Journal of Algorithms between
+1981 and 1992 reporting new developments in NP-completeness. Hopcroft, Motwani, and
+Ullman [153], Lewis and Papadimitriou [204], Papadimitiou [236], and Sipser [279] have
+good treatments of NP-completeness in the context of complexity theory. Aho, Hopcroft, and
+
+

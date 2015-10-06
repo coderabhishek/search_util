@@ -1,0 +1,25 @@
+This last formula looks somewhat messy until we realize that we can again take advantage of
+small amounts of sloppiness and use an infinite decreasing geometric series as an upper
+bound. Backing up one step and applying equation (A.6), we have
+
+Thus, we have derived a guess of T (n) = O(n2) for our original recurrence T (n) = 3T (⌊n/4⌋)
++ Θ(n2). In this example, the coefficients of cn2 form a decreasing geometric series and, by
+equation (A.6), the sum of these coefficients is bounded from above by the constant 16/13.
+Since the root's contribution to the total cost is cn2, the root contributes a constant fraction of
+the total cost. In other words, the total cost of the tree is dominated by the cost of the root.
+In fact, if O(n2) is indeed an upper bound for the recurrence (as we shall verify in a moment),
+then it must be a tight bound. Why? The first recursive call contributes a cost of Θ(n2), and so
+Ω (n2) must be a lower bound for the recurrence.
+Now we can use the substitution method to verify that our guess was correct, that is, T (n) =
+O(n2) is an upper bound for the recurrence T (n) = 3T (⌊n/4⌋)+Θ(n2). We want to show that T
+(n) ≤ dn2 for some constant d > 0. Using the same constant c > 0 as before, we have
+T(n) ≤ 3T(⌊n/4⌋) + cn2
+≤ 3d⌊n/4⌋2 + cn2
+≤ 3d(n/4)2 + cn2
+= 3/16 dn2 + cn2
+≤ dn2,
+where the last step holds as long as d ≥ (16/13)c.
+As another, more intricate example, Figure 4.2 shows the recursion tree for T (n) = T(n/3) +
+T(2n/3) + O(n).
+
+

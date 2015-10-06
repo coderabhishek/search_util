@@ -1,0 +1,52 @@
+which is a permutation matrix, since it is the product of two permutation matrices (Exercise
+28.1-5). We now have
+
+yielding the LUP decomposition. Because L′ is unit lower-triangular, so is L, and because U′
+is upper-triangular, so is U.
+Notice that in this derivation, unlike the one for LU decomposition, both the column vector
+v/ak1 and the Schur complement A′ - vwT/ak1 must be multiplied by the permutation matrix P′.
+Like LU-DECOMPOSITION, our pseudocode for LUP decomposition replaces the recursion
+with an iteration loop. As an improvement over a direct implementation of the recursion, we
+dynamically maintain the permutation matrix P as an array π, where π[i] = j means that the ith
+row of P contains a 1 in column j. We also implement the code to compute L and U "in place"
+in the matrix A. Thus, when the procedure terminates,
+
+LUP-DECOMPOSITION(A)
+1 n ← rows[A]
+2 for i ← 1 to n
+3
+do π[i] ← i
+4 for k ← 1 to n
+5
+do p ← 0
+6
+for i ← k to n
+7
+do if |aik| > p
+8
+then p ← |aik|
+9
+k' ← i
+10
+if p = 0
+11
+then error "singular matrix"
+12
+exchange π[k] ↔ π[k']
+13
+for i ← 1 to n
+14
+do exchange aki ↔ ak'i
+15
+for i ← k + 1 to n
+16
+do aik ← aik/akk
+17
+for j ← k + 1 to n
+18
+do aij ← aij - aikakj
+
+Figure 28.2 illustrates how LUP-DECOMPOSITION factors a matrix. The array π is
+initialized by lines 2–3 to represent the identity permutation. The outer for loop beginning in
+
+

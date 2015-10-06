@@ -1,0 +1,34 @@
+Figure 22.9: (a) A directed graph G. The strongly connected components of G are shown as
+shaded regions. Each vertex is labeled with its discovery and finishing times. Tree edges are
+shaded. (b) The graph GT, the transpose of G. The depth-first forest computed in line 3 of
+STRONGLY-CONNECTED-COMPONENTS is shown, with tree edges shaded. Each
+strongly connected component corresponds to one depth-first tree. Vertices b, c, g, and h,
+which are heavily shaded, are the roots of the depth-first trees produced by the depth-first
+search of GT. (c) The acyclic component graph GSCC obtained by contracting all edges within
+each strongly connected component of G so that only a single vertex remains in each
+component.
+Our algorithm for finding strongly connected components of a graph G = (V, E) uses the
+transpose of G, which is defined in Exercise 22.1-3 to be the graph GT = (V, ET), where ET =
+{(u, v) : (v, u) E}. That is, ET consists of the edges of G with their directions reversed. Given
+an adjacency-list representation of G, the time to create GT is O(V + E). It is interesting to
+observe that G and GT have exactly the same strongly connected components: u and v are
+reachable from each other in G if and only if they are reachable from each other in GT. Figure
+22.9(b) shows the transpose of the graph in Figure 22.9(a), with the strongly connected
+components shaded.
+The following linear-time (i.e., Θ(V + E)-time) algorithm computes the strongly connected
+components of a directed graph G = (V, E) using two depth-first searches, one on G and one
+on GT.
+STRONGLY-CONNECTED-COMPONENTS (G)
+1 call DFS (G) to compute finishing times f[u] for each vertex u
+2 compute GT
+3 call DFS (GT), but in the main loop of DFS, consider the vertices
+in order of decreasing f[u] (as computed in line 1)
+4 output the vertices of each tree in the depth-first forest formed in
+line 3 as a
+separate strongly connected component
+
+The idea behind this algorithm comes from a key property of the component graph GSCC =
+(VSCC, ESCC), which we define as follows. Suppose that G has strongly connected components
+C1, C2,..., Ck. The vertex set VSCC is {v1, v2,..., vk}, and it contains a vertex vi for each strongly
+
+

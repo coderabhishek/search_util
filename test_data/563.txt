@@ -1,0 +1,37 @@
+Proof We will suppose that for some vertex v V - {s, t}, there is a flow augmentation that
+causes the shortest-path distance from s to v to decrease, and then we will derive a
+contradiction. Let f be the flow just before the first augmentation that decreases some shortestpath distance, and let f' be the flow just afterward. Let v be the vertex with the minimum δf' (s,
+v) whose distance was decreased by the augmentation, so that δf'(s, v) < δf(s, v). Let
+be a shortest path from s to v in Gf', so that (u, v) Ef' and
+(26.7)
+Because of how we chose v, we know that the distance label of vertex u did not decrease, i.e.,
+(26.8)
+We claim that (u, v) ∉ Ef. Why? If we had (u, v)
+
+Ef, then we would also have
+
+δf(s, v) ≤ δf(s, u) + 1 (by Lemma 24.10, the triangle inequality)
+≤ δf' (s, u) + 1 (by inequality (26.8))
+(by equation (26.7)),
+= δf' (s, v)
+which contradicts our assumption that δf' (s, v) < δf(s, v).
+How can we have (u, v) ∉ Ef and (u, v) Ef'? The augmentation must have increased the flow
+from v to u. The Edmonds-Karp algorithm always augments flow along shortest paths, and
+therefore the shortest path from s to u in Gf has (v, u) as its last edge. Therefore,
+δf(s, v) = δf(s, u) - 1
+≤ δf' (s, u) - 2 (by inequality (26.8))
+= δf' (s, v) - 2 (by equation (26.7)),
+which contradicts our assumption that δf' (s, v) < δf(s, v). We conclude that our assumption
+that such a vertex v exists is incorrect.
+
+The next theorem bounds the number of iterations of the Edmonds-Karp algorithm.
+Theorem 26.9
+If the Edmonds-Karp algorithm is run on a flow network G = (V, E) with source s and sink t,
+then the total number of flow augmentations performed by the algorithm is O(V E).
+Proof We say that an edge (u, v) in a residual network Gf is critical on an augmenting path p
+if the residual capacity of p is the residual capacity of (u, v), that is, if cf(p) = cf(u, v). After we
+have augmented flow along an augmenting path, any critical edge on the path disappears from
+the residual network. Moreover, at least one edge on any augmenting path must be critical.
+We will show that each of the |E| edges can become critical at most |V|/2 - 1 times.
+
+

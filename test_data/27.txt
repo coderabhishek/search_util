@@ -1,0 +1,53 @@
+In our analysis of insertion sort, we looked at both the best case, in which the input array was
+already sorted, and the worst case, in which the input array was reverse sorted. For the
+remainder of this book, though, we shall usually concentrate on finding only the worst-case
+running time, that is, the longest running time for any input of size n. We give three reasons
+for this orientation.
+•
+
+•
+
+•
+
+The worst-case running time of an algorithm is an upper bound on the running time for
+any input. Knowing it gives us a guarantee that the algorithm will never take any
+longer. We need not make some educated guess about the running time and hope that
+it never gets much worse.
+For some algorithms, the worst case occurs fairly often. For example, in searching a
+database for a particular piece of information, the searching algorithm's worst case
+will often occur when the information is not present in the database. In some searching
+applications, searches for absent information may be frequent.
+The "average case" is often roughly as bad as the worst case. Suppose that we
+randomly choose n numbers and apply insertion sort. How long does it take to
+determine where in subarray A[1 j - 1] to insert element A[j]? On average, half the
+elements in A[1 j - 1] are less than A[j], and half the elements are greater. On
+average, therefore, we check half of the subarray A[1 j - 1], so tj = j/2. If we work
+out the resulting average-case running time, it turns out to be a quadratic function of
+the input size, just like the worst-case running time.
+
+In some particular cases, we shall be interested in the average-case or expected running time
+of an algorithm; in Chapter 5, we shall see the technique of probabilistic analysis, by which
+we determine expected running times. One problem with performing an average-case
+analysis, however, is that it may not be apparent what constitutes an "average" input for a
+particular problem. Often, we shall assume that all inputs of a given size are equally likely. In
+practice, this assumption may be violated, but we can sometimes use a randomized
+algorithm, which makes random choices, to allow a probabilistic analysis.
+Order of growth
+We used some simplifying abstractions to ease our analysis of the INSERTION-SORT
+procedure. First, we ignored the actual cost of each statement, using the constants ci to
+represent these costs. Then, we observed that even these constants give us more detail than we
+really need: the worst-case running time is an2 + bn + c for some constants a, b, and c that
+depend on the statement costs ci. We thus ignored not only the actual statement costs, but also
+the abstract costs ci.
+We shall now make one more simplifying abstraction. It is the rate of growth, or order of
+growth, of the running time that really interests us. We therefore consider only the leading
+term of a formula (e.g., an2), since the lower-order terms are relatively insignificant for large
+n. We also ignore the leading term's constant coefficient, since constant factors are less
+significant than the rate of growth in determining computational efficiency for large inputs.
+Thus, we write that insertion sort, for example, has a worst-case running time of Θ(n2)
+(pronounced "theta of n-squared"). We shall use Θ-notation informally in this chapter; it will
+be defined precisely in Chapter 3.
+We usually consider one algorithm to be more efficient than another if its worst-case running
+time has a lower order of growth. Due to constant factors and lower-order terms, this
+
+

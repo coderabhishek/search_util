@@ -1,0 +1,44 @@
+16.4
+
+Theoretical foundations for greedy methods
+
+There is a beautiful theory about greedy algorithms, which we sketch in this section. This
+theory is useful in determining when the greedy method yields optimal solutions. It involves
+combinatorial structures known as "matroids." Although this theory does not cover all cases
+for which a greedy method applies (for example, it does not cover the activity-selection
+problem of Section 16.1 or the Huffman coding problem of Section 16.3), it does cover many
+cases of practical interest. Furthermore, this theory is being rapidly developed and extended to
+cover many more applications; see the notes at the end of this chapter for references.
+Matroids
+A matroid is an ordered pair M = (S,ℓ) satisfying the following conditions.
+1. S is a finite nonempty set.
+2. ℓ is a nonempty family of subsets of S, called the independent subsets of S, such that
+if B ℓ and A B, then A ℓ. We say thatℓ is hereditary if it satisfies this property.
+Note that the empty set Ø is necessarily a member ofℓ.
+3. If A ℓ, B ℓ, and |A| < |B|, then there is some element x B - A such that A {x}
+ℓ. We say that M satisfies the exchange property.
+The word "matroid" is due to Hassler Whitney. He was studying matric matroids, in which
+the elements of S are the rows of a given matrix and a set of rows is independent if they are
+linearly independent in the usual sense. It is easy to show that this structure defines a matroid
+(see Exercise 16.4-2).
+As another example of matroids, consider the graphic matroid MG = (SG,ℓG) defined in terms
+of a given undirected graph G = (V, E) as follows.
+•
+•
+
+The set SG is defined to be E, the set of edges of G.
+If A is a subset of E, then A ℓG if and only if A is acyclic. That is, a set of edges A is
+independent if and only if the subgraph GA = (V, A) forms a forest.
+
+The graphic matroid MG is closely related to the minimum-spanning-tree problem, which is
+covered in detail in Chapter 23.
+Theorem 16.5
+If G = (V, E) is an undirected graph, then MG = (SG,ℓG) is a matroid.
+Proof Clearly, SG = E is a finite set. Furthermore,ℓG is hereditary, since a subset of a forest is
+a forest. Putting it another way, removing edges from an acyclic set of edges cannot create
+cycles.
+Thus, it remains to show that MG satisfies the exchange property. Suppose that GA = (V, A)
+and GB = (V, B) are forests of G and that |B| >; |A|. That is, A and B are acyclic sets of edges,
+and B contains more edges than A does.
+
+

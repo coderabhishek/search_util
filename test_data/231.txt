@@ -1,0 +1,42 @@
+Exercises 12.3-6
+When node z in TREE-DELETE has two children, we could splice out its predecessor rather
+than its successor. Some have argued that a fair strategy, giving equal priority to predecessor
+and successor, yields better empirical performance. How might TREE-DELETE be changed
+to implement such a fair strategy?
+
+12.4
+
+Randomly built binary search trees
+
+We have shown that all the basic operations on a binary search tree run in O(h) time, where h
+is the height of the tree. The height of a binary search tree varies, however, as items are
+inserted and deleted. If, for example, the items are inserted in strictly increasing order, the tree
+will be a chain with height n - 1. On the other hand, Exercise B.5-4 shows that h≥ ⌊lg n⌋. As
+with quicksort, we can show that the behavior of the average case is much closer to the best
+case than the worst case.
+Unfortunately, little is known about the average height of a binary search tree when both
+insertion and deletion are used to create it. When the tree is created by insertion alone, the
+analysis becomes more tractable. Let us therefore define a randomly built binary search tree
+on n keys as one that arises from inserting the keys in random order into an initially empty
+tree, where each of the n! permutations of the input keys is equally likely. (Exercise 12.4-3
+asks you to show that this notion is different from assuming that every binary search tree on n
+keys is equally likely.) In this section, we shall show that the expected height of a randomly
+built binary search tree on n keys is O(lg n). We assume that all keys are distinct.
+We start by defining three random variables that help measure the height of a randomly built
+binary search tree. We denote the height of a randomly built binary search on n keys by Xn,
+. When we build a binary search tree on n keys,
+and we define the exponential height
+we choose one key as that of the root, and we let Rn denote the random variable that holds this
+key's rank within the set of n keys. The value of Rn is equally likely to be any element of the
+set {1, 2, ..., n}. If Rn = i, then the left subtree of the root is a randomly built binary search tree
+on i - 1 keys, and the right subtree is a randomly built binary search tree on n - i keys. Because
+the height of a binary tree is one more than the larger of the heights of the two subtrees of the
+root, the exponential height of a binary tree is twice the larger of the exponential heights of
+the two subtrees of the root. If we know that Rn = i, we therefore have that
+Yn = 2 · max(Yi-1, Yn-i).
+As base cases, we have Y1 = 1, because the exponential height of a tree with 1 node is 20 = 1
+and, for convenience, we define Y0 = 0.
+Next we define indicator random variables Zn,1, Zn,2, ..., Zn,n, where
+Zn,i = I{Rn = i}.
+
+

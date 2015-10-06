@@ -1,0 +1,32 @@
+Theorem 35.2
+APPROX-TSP-TOUR is a polynomial-time 2-approximation algorithm for the travelingsalesman problem with the triangle inequality.
+Proof We have already shown that APPROX-TSP-TOUR runs in polynomial time.
+Let H* denote an optimal tour for the given set of vertices. Since we obtain a spanning tree by
+deleting any edge from a tour, the weight of the minimum spanning tree T is a lower bound on
+the cost of an optimal tour, that is,
+(35.4)
+A full walk of T lists the vertices when they are first visited and also whenever they are
+returned to after a visit to a subtree. Let us call this walk W . The full walk of our example
+gives the order
+a, b, c, b, h, b, a, d, e, f, e, g, e, d, a.
+Since the full walk traverses every edge of T exactly twice, we have (extending our definition
+of the cost c in the natural manner to handle multisets of edges)
+(35.5)
+Equations (35.4) and (35.5) imply that
+(35.6)
+and so the cost of W is within a factor of 2 of the cost of an optimal tour.
+Unfortunately, W is generally not a tour, since it visits some vertices more than once. By the
+triangle inequality, however, we can delete a visit to any vertex from W and the cost does not
+increase. (If a vertex v is deleted from W between visits to u and w, the resulting ordering
+specifies going directly from u to w.) By repeatedly applying this operation, we can remove
+from W all but the first visit to each vertex. In our example, this leaves the ordering
+a, b, c, h, d, e, f, g.
+This ordering is the same as that obtained by a preorder walk of the tree T. Let H be the cycle
+corresponding to this preorder walk. It is a hamiltonian cycle, since every vertex is visited
+exactly once, and in fact it is the cycle computed by APPROX-TSP-TOUR. Since H is
+obtained by deleting vertices from the full walk W , we have
+(35.7)
+Combining inequalities (35.6) and (35.7) shows that c(H) ≤ 2c(H*), which completes the
+proof.
+
+

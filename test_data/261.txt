@@ -1,0 +1,44 @@
+The idea of balancing a search tree is due to Adel'son-Vel'ski i and Landis [2], who
+introduced a class of balanced search trees called "AVL trees" in 1962, described in Problem
+13-3. Another class of search trees, called "2-3 trees," was introduced by J. E. Hopcroft
+(unpublished) in 1970. Balance is maintained in a 2-3 tree by manipulating the degrees of
+nodes in the tree. A generalization of 2-3 trees introduced by Bayer and McCreight [32],
+called B-trees, is the topic of Chapter 18.
+Red-black trees were invented by Bayer [31] under the name "symmetric binary B-trees."
+Guibas and Sedgewick [135] studied their properties at length and introduced the red/black
+color convention. Andersson [15] gives a simpler-to-code variant of red-black trees. Weiss
+[311] calls this variant AA-trees. An AA-tree is similar to a red-black tree except that left
+children may never be red.
+Treaps were proposed by Seidel and Aragon [271]. They are the default implementation of a
+dictionary in LEDA, which is a well-implemented collection of data structures and
+algorithms.
+There are many other variations on balanced binary trees, including weight-balanced trees
+[230], k-neighbor trees [213], and scapegoat trees [108]. Perhaps the most intriguing are the
+"splay trees" introduced by Sleator and Tarjan [281], which are "self-adjusting." (A good
+description of splay trees is given by Tarjan [292].) Splay trees maintain balance without any
+explicit balance condition such as color. Instead, "splay operations" (which involve rotations)
+are performed within the tree every time an access is made. The amortized cost (see Chapter
+17) of each operation on an n-node tree is O(lg n).
+Skip lists [251] are an alternative to balanced binary trees. A skip list is a linked list that is
+augmented with a number of additional pointers. Each dictionary operation runs in expected
+time O(lg n) on a skip list of n items.
+
+Chapter 14: Augmenting Data Structures
+There are some engineering situations that require no more than a "textbook" data structure—
+such as a doubly linked list, a hash table, or a binary search tree—but many others require a
+dash of creativity. Only in rare situations will you need to create an entirely new type of data
+structure, though. More often, it will suffice to augment a textbook data structure by storing
+additional information in it. You can then program new operations for the data structure to
+support the desired application. Augmenting a data structure is not always straightforward,
+however, since the added information must be updated and maintained by the ordinary
+operations on the data structure.
+This chapter discusses two data structures that are constructed by augmenting red-black trees.
+Section 14.1 describes a data structure that supports general order-statistic operations on a
+dynamic set. We can then quickly find the ith smallest number in a set or the rank of a given
+element in the total ordering of the set. Section 14.2 abstracts the process of augmenting a
+data structure and provides a theorem that can simplify the augmentation of red-black trees.
+Section 14.3 uses this theorem to help design a data structure for maintaining a dynamic set of
+intervals, such as time intervals. Given a query interval, we can then quickly find an interval
+in the set that overlaps it.
+
+

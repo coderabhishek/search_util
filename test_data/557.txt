@@ -1,0 +1,31 @@
+Given a flow network G = (V, E) and a flow f, an augmenting path p is a simple path from s
+to t in the residual network Gf. By the definition of the residual network, each edge (u, v) on
+an augmenting path admits some additional positive flow from u to v without violating the
+capacity constraint on the edge.
+The shaded path in Figure 26.3(b) is an augmenting path. Treating the residual network Gf in
+the figure as a flow network, we can increase the flow through each edge of this path by up to
+4 units without violating a capacity constraint, since the smallest residual capacity on this path
+is cf(v2, v3) = 4. We call the maximum amount by which we can increase the flow on each
+edge in an augmenting path p the residual capacity of p, given by
+cf (p) = min {cf(u, v) : (u, v) is on p}.
+The following lemma, whose proof is left as Exercise 26.2-7, makes the above argument more
+precise.
+Lemma 26.3
+Let G = (V, E) be a flow network, let f be a flow in G, and let p be an augmenting path in Gf.
+Define a function fp : V × V → R by
+(26.6)
+
+Then, fp is a flow in Gf with value |fp| = cf(p) > 0.
+
+The following corollary shows that if we add fp to f, we get another flow in G whose value is
+closer to the maximum. Figure 26.3(c) shows the result of adding fp in Figure 26.3(b) to f
+from Figure 26.3(a).
+Corollary 26.4
+Let G = (V, E) be a flow network, let f be a flow in G, and let p be an augmenting path in Gf.
+Let fp be defined as in equation (26.6). Define a function f' : V × V → R by f' = f + fp. Then f' is
+a flow in G with value |f'| = |f| + |fp| > |f|.
+Proof Immediate from Lemmas 26.2 and 26.3.
+
+Cuts of flow networks
+
+

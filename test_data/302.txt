@@ -1,0 +1,64 @@
+As in the matrix-chain multiplication problem, our recursive solution to the LCS problem
+involves establishing a recurrence for the value of an optimal solution. Let us define c[i, j] to
+be the length of an LCS of the sequences Xi and Yj . If either i = 0 or j = 0, one of the
+sequences has length 0, so the LCS has length 0. The optimal substructure of the LCS
+problem gives the recursive formula
+(15.14)
+
+Observe that in this recursive formulation, a condition in the problem restricts which
+subproblems we may consider. When xi = yj , we can and should consider the subproblem of
+finding the LCS of Xi-1 and Yj-1. Otherwise, we in stead consider the two subproblems of
+finding the LCS of Xi and Yj-1 and of Xi-1 and Yj. In the previous dynamic-programming
+algorithms we have examined—for assembly-line scheduling and matrix-chain
+multiplication—no subproblems were ruled out due to conditions in the problem. Finding the
+LCS is not the only dynamic-programming algorithm that rules out subproblems based on
+conditions in the problem. For example, the edit-distance problem (see Problem 15-3) has this
+characteristic.
+Step 3: Computing the length of an LCS
+Based on equation (15.14), we could easily write an exponential-time recursive algorithm to
+compute the length of an LCS of two sequences. Since there are only Θ(mn) distinct
+subproblems, however, we can use dynamic programming to compute the solutions bottom
+up.
+Procedure LCS-LENGTH takes two sequences X = x1, x2, ..., xm and Y = y1, y2, ..., yn
+as inputs. It stores the c[i, j] values in a table c[0 m, 0 n] whose entries are computed in
+row-major order. (That is, the first row of c is filled in from left to right, then the second row,
+and so on.) It also maintains the table b[1 m, 1 n] to simplify construction of an optimal
+solution. Intuitively, b[i, j] points to the table entry corresponding to the optimal subproblem
+solution chosen when computing c[i, j]. The procedure returns the b and c tables; c[m, n]
+contains the length of an LCS of X and Y.
+LCS-LENGTH(X, Y)
+1 m ← length[X]
+2 n ← length[Y]
+3 for i ← 1 to m
+4
+do c[i, 0] ←
+5 for j ← 0 to n
+6
+do c[0, j] ←
+7 for i ← 1 to m
+8
+do for j ← 1
+9
+do if
+10
+11
+12
+13
+14
+15
+16
+17 return c and b
+
+0
+0
+to n
+xi = yj
+then c[i, j] ← c[i - 1, j - 1] + 1
+b[i, j] ← " "
+else if c[i - 1, j] ≥ c[i, j - 1]
+then c[i, j] ← c[i - 1, j]
+b[i, j] ← "↑"
+else c[i, j] ← c[i, j - 1]
+b[i, j] ← ←
+
+

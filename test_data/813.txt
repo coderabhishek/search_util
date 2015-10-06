@@ -1,0 +1,70 @@
+Problems 32-1: String matching based on repetition factors
+Let yi denote the concatenation of string y with itself i times. For example, (ab)3 = ababab. We
+say that a string x Σ* has repetition factor r if x = yr for some string y Σ* and some r > 0.
+Let ρ(x) denote the largest r such that x has repetition factor r.
+a. Give an efficient algorithm that takes as input a pattern P[1 m] and computes the
+value ρ(Pi) for i = 1, 2, . . . , m. What is the running time of your algorithm?
+b. For any pattern P[1 m], let ρ*(P) be defined as max≤i≤m ρ(Pi). Prove that if the
+pattern P is chosen randomly from the set of all binary strings of length m, then the
+expected value of ρ*(P) is O(1).
+c. Argue that the following string-matching algorithm correctly finds all occurrences of
+pattern P in a text T[1 n] in time O(ρ*(P)n + m).
+d.
+e.
+f.
+g.
+h.
+i.
+j.
+k.
+l.
+m.
+n.
+o.
+
+REPETITION-MATCHER(P, T)
+1 m ← length[P]
+2 n ← length[T]
+3 k ← 1 + ρ*(P)
+4 q ← 0
+5 s ← 0
+6 while s ≤ n - m
+7
+do if T[s + q + 1] = P[q + 1]
+8
+then q ← q + 1
+9
+if q = m
+10
+then print "Pattern occurs with shift" s
+11
+if q = m or T[s + q + 1] ≠ P[q + 1]
+
+p.
+q.
+
+12
+13
+
+then s ← s + max(1, ⌈q/k⌉)
+q ← 0
+
+This algorithm is due to Galil and Seiferas. By extending these ideas greatly, they
+obtain a linear-time string-matching algorithm that uses only O(1) storage beyond
+what is required for P and T.
+
+Chapter notes
+The relation of string matching to the theory of finite automata is discussed by Aho, Hopcroft,
+and Ullman [5]. The Knuth-Morris-Pratt algorithm [187] was invented independently by
+Knuth and Pratt and by Morris; they published their work jointly. The Rabin-Karp algorithm
+was proposed by Rabin and Karp [175]. Galil and Seiferas [107] give an interesting
+deterministic linear-time string-matching algorithm that uses only O(1) space beyond that
+required to store the pattern and text.
+
+Chapter 33: Computational Geometry
+Overview
+Computational geometry is the branch of computer science that studies algorithms for solving
+geometric problems. In modern engineering and mathematics, computational geometry has
+applications in, among other fields, computer graphics, robotics, VLSI design, computeraided design, and statistics. The input to a computational-geometry problem is typically a
+
+

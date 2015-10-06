@@ -1,0 +1,33 @@
+determinant have essentially the same difficulty: an M(n)-time matrix-multiplication
+algorithm implies an O(M(n))-time determinant algorithm, and a D(n)-time determinant
+algorithm implies an O(D(n))-time matrix-multiplication algorithm.
+
+Exercises 28.4-4
+Let M(n) be the time to multiply n × n boolean matrices, and let T (n) be the time to find the
+transitive closure of n × n boolean matrices. (See Section 25.2.) Show that an M(n)-time
+boolean matrix-multiplication algorithm implies an O(M(n) lg n)-time transitive-closure
+algorithm, and a T (n)-time transitive-closure algorithm implies an O(T (n))-time boolean
+matrix-multiplication algorithm.
+
+Exercises 28.4-5
+Does the matrix-inversion algorithm based on Theorem 28.8 work when matrix elements are
+drawn from the field of integers modulo 2? Explain.
+
+Exercises 28.4-6:
+Generalize the matrix-inversion algorithm of Theorem 28.8 to handle matrices of complex
+numbers, and prove that your generalization works correctly. (Hint: Instead of the transpose
+of A, use the conjugate transpose A*, which is obtained from the transpose of A by replacing
+every entry with its complex conjugate. Instead of symmetric matrices, consider Hermitian
+matrices, which are matrices A such that A = A*.)
+
+28.5 Symmetric positive-definite matrices and leastsquares approximation
+Symmetric positive-definite matrices have many interesting and desirable properties. For
+example, they are nonsingular, and LU decomposition can be performed on them without our
+having to worry about dividing by 0. In this section, we shall prove several other important
+properties of symmetric positive-definite matrices and show an interesting application to
+curve fitting by a least-squares approximation.
+The first property we prove is perhaps the most basic.
+Lemma 28.9
+Any positive-definite matrix is nonsingular.
+
+

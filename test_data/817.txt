@@ -1,0 +1,68 @@
+12
+then return TRUE
+13 elseif d4 = 0 and ON-SEGMENT(p1, p2, p4)
+14
+then return TRUE
+15 else return FALSE
+DIRECTION(pi, pj, pk)
+1 return (pk - pi) × (pj - pi)
+ON-SEGMENT(pi, pj, pk)
+1 if min(xi, xj) ≤ xk ≤ max(xi, xj) and min(yi, yj) ≤ yk ≤ max(yi, yj)
+2
+then return TRUE
+3
+else return FALSE
+
+SEGMENTS-INTERSECT works as follows. Lines 1-4 compute the relative orientation di of
+each endpoint pi with respect to the other segment. If all the relative orientations are nonzero,
+then we can easily determine whether segments
+and
+intersect, as follows. Segment
+straddles the line containing segment
+if directed segments
+and
+have opposite
+orientations relative to
+. In this case, the signs of d1 and d2 differ. Similarly,
+straddles
+the line containing
+if the signs of d3 and d4 differ. If the test of line 5 is true, then the
+segments straddle each other, and SEGMENTS-INTERSECT returns TRUE. Figure 33.3(a)
+shows this case. Otherwise, the segments do not straddle each other's lines, although a
+boundary case may apply. If all the relative orientations are nonzero, no boundary case
+applies. All the tests against 0 in lines 7-13 then fail, and SEGMENTS-INTERSECT returns
+FALSE in line 15. Figure 33.3(b) shows this case.
+
+and
+Figure 33.3: Cases in the procedure SEGMENTS-INTERSECT. (a) The segments
+straddle each other's lines. Because
+straddles the line containing
+, the signs of the cross
+straddles the line
+products (p3 - p1) × (p2 - p1) and (p4 - p1) × (p2 - p1) differ. Because
+containing
+, the signs of the cross products (p1 - p3) × (p4 - p3) and (p2 - p3) × (p4 - p3)
+differ. (b) Segment
+straddles the line containing
+, but
+does not straddle the line
+. The signs of the cross products (p1 - p3) × (p4 - p3) and (p2 - p3) × (p4 - p3) are
+containing
+the same. (c) Point p3 is collinear with
+and is between p1 and p2. (d) Point p3 is collinear
+with
+, but it is not between p1 and p2. The segments do not intersect.
+A boundary case occurs if any relative orientation dk is 0. Here, we know that pk is collinear
+with the other segment. It is directly on the other segment if and only if it is between the
+endpoints of the other segment. The procedure ON-SEGMENT returns whether pk is between
+the endpoints of segment
+, which will be the other segment when called in lines 7-13; the
+. Figures 33.3(c) and (d) show cases
+procedure assumes that pk is collinear with segment
+with collinear points. In Figure 33.3(c), p3 is on
+, and so SEGMENTS-INTERSECT
+returns TRUE in line 12. No endpoints are on other segments in Figure 33.3(d), and so
+SEGMENTS-INTERSECT returns FALSE in line 15.
+Other applications of cross products
+
+

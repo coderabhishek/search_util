@@ -1,0 +1,44 @@
+A is the set of strings L = {x {0, 1}*: A(x) = 1}, that is, the set of strings that the algorithm
+accepts. An algorithm A rejects a string x if A(x) = 0.
+Even if language L is accepted by an algorithm A, the algorithm will not necessarily reject a
+string x ∉ L provided as input to it. For example, the algorithm may loop forever. A language
+L is decided by an algorithm A if every binary string in L is accepted by A and every binary
+string not in L is rejected by A. A language L is accepted in polynomial time by an algorithm
+A if it is accepted by A and if in addition there is a constant k such that for any length-n string
+x L, algorithm A accepts x in time O(nk). A language L is decided in polynomial time by an
+algorithm A if there is a constant k such that for any length-n string x {0, 1}*, the algorithm
+correctly decides whether x L in time O(nk). Thus, to accept a language, an algorithm need
+only worry about strings in L, but to decide a language, it must correctly accept or reject every
+string in {0, 1}*.
+As an example, the language PATH can be accepted in polynomial time. One polynomialtime accepting algorithm verifies that G encodes an undirected graph, verifies that u and v are
+vertices in G, uses breadth-first search to compute the shortest path from u to v in G, and then
+compares the number of edges on the shortest path obtained with k. If G encodes an
+undirected graph and the path from u to v has at most k edges, the algorithm outputs 1 and
+halts. Otherwise, the algorithm runs forever. This algorithm does not decide PATH, however,
+since it does not explicitly output 0 for instances in which the shortest path has more than k
+edges. A decision algorithm for PATH must explicitly reject binary strings that do not belong
+to PATH. For a decision problem such as PATH, such a decision algorithm is easy to design:
+instead of running forever when there is not a path from u to v with at most k edges, it outputs
+0 and halts. For other problems, such as Turing's Halting Problem, there exists an accepting
+algorithm, but no decision algorithm exists.
+We can informally define a complexity class as a set of languages, membership in which is
+determined by a complexity measure, such as running time, of an algorithm that determines
+whether a given string x belongs to language L. The actual definition of a complexity class is
+somewhat more technical-the interested reader is referred to the seminal paper by Hartmanis
+and Stearns [140].
+Using this language-theoretic framework, we can provide an alternative definition of the
+complexity class P:
+P = {L
+
+{0, 1}* : there exists an algorithm A that decides L in polynomial time} .
+
+In fact, P is also the class of languages that can be accepted in polynomial time.
+Theorem 34.2
+P = {L : L is accepted by a polynomial-time algorithm}.
+Proof Since the class of languages decided by polynomial-time algorithms is a subset of the
+class of languages accepted by polynomial-time algorithms, we need only show that if L is
+accepted by a polynomial-time algorithm, it is decided by a polynomial-time algorithm. Let L
+be the language accepted by some polynomial-time algorithm A. We shall use a classic
+"simulation" argument to construct another polynomial-time algorithm A′ that decides L.
+
+

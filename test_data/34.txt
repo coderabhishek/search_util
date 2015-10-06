@@ -1,0 +1,20 @@
+linear function, for large enough inputs, merge sort, with its Θ(n lg n) running time,
+outperforms insertion sort, whose running time is Θ(n2), in the worst case.
+We do not need the master theorem to intuitively understand why the solution to the
+recurrence (2.1) is T (n) = Θ(n lg n). Let us rewrite recurrence (2.1) as
+(2.2)
+where the constant c represents the time required to solve problems of size 1 as well as the
+time per array element of the divide and combine steps.[8]
+Figure 2.5 shows how we can solve the recurrence (2.2). For convenience, we assume that n is
+an exact power of 2. Part (a) of the figure shows T (n), which in part (b) has been expanded
+into an equivalent tree representing the recurrence. The cn term is the root (the cost at the top
+level of recursion), and the two subtrees of the root are the two smaller recurrences T (n/2).
+Part (c) shows this process carried one step further by expanding T (n/2). The cost for each of
+the two subnodes at the second level of recursion is cn/2. We continue expanding each node
+in the tree by breaking it into its constituent parts as determined by the recurrence, until the
+problem sizes get down to 1, each with a cost of c. Part (d) shows the resulting tree.
+
+Figure 2.5: The construction of a recursion tree for the recurrence T(n) = 2T(n/2) + cn. Part
+(a) shows T(n), which is progressively expanded in (b)-(d) to form the recursion tree. The
+
+

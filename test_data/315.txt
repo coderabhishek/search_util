@@ -1,0 +1,37 @@
+Describe an algorithm to make up a guest list that maximizes the sum of the conviviality
+ratings of the guests. Analyze the running time of your algorithm.
+
+Problems 15-5: Viterbi algorithm
+We can use dynamic programming on a directed graph G = (V, E) for speech recognition.
+Each edge (u, v) E is labeled with a sound σ(u, v) from a finite set Σ of sounds. The labeled
+graph is a formal model of a person speaking a restricted language. Each path in the graph
+starting from a distinguished vertex v0 V corresponds to a possible sequence of sounds
+produced by the model. The label of a directed path is defined to be the concatenation of the
+labels of the edges on that path.
+a. Describe an efficient algorithm that, given an edge-labeled graph G with distinguished
+vertex v0 and a sequence s = σ1, σ2, ..., σk of characters from Σ, returns a path in G
+that begins at v0 and has s as its label, if any such path exists. Otherwise, the algorithm
+should return NO-SUCH-PATH. Analyze the running time of your algorithm. (Hint:
+You may find concepts from Chapter 22 useful.)
+Now, suppose that every edge (u, v) E has also been given an associated nonnegative
+probability p(u, v) of traversing the edge (u, v) from vertex u and thus producing the
+corresponding sound. The sum of the probabilities of the edges leaving any vertex equals 1.
+The probability of a path is defined to be the product of the probabilities of its edges. We can
+view the probability of a path beginning at v0 as the probability that a "random walk"
+beginning at v0 will follow the specified path, where the choice of which edge to take at a
+vertex u is made probabilistically according to the probabilities of the available edges leaving
+u.
+b. Extend your answer to part (a) so that if a path is returned, it is a most probable path
+starting at v0 and having label s. Analyze the running time of your algorithm.
+
+Problems 15-6: Moving on a checkerboard
+Suppose that you are given an n × n checkerboard and a checker. You must move the checker
+from the bottom edge of the board to the top edge of the board according to the following
+rule. At each step you may move the checker to one of three squares:
+1. the square immediately above,
+2. the square that is one up and one to the left (but only if the checker is not already in
+the leftmost column),
+3. the square that is one up and one to the right (but only if the checker is not already in
+the rightmost column).
+
+

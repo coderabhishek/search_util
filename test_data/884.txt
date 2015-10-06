@@ -1,0 +1,42 @@
+•
+•
+
+The target t has a 1 in each digit labeled by a variable and a 4 in each digit labeled by a
+clause.
+For each variable xi, there are two integers, vi and , in S. Each has a 1 in the digit
+labeled by xi and 0's in the other variable digits. If literal xi appears in clause Cj, then
+the digit labeled by Cj in vi contains a 1. If literal ¬xi appears in clause Cj, then the
+digit labeled by Cj in contains a 1. All other digits labeled by clauses in vi and are 0.
+All vi and values in set S are unique. Why? For l ≠ i, no vl or values can equal vi and
+in the most significant n digits. Furthermore, by our simplifying assumptions above,
+no vi and can be equal in all k least significant digits. If vi and were equal, then xi
+and ¬xi would have to appear in exactly the same set of clauses. But we assume that no
+clause contains both xi and ¬xi and that either xi or ¬xi appears in some clause, and so
+there must be some clause Cj for which vi and differ.
+
+•
+
+For each clause Cj, there are two integers, sj and in S. Each has 0's in all digits other
+than the one labeled by Cj. For sj, there is a 1 in the Cj digit, and has a 2 in this digit.
+These integers are "slack variables," which we use to get each clause-labeled digit
+position to add to the target value of 4.
+Simple inspection of Figure 34.19 demonstrates that all sj and
+in set S.
+
+values in S are unique
+
+Figure 34.19: The reduction of 3-CNF-SAT to SUBSET-SUM. The formula in 3-CNF
+is φ = C1 C2 C3 C4, where C1 = (x1 ¬x2 ¬x3), C2 = (¬x1 ¬x2 ¬x3), C3 =
+(¬x1 ¬x2 x3), and C4 = (x1 x2 x3). A satisfying assignment of φ is x1 = 0, x2 = 0, x3
+= 1 . The set S produced by the reduction consists of the base-10 numbers shown;
+reading from top to bottom, S = {1001001, 1000110, 100001, 101110, 10011, 11100,
+1000, 2000, 100, 200, 10, 20, 1, 2}. The target t is 1114444. The subset S' S is
+lightly shaded, and it contains
+, and , corresponding to the satisfying
+assignment. It also contains slack variables
+, and to achieve the target
+value of 4 in the digits labeled by C1 through C4.
+Note that the greatest sum of digits in any one digit position is 6, which occurs in the digits
+labeled by clauses (three 1's from the vi and values, plus 1 and 2 from the sj and values).
+
+

@@ -1,0 +1,38 @@
+Prove that P
+
+co-NP.
+
+Exercises 34.2-10
+Prove that if NP ≠ co-NP, then P ≠ NP.
+
+Exercises 34.2-11
+Let G be a connected, undirected graph with at least 3 vertices, and let G3 be the graph
+obtained by connecting all pairs of vertices that are connected by a path in G of length at most
+3. Prove that G3 is hamiltonian. (Hint: Construct a spanning tree for G, and use an inductive
+argument.)
+
+[6]
+
+The name "NP" stands for "nondeterministic polynomial time." The class NP was originally
+studied in the context of nondeterminism, but this book uses the somewhat simpler yet
+equivalent notion of verification. Hopcroft and Ullman [156] give a good presentation of NPcompleteness in terms of nondeterministic models of computation.
+
+34.3 NP-completeness and reducibility
+Perhaps the most compelling reason why theoretical computer scientists believe that P ≠ NP is
+the existence of the class of "NP-complete" problems. This class has the surprising property
+that if any NP-complete problem can be solved in polynomial time, then every problem in NP
+has a polynomial-time solution, that is, P = NP. Despite years of study, though, no
+polynomial-time algorithm has ever been discovered for any NP-complete problem.
+The language HAM-CYCLE is one NP-complete problem. If we could decide HAM-CYCLE
+in polynomial time, then we could solve every problem in NP in polynomial time. In fact, if
+NP - P should turn out to be nonempty, we could say with certainty that HAM-CYCLE NP
+- P.
+The NP-complete languages are, in a sense, the "hardest" languages in NP. In this section, we
+shall show how to compare the relative "hardness" of languages using a precise notion called
+"polynomial-time reducibility." Then we formally define the NP-complete languages, and we
+finish by sketching a proof that one such language, called CIRCUIT-SAT, is NP-complete. In
+Sections 34.4 and 34.5, we shall use the notion of reducibility to show that many other
+problems are NP-complete.
+Reducibility
+
+

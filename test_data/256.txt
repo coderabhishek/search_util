@@ -1,0 +1,36 @@
+Consider a persistent set S with the operations INSERT, DELETE, and SEARCH, which we
+implement using binary search trees as shown in Figure 13.8(a). We maintain a separate root
+for every version of the set. In order to insert the key 5 into the set, we create a new node with
+key 5. This node becomes the left child of a new node with key 7, since we cannot modify the
+existing node with key 7. Similarly, the new node with key 7 becomes the left child of a new
+node with key 8 whose right child is the existing node with key 10. The new node with key 8
+becomes, in turn, the right child of a new root r′ with key 4 whose left child is the existing
+node with key 3. We thus copy only part of the tree and share some of the nodes with the
+original tree, as shown in Figure 13.8(b).
+
+Figure 13.8: (a) A binary search tree with keys 2, 3, 4, 7, 8, 10. (b) The persistent binary
+search tree that results from the insertion of key 5. The most recent version of the set consists
+of the nodes reachable from the root r′, and the previous version consists of the nodes
+reachable from r. Heavily shaded nodes are added when key 5 is inserted.
+Assume that each tree node has the fields key, left, and right but no parent field. (See also
+Exercise 13.3-6.)
+a. For a general persistent binary search tree, identify the nodes that need to be changed
+to insert a key k or delete a node y.
+b. Write a procedure PERSISTENT-TREE-INSERT that, given a persistent tree T and a
+key k to insert, returns a new persistent tree T′ that is the result of inserting k into T.
+c. If the height of the persistent binary search tree T is h, what are the time and space
+requirements of your implementation of PERSISTENT-TREE-INSERT? (The space
+requirement is proportional to the number of new nodes allocated.)
+d. Suppose that we had included the parent field in each node. In this case,
+PERSISTENT-TREE-INSERT would need to perform additional copying. Prove that
+PERSISTENT-TREE-INSERT would then require Ω(n) time and space, where n is the
+number of nodes in the tree.
+e. Show how to use red-black trees to guarantee that the worst-case running time and
+space are O(lg n) per insertion or deletion.
+
+Problems 13-2: Join operation on red-black trees
+The join operation takes two dynamic sets S1 and S2 and an element x such that for any x1
+S1 and x2 S2, we have key[x1] ≤ key[x] ≤ key[x2]. It returns a set S = S1 {x} S2. In this
+problem, we investigate how to implement the join operation on red-black trees.
+
+

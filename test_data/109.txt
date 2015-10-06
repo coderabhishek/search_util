@@ -1,0 +1,45 @@
+considering A[1], A[2], A[3],..., A[n] until either A[i] = x is found or the end of the array is
+reached. Assume that all possible permutations of the input array are equally likely.
+e. Suppose that there is exactly one index i such that A[i] = x. What is the expected
+running time of DETERMINISTIC-SEARCH? What is the worst-case running time of
+DETERMINISTIC-SEARCH?
+f. Generalizing your solution to part (e), suppose that there are k ≥ 1 indices i such that
+A[i] = x. What is the expected running time of DETERMINISTIC-SEARCH? What is
+the worst-case running time of DETERMINISTIC-SEARCH? Your answer should be
+a function of n and k.
+g. Suppose that there are no indices i such that A[i] = x. What is the expected running
+time of DETERMINISTIC-SEARCH? What is the worst-case running time of
+DETERMINISTIC-SEARCH?
+Finally, consider a randomized algorithm SCRAMBLE-SEARCH that works by first
+randomly permuting the input array and then running the deterministic linear search given
+above on the resulting permuted array.
+h. Letting k be the number of indices i such that A[i] = x, give the worst-case and
+expected running times of SCRAMBLE-SEARCH for the cases in which k = 0 and k =
+1. Generalize your solution to handle the case in which k ≥ 1.
+i. Which of the three searching algorithms would you use? Explain your answer.
+
+Chapter notes
+Bollobás [44], Hofri [151], and Spencer [283] contain a wealth of advanced probabilistic
+techniques. The advantages of randomized algorithms are discussed and surveyed by Karp
+[174] and Rabin [253]. The textbook by Motwani and Raghavan [228] gives an extensive
+treatment of randomized algorithms.
+Several variants of the hiring problem have been widely studied. These problems are more
+commonly referred to as "secretary problems." An example of work in this area is the paper
+by Ajtai, Meggido, and Waarts [12].
+
+Part II: Sorting and Order Statistics
+Chapter List
+Chapter 6: Heapsort
+Chapter 7: Quicksort
+Chapter 8: Sorting in Linear Time
+Chapter 9: Medians and Order Statistics
+
+Introduction
+This part presents several algorithms that solve the following sorting problem:
+•
+
+Input: A sequence of n numbers
+
+a1, a2, ..., an .
+
+

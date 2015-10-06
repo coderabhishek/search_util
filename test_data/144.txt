@@ -1,0 +1,40 @@
+c. If we define a "good" split to mean choosing the pivot as x = A'[i], where n/ ≤ i ≤ 2n/3,
+by what amount have we increased the likelihood of getting a good split compared to
+the ordinary implementation? (Hint: Approximate the sum by an integral.)
+d. Argue that in the Ω(n lg n) running time of quicksort, the median-of-3 method affects
+only the constant factor.
+
+Problems 7-6: Fuzzy sorting of intervals
+Consider a sorting problem in which the numbers are not known exactly. Instead, for each
+number, we know an interval on the real line to which it belongs. That is, we are given n
+closed intervals of the form [ai, bi], where ai ≤ bi. The goal is to fuzzy-sort these intervals, i.e.,
+produce a permutation i1, i2,..., in of the intervals such that there exist
+, satisfying
+c1 ≤ c2 ≤ ··· ≤ cn.
+a. Design an algorithm for fuzzy-sorting n intervals. Your algorithm should have the
+general structure of an algorithm that quicksorts the left endpoints (the ai 's), but it
+should take advantage of overlapping intervals to improve the running time. (As the
+intervals overlap more and more, the problem of fuzzy-sorting the intervals gets easier
+and easier. Your algorithm should take advantage of such overlapping, to the extent
+that it exists.)
+b. Argue that your algorithm runs in expected time Θ(n lg n) in general, but runs in
+expected time Θ(n) when all of the intervals overlap (i.e., when there exists a value x
+such that x [ai, bi] for all i). Your algorithm should not be checking for this case
+explicitly; rather, its performance should naturally improve as the amount of overlap
+increases.
+
+Chapter Notes
+The quicksort procedure was invented by Hoare [147]; Hoare's version appears in Problem 71. The PARTITION procedure given in Section 7.1 is due to N. Lomuto. The analysis in
+Section 7.4 is due to Avrim Blum. Sedgewick [268] and Bentley [40] provide a good
+reference on the details of implementation and how they matter.
+McIlroy [216] showed how to engineer a "killer adversary" that produces an array on which
+virtually any implementation of quicksort takes Θ(n2) time. If the implementation is
+randomized, the adversary produces the array after seeing the random choices of the quicksort
+algorithm.
+
+Chapter 8: Sorting in Linear Time
+Overview
+We have now introduced several algorithms that can sort n numbers in O(n lg n) time. Merge
+sort and heapsort achieve this upper bound in the worst case; quicksort achieves it on average.
+
+

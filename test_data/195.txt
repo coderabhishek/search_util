@@ -1,0 +1,27 @@
+Figure 11.2: Using a hash function h to map keys to hash-table slots. keys k2 and k5 map to the
+same slot, so they collide.
+There is one hitch: two keys may hash to the same slot. We call this situation a collision.
+Fortunately, there are effective techniques for resolving the conflict created by collisions.
+Of course, the ideal solution would be to avoid collisions altogether. We might try to achieve
+this goal by choosing a suitable hash function h. One idea is to make h appear to be "random,"
+thus avoiding collisions or at least minimizing their number. The very term "to hash," evoking
+images of random mixing and chopping, captures the spirit of this approach. (Of course, a
+hash function h must be deterministic in that a given input k should always produce the same
+output h(k).) Since |U| > m, however, there must be at least two keys that have the same hash
+value; avoiding collisions altogether is therefore impossible. Thus, while a well-designed,
+"random"-looking hash function can minimize the number of collisions, we still need a
+method for resolving the collisions that do occur.
+The remainder of this section presents the simplest collision resolution technique, called
+chaining. Section 11.4 introduces an alternative method for resolving collisions, called open
+addressing.
+Collision resolution by chaining
+In chaining, we put all the elements that hash to the same slot in a linked list, as shown in
+Figure 11.3. Slot j contains a pointer to the head of the list of all stored elements that hash to j;
+if there are no such elements, slot j contains NIL.
+
+Figure 11.3: Collision resolution by chaining. Each hash-table slot T[j] contains a linked list
+of all the keys whose hash value is j. For example, h(k1) = h(k4) and h(k5) = h(k2) = h(k7).
+The dictionary operations on a hash table T are easy to implement when collisions are
+resolved by chaining.
+
+

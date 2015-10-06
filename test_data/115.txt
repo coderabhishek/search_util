@@ -1,0 +1,41 @@
+Show that, with the array representation for storing an n-element heap, the leaves are the
+nodes indexed by ⌊n/2⌋ + 1, ⌊n/2⌋ + 2, . . . , n.
+
+6.2 Maintaining the heap property
+MAX-HEAPIFY is an important subroutine for manipulating max-heaps. Its inputs are an
+array A and an index i into the array. When MAX-HEAPIFY is called, it is assumed that the
+binary trees rooted at LEFT(i) and RIGHT(i) are max-heaps, but that A[i] may be smaller than
+its children, thus violating the max-heap property. The function of MAX-HEAPIFY is to let
+the value at A[i] "float down" in the max-heap so that the subtree rooted at index i becomes a
+max-heap.
+MAX-HEAPIFY(A, i)
+1 l ← LEFT(i)
+2 r ← RIGHT(i)
+3 if l ≤ heap-size[A] and A[l] > A[i]
+4
+then largest ← l
+5
+else largest ← i
+6 if r ≤ heap-size[A] and A[r] > A[largest]
+7
+then largest ← r
+8 if largest ≠ i
+9
+then exchange A[i] ↔ A[largest]
+10
+MAX-HEAPIFY(A, largest)
+
+Figure 6.2 illustrates the action of MAX-HEAPIFY. At each step, the largest of the elements
+A[i], A[LEFT(i)], and A[RIGHT(i)] is determined, and its index is stored in largest. If A[i] is
+largest, then the subtree rooted at node i is a max-heap and the procedure terminates.
+Otherwise, one of the two children has the largest element, and A[i] is swapped with
+A[largest], which causes node i and its children to satisfy the max-heap property. The node
+indexed by largest, however, now has the original value A[i], and thus the subtree rooted at
+largest may violate the max-heap property. Consequently, MAX-HEAPIFY must be called
+recursively on that subtree.
+
+Figure 6.2: The action of MAX-HEAPIFY(A, 2), where heap-size[A] = 10. (a) The initial
+configuration, with A[2] at node i = 2 violating the max-heap property since it is not larger
+than both children. The max-heap property is restored for node 2 in (b) by exchanging A[2]
+
+

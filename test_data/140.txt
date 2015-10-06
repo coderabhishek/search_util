@@ -1,0 +1,26 @@
+Exercises 7.4-2
+Show that quicksort's best-case running time is Ω(n lg n).
+
+Exercises 7.4-3
+Show that q2 + (n - q - 1)2 achieves a maximum over q = 0, 1,..., n - 1 when q = 0 or q = n - 1.
+
+Exercises 7.4-4
+Show that RANDOMIZED-QUICKSORT's expected running time is Ω(n lg n).
+
+Exercises 7.4-5
+The running time of quicksort can be improved in practice by taking advantage of the fast
+running time of insertion sort when its input is "nearly" sorted. When quicksort is called on a
+subarray with fewer than k elements, let it simply return without sorting the subarray. After
+the top-level call to quicksort returns, run insertion sort on the entire array to finish the sorting
+process. Argue that this sorting algorithm runs in O(nk + n lg(n/k)) expected time. How
+should k be picked, both in theory and in practice?
+
+Exercises 7.4-6: ⋆
+Consider modifying the PARTITION procedure by randomly picking three elements from
+array A and partitioning about their median (the middle value of the three elements).
+Approximate the probability of getting at worst an αto-(1 - α) split, as a function of α in the
+range 0 < α < 1.
+
+Problems 7-1: Hoare partition correctness
+
+

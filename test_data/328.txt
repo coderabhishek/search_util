@@ -1,0 +1,33 @@
+pound of item 1 is 6 dollars per pound, which is greater than the value per pound of either
+item 2 (5 dollars per pound) or item 3 (4 dollars per pound). The greedy strategy, therefore,
+would take item 1 first. As can be seen from the case analysis in Figure 16.2(b), however, the
+optimal solution takes items 2 and 3, leaving 1 behind. The two possible solutions that
+involve item 1 are both suboptimal.
+
+Figure 16.2: The greedy strategy does not work for the 0–1 knapsack problem. (a) The thief
+must select a subset of the three items shown whose weight must not exceed 50 pounds. (b)
+The optimal subset includes items 2 and 3. Any solution with item 1 is suboptimal, even
+though item 1 has the greatest value per pound. (c) For the fractional knapsack problem,
+taking the items in order of greatest value per pound yields an optimal solution.
+For the comparable fractional problem, however, the greedy strategy, which takes item 1 first,
+does yield an optimal solution, as shown in Figure 16.2(c). Taking item 1 doesn't work in the
+0–1 problem because the thief is unable to fill his knapsack to capacity, and the empty space
+lowers the effective value per pound of his load. In the 0–1 problem, when we consider an
+item for inclusion in the knapsack, we must compare the solution to the subproblem in which
+the item is included with the solution to the subproblem in which the item is excluded before
+we can make the choice. The problem formulated in this way gives rise to many over-lapping
+subproblems—a hallmark of dynamic programming, and indeed, dynamic programming can
+be used to solve the 0–1 problem. (See Exercise 16.2-2.)
+Exercises 16.2-1
+Prove that the fractional knapsack problem has the greedy-choice property.
+
+Exercises 16.2-2
+Give a dynamic-programming solution to the 0–1 knapsack problem that runs in O(n W) time,
+where n is number of items and W is the maximum weight of items that the thief can put in his
+knapsack.
+
+Exercises 16.2-3
+Suppose that in a 0–1 knapsack problem, the order of the items when sorted by increasing
+weight is the same as their order when sorted by decreasing value. Give an efficient algorithm
+
+

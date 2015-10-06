@@ -1,0 +1,51 @@
+See also the chapter notes for Chapter 6 for other data structures that support fast
+DECREASE-KEY operations when the sequence of values returned by EXTRACT-MIN calls
+are monotonically increasing over time and the data are integers in a specific range.
+
+Chapter 21: Data Structures for Disjoint
+Sets
+Some applications involve grouping n distinct elements into a collection of disjoint sets. Two
+important operations are then finding which set a given element belongs to and uniting two
+sets. This chapter explores methods for maintaining a data structure that supports these
+operations.
+Section 21.1 describes the operations supported by a disjoint-set data structure and presents a
+simple application. In Section 21.2, we look at a simple linked-list implementation for disjoint
+sets. A more efficient representation using rooted trees is given in Section 21.3. The running
+time using the tree representation is linear for all practical purposes but is theoretically
+superlinear. Section 21.4 defines and discusses a very quickly growing function and its very
+slowly growing inverse, which appears in the running time of operations on the tree-based
+implementation, and then uses amortized analysis to prove an upper bound on the running
+time that is just barely superlinear.
+
+21.1 Disjoint-set operations
+A disjoint-set data structure maintains a collection
+of disjoint dynamic sets.
+Each set is identified by a representative, which is some member of the set. In some
+applications, it doesn't matter which member is used as the representative; we only care that if
+we ask for the representative of a dynamic set twice without modifying the set between the
+requests, we get the same answer both times. In other applications, there may be a
+prespecified rule for choosing the representative, such as choosing the smallest member in the
+set (assuming, of course, that the elements can be ordered).
+As in the other dynamic-set implementations we have studied, each element of a set is
+represented by an object. Letting x denote an object, we wish to support the following
+operations:
+•
+•
+
+•
+
+MAKE-SET(x) creates a new set whose only member (and thus representative) is x.
+Since the sets are disjoint, we require that x not already be in some other set.
+UNION(x, y) unites the dynamic sets that contain x and y, say Sx and Sy, into a new set
+that is the union of these two sets. The two sets are assumed to be disjoint prior to the
+operation. The representative of the resulting set is any member of Sx Sy, although
+many implementations of UNION specifically choose the representative of either Sx or
+Sy as the new representative. Since we require the sets in the collection to be disjoint,
+we "destroy" sets Sx and Sy, removing them from the collection .
+FIND-SET(x) returns a pointer to the representative of the (unique) set containing x.
+
+Throughout this chapter, we shall analyze the running times of disjoint-set data structures in
+terms of two parameters: n, the number of MAKE-SET operations, and m, the total number of
+MAKE-SET, UNION, and FIND-SET operations. Since the sets are disjoint, each UNION
+
+

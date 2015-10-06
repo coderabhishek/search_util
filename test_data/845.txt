@@ -1,0 +1,43 @@
+Section 34.4 how other problems can be proven to be NP-complete much more simply by the
+methodology of reductions. The methodology is illustrated by showing that two formulasatisfiability problems are NP-complete. A variety of other problems are shown to be NPcomplete in Section 34.5.
+
+34.1 Polynomial time
+We begin our study of NP-completeness by formalizing our notion of polynomial-time
+solvable problems. These problems are generally regarded as tractable, but for philosophical,
+not mathematical, reasons. We can offer three supporting arguments.
+First, although it is reasonable to regard a problem that requires time Θ(n100) as intractable,
+there are very few practical problems that require time on the order of such a high-degree
+polynomial. The polynomial-time computable problems encountered in practice typically
+require much less time. Experience has shown that once a polynomial-time algorithm for a
+problem is discovered, more efficient algorithms often follow. Even if the current best
+algorithm for a problem has a running time of Θ(n100), it is likely that an algorithm with a
+much better running time will soon be discovered.
+Second, for many reasonable models of computation, a problem that can be solved in
+polynomial time in one model can be solved in polynomial time in another. For example, the
+class of problems solvable in polynomial time by the serial random-access machine used
+throughout most of this book is the same as the class of problems solvable in polynomial time
+on abstract Turing machines.[1] It is also the same as the class of problems solvable in
+polynomial time on a parallel computer when the number of processors grows polynomially
+with the input size.
+Third, the class of polynomial-time solvable problems has nice closure properties, since
+polynomials are closed under addition, multiplication, and composition. For example, if the
+output of one polynomial-time algorithm is fed into the input of another, the composite
+algorithm is polynomial. If an otherwise polynomial-time algorithm makes a constant number
+of calls to polynomial-time subroutines, the running time of the composite algorithm is
+polynomial.
+Abstract problems
+To understand the class of polynomial-time solvable problems, we must first have a formal
+notion of what a "problem" is. We define an abstract problem Q to be a binary relation on a
+set I of problem instances and a set S of problem solutions. For example, an instance for
+SHORTEST-PATH is a triple consisting of a graph and two vertices. A solution is a sequence
+of vertices in the graph, with perhaps the empty sequence denoting that no path exists. The
+problem SHORTEST-PATH itself is the relation that associates each instance of a graph and
+two vertices with a shortest path in the graph that connects the two vertices. Since shortest
+paths are not necessarily unique, a given problem instance may have more than one solution.
+This formulation of an abstract problem is more general than is required for our purposes. As
+we saw above, the theory of NP-completeness restricts attention to decision problems: those
+having a yes/no solution. In this case, we can view an abstract decision problem as a function
+that maps the instance set I to the solution set {0, 1}. For example, a decision problem related
+to SHORTEST-PATH is the problem PATH that we saw earlier. If i = G, u, v, k is an
+
+

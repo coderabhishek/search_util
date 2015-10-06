@@ -1,0 +1,41 @@
+The Josephus problem is defined as follows. Suppose that n people are arranged in a circle
+and that we are given a positive integer m ≤ n. Beginning with a designated first person, we
+proceed around the circle, removing every mth person. After each person is removed,
+counting continues around the circle that remains. This process continues until all n people
+have been removed. The order in which the people are removed from the circle defines the (n,
+m)-Josephus permutation of the integers 1, 2,..., n. For example, the (7, 3)-Josephus
+permutation is 3, 6, 2, 7, 5, 1, 4 .
+a. Suppose that m is a constant. Describe an O(n)-time algorithm that, given an integer n,
+outputs the (n, m)-Josephus permutation.
+b. Suppose that m is not a constant. Describe an O(n lg n)-time algorithm that, given
+integers n and m, outputs the (n, m)-Josephus permutation.
+
+Chapter Notes
+In their book, Preparata and Shamos [247] describe several of the interval trees that appear in
+the literature, citing work by H. Edelsbrunner (1980) and E. M. Mc-Creight (1981). The book
+details an interval tree for which, given a static database of n intervals, all k intervals that
+overlap a given query interval can be enumerated in O(k + lg n) time.
+
+Part IV: Advanced Design and Analysis
+Techniques
+Chapter List
+Chapter 15: Dynamic Programming
+Chapter 16: Greedy Algorithms
+Chapter 17: Amortized Analysis
+
+Introduction
+This part covers three important techniques for the design and analysis of efficient algorithms:
+dynamic programming (Chapter 15), greedy algorithms (Chapter 16), and amortized analysis
+(Chapter 17). Earlier parts have presented other widely applicable techniques, such as divideand-conquer, randomization, and the solution of recurrences. The new techniques are
+somewhat more sophisticated, but they are useful for effectively attacking many
+computational problems. The themes introduced in this part will recur later in the book.
+Dynamic programming typically applies to optimization problems in which a set of choices
+must be made in order to arrive at an optimal solution. As choices are made, subproblems of
+the same form often arise. Dynamic programming is effective when a given subproblem may
+arise from more than one partial set of choices; the key technique is to store the solution to
+each such subproblem in case it should reappear. Chapter 15 shows how this simple idea can
+sometimes transform exponential-time algorithms into polynomial-time algorithms.
+Like dynamic-programming algorithms, greedy algorithms typically apply to optimization
+problems in which a set of choices must be made in order to arrive at an optimal solution. The
+
+

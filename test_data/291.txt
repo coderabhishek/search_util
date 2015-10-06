@@ -1,0 +1,45 @@
+Optimal substructure
+The first step in solving an optimization problem by dynamic programming is to characterize
+the structure of an optimal solution. Recall that a problem exhibits optimal substructure if an
+optimal solution to the problem contains within it optimal solutions to subproblems.
+Whenever a problem exhibits optimal substructure, it is a good clue that dynamic
+programming might apply. (It also might mean that a greedy strategy applies, however. See
+Chapter 16.) In dynamic programming, we build an optimal solution to the problem from
+optimal solutions to subproblems. Consequently, we must take care to ensure that the range of
+subproblems we consider includes those used in an optimal solution.
+We discovered optimal substructure in both of the problems we have examined in this chapter
+so far. In Section 15.1, we observed that the fastest way through station j of either line
+contained within it the fastest way through station j - 1 on one line. In Section 15.2, we
+observed that an optimal parenthesization of Ai Ai+1 Aj that splits the product between Ak and
+Ak+1 contains within it optimal solutions to the problems of parenthesizing Ai Ai+1 Ak and Ak+1
+Ak+2 Aj.
+You will find yourself following a common pattern in discovering optimal substructure:
+1. You show that a solution to the problem consists of making a choice, such as choosing
+a preceding assembly-line station or choosing an index at which to split the matrix
+chain. Making this choice leaves one or more subproblems to be solved.
+2. You suppose that for a given problem, you are given the choice that leads to an
+optimal solution. You do not concern yourself yet with how to determine this choice.
+You just assume that it has been given to you.
+3. Given this choice, you determine which subproblems ensue and how to best
+characterize the resulting space of subproblems.
+4. You show that the solutions to the subproblems used within the optimal solution to the
+problem must themselves be optimal by using a "cut-and-paste" technique. You do so
+by supposing that each of the subproblem solutions is not optimal and then deriving a
+contradiction. In particular, by "cutting out" the nonoptimal subproblem solution and
+"pasting in" the optimal one, you show that you can get a better solution to the original
+problem, thus contradicting your supposition that you already had an optimal solution.
+If there is more than one subproblem, they are typically so similar that the cut-andpaste argument for one can be modified for the others with little effort.
+To characterize the space of subproblems, a good rule of thumb is to try to keep the space as
+simple as possible, and then to expand it as necessary. For example, the space of subproblems
+that we considered for assembly-line scheduling was the fastest way from entry into the
+factory through stations S1, j and S2, j. This subproblem space worked well, and there was no
+need to try a more general space of subproblems.
+Conversely, suppose that we had tried to constrain our subproblem space for matrix-chain
+multiplication to matrix products of the form A1 A2 Aj. As before, an optimal parenthesization
+must split this product between Ak and Ak+1 for some 1 ≤ k ≤ j. Unless we could guarantee that
+k always equals j - 1, we would find that we had subproblems of the form A1 A2 Ak and Ak+1
+Ak+2 Aj, and that the latter subproblem is not of the form A1 A2 Aj. For this problem, it was
+necessary to allow our subproblems to vary at "both ends," that is, to allow both i and j to vary
+in the subproblem Ai Ai+1 Aj.
+
+

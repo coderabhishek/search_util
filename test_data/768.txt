@@ -1,0 +1,65 @@
+bi 1 0
+c1 2
+
+0
+4
+
+0
+8
+
+1 1 0 0 0 0
+17 35 70 140 280 56
+0
+d 7 49 157 526 160 241 298 166 67 1
+
+Figure 31.4: The results of MODULAR-EXPONENTIATION when computing ab (mod n),
+where a = 7, b = 560 = 1000110000 , and n = 561. The values are shown after each
+execution of the for loop. The final result is 1.
+The variable c is not really needed by the algorithm but is included for explanatory purposes;
+the algorithm maintains the following two-part loop invariant:
+Just prior to each iteration of the for loop of lines 4–9,
+1. The value of c is the same as the prefix
+of b, and
+2. d = ac mod n.
+
+bk, bk-1, ..., bi+1
+
+of the binary representation
+
+We use this loop invariant as follows:
+•
+•
+
+•
+
+Initialization: Initially, i = k, so that the prefix bk, bk-1, ..., bi+1 is empty, which
+corresponds to c = 0. Moreover, d = 1 = a0 mod n.
+Maintenance: Let c′ and d′ denote the values of c and d at the end of an iteration of
+the for loop, and thus the values prior to the next iteration. Each iteration updates c′ ←
+2c (if bi = 0) or c′ ← 2c + 1 (if bi = 1), so that c will be correct prior to the next
+iteration. If bi = 0, then d′ = d2 mod n = (ac)2 mod n = a2c mod
+mod n. If bi = 1,
+2
+c 2
+2c+1
+then d′ = d a mod n = (a ) a mod n =a
+mod
+mod n. In either case, d = ac
+mod n prior to the next iteration.
+Termination: At termination, i = -1. Thus, c = b, since c has the value of the prefix
+bk, bk-1, ...,b0 of b′s binary representation. Hence d = ac mod n = ab mod n.
+
+If the inputs a, b, and n are β-bit numbers, then the total number of arithmetic operations
+required is O(β) and the total number of bit operations required is O(β3).
+Exercises 31.6-1
+Draw a table showing the order of every element in
+.
+compute a table giving ind11,g(x) for all
+
+. Pick the smallest primitive root g and
+
+Exercises 31.6-2
+Give a modular exponentiation algorithm that examines the bits of b from right to left instead
+of left to right.
+
+

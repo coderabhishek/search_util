@@ -1,0 +1,36 @@
+while loop with p[x] as the new node x. Observe that if we enter case 2 through case 1, the
+new node x is red-and-black, since the original p[x] was red. Hence, the value c of the color
+attribute of the new node x is RED, and the loop terminates when it tests the loop condition.
+The new node x is then colored (singly) black in line 23.
+Case 3: x's sibling w is black, w's left child is red, and w's right child is black
+
+Case 3 (lines 13–16 and Figure 13.7(c)) occurs when w is black, its left child is red, and its
+right child is black. We can switch the colors of w and its left child left[w] and then perform a
+right rotation on w without violating any of the red-black properties. The new sibling w of x is
+now a black node with a red right child, and thus we have transformed case 3 into case 4.
+Case 4: x's sibling w is black, and w's right child is red
+
+Case 4 (lines 17–21 and Figure 13.7(d)) occurs when node x's sibling w is black and w's right
+child is red. By making some color changes and performing a left rotation on p[x], we can
+remove the extra black on x, making it singly black, without violating any of the red-black
+properties. Setting x to be the root causes the while loop to terminate when it tests the loop
+condition.
+Analysis
+What is the running time of RB-DELETE? Since the height of a red-black tree of n nodes is
+O(lg n), the total cost of the procedure without the call to RB-DELETE-FIXUP takes O(lg n)
+time. Within RB-DELETE-FIXUP, cases 1, 3, and 4 each terminate after performing a
+constant number of color changes and at most three rotations. Case 2 is the only case in which
+the while loop can be repeated, and then the pointer x moves up the tree at most O(lg n) times
+and no rotations are performed. Thus, the procedure RB-DELETE-FIXUP takes O(lg n) time
+and performs at most three rotations, and the overall time for RB-DELETE is therefore also
+O(lg n).
+Exercises 13.4-1
+Argue that after executing RB-DELETE-FIXUP, the root of the tree must be black.
+
+Exercises 13.4-2
+Argue that if in RB-DELETE both x and p[y] are red, then property 4 is restored by the call
+RB-DELETE-FIXUP(T, x).
+
+Exercises 13.4-3
+
+

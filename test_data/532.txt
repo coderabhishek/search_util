@@ -1,0 +1,45 @@
+Figure 25.1: A directed graph and the sequence of matrices L(m) computed by SLOW-ALLPAIRS-SHORTEST-PATHS. The reader may verify that L(5) = L(4) · W is equal to L(4), and
+thus L(m) = L(4) for all m ≥ 4.
+Improving the running time
+Our goal, however, is not to compute all the L(m) matrices: we are interested only in matrix
+L(n-1). Recall that in the absence of negative-weight cycles, equation (25.3) implies L(m) = L(n-1)
+for all integers m ≥ n - 1. Just as traditional matrix multiplication is associative, so is matrix
+multiplication defined by the EXTEND-SHORTEST-PATHS procedure (see Exercise 25.14). Therefore, we can compute L(n-1) with only ⌈lg(n - 1)⌉ matrix products by computing the
+sequence
+L(1) =
+L(2) =
+L(4) =
+L(8) =
+
+W,
+W2
+W4
+W8
+
+= W · W,
+= W2 · W2
+= W4 · W4,
+
+⋮
+=
+
+=
+
+Since 2⌈lg(n-1)⌉ ≥ n - 1, the final product
+
+.
+is equal to L(n-1).
+
+The following procedure computes the above sequence of matrices by using this technique of
+repeated squaring.
+FASTER-ALL-PAIRS-SHORTEST-PATHS(W)
+1 n ← rows[W]
+2 L(1) ← W
+3 m ← 1
+4 while m < n - 1
+5
+do L(2m) ← EXTEND-SHORTEST-PATHS(L(m), L(m))
+6
+m ← 2m
+
+

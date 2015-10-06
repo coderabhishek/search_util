@@ -1,0 +1,60 @@
+A second-best minimum spanning tree is defined as follows. Let be the set of all spanning
+trees of G, and let T′ be a minimum spanning tree of G. Then a second-best minimum
+spanning tree is a spanning tree T such that
+.
+a. Show that the minimum spanning tree is unique, but that the second-best minimum
+spanning tree need not be unique.
+b. Let T be a minimum spanning tree of G. Prove that there exist edges (u, v) T and (x,
+y) ∉ T such that T - {(u, v)} {(x, y)} is a second-best minimum spanning tree of G.
+c. Let T be a spanning tree of G and, for any two vertices u, v V, let max[u, v] be an
+edge of maximum weight on the unique path between u and v in T. Describe an O(V2)time algorithm that, given T, computes max[u, v] for all u, v V.
+d. Give an efficient algorithm to compute the second-best minimum spanning tree of G.
+
+Problems 23-2: Minimum spanning tree in sparse graphs
+For a very sparse connected graph G = (V, E), we can further improve upon the O(E + V lg V)
+running time of Prim's algorithm with Fibonacci heaps by "pre-processing" G to decrease the
+number of vertices before running Prim's algorithm. In particular, we choose, for each vertex
+u, the minimum-weight edge (u, v) incident on u, and we put (u, v) into the minimum
+spanning tree under construction. We then contract all chosen edges (see Section B.4). Rather
+than contracting these edges one at a time, we first identify sets of vertices that are united into
+the same new vertex. Then, we create the graph that would have resulted from contracting
+these edges one at a time, but we do so by "renaming" edges according to the sets into which
+their endpoints were placed. Several edges from the original graph may be renamed the same
+as each other. In such a case, only one edge results, and its weight is the minimum of the
+weights of the corresponding original edges.
+Initially, we set the minimum spanning tree T being constructed to be empty, and for each
+edge (u, v) E, we set orig[u, v] = (u, v) and c[u, v] = w(u, v). We use the orig attribute to
+reference the edge from the initial graph that is associated with an edge in the contracted
+graph. The c attribute holds the weight of an edge, and as edges are contracted, it is updated
+according to the above scheme for choosing edge weights. The procedure MST-REDUCE
+takes inputs G, orig, c, and T, and it returns a contracted graph G′ and updated attributes orig′
+and c′ for graph G′. The procedure also accumulates edges of G into the minimum spanning
+tree T.
+MST-REDUCE(G, orig, c, T)
+1 for each v
+V[G]
+2
+do mark[v] ← FALSE
+3
+MAKE-SET(v)
+4 for each u
+V[G]
+5
+do if mark[u] = FALSE
+6
+then choose v
+Adj[u] such that c[u, v] is minimized
+7
+UNION(u, v)
+8
+T ← T
+{orig[u, v]}
+9
+mark[u] ← mark[v] ← TRUE
+10 V[G′] ← {FIND-SET(v) : v
+V[G]}
+11 E[G′] Ø
+12 for each (x, y)
+E[G]
+
+

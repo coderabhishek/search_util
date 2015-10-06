@@ -1,0 +1,35 @@
+or, equivalently, letting A = (aij), x = (xi), and b = (bi), as
+(28.17)
+If A is nonsingular, it possesses an inverse A-1, and
+(28.18)
+is the solution vector. We can prove that x is the unique solution to equation (28.17) as
+follows. If there are two solutions, x and x′, then Ax = Ax′ = b and
+x = (A-1A)x
+= A-1(Ax)
+= A-1(Ax′)
+= (A-1A)x′
+= x′.
+In this section, we shall be concerned predominantly with the case in which A is nonsingular
+or, equivalently (by Theorem 28.1), the rank of A is equal to the number n of unknowns.
+There are other possibilities, however, which merit a brief discussion. If the number of
+equations is less than the number n of unknowns—or, more generally, if the rank of A is less
+than n—then the system is underdetermined. An underdetermined system typically has
+infinitely many solutions, although it may have no solutions at all if the equations are
+inconsistent. If the number of equations exceeds the number n of unknowns, the system is
+overdetermined, and there may not exist any solutions. Finding good approximate solutions to
+overdetermined systems of linear equations is an important problem that is addressed in
+Section 28.5.
+Let us return to our problem of solving the system Ax = b of n equations in n unknowns. One
+approach is to compute A-1 and then multiply both sides by A-1, yielding A-1 Ax = A-1b, or x =
+A-1b. This approach suffers in practice from numerical instability. There is, fortunately,
+another approach—LUP decomposition—that is numerically stable and has the further
+advantage of being faster in practice.
+Overview of LUP decomposition
+The idea behind LUP decomposition is to find three n × n matrices L, U, and P such that
+(28.19)
+where
+•
+
+L is a unit lower-triangular matrix,
+
+

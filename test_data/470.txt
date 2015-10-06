@@ -1,0 +1,41 @@
+connected component Ci of G. There is an edge (vi, vj) ESCC if G contains a directed edge
+(x, y) for some x Ci and some y Cj. Looked at another way, by contracting all edges
+whose incident vertices are within the same strongly connected component of G, the resulting
+graph is GSCC. Figure 22.9(c) shows the component graph of the graph in Figure 22.9(a).
+The key property is that the component graph is a dag, which the following lemma implies.
+Lemma 22.13
+Let C and C′ be distinct strongly connected components in directed graph G = (V, E), let u, v
+C, let u′, v′ C′, and suppose that there is a path
+in G. Then there cannot also be a
+path
+in G.
+in G, then there are paths
+and
+in G.
+Proof If there is a path
+Thus, u and v′ are reachable from each other, thereby contradicting the assumption that C and
+C′ are distinct strongly connected components.
+
+We shall see that by considering vertices in the second depth-first search in decreasing order
+of the finishing times that were computed in the first depth-first search, we are, in essence,
+visiting the vertices of the component graph (each of which corresponds to a strongly
+connected component of G) in topologically sorted order.
+Because STRONGLY-CONNECTED-COMPONENTS performs two depth-first searches,
+there is the potential for ambiguity when we discuss d[u] or f[u]. In this section, these values
+always refer to the discovery and finishing times as computed by the first call of DFS, in line
+1.
+We extend the notation for discovery and finishing times to sets of vertices. If U V , then
+we define d(U) = minu U {d[u]} and f(U) = maxu U {f[u]}. That is, d(U) and f(U) are the
+earliest discovery time and latest finishing time, respectively, of any vertex in U.
+The following lemma and its corollary give a key property relating strongly connected
+components and finishing times in the first depth-first search.
+Lemma 22.14
+Let C and C′ be distinct strongly connected components in directed graph G = (V, E). Suppose
+that there is an edge (u, v) E, where u C and v C′. Then f (C) > f(C′).
+Proof There are two cases, depending on which strongly connected component, C or C′, had
+the first discovered vertex during the depth-first search.
+If d(C) < d(C′), let x be the first vertex discovered in C. At time d[x], all vertices in C and C′
+are white. There is a path in G from x to each vertex in C consisting only of white vertices.
+Because (u, v) E, for any vertex w C′, there is also a path at time d[x] from x to w in G
+
+

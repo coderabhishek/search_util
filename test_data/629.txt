@@ -1,0 +1,26 @@
+and we know that every number is within k positions of its correct position in the sorted order.
+Show that we can sort the n numbers in depth S(k) + 2M(k).
+
+Exercises 27.5-5:
+We can sort the entries of an m × m matrix by repeating the following procedure k times:
+1. Sort each odd-numbered row into monotonically increasing order.
+2. Sort each even-numbered row into monotonically decreasing order.
+3. Sort each column into monotonically increasing order.
+How many iterations k are required for this procedure to sort, and in what order should we
+read the matrix entries after the k iterations to obtain the sorted output?
+
+Problems 27-1: Transposition sorting networks
+A comparison network is a transposition network if each comparator connects adjacent lines,
+as in the network in Figure 27.3.
+a. Show that any transposition sorting network with n inputs has Ω(n2) comparators.
+b. Prove that a transposition network with n inputs is a sorting network if and only if it
+sorts the sequence n, n - 1,..., 1 . (Hint: Use an induction argument analogous to the
+one in the proof of Lemma 27.1.)
+An odd-even sorting network on n inputs a1,a2,...,an is a transposition sorting network
+with n levels of comparators connected in the "brick-like" pattern illustrated in Figure 27.13.
+As can be seen in the figure, for i = 1, 2,..., n and d = 1, 2,..., n, line i is connected by a depthd comparator to line j = i + (-1)i+d if 1 ≤ j ≤ n.
+
+Figure 27.13: An odd-even sorting network on 8 inputs.
+c. Prove that odd-even sorting networks actually sort.
+
+

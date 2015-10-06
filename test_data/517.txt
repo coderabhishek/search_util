@@ -1,0 +1,38 @@
+Proof We prove the invariant d[v] ≥ δ(s, v) for all vertices v
+number of relaxation steps.
+
+V by induction over the
+
+For the basis, d[v] ≥ δ(s, v) is certainly true after initialization, since d[s] = 0 ≥ δ(s, s) (note
+that δ(s, s) is -∞ if s is on a negative-weight cycle and 0 otherwise) and d[v] = ∞ implies d[v]
+≥ δ(s, v) for all v V - {s}.
+For the inductive step, consider the relaxation of an edge (u, v). By the inductive hypothesis,
+d[x] ≥ δ(s, x) for all x V prior to the relaxation. The only d value that may change is d[v]. If
+it changes, we have and so the invariant is maintained.
+d[v] = d[u] + w(u, v)
+≥ δ(s, u) + w(u, v) (by inductive hypothesis)
+≥ δ(s, v)
+(by the triangle inequality).
+To see that the value of d[v] never changes once d[v] = δ(s, v), note that having achieved its
+lower bound, d[v] cannot decrease because we have just shown that d[v] ≥ δ(s, v), and it
+cannot increase because relaxation steps do not increase d values.
+
+Corollary 24.12: (No-path property)
+Suppose that in a weighted, directed graph G = (V, E) with weight function w : E → R, no
+path connects a source vertex s V to a given vertex v V. Then, after the graph is
+initialized by INITIALIZE-SINGLE-SOURCE(G, s), we have d[v] = δ(s, v) = ∞, and this
+equality is maintained as an invariant over any sequence of relaxation steps on the edges of G.
+Proof By the upper-bound property, we always have ∞ = δ(s, v) ≤ d[v], and thus d[v] = ∞ =
+δ(s, v).
+
+Lemma 24.13
+Let G = (V, E) be a weighted, directed graph with weight function w : E → R, and let (u, v)
+E. Then, immediately after relaxing edge (u, v) by executing RELAX(u, v, w), we have d[v] ≤
+d[u] + w(u, v).
+Proof If, just prior to relaxing edge (u, v), we have d[v] > d[u] + w(u, v), then d[v] = d[u] +
+w(u, v) afterward. If, instead, d[v] ≤ d[u] + w(u, v) just before the relaxation, then neither d[u]
+nor d[v] changes, and so d[v] ≤ d[u] + w(u, v) afterward.
+
+Lemma 24.14: (Convergence property)
+
+

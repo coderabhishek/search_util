@@ -1,0 +1,63 @@
+Let L be a linear program in standard form, given as in (29.16)–(29.18). Let Laux be the
+following linear program with n + 1 variables:
+(29.109)
+subject to
+(29.110)
+(29.111)
+Then L is feasible if and only if the optimal objective value of Laux is 0.
+. Then the solution
+Proof Suppose that L has a feasible solution
+combined with is a feasible solution to Laux with objective value 0. Since x0 ≥ 0 is a constraint
+of Laux and the objective function is to maximize -x0, this solution must be optimal for Laux.
+Conversely, suppose that the optimal objective value of Laux is 0. Then
+of the remaining variables satisfy the constraints of L.
+
+, and the values
+
+We now describe our strategy to find an initial basic feasible solution for a linear program L
+in standard form:
+INITIALIZE-SIMPLEX(A, b, c)
+1 let l be the index of the minimum bi
+2
+3
+0)
+4
+
+▹Is the initial basic solution feasible?
+if bl ≥ 0
+then return ({1, 2, ..., n}, {n + 1, n + 2, ..., n + m}, A, b, c,
+
+5
+
+form Laux by adding -x0 to the left-hand side of each equation
+and setting the objective function to -x0
+let (N, B, A, b, c, v) be the resulting slack form for Laux
+
+6
+7
+
+▹ Laux has n + 1 nonbasic variables and m basic variables.
+(N, B, A, b, c, v) ← PIVOT(N, B, A, b, c, v, l, 0)
+
+8 ▹ The basic solution is now feasible for Laux.
+9 iterate the while loop of lines 2–11 of SIMPLEX until an optimal
+solution
+to Laux is found
+10 if the basic solution sets
+11
+then return the final slack form with x0 removed and
+the original objective function restored
+12
+else return "infeasible"
+
+INITIALIZE-SIMPLEX works as follows. In lines 1–3, we implicitly test the basic solution
+to the initial slack form for L given by N = {1, 2, ..., n}, B = {n + 1, n + 2, ..., n + m},
+for all i B, and
+for all j N. (Creating the slack form requires no explicit effort, as the
+values of A, b, and c are the same in both slack and standard forms.) If this basic solution is
+feasible—that is,
+for all i N B—then the slack form is returned. Otherwise, in line
+4, we form the auxiliary linear program Laux as in Lemma 29.11. Since the initial basic
+solution to L is not feasible, the initial basic solution to the slack form for Laux will not be
+
+

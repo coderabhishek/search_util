@@ -1,0 +1,25 @@
+In statistics, this is called the normal equation. The matrix AT A is symmetric by Exercise
+28.1-2, and if A has full column rank, then by Theorem 28.6, AT A is positive-definite as well.
+Hence, (AT A)-1 exists, and the solution to equation (28.33) is
+(28.34)
+where the matrix A+ = ((AT A)-1 AT) is called the pseudoinverse of the matrix A. The
+pseudoinverse is a natural generalization of the notion of a matrix inverse to the case in which
+A is nonsquare. (Compare equation (28.34) as the approximate solution to Ac = y with the
+solution A-1b as the exact solution to Ax = b.)
+As an example of producing a least-squares fit, suppose that we have five data points
+(x1, y1) = (-1, 2),
+(x2, y2) = (1, 1),
+(x3, y3) = (2, 1),
+(x4, y4) = (3, 0),
+(x5, y5) = (5, 3),
+shown as black dots in Figure 28.3. We wish to fit these points with a quadratic polynomial
+
+Figure 28.3: The least-squares fit of a quadratic polynomial to the set of five data points {(-1,
+2), (1, 1), (2, 1), (3, 0), (5,3)}. The black dots are the data points, and the white dots are their
+estimated values predicted by the polynomial F(x) = 1.2 - 0.757x + 0.214x2, the quadratic
+polynomial that minimizes the sum of the squared errors. The error for each data point is
+shown as a shaded line.
+F (x) = c1 + c2x + c3x2.
+We start with the matrix of basis-function values
+
+

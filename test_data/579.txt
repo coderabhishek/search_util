@@ -1,0 +1,36 @@
+most 2 |V| - 1. Thus, each vertex u V - {s, t} is relabeled at most 2 |V| - 1 times, and the total
+number of relabel operations performed is at most (2 |V| - 1)(|V| - 2) < 2 |V|2.
+
+Lemma 26.21 also helps us to bound the number of saturating pushes.
+Lemma 26.23: (Bound on saturating pushes)
+During the execution of GENERIC-PUSH-RELABEL on any flow network G = (V, E), the
+number of saturating pushes is less than 2 |V||E|.
+Proof For any pair of vertices u, v V, we will count the saturating pushes from u to v and
+from v to u together, calling them the saturating pushes between u and v. If there are any such
+pushes, at least one of (u, v) and (v, u) is actually an edge in E. Now, suppose that a saturating
+push from u to v has occurred. At that time, h[v] = h[u] - 1. In order for another push from u
+to v to occur later, the algorithm must first push flow from v to u, which cannot happen until
+h[v] = h[u] + 1. Since h[u] never decreases, in order for h[v] = h[u] + 1, the value of h[v] must
+increase by at least 2. Likewise, h[u] must increase by at least 2 between saturating pushes
+from v to u. Heights start at 0 and, by Lemma 26.21, never exceed 2 |V|- 1, which implies that
+the number of times any vertex can have its height increase by 2 is less than |V|. Since at least
+one of h[u] and h[v] must increase by 2 between any two saturating pushes between u and v,
+there are fewer than 2 |V| saturating pushes between u and v. Multiplying by the number of
+edges gives a bound of less than 2 |V||E| on the total number of saturating pushes.
+
+The following lemma bounds the number of nonsaturating pushes in the generic push-relabel
+algorithm.
+Lemma 26.24: (Bound on nonsaturating pushes)
+During the execution of GENERIC-PUSH-RELABEL on any flow network G = (V, E), the
+number of nonsaturating pushes is less than 4 |V|2 (|V| + |E|).
+Proof Define a potential function Φ = Σv:e(v)>0h[v]. Initially, Φ= 0, and the value of Φ may
+change after each relabeling, saturating push, and nonsaturating push. We will bound the
+amount that saturating pushes and relabelings can contribute to the increase of Φ. Then we
+will show that each nonsaturating push must decrease Φ by at least 1, and will use these
+bounds to derive an upper bound on the number of nonsaturating pushes.
+Let us examine the two ways in which Φ might increase. First, relabeling a vertex u increases
+Φ by less than 2 |V|, since the set over which the sum is taken is the same and the relabeling
+cannot increase u's height by more than its maximum possible height, which, by Lemma
+26.21, is at most 2 |V|- 1. Second, a saturating push from a vertex u to a vertex v increases Φ
+
+

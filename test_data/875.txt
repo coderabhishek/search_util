@@ -1,0 +1,58 @@
+Proof To show that CLIQUE NP, for a given graph G = (V, E), we use the set V' V of
+vertices in the clique as a certificate for G. Checking whether V' is a clique can be
+accomplished in polynomial time by checking whether, for each pair u, v V', the edge (u, v)
+belongs to E.
+We next prove that 3-CNF-SAT ≤P CLIQUE, which shows that the clique problem is NPhard. That we should be able to prove this result is somewhat surprising, since on the surface
+logical formulas seem to have little to do with graphs.
+The reduction algorithm begins with an instance of 3-CNF-SAT. Let φ = C1 C2 ··· Ck
+be a boolean formula in 3-CNF with k clauses. For r = 1, 2,..., k, each clause Cr has exactly
+three distinct literals , and . We shall construct a graph G such that φ is satisfiable if and
+only if G has a clique of size k.
+The graph G = (V, E) is constructed as follows. For each clause
+in φ, we place a
+triple of vertices , , and into V. We put an edge between two vertices and if both of the
+following hold:
+•
+•
+
+, and and are in different triples, that is, r ≠ s, and
+their corresponding literals are consistent, that is, is not the negation of .
+
+This graph can easily be computed from φ in polynomial time. As an example of this
+construction, if we have
+φ = (x1
+
+¬x2
+
+¬x3)
+
+(¬x1
+
+x2
+
+x3 )
+
+(x1
+
+x2
+
+x3),
+
+then G is the graph shown in Figure 34.14.
+
+Figure 34.14: The graph G derived from the 3-CNF formula φ = C1 C2 C3, where C1 =
+(x1 ¬x2 ¬x3), C2 = (¬x1 x2 x3), and C3 = (x1 x2 x3), in reducing 3-CNF-SAT to
+CLIQUE. A satisfying assignment of the formula has x2 = 0, x3 = 1, and x1 may be either 0 or
+1. This assignment satisfies C1 with ¬x2, and it satisfies C2 and C3 with x3, corresponding to
+the clique with lightly shaded vertices.
+We must show that this transformation of φ into G is a reduction. First, suppose that φ has a
+satisfying assignment. Then each clause Cr contains at least one literal that is assigned 1, and
+each such literal corresponds to a vertex . Picking one such "true" literal from each clause
+yields a set V' of k vertices. We claim that V' is a clique. For any two vertices ,
+where r
+≠ s, both corresponding literals and are mapped to 1 by the given satisfying assignment, and
+thus the literals cannot be complements. Thus, by the construction of G, the edge
+belongs
+to E.
+
+

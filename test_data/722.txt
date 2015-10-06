@@ -1,0 +1,42 @@
+(30.1)
+
+where
+(30.2)
+Note that degree(C) = degree(A) + degree(B), implying
+degree=
+degree-bound(A) + degree-bound(B) bound(C)
+1
+≤
+degree-bound(A) + degree-bound(B).
+We shall nevertheless speak of the degree-bound of C as being the sum of the degree-bounds
+of A and B, since if a polynomial has degree-bound k it also has degree-bound k + 1.
+Chapter outline
+Section 30.1 presents two ways to represent polynomials: the coefficient representation and
+the point-value representation. The straightforward methods for multiplying polynomials —
+equations (30.1) and (30.2) —take Θ(n2) time when the polynomials are represented in
+coefficient form, but only Θ(n) time when they are represented in point-value form. We can,
+however, multiply polynomials using the coefficient representation in only Θ(n lg n) time by
+converting between the two representations. To see why this works, we must first study
+complex roots of unity, which we do in Section 30.2. Then, we use the FFT and its inverse,
+also described in Section 30.2, to perform the conversions. Section 30.3 shows how to
+implement the FFT quickly in both serial and parallel models.
+This chapter uses complex numbers extensively, and the symbol i will be used exclusively to
+denote
+.
+
+30.1 Representation of polynomials
+The coefficient and point-value representations of polynomials are in a sense equivalent; that
+is, a polynomial in point-value form has a unique counterpart in coefficient form. In this
+section, we introduce the two representations and show how they can be combined to allow
+multiplication of two degree-bound n polynomials in Θ(n lg n) time.
+Coefficient representation
+of degree-bound n is a vector of
+A coefficient representation of a polynomial
+coefficients a = (a0, a1,..., an-1). In matrix equations in this chapter, we shall generally treat
+vectors as column vectors.
+The coefficient representation is convenient for certain operations on polynomials. For
+example, the operation of evaluating the polynomial A(x) at a given point x0 consists of
+computing the value of A(x0). Evaluation takes time Θ(n) using Horner's rule:
+A(x0) = a0 + x0(a1 + x0(a2 + ··· + x0(an-2 + x0(an-1)) )).
+
+

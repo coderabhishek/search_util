@@ -1,0 +1,45 @@
+since
+is a constant. Thus, case 2 is proved. The proof of case 1 is almost
+identical. The key is to prove the bound
+, which is similar to the corresponding
+proof of case 2, though the algebra is more intricate.
+We have now proved the upper bounds in the master theorem for all integers n. The proof of
+the lower bounds is similar.
+Exercises 4.4-1:
+Give a simple and exact expression for nj in equation (4.12) for the case in which b is a
+positive integer instead of an arbitrary real number.
+
+Exercises 4.4-2:
+Show that if
+
+, where k ≥ 0, then the master recurrence has solution
+. For simplicity, confine your analysis to exact powers of b.
+
+Exercises 4.4-3:
+Show that case 3 of the master theorem is overstated, in the sense that the regularity condition
+af(n/b) ≤ cf(n) for some constant c < 1 implies that there exists a constant > 0 such that
+.
+
+Problems 4-1: Recurrence examples
+Give asymptotic upper and lower bounds for T(n) in each of the following recurrences.
+Assume that T(n) is constant for n ≤ 2. Make your bounds as tight as possible, and justify your
+answers.
+a.
+b.
+c.
+d.
+e.
+f.
+g.
+h.
+
+T(n) = 2T(n/2) + n3.
+T(n) = T(9n/10) + n.
+T(n) = 16T(n/4) + n2.
+T (n) = 7T(n/3) + n2.
+T(n) = 7T(n/2) + n2.
+.
+T(n) = T(n - 1) + n.
+.
+
+

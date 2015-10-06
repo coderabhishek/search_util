@@ -1,0 +1,42 @@
+[92] have developed an improved average-time version that partitions around an element
+recursively selected from a small sample of the elements.
+It is still unknown exactly how many comparisons are needed to determine the median. A
+lower bound of 2n comparisons for median finding was given by Bent and John [38]. An
+upper bound of 3n was given by Schonhage, Paterson, and Pippenger [265]. Dor and Zwick
+[79] have improved on both of these bounds; their upper bound is slightly less than 2.95n and
+the lower bound is slightly more than 2n. Paterson [239] describes these results along with
+other related work.
+
+Part III: Data Structures
+Chapter List
+Chapter 10: Elementary Data Structures
+Chapter 11: Hash Tables
+Chapter 12: Binary Search Trees
+Chapter 13: Red-Black Trees
+Chapter 14: Augmenting Data Structures
+
+Introduction
+Sets are as fundamental to computer science as they are to mathematics. Whereas
+mathematical sets are unchanging, the sets manipulated by algorithms can grow, shrink, or
+otherwise change over time. We call such sets dynamic. The next five chapters present some
+basic techniques for representing finite dynamic sets and manipulating them on a computer.
+Algorithms may require several different types of operations to be performed on sets. For
+example, many algorithms need only the ability to insert elements into, delete elements from,
+and test membership in a set. A dynamic set that supports these operations is called a
+dictionary. Other algorithms require more complicated operations. For example, min-priority
+queues, which were introduced in Chapter 6 in the context of the heap data structure, support
+the operations of inserting an element into and extracting the smallest element from a set. The
+best way to implement a dynamic set depends upon the operations that must be supported.
+
+Elements of a dynamic set
+In a typical implementation of a dynamic set, each element is represented by an object whose
+fields can be examined and manipulated if we have a pointer to the object. (Section 10.3
+discusses the implementation of objects and pointers in programming environments that do
+not contain them as basic data types.) Some kinds of dynamic sets assume that one of the
+object's fields is an identifying key field. If the keys are all different, we can think of the
+dynamic set as being a set of key values. The object may contain satellite data, which are
+carried around in other object fields but are otherwise unused by the set implementation. It
+may also have fields that are manipulated by the set operations; these fields may contain data
+or pointers to other objects in the set.
+
+

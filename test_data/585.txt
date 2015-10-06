@@ -1,0 +1,32 @@
+An overflowing vertex u is discharged by pushing all of its excess flow through admissible
+edges to neighboring vertices, relabeling u as necessary to cause edges leaving u to become
+admissible. The pseudocode goes as follows.
+DISCHARGE(u)
+1 while e[u] > 0
+2
+do v ← current[u]
+3
+if v = NIL
+4
+then RELABEL(u)
+5
+current[u] ← head[N[u]]
+6
+elseif cf(u, v) > 0 and h[u] = h[v] + 1
+7
+then PUSH(u, v)
+8
+else current[u] ← next-neighbor[v]
+
+Figure 26.9 steps through several iterations of the while loop of lines 1-8, which executes as
+long as vertex u has positive excess. Each iteration performs exactly one of three actions,
+depending on the current vertex v in the neighbor list N[u].
+1. If v is NIL, then we have run off the end of N[u]. Line 4 relabels vertex u, and then
+line 5 resets the current neighbor of u to be the first one in N[u]. (Lemma 26.30 below
+states that the relabel operation applies in this situation.)
+2. If v is non-NIL and (u, v) is an admissible edge (determined by the test in line 6), then
+line 7 pushes some (or possibly all) of u's excess to vertex v.
+3. If v is non-NIL but (u, v) is inadmissible, then line 8 advances current[u] one position
+further in the neighbor list N[u].
+
+

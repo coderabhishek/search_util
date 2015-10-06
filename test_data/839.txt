@@ -1,0 +1,43 @@
+will shoot a stream at his chosen ghost. As we all know, it is very dangerous to let streams
+cross, and so the Ghostbusters must choose pairings for which no streams will cross.
+Assume that the position of each Ghostbuster and each ghost is a fixed point in the plane and
+that no three positions are collinear.
+a. Argue that there exists a line passing through one Ghostbuster and one ghost such the
+number of Ghostbusters on one side of the line equals the number of ghosts on the
+same side. Describe how to find such a line in O(n lg n) time.
+b. Give an O(n2 lg n)-time algorithm to pair Ghostbusters with ghosts in such a way that
+no streams cross.
+
+Problems 33-4: Picking up sticks
+Professor Charon has a set of n sticks, which are lying on top of each other in some
+configuration. Each stick is specified by its endpoints, and each endpoint is an ordered triple
+giving its (x, y, z) coordinates. No stick is vertical. He wishes to pick up all the sticks, one at a
+time, subject to the condition that he may pick up a stick only if there is no other stick on top
+of it.
+a. Give a procedure that takes two sticks a and b and reports whether a is above, below,
+or unrelated to b.
+b. Describe an efficient algorithm that determines whether it is possible to pick up all the
+sticks, and if so, provides a legal sequence of stick pickups to do so.
+
+Problems 33-5: Sparse-hulled distributions
+Consider the problem of computing the convex hull of a set of points in the plane that have
+been drawn according to some known random distribution. Sometimes, the number of points,
+or size, of the convex hull of n points drawn from such a distribution has expectation O(n1- )
+for some constant > 0. We call such a distribution sparse-hulled. Sparse-hulled
+distributions include the following:
+•
+•
+•
+
+Points drawn uniformly from a unit-radius disk. The convex hull has Θ(n1/3) expected
+size.
+Points drawn uniformly from the interior of a convex polygon with k sides, for any
+constant k. The convex hull has Θ(lg n) expected size.
+Points drawn according to a two-dimensional normal distribution. The convex hull has
+expected size.
+
+a. Given two convex polygons with n1 and n2 vertices respectively, show how to
+compute the convex hull of all n1 + n2 points in O(n1 + n2) time. (The polygons may
+overlap.)
+
+

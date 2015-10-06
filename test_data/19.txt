@@ -1,0 +1,47 @@
+modularity, and error handling are often ignored in order to convey the essence of the
+algorithm more concisely.
+We start with insertion sort, which is an efficient algorithm for sorting a small number of
+elements. Insertion sort works the way many people sort a hand of playing cards. We start
+with an empty left hand and the cards face down on the table. We then remove one card at a
+time from the table and insert it into the correct position in the left hand. To find the correct
+position for a card, we compare it with each of the cards already in the hand, from right to
+left, as illustrated in Figure 2.1. At all times, the cards held in the left hand are sorted, and
+these cards were originally the top cards of the pile on the table.
+
+Figure 2.1: Sorting a hand of cards using insertion sort.
+Our pseudocode for insertion sort is presented as a procedure called INSERTION-SORT,
+which takes as a parameter an array A[1 n] containing a sequence of length n that is to be
+sorted. (In the code, the number n of elements in A is denoted by length[A].) The input
+numbers are sorted in place: the numbers are rearranged within the array A, with at most a
+constant number of them stored outside the array at any time. The input array A contains the
+sorted output sequence when INSERTION-SORT is finished.
+INSERTION-SORT(A)
+1 for j ← 2 to length[A]
+2
+do key ← A[j]
+3
+4
+5
+6
+7
+8
+
+▹ Insert A[j] into the sorted sequence A[1
+i ← j - 1
+while i > 0 and A[i] > key
+do A[i + 1] ← A[i]
+i ← i - 1
+A[i + 1] ← key
+
+j - 1].
+
+Loop invariants and the correctness of insertion sort
+Figure 2.2 shows how this algorithm works for A = 5, 2, 4, 6, 1, 3 . The index j indicates
+the "current card" being inserted into the hand. At the beginning of each iteration of the
+"outer" for loop, which is indexed by j, the subarray consisting of elements A[1 j - 1]
+constitute the currently sorted hand, and elements A[j + 1 n] correspond to the pile of cards
+still on the table. In fact, elements A[1 j - 1] are the elements originally in positions 1
+through j - 1, but now in sorted order. We state these properties of A[1 j -1] formally as a
+loop invariant:
+
+

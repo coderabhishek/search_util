@@ -1,0 +1,45 @@
+one, but it may require an understanding of more advanced mathematics. Likewise, starred
+exercises may require an advanced background or more than average creativity.
+
+To the student
+We hope that this textbook provides you with an enjoyable introduction to the field of
+algorithms. We have attempted to make every algorithm accessible and interesting. To help
+you when you encounter unfamiliar or difficult algorithms, we describe each one in a step-bystep manner. We also provide careful explanations of the mathematics needed to understand
+the analysis of the algorithms. If you already have some familiarity with a topic, you will find
+the chapters organized so that you can skim introductory sections and proceed quickly to the
+more advanced material.
+This is a large book, and your class will probably cover only a portion of its material. We
+have tried, however, to make this a book that will be useful to you now as a course textbook
+and also later in your career as a mathematical desk reference or an engineering handbook.
+What are the prerequisites for reading this book?
+•
+•
+
+You should have some programming experience. In particular, you should understand
+recursive procedures and simple data structures such as arrays and linked lists.
+You should have some facility with proofs by mathematical induction. A few portions
+of the book rely on some knowledge of elementary calculus. Beyond that, Parts I and
+VIII of this book teach you all the mathematical techniques you will need.
+
+To the professional
+The wide range of topics in this book makes it an excellent handbook on algorithms. Because
+each chapter is relatively self-contained, you can focus in on the topics that most interest you.
+Most of the algorithms we discuss have great practical utility. We therefore address
+implementation concerns and other engineering issues. We often provide practical alternatives
+to the few algorithms that are primarily of theoretical interest.
+If you wish to implement any of the algorithms, you will find the translation of our
+pseudocode into your favorite programming language a fairly straightforward task. The
+pseudocode is designed to present each algorithm clearly and succinctly. Consequently, we do
+not address error-handling and other software-engineering issues that require specific
+assumptions about your programming environment. We attempt to present each algorithm
+simply and directly without allowing the idiosyncrasies of a particular programming language
+to obscure its essence.
+
+To our colleagues
+We have supplied an extensive bibliography and pointers to the current literature. Each
+chapter ends with a set of "chapter notes" that give historical details and references. The
+chapter notes do not provide a complete reference to the whole field of algorithms, however.
+Though it may be hard to believe for a book of this size, many interesting algorithms could
+not be included due to lack of space.
+
+

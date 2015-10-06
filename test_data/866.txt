@@ -1,0 +1,35 @@
+Show that L is complete for NP if and only if is complete for co-NP.
+
+Exercises 34.3-8
+The reduction algorithm F in the proof of Lemma 34.6 constructs the circuit C = f(x) based on
+knowledge of x, A, and k. Professor Sartre observes that the string x is input to F, but only the
+existence of A, k, and the constant factor implicit in the O(nk) running time is known to F
+(since the language L belongs to NP), not their actual values. Thus, the professor concludes
+that F can't possibly construct the circuit C and that the language CIRCUIT-SAT is not
+necessarily NP-hard. Explain the flaw in the professor's reasoning.
+
+[7]
+
+On the other hand, if the size of the circuit C is Θ(2k), then an algorithm whose running time
+is O(2k) has a running time that is polynomial in the circuit size. Even if P ≠ NP, this situation
+would not contradict the fact that the problem is NP-complete; the existence of a polynomialtime algorithm for a special case does not imply that there is a polynomial-time algorithm for
+all cases.
+
+34.4 NP-completeness proofs
+The NP-completeness of the circuit-satisfiability problem relies on a direct proof that L ≤P
+CIRCUIT-SAT for every language L NP. In this section, we shall show how to prove that
+languages are NP-complete without directly reducing every language in NP to the given
+language. We shall illustrate this methodology by proving that various formula-satisfiability
+problems are NP-complete. Section 34.5 provides many more examples of the methodology.
+The following lemma is the basis of our method for showing that a language is NP-complete.
+Lemma 34.8
+If L is a language such that L′ ≤P L for some L′
+NP, then L NPC.
+
+NPC, then L is NP-hard. Moreover, if L
+
+Proof Since L′ is NP-complete, for all L′′ NP, we have L′′≤P L′. By supposition, L′ ≤P L, and
+thus by transitivity (Exercise 34.3-2), we have L′′ ≤P L, which shows that L is NP-hard. If L
+NP, we also have L NPC.
+
+

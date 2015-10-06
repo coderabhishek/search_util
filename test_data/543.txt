@@ -1,0 +1,33 @@
+Our next goal is to ensure that the second property holds: we want
+to be nonnegative for
+all edges (u, v) E. Given a weighted, directed graph G = (V, E) with weight function w : E
+→ R, we make a new graph G′ = (V′, E′), where V′ = V {s} for some new vertex s ∉ V and
+E′ = E {(s, v) : v V}. We extend the weight function w so that w(s, v) = 0 for all v V .
+Note that because s has no edges that enter it, no shortest paths in G′, other than those with
+source s, contain s. Moreover, G′ has no negative-weight cycles if and only if G has no
+negative-weight cycles. Figure 25.6(a) shows the graph G′ corresponding to the graph G of
+Figure 25.1.
+
+Figure 25.6: Johnson's all-pairs shortest-paths algorithm run of the graph of Figure 25.1. (a)
+The graph G′ with the original weight function w. The new vertex s is black. Within each
+vertex v is h(v) = δ(s, v). (b) Each edge (u, v) is reweighted with weight function
+. (c)-(g) The result of running Dijkstra's algorithm on each vertex of
+G using weight function . In each part, the source vertex u is black, and shaded edges are in
+and
+the shortest-paths tree computed by the algorithm. Within each vertex v are the values
+.
+δ(u, v), separated by a slash. The value duv = δ(u, v) is equal to
+Now suppose that G and G′ have no negative-weight cycles. Let us define h(v) = δ(s, v) for all
+v V′. By the triangle inequality (Lemma 24.10), we have h(v) ≤ h(u) + w(u, v) for all edges
+(u, v) E′. Thus, if we define the new weights according to equation (25.9), we have
+, and the second property is satisfied. Figure 25.6(b) shows the
+graph G′ from Figure 25.6(a) with reweighted edges.
+Computing all-pairs shortest paths
+Johnson's algorithm to compute all-pairs shortest paths uses the Bellman-Ford algorithm
+(Section 24.1) and Dijkstra's algorithm (Section 24.3) as subroutines. It assumes that the
+edges are stored in adjacency lists. The algorithm returns the usual |V| × |V| matrix D = dij,
+where dij = δ(i, j), or it reports that the input graph contains a negative-weight cycle. As is
+typical for an all-pairs shortest-paths algorithm, we assume that the vertices are numbered
+from 1 to |V|.
+
+

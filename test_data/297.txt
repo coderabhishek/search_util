@@ -1,0 +1,56 @@
+of the matrix at which we split the product Ai Ai+1 Aj, we can reconstruct each choice in O(1)
+time.
+Memoization
+There is a variation of dynamic programming that often offers the efficiency of the usual
+dynamic-programming approach while maintaining a top-down strategy. The idea is to
+memoize the natural, but inefficient, recursive algorithm. As in ordinary dynamic
+programming, we maintain a table with subproblem solutions, but the control structure for
+filling in the table is more like the recursive algorithm.
+A memoized recursive algorithm maintains an entry in a table for the solution to each
+subproblem. Each table entry initially contains a special value to indicate that the entry has
+yet to be filled in. When the subproblem is first encountered during the execution of the
+recursive algorithm, its solution is computed and then stored in the table. Each subsequent
+time that the subproblem is encountered, the value stored in the table is simply looked up and
+returned.[4]
+Here is a memoized version of RECURSIVE-MATRIX-CHAIN:
+MEMOIZED-MATRIX-CHAIN(p)
+1 n ← length[p] - 1
+2 for i ← 1 to n
+3
+do for j ← i to n
+4
+do m[i, j] ← ∞
+5 return LOOKUP-CHAIN(p, 1, n)
+LOOKUP-CHAIN(p, i, j)
+1 if m[i, j] < ∞
+2
+then return m[i, j]
+3 if i = j
+4
+then m[i, j] ← 0
+5
+else for k ← i to j - 1
+6
+do q ← LOOKUP-CHAIN(p, i, k)
++ LOOKUP-CHAIN(p,k + 1, j) + pi-1 pk pj
+7
+if q < m[i, j]
+8
+then m[i, j] ← q
+9 return m[i, j]
+
+MEMOIZED-MATRIX-CHAIN, like MATRIX-CHAIN-ORDER, maintains a table m[1 n,
+1 n] of computed values of m[i, j], the minimum number of scalar multiplications needed to
+compute the matrix Ai j. Each table entry initially contains the value ∞ to indicate that the
+entry has yet to be filled in. When the call LOOKUP-CHAIN(p, i, j) is executed, if m[i, j] < ∞
+in line 1, the procedure simply returns the previously computed cost m[i, j] (line 2).
+Otherwise, the cost is computed as in RECURSIVE-MATRIX-CHAIN, stored in m[i, j], and
+returned. (The value ∞ is convenient to use for an unfilled table entry since it is the value used
+to initialize m[i, j] in line 3 of RECURSIVE-MATRIX-CHAIN.) Thus, LOOKUP-CHAIN(p,
+i, j) always returns the value of m[i, j], but it computes it only if this is the first time that
+LOOKUP-CHAIN has been called with the parameters i and j.
+Figure 15.5 illustrates how MEMOIZED-MATRIX-CHAIN saves time compared to
+RECURSIVE-MATRIX-CHAIN. Shaded subtrees represent values that are looked up rather
+than computed.
+
+

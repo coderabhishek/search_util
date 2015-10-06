@@ -1,0 +1,25 @@
+Even for inputs of a given size, an algorithm's running time may depend on which input of
+that size is given. For example, in INSERTION-SORT, the best case occurs if the array is
+already sorted. For each j = 2, 3, . . . , n, we then find that A[i] ≤ key in line 5 when i has its
+initial value of j - 1. Thus tj = 1 for j = 2, 3, . . . , n, and the best-case running time is
+T(n) = c1n + c2(n - 1) + c4(n - 1) + c5(n - 1) + c8(n - 1)
+= (c1 + c2 + c4 + c5 + c8)n - (c2+ c4 + c5 + c8).
+This running time can be expressed as an + b for constants a and b that depend on the
+statement costs ci ; it is thus a linear function of n.
+If the array is in reverse sorted order-that is, in decreasing order-the worst case results. We
+must compare each element A[j] with each element in the entire sorted subarray A[1 j - 1],
+and so tj = j for j = 2, 3, . . . , n. Noting that
+
+and
+
+(see Appendix A for a review of how to solve these summations), we find that in the worst
+case, the running time of INSERTION-SORT is
+
+This worst-case running time can be expressed as an2 + bn + c for constants a, b, and c that
+again depend on the statement costs ci ; it is thus a quadratic function of n.
+Typically, as in insertion sort, the running time of an algorithm is fixed for a given input,
+although in later chapters we shall see some interesting "randomized" algorithms whose
+behavior can vary even for a fixed input.
+Worst-case and average-case analysis
+
+

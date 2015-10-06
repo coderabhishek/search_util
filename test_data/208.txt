@@ -1,0 +1,44 @@
+7
+
+return NIL
+
+Deletion from an open-address hash table is difficult. When we delete a key from slot i, we
+cannot simply mark that slot as empty by storing NIL in it. Doing so might make it impossible
+to retrieve any key k during whose insertion we had probed slot i and found it occupied. One
+solution is to mark the slot by storing in it the special value DELETED instead of NIL. We
+would then modify the procedure HASH-INSERT to treat such a slot as if it were empty so
+that a new key can be inserted. No modification of HASH-SEARCH is needed, since it will
+pass over DELETED values while searching. When we use the special value DELETED,
+however, search times are no longer dependent on the load factor α, and for this reason
+chaining is more commonly selected as a collision resolution technique when keys must be
+deleted.
+In our analysis, we make the assumption of uniform hashing: we assume that each key is
+equally likely to have any of the m! permutations of 0, 1, ..., m - 1 as its probe sequence.
+Uniform hashing generalizes the notion of simple uniform hashing defined earlier to the
+situation in which the hash function produces not just a single number, but a whole probe
+sequence. True uniform hashing is difficult to implement, however, and in practice suitable
+approximations (such as double hashing, defined below) are used.
+Three techniques are commonly used to compute the probe sequences required for open
+addressing: linear probing, quadratic probing, and double hashing. These techniques all
+guarantee that h(k, 0), h(k, 1), ..., h(k, m - 1) is a permutation of 0, 1, ..., m - 1 for each
+key k. None of these techniques fulfills the assumption of uniform hashing, however, since
+none of them is capable of generating more than m2 different probe sequences (instead of the
+m! that uniform hashing requires). Double hashing has the greatest number of probe
+sequences and, as one might expect, seems to give the best results.
+Linear probing
+Given an ordinary hash function h' : U → {0, 1, ..., m - 1}, which we refer to as an auxiliary
+hash function, the method of linear probing uses the hash function
+h(k, i) = (h'(k) + i) mod m
+for i = 0, 1, ..., m - 1. Given key k, the first slot probed is T[h'(k)], i.e., the slot given by the
+auxiliary hash function. We next probe slot T[h'(k) + 1], and so on up to slot T[m - 1]. Then
+we wrap around to slots T[0], T[1], ..., until we finally probe slot T[h'(k) - 1]. Because the
+initial probe determines the entire probe sequence, there are only m distinct probe sequences.
+Linear probing is easy to implement, but it suffers from a problem known as primary
+clustering. Long runs of occupied slots build up, increasing the average search time. Clusters
+arise since an empty slot preceded by i full slots gets filled next with probability (i + 1)/m.
+Long runs of occupied slots tend to get longer, and the average search time increases.
+Quadratic probing
+Quadratic probing uses a hash function of the form
+(11.5)
+
+

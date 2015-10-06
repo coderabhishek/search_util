@@ -1,0 +1,52 @@
+Now, let be the minimum weight of any path from vertex i to vertex j that contains at most
+m edges. When m = 0, there is a shortest path from i to j with no edges if and only if i = j.
+Thus,
+
+For m ≥ 1, we compute as the minimum of
+(the weight of the shortest path from i to j
+consisting of at most m - 1 edges) and the minimum weight of any path from i to j consisting
+of at most m edges, obtained by looking at all possible predecessors k of j. Thus, we
+recursively define
+(25.2)
+
+The latter equality follows since wjj = 0 for all j.
+What are the actual shortest-path weights δ(i, j)? If the graph contains no negative-weight
+cycles, then for every pair of vertices i and j for which δ(i, j) < ∞, there is a shortest path from
+i to j that is simple and thus contains at most n - 1 edges. A path from vertex i to vertex j with
+more than n - 1 edges cannot have lower weight than a shortest path from i to j. The actual
+shortest-path weights are therefore given by
+(25.3)
+Computing the shortest-path weights bottom up
+Taking as our input the matrix W = (wij), we now compute a series of matrices L(1), L(2),..., L(n1)
+, where for m = 1, 2,..., n - 1, we have
+. The final matrix L(n-1) contains the actual
+shortest-path weights. Observe that
+for all vertices i, j V , and so L(1) = W.
+The heart of the algorithm is the following procedure, which, given matrices L(m-1) and W,
+returns the matrix L(m). That is, it extends the shortest paths computed so far by one more
+edge.
+EXTEND-SHORTEST-PATHS(L, W)
+1 n ← rows[L]
+2 let
+be an n × n matrix
+3 for i ← 1 to n
+4
+do for j ← to n
+5
+do
+6
+for k ← 1 to n
+7
+8
+
+return L′
+
+do
+
+The procedure computes a matrix
+, which it returns at the end. It does so by computing
+equation (25.2) for all i and j, using L for L(m-1) and L′ for L(m). (It is written without the
+superscripts to make its input and output matrices independent of m.) Its running time is Θ(n3)
+due to the three nested for loops.
+
+

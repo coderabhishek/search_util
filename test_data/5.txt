@@ -1,0 +1,58 @@
+•
+
+•
+•
+•
+
+•
+•
+•
+
+•
+
+recurrences. We do point out, however, that recursion trees are best used as a way to
+generate guesses that are then verified via the substitution method.
+The partitioning method used for quicksort (Section 7.1) and the expected linear-time
+order-statistic algorithm (Section 9.2) is different. We now use the method developed
+by Lomuto, which, along with indicator random variables, allows for a somewhat
+simpler analysis. The method from the first edition, due to Hoare, appears as a
+problem in Chapter 7.
+We have modified the discussion of universal hashing in Section 11.3.3 so that it
+integrates into the presentation of perfect hashing.
+There is a much simpler analysis of the height of a randomly built binary search tree in
+Section 12.4.
+The discussions on the elements of dynamic programming (Section 15.3) and the
+elements of greedy algorithms (Section 16.2) are significantly expanded. The
+exploration of the activity-selection problem, which starts off the greedy-algorithms
+chapter, helps to clarify the relationship between dynamic programming and greedy
+algorithms.
+We have replaced the proof of the running time of the disjoint-set-union data structure
+in Section 21.4 with a proof that uses the potential method to derive a tight bound.
+The proof of correctness of the algorithm for strongly connected components in
+Section 22.5 is simpler, clearer, and more direct.
+Chapter 24, on single-source shortest paths, has been reorganized to move proofs of
+the essential properties to their own section. The new organization allows us to focus
+earlier on algorithms.
+Section 34.5 contains an expanded overview of NP-completeness as well as new NPcompleteness proofs for the hamiltonian-cycle and subset-sum problems.
+
+Finally, virtually every section has been edited to correct, simplify, and clarify explanations
+and proofs.
+
+Web site
+Another change from the first edition is that this book now has its own web site:
+http://mitpress.mit.edu/algorithms/. You can use the web site to report errors, obtain a list of
+known errors, or make suggestions; we would like to hear from you. We particularly welcome
+ideas for new exercises and problems, but please include solutions.
+We regret that we cannot personally respond to all comments.
+
+Acknowledgments for the first edition
+Many friends and colleagues have contributed greatly to the quality of this book. We thank all
+of you for your help and constructive criticisms.
+MIT's Laboratory for Computer Science has provided an ideal working environment. Our
+colleagues in the laboratory's Theory of Computation Group have been particularly supportive
+and tolerant of our incessant requests for critical appraisal of chapters. We specifically thank
+Baruch Awerbuch, Shafi Goldwasser, Leo Guibas, Tom Leighton, Albert Meyer, David
+Shmoys, and Éva Tardos. Thanks to William Ang, Sally Bemus, Ray Hirschfeld, and Mark
+Reinhold for keeping our machines (DEC Microvaxes, Apple Macintoshes, and Sun
+
+

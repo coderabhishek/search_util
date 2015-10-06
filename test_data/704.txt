@@ -1,0 +1,33 @@
+Exercises 29.3-2
+Show that the call to PIVOT in line 11 of SIMPLEX will never decrease the value of v.
+
+Exercises 29.3-3
+Suppose we convert a linear program (A, b, c) in standard form to slack form. Show that the
+basic solution is feasible if and only if bi ≥ 0 for i = 1, 2, ..., m.
+
+Exercises 29.3-4
+Solve the following linear program using SIMPLEX:
+maximize 18x1 + 12.5x2
+subject to
+x1 +
+x2 ≤ 2
+0
+≤1
+x1
+2
+x2 ≤ 1
+6
+x1 , x2
+≥ 0.
+Exercises 29.3-5
+Solve the following linear program using SIMPLEX:
+maximize -5x1 - 3x2
+subject to
+x1 - x2 ≤ 1
+2x1 + x2 ≤ 2
+x1 , x2
+≥0
+.
+Exercises 29.3-6
+
+

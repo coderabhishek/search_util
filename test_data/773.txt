@@ -1,0 +1,39 @@
+Also, Med ≡ M (mod p) if M ≡ 0 (mod p). Thus,
+Med ≡ M (mod p)
+for all M. Similarly,
+Med ≡ M (mod q)
+for all M. Thus, by Corollary 31.29 to the Chinese remainder theorem,
+Med ≡ M (mod n)
+for all M.
+
+The security of the RSA cryptosystem rests in large part on the difficulty of factoring large
+integers. If an adversary can factor the modulus n in a public key, then he can derive the
+secret key from the public key, using the knowledge of the factors p and q in the same way
+that the creator of the public key used them. So if factoring large integers is easy, then
+breaking the RSA cryptosystem is easy. The converse statement, that if factoring large
+integers is hard, then breaking RSA is hard, is unproven. After two decades of research,
+however, no easier method has been found to break the RSA public-key cryptosystem than to
+factor the modulus n. And as we shall see in Section 31.9, the factoring of large integers is
+surprisingly difficult. By randomly selecting and multiplying together two 512-bit primes, one
+can create a public key that cannot be "broken" in any feasible amount of time with current
+technology. In the absence of a fundamental breakthrough in the design of number-theoretic
+algorithms, and when implemented with care following recommended standards, the RSA
+cryptosystem is capable of providing a high degree of security in applications.
+In order to achieve security with the RSA cryptosystem, however, it is advisable to work with
+integers that are several hundred bits long, to resist possible advances in the art of factoring.
+At the time of this writing (2001), RSA moduli were commonly in the range of 768 to 2048
+bits. To create moduli of such sizes, we must be able to find large primes efficiently. Section
+31.8 addresses this problem.
+For efficiency, RSA is often used in a "hybrid" or "key-management" mode with fast nonpublic-key cryptosystems. With such a system, the encryption and decryption keys are
+identical. If Alice wishes to send a long message M to Bob privately, she selects a random key
+K for the fast non-public-key cryptosystem and encrypts M using K , obtaining ciphertext C.
+Here, C is as long as M, but K is quite short. Then, she encrypts K using Bob's public RSA
+key. Since K is short, computing PB(K) is fast (much faster than computing PB(M)). She then
+transmits (C, PB(K)) to Bob, who decrypts PB(K) to obtain K and then uses K to decrypt C,
+obtaining M.
+A similar hybrid approach is often used to make digital signatures efficiently. In this
+approach, RSA is combined with a public one-way hash function h—a function that is easy
+to compute but for which it is computationally infeasible to find two messages M and M′ such
+that h(M) = h(M′). The value h(M) is a short (say, 160-bit) "fingerprint" of the message M. If
+
+

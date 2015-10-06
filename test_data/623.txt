@@ -1,0 +1,19 @@
+Figure 27.8: The possible comparisons in HALF-CLEANER[n]. The input sequence is
+assumed to be a bitonic sequence of 0's and 1's, and without loss of generality, we assume that
+it is of the form 00 ... 011 ... 100 ... 0. Subsequences of 0's are white, and subsequences of 1's
+are gray. We can think of the n inputs as being divided into two halves such that for i = 1,
+2,..., n/2, inputs i and i + n/2 are compared. (a)-(b) Cases in which the division occurs in the
+middle subsequence of 1's. (c)-(d) Cases in which the division occurs in a subsequence of 0's.
+For all cases, every element in the top half of the output is at least as small as every element in
+the bottom half, both halves are bitonic, and at least one half is clean.
+
+The bitonic sorter
+By recursively combining half-cleaners, as shown in Figure 27.9, we can build a bitonic
+sorter, which is a network that sorts bitonic sequences. The first stage of BITONICSORTER[n] consists of HALF-CLEANER[n], which, by Lemma 27.3, produces two bitonic
+sequences of half the size such that every element in the top half is at least as small as every
+element in the bottom half. Thus, we can complete the sort by using two copies of BITONICSORTER[n/2] to sort the two halves recursively. In Figure 27.9(a), the recursion has been
+shown explicitly, and in Figure 27.9(b), the recursion has been unrolled to show the
+progressively smaller half-cleaners that make up the remainder of the bitonic sorter. The
+depth D(n) of BITONIC-SORTER[n] is given by the recurrence
+
+

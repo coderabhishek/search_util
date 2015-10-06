@@ -1,0 +1,41 @@
+If the input to a half-cleaner is a bitonic sequence of arbitrary numbers, prove that the output
+satisfies the following properties: both the top half and the bottom half are bitonic, and every
+element in the top half is at least as small as every element in the bottom half.
+
+Exercises 27.3-5
+Consider two sequences of 0's and 1's. Prove that if every element in one sequence is at least
+as small as every element in the other sequence, then one of the two sequences is clean.
+
+Exercises 27.3-6
+Prove the following analog of the zero-one principle for bitonic sorting networks: a
+comparison network that can sort any bitonic sequence of 0's and 1's can sort any bitonic
+sequence of arbitrary numbers.
+
+Chapter notes
+Ahuja, Magnanti, and Orlin [7], Even [87], Lawler [196], Papadimitriou and Steiglitz [237],
+and Tarjan [292] are good references for network flow and related algorithms. Goldberg,
+Tardos, and Tarjan [119] also provide a nice survey of algorithms for network-flow problems,
+and Schrijver [267] has written an interesting review of historical developments in the field of
+network flows.
+The Ford-Fulkerson method is due to Ford and Fulkerson [93], who originated the formal
+study of many of the problems in the area of network flow, including the maximum-flow and
+bipartite-matching problems. Many early implementations of the Ford-Fulkerson method
+found augmenting paths using breadth-first search; Edmonds and Karp [86], and
+independently Dinic [76], proved that this strategy yields a polynomial-time algorithm. A
+related idea, that of using "blocking flows," was also first developed by Dinic [76]. Karzanov
+[176] first developed the idea of preflows. The push-relabel method is due to Goldberg [117]
+and Goldberg and Tarjan [121]. Goldberg and Tarjan gave an O(V3)-time algorithm that uses
+a queue to maintain the set of overflowing vertices, as well as an algorithm that uses dynamic
+trees to achieve a running time of O(VE lg(V2/E + 2)). Several other researchers have
+developed push-relabel maximum-flow algorithms. Ahuja and Orlin [9] and Ahuja, Orlin, and
+Tarjan [10] gave algorithms that used scaling. Cheriyan and Maheshwari [55] proposed
+pushing flow from the overflowing vertex of maximum height. Cheriyan and Hagerup [54]
+suggested randomly permuting the neighbor lists, and several researchers [14, 178, 241]
+developed clever derandomizations of this idea, leading to a sequence of faster algorithms.
+The algorithm of King, Rao, and Tarjan [178] is the fastest such algorithm and runs in O(VE
+logE/(V lg V) V) time.
+The asymptotically fastest algorithm to date for the maximum-flow problem is due to
+Goldberg and Rao [120] and runs in time O(min(V2/3, E1/2) E lg(V2 / E + 2) lg C), where C =
+max(u, v) E C(u, v). This algorithm does not use the push-relabel method but instead is based
+
+

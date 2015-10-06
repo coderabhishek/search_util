@@ -1,0 +1,38 @@
+a. Show that this scheme is an instance of the general "quadratic probing" scheme by
+exhibiting the appropriate constants c1 and c2 for equation (11.5).
+b. Prove that this algorithm examines every table position in the worst case.
+
+Problems 11-4: k-universal hashing and authentication
+
+Let ℋ = {h} be a class of hash functions in which each h maps the universe U of keys to {0,
+1, ..., m - 1}. We say that ℋ is k-universal if, for every fixed sequence of k distinct keys
+x(1), x(2), ..., x(k) and for any h chosen at random from ℋ, the sequence h(x(1)), h(x(2)), ...,
+h(x(k)) is equally likely to be any of the mk sequences of length k with elements drawn from
+{0, 1, ..., m - 1}.
+a. Show that if ℋ is 2-universal, then it is universal.
+b. Let U be the set of n-tuples of values drawn from Zp, and let B = Zp, where p is prime.
+For any n-tuple a = a0, a1, ..., an-1 of values from Zp and for any b Zp, define the
+hash function ha,b : U → B on an input n-tuple x = x0, x1, ..., xn-1 from U as
+
+and let ℋ = {ha,b}. Argue that ℋ is 2-universal.
+c. Suppose that Alice and Bob agree secretly on a hash function ha,b from a 2-universal
+family ℋ of hash functions. Later, Alice sends a message m to Bob over the Internet,
+where m U . She authenticates this message to Bob by also sending an
+authentication tag t = ha,b(m), and Bob checks that the pair (m, t) he receives satisfies t
+= ha,b(m). Suppose that an adversary intercepts (m, t) en route and tries to fool Bob by
+replacing the pair with a different pair (m', t'). Argue that the probability that the
+adversary succeeds in fooling Bob into accepting (m', t') is at most 1/p, no matter how
+much computing power the adversary has.
+
+[1]
+
+When nj = mj = 1, we don't really need a hash function for slot j; when we Choose a hash
+function ha,b(k) = ((ak + b) mod p) mod mj for such a slot, we just use a = b = 0.
+
+Chapter notes
+Knuth [185] and Gonnet [126] are excellent references for the analysis of hashing algorithms.
+Knuth credits H. P. Luhn (1953) for inventing hash tables, along with the chaining method for
+resolving collisions. At about the same time, G. M. Amdahl originated the idea of open
+addressing.
+
+

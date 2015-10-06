@@ -1,0 +1,35 @@
+Write pseudocode for BINOMIAL-HEAP-MERGE.
+
+Exercises 19.2-2
+Show the binomial heap that results when a node with key 24 is inserted into the binomial
+heap shown in Figure 19.7(d).
+
+Exercises 19.2-3
+Show the binomial heap that results when the node with key 28 is deleted from the binomial
+heap shown in Figure 19.8(c).
+
+Exercises 19.2-4
+Argue the correctness of BINOMIAL-HEAP-UNION using the following loop invariant:
+•
+
+•
+
+At the start of each iteration of the while loop of lines 9-21, x points to a root that is
+one of the following:
+o the only root of its degree,
+o the first of the only two roots of its degree, or
+o the first or second of the only three roots of its degree.
+Moreover, all roots preceding x's predecessor on the root list have unique degrees on
+the root list, and if x's predecessor has a degree different from that of x, its degree on
+the root list is unique, too. Finally, node degrees monotonically increase as we traverse
+the root list.
+
+Exercises 19.2-5
+Explain why the BINOMIAL-HEAP-MINIMUM procedure might not work correctly if keys
+can have the value ∞. Rewrite the pseudocode to make it work correctly in such cases.
+
+Exercises 19.2-6
+Suppose there is no way to represent the key -∞. Rewrite the BINOMIAL-HEAP-DELETE
+procedure to work correctly in this situation. It should still take O(lg n) time.
+
+

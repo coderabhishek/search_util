@@ -1,0 +1,24 @@
+Let us see how to insert a new node into an existing treap. The first thing we do is assign to
+the new node a random priority. Then we call the insertion algorithm, which we call TREAPINSERT, whose operation is illustrated in Figure 13.10.
+
+Figure 13.10: The operation of TREAP-INSERT. (a) The original treap, prior to insertion. (b)
+The treap after inserting a node with key C and priority 25. (c)–(d) Intermediate stages when
+inserting a node with key D and priority 9. (e) The treap after the insertion of parts (c) and (d)
+is done. (f) The treap after inserting a node with key F and priority 2.
+c. Explain how TREAP-INSERT works. Explain the idea in English and give
+pseudocode. (Hint: Execute the usual binary-search-tree insertion procedure and then
+perform rotations to restore the min-heap order property.)
+d. Show that the expected running time of TREAP-INSERT is Θ(lg n).
+TREAP-INSERT performs a search and then a sequence of rotations. Although these two
+operations have the same expected running time, they have different costs in practice. A
+search reads information from the treap without modifying it. In contrast, a rotation changes
+parent and child pointers within the treap. On most computers, read operations are much
+faster than write operations. Thus we would like TREAP-INSERT to perform few rotations.
+We will show that the expected number of rotations performed is bounded by a constant.
+In order to do so, we will need some definitions, which are illustrated in Figure 13.11. The left
+spine of a binary search tree T is the path from the root to the node with the smallest key. In
+other words, the left spine is the path from the root that consists of only left edges.
+Symmetrically, the right spine of T is the path from the root consisting of only right edges.
+The length of a spine is the number of nodes it contains.
+
+

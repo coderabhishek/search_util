@@ -1,0 +1,30 @@
+used in the shortest-paths algorithms correspond to in regular matrix multiplication?
+
+Exercises 25.1-4
+Show that matrix multiplication defined by EXTEND-SHORTEST-PATHS is associative.
+
+Exercises 25.1-5
+Show how to express the single-source shortest-paths problem as a product of matrices and a
+vector. Describe how evaluating this product corresponds to a Bellman-Ford-like algorithm
+(see Section 24.1).
+
+Exercises 25.1-6
+Suppose we also wish to compute the vertices on shortest paths in the algorithms of this
+section. Show how to compute the predecessor matrix Π from the completed matrix L of
+shortest-path weights in O(n3) time.
+
+Exercises 25.1-7
+The vertices on shortest paths can also be computed at the same time as the shortest-path
+weights. Let us define
+to be the predecessor of vertex j on any minimum-weight path from
+i to j that contains at most m edges. Modify EXTEND-SHORTEST-PATHS and SLOWALL-PAIRS-SHORTEST-PATHS to compute the matrices Π(1), Π(2),..., Π(n-1) as the matrices
+L(1), L(2),..., L(n-1) are computed.
+
+Exercises 25.1-8
+The FASTER-ALL-PAIRS-SHORTEST-PATHS procedure, as written, requires us to store
+⌈lg(n - 1)⌉ matrices, each with n2 elements, for a total space requirement of Θ(n2 lg n).
+Modify the procedure to require only Θ(n2) space by using only two n × n matrices.
+
+Exercises 25.1-9
+
+

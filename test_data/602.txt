@@ -1,0 +1,39 @@
+comparator. The main requirement for interconnecting comparators is that the graph of
+interconnections must be acyclic: if we trace a path from the output of a given comparator to
+the input of another to an output to an input, etc., the path we trace must never cycle back on
+itself and go through the same comparator twice. Thus, as in Figure 27.2, we can draw a
+comparison network with network inputs on the left and network outputs on the right; data
+move through the network from left to right.
+
+Figure 27.2: (a) A 4-input, 4-output comparison network, which is in fact a sorting network.
+At time 0, the input values shown appear on the four input wires. (b) At time 1, the values
+shown appear on the outputs of comparators A and B, which are at depth 1. (c) At time 2, the
+values shown appear on the outputs of comparators C and D, at depth 2. Output wires b1 and
+b4 now have their final values, but output wires b2 and b3 do not. (d) At time 3, the values
+shown appear on the outputs of comparator E, at depth 3. Output wires b2 and b3 now have
+their final values.
+Each comparator produces its output values only when both of its input values are available to
+it. In Figure 27.2(a), for example, suppose that the sequence 9, 5, 2, 6 appears on the input
+wires at time 0. At time 0, then, only comparators A and B have all their input values
+available. Assuming that each comparator requires one time unit to compute its output values,
+comparators A and B produce their outputs at time 1; the resulting values are shown in Figure
+27.2(b). Note that comparators A and B produce their values at the same time, or "in parallel."
+Now, at time 1, comparators C and D, but not E, have all their input values available. One
+time unit later, at time 2, they produce their outputs, as shown in Figure 27.2(c). Comparators
+C and D operate in parallel as well. The top output of comparator C and the bottom output of
+comparator D connect to output wires b1 and b4, respectively, of the comparison network, and
+these network output wires therefore carry their final values at time 2. Meanwhile, at time 2,
+comparator E has its inputs available, and Figure 27.2(d) shows that it produces its output
+values at time 3. These values are carried on network output wires b2 and b3, and the output
+sequence 2, 5, 6, 9 is now complete.
+Under the assumption that each comparator takes unit time, we can define the "running time"
+of a comparison network, that is, the time it takes for all the output wires to receive their
+values once the input wires receive theirs. Informally, this time is the largest number of
+comparators that any input element can pass through as it travels from an input wire to an
+output wire. More formally, we define the depth of a wire as follows. An input wire of a
+comparison network has depth 0. Now, if a comparator has two input wires with depths dx and
+dy, then its output wires have depth max(dx, dy) + 1. Because there are no cycles of
+comparators in a comparison network, the depth of a wire is well defined, and we define the
+depth of a comparator to be the depth of its output wires. Figure 27.2 shows comparator
+
+

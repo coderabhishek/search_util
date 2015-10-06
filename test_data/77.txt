@@ -1,0 +1,21 @@
+Letting j = ⌊logb n⌋, we obtain
+
+and thus we see that at depth ⌊logb n⌋, the problem size is at most a constant.
+From Figure 4.4, we see that
+(4.13)
+
+which is much the same as equation (4.6), except that n is an arbitrary integer and not
+restricted to be an exact power of b.
+We can now evaluate the summation
+(4.14)
+
+from (4.13) in a manner analogous to the proof of Lemma 4.3. Beginning with case 3, if
+af(⌈n/b⌉) ≤ cf(n) for n > b + b/(b - 1), where c < 1 is a constant, then it follows that ajf(nj) ≤
+cjf(n). Therefore, the sum in equation (4.14) can be evaluated just as in Lemma 4.3. For case
+. If we can show that
+, then the proof for
+2, we have
+case 2 of Lemma 4.3 will go through. Observe that j = ≤ ⌊logb n⌋ implies bj/n ≤ 1. The bound
+implies that there exists a constant c > 0 such that for all sufficiently large nj,
+
+

@@ -1,0 +1,36 @@
+g. f(n) = Θ(f(n/2)).
+h. f(n) + o( f(n)) = Θ(f(n)).
+
+Problems 3-5: Variations on O and Ω
+Some authors define Ω in a slightly different way than we do; let's use (read "omega
+infinity") for this alternative definition. We say that
+if there exists a positive
+constant c such that f(n) ≥ cg(n) ≥ 0 for infinitely many integers n.
+a. Show that for any two functions f(n) and g(n) that are asymptotically nonnegative,
+either f(n) = O(g(n)) or
+or both, whereas this is not true if we use Ω in
+place of .
+b. Describe the potential advantages and disadvantages of using instead of Ω to
+characterize the running times of programs.
+Some authors also define O in a slightly different manner; let's use O' for the alternative
+definition. We say that f(n) = O'(g(n)) if and only if |f(n)| = O(g(n)).
+c. What happens to each direction of the "if and only if" in Theorem 3.1 if we substitute
+O' for O but still use Ω?
+Some authors define Õ (read "soft-oh") to mean O with logarithmic factors ignored:
+Õ (g(n)) = {f(n): there exist positive constants c, k, and n0 such that 0 ≤ f(n) ≤ cg(n) lgk(n) for
+all n ≥ n0}.
+d. Define and in a similar manner. Prove the corresponding analog to Theorem 3.1.
+
+Problems 3-6: Iterated functions
+The iteration operator* used in the lg* function can be applied to any monotonically
+increasing function f(n) over the reals. For a given constant c R, we define the iterated
+function by
+
+which need not be well-defined in all cases. In other words, the quantity
+is the number of
+iterated applications of the function f required to reduce its argument down to c or less.
+For each of the following functions f(n) and constants c, give as tight a bound as possible on
+.
+f(n) c
+
+

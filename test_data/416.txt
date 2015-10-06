@@ -1,0 +1,42 @@
+3
+4
+5
+6
+
+then if mark[y] = FALSE
+then mark[y] ← TRUE
+else CUT(H, y, z)
+CASCADING-CUT(H, z)
+
+The FIB-HEAP-DECREASE-KEY procedure works as follows. Lines 1-3 ensure that the new
+key is no greater than the current key of x and then assign the new key to x. If x is a root or if
+key[x] ≥ key[y], where y is x's parent, then no structural changes need occur, since min-heap
+order has not been violated. Lines 4-5 test for this condition.
+If min-heap order has been violated, many changes may occur. We start by cutting x in line 6.
+The CUT procedure "cuts" the link between x and its parent y, making x a root.
+We use the mark fields to obtain the desired time bounds. They record a little piece of the
+history of each node. Suppose that the following events have happened to node x:
+1. at some time, x was a root,
+2. then x was linked to another node,
+3. then two children of x were removed by cuts.
+As soon as the second child has been lost, we cut x from its parent, making it a new root. The
+field mark[x] is TRUE if steps 1 and 2 have occurred and one child of x has been cut. The
+CUT procedure, therefore, clears mark[x] in line 4, since it performs step 1. (We can now see
+why line 3 of FIB-HEAP-LINK clears mark[y]: node y is being linked to another node, and so
+step 2 is being performed. The next time a child of y is cut, mark[y] will be set to TRUE.)
+We are not yet done, because x might be the second child cut from its parent y since the time
+that y was linked to another node. Therefore, line 7 of FIB-HEAP-DECREASE-KEY
+performs a cascading-cut operation on y. If y is a root, then the test in line 2 of
+CASCADING-CUT causes the procedure to just return. If y is unmarked, the procedure marks
+it in line 4, since its first child has just been cut, and returns. If y is marked, however, it has
+just lost its second child; y is cut in line 5, and CASCADING-CUT calls itself recursively in
+line 6 on y's parent z. The CASCADING-CUT procedure recurses its way up the tree until
+either a root or an unmarked node is found.
+Once all the cascading cuts have occurred, lines 8-9 of FIB-HEAP-DECREASE-KEY finish
+up by updating min[H] if necessary. The only node whose key changed was the node x whose
+key decreased. Thus, the new minimum node is either the original minimum node or node x.
+Figure 20.4 shows the execution of two calls of FIB-HEAP-DECREASE-KEY, starting with
+the Fibonacci heap shown in Figure 20.4(a). The first call, shown in Figure 20.4(b), involves
+no cascading cuts. The second call, shown in Figures 20.4(c)-(e), invokes two cascading cuts.
+
+

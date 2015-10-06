@@ -1,0 +1,41 @@
+The (multiplicative) inverse of an element a is denoted (a-1 mod n). Division in is defined
+by the equation a/b ≡ ab-1 (mod n). For example, in we have that 7-1 ≡ 13 (mod 15), since 7
+· 13 ≡ 91 ≡ 1 (mod 15), so that 4/7 ≡ 4 · 13 ≡ 7 (mod 15).
+The size of
+equation
+
+is denoted φ(n). This function, known as Euler's phi function, satisfies the
+
+(31.19)
+
+where p runs over all the primes dividing n (including n itself, if n is prime). We shall not
+prove this formula here. Intuitively, we begin with a list of the n remainders {0, 1, ..., n - 1}
+and then, for each prime p that divides n, cross out every multiple of p in the list. For
+example, since the prime divisors of 45 are 3 and 5,
+
+If p is prime, then
+
+, and
+
+(31.20)
+If n is composite, then φ(n) < n - 1.
+Subgroups
+If (S, ) is a group, S′ S, and (S′, ) is also a group, then (S′, ) is said to be a subgroup of
+(S, ). For example, the even integers form a subgroup of the integers under the operation of
+addition. The following theorem provides a useful tool for recognizing subgroups.
+Theorem 31.14: (A nonempty closed subset of a finite group is a subgroup)
+If (S, ) is a finite group and S′ is any nonempty subset of S such that a
+S′, then (S′, ) is a subgroup of (S, ).
+
+b
+
+S′ for all a, b
+
+Proof The proof is left as Exercise 31.3-2.
+
+For example, the set {0, 2, 4, 6} forms a subgroup of Z8, since it is nonempty and closed
+under the operation + (that is, it is closed under +8).
+The following theorem provides an extremely useful constraint on the size of a subgroup; we
+omit the proof.
+
+

@@ -1,0 +1,37 @@
+Proof We start by considering the particular permutation in which each element A[i] receives
+the ith smallest priority. We shall show that this permutation occurs with probability exactly
+1/n!. For i = 1, 2, ..., n, let Xi be the event that element A[i] receives the ith smallest priority.
+Then we wish to compute the probability that for all i, event Xi occurs, which is
+Pr {X1 ∩ X2 ∩ X3 ∩ ··· ∩ Xn-1 ∩ Xn}.
+Using Exercise C.2-6, this probability is equal to
+Pr {X1} · Pr{X2 | X1} · Pr{X3 | X2 ∩ X1} · Pr{X4 | X3 ∩ X2 ∩ X1}
+Pr{Xi | Xi-1 ∩ Xi-2 ∩ ··· ∩ X1} Pr{Xn | Xn-1 ∩ ··· ∩ X1}.
+We have that Pr {X1} = 1/n because it is the probability that one priority chosen randomly out
+of a set of n is the smallest. Next, we observe that Pr {X2 | X1} = 1/(n - 1) because given that
+element A[1] has the smallest priority, each of the remaining n - 1 elements has an equal
+chance of having the second smallest priority. In general, for i = 2, 3, ..., n, we have that Pr
+{Xi | Xi-1 ∩ Xi-2 ∩ ··· ∩ X1} = 1/(n - i + 1), since, given that elements A[1] through A[i - 1] have
+the i - 1 smallest priorities (in order), each of the remaining n - (i - 1) elements has an equal
+chance of having the ith smallest priority. Thus, we have
+
+and we have shown that the probability of obtaining the identity permutation is 1/n!.
+We can extend this proof to work for any permutation of priorities. Consider any fixed
+permutation σ = <σ(1), σ(2), ..., σ(n)> of the set {1, 2, ..., n}. Let us denote by ri the rank of
+the priority assigned to element A[i], where the element with the jth smallest priority has rank
+j. If we define Xi as the event in which element A[i] receives the σ(i)th smallest priority, or ri =
+σ(i), the same proof still applies. Therefore, if we calculate the probability of obtaining any
+particular permutation, the calculation is identical to the one above, so that the probability of
+obtaining this permutation is also 1/n!.
+
+One might think that to prove that a permutation is a uniform random permutation it suffices
+to show that, for each element A[i], the probability that it winds up in position j is 1/n.
+Exercise 5.3-4 shows that this weaker condition is, in fact, insufficient.
+A better method for generating a random permutation is to permute the given array in place.
+The procedure RANDOMIZE-IN-PLACE does so in O(n) time. In iteration i, the element A[i]
+is chosen randomly from among elements A[i] through A[n]. Subsequent to iteration i, A[i] is
+never altered.
+RANDOMIZE-IN-PLACE(A)
+1 n ← length[A]
+2 for i ← to n
+
+

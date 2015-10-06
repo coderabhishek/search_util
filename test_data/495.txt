@@ -1,0 +1,57 @@
+During the execution of a shortest-paths algorithm, however, the π values need not indicate
+shortest paths. As in breadth-first search, we shall be interested in the predecessor subgraph
+Gπ = (Vπ, Eπ) induced by the π values. Here again, we define the vertex set Vπ to be the set of
+vertices of G with non-NIL predecessors, plus the source s:
+Vπ = {v
+
+V :π[v] ≠ NIL}
+
+{s} .
+
+The directed edge set Eπ is the set of edges induced by the π values for vertices in Vπ:
+Eπ = {(π[v], v)
+
+E:v
+
+Vπ - {s}} .
+
+We shall prove that the π values produced by the algorithms in this chapter have the property
+that at termination Gπ is a "shortest-paths tree"-informally, a rooted tree containing a shortest
+path from the source s to every vertex that is reachable from s. A shortest-paths tree is like the
+breadth-first tree from Section 22.2, but it contains shortest paths from the source defined in
+terms of edge weights instead of numbers of edges. To be precise, let G = (V, E) be a
+weighted, directed graph with weight function w : E → R, and assume that G contains no
+negative-weight cycles reachable from the source vertex s V , so that shortest paths are well
+defined. A shortest-paths tree rooted at s is a directed subgraph G' = (V', E'), where V' V
+and E' E, such that
+1. V' is the set of vertices reachable from s in G,
+2. G' forms a rooted tree with root s, and
+3. for all v V', the unique simple path from s to v in G' is a shortest path from s to v in
+G.
+Shortest paths are not necessarily unique, and neither are shortest-paths trees. For example,
+Figure 24.2 shows a weighted, directed graph and two shortest-paths trees with the same root.
+
+Figure 24.2: (a) A weighted, directed graph with shortest-path weights from source s. (b) The
+shaded edges form a shortest-paths tree rooted at the source s. (c) Another shortest-paths tree
+with the same root.
+Relaxation
+The algorithms in this chapter use the technique of relaxation. For each vertex v V, we
+maintain an attribute d[v], which is an upper bound on the weight of a shortest path from
+source s to v. We call d[v] a shortest-path estimate. We initialize the shortest-path estimates
+and predecessors by the following Θ(V)-time procedure.
+INITIALIZE-SINGLE-SOURCE(G, s)
+1 for each vertex v
+V[G]
+2
+do d[v] ← ∞
+3
+π[v] ← NIL
+4 d[s] 0
+
+After initialization, π[v] = NIL for all v
+
+V, d[s] = 0, and d[v] = ∞ for v
+
+V - {s}.
+
+

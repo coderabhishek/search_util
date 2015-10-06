@@ -1,0 +1,33 @@
+There are four basic operations on red-black trees that perform structural modifications: node
+insertions, node deletions, rotations, and color modifications. We have seen that RB-INSERT
+and RB-DELETE use only O(1) rotations, node insertions, and node deletions to maintain the
+red-black properties, but they may make many more color modifications.
+a. Describe a legal red-black tree with n nodes such that calling RB-INSERT to add the
+(n + 1)st node causes Ω(lg n) color modifications. Then describe a legal red-black tree
+with n nodes for which calling RB-DELETE on a particular node causes Ω(lg n) color
+modifications.
+Although the worst-case number of color modifications per operation can be logarithmic, we
+shall prove that any sequence of m RB-INSERT and RB-DELETE operations on an initially
+empty red-black tree causes O(m) structural modifications in the worst case.
+b. Some of the cases handled by the main loop of the code of both RB-INSERT-FIXUP
+and RB-DELETE-FIXUP are terminating: once encountered, they cause the loop to
+terminate after a constant number of additional operations. For each of the cases of
+RB-INSERT-FIXUP and RB-DELETE-FIXUP, specify which are terminating and
+which are not. (Hint: Look at Figures 13.5, 13.6 and 13.7.)
+We shall first analyze the structural modifications when only insertions are performed. Let T
+be a red-black tree, and define Φ(T) to be the number of red nodes in T . Assume that 1 unit of
+potential can pay for the structural modifications performed by any of the three cases of RBINSERT-FIXUP.
+c. Let T′ be the result of applying Case 1 of RB-INSERT-FIXUP to T . Argue that Φ(T′)
+= Φ(T) - 1.
+d. Node insertion into a red-black tree using RB-INSERT can be broken down into three
+parts. List the structural modifications and potential changes resulting from lines 1–16
+of RB-INSERT, from nonterminating cases of RB-INSERT-FIXUP, and from
+terminating cases of RB-INSERT-FIXUP.
+e. Using part (d), argue that the amortized number of structural modifications performed
+by any call of RB-INSERT is O(1).
+We now wish to prove that there are O(m) structural modifications when there are both
+insertions and deletions. Let us define, for each node x,
+
+Now we redefine the potential of a red-black tree T as
+
+

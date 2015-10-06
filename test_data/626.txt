@@ -1,0 +1,29 @@
+Figure 27.10: Comparing the first stage of MERGER[n] with HALF-CLEANER[n], for n = 8.
+(a) The first stage of MERGER[n] transforms the two monotonic input sequences a1,
+a2,...,an/2 and an/2+1, an/2+2,...,an into two bitonic sequences b1, b2,...,bn/2 and bn/2+1,
+bn/2+2,...,bn . (b) The equivalent operation for HALF-CLEANER[n]. The bitonic input
+sequence a1, a2,...,an/2-1, an/2, an, an-1,...,an/2+2, an/2+1 is transformed into the two bitonic
+sequences b1, b2,...,bn/2 and bn, bn-1,...,bn/2+1 .
+The resulting merging network is shown in Figure 27.11. Only the first stage of MERGER[n]
+is different from BITONIC-SORTER[n]. Consequently, the depth of MERGER[n] is lg n, the
+same as that of BITONIC-SORTER[n].
+
+Figure 27.11: A network that merges two sorted input sequences into one sorted output
+sequence. The network MERGER[n] can be viewed as BITONIC-SORTER[n] with the first
+half-cleaner altered to compare inputs i and n - i + 1 for i = 1, 2,..., n/2. Here, n = 8. (a) The
+network decomposed into the first stage followed by two parallel copies of BITONICSORTER[n/2]. (b) The same network with the recursion unrolled. Sample zero-one values are
+shown on the wires, and the stages are shaded.
+Exercises 27.4-1
+Prove an analog of the zero-one principle for merging networks. Specifically, show that a
+comparison network that can merge any two monotonically increasing sequences of 0's and
+1's can merge any two monotonically increasing sequences of arbitrary numbers.
+
+Exercises 27.4-2
+How many different zero-one input sequences must be applied to the input of a comparison
+network to verify that it is a merging network?
+
+Exercises 27.4-3
+Show that any network that can merge 1 item with n - 1 sorted items to produce a sorted
+sequence of length n must have depth at least lg n.
+
+

@@ -1,0 +1,39 @@
+solving the problem from scratch. We shall now examine a problem for which we know of no
+polynomial-time decision algorithm yet, given a certificate, verification is easy.
+Hamiltonian cycles
+The problem of finding a hamiltonian cycle in an undirected graph has been studied for over a
+hundred years. Formally, a hamiltonian cycle of an undirected graph G = (V, E) is a simple
+cycle that contains each vertex in V . A graph that contains a hamiltonian cycle is said to be
+hamiltonian; otherwise, it is nonhamiltonian. Bondy and Murty [45] cite a letter by W. R.
+Hamilton describing a mathematical game on the dodecahedron (Figure 34.2(a)) in which one
+player sticks five pins in any five consecutive vertices and the other player must complete the
+path to form a cycle containing all the vertices. The dodecahedron is hamiltonian, and Figure
+34.2(a) shows one hamiltonian cycle. Not all graphs are hamiltonian, however. For example,
+Figure 34.2(b) shows a bipartite graph with an odd number of vertices. Exercise 34.2-2 asks
+you to show that all such graphs are nonhamiltonian.
+
+Figure 34.2: (a) A graph representing the vertices, edges, and faces of a dodecahedron, with a
+hamiltonian cycle shown by shaded edges. (b) A bipartite graph with an odd number of
+vertices. Any such graph is nonhamiltonian.
+We can define the hamiltonian-cycle problem, "Does a graph G have a hamiltonian cycle?"
+as a formal language:
+HAM-CYCLE = { G
+
+: G is a hamiltonian graph}.
+
+How might an algorithm decide the language HAM-CYCLE? Given a problem instance
+G , one possible decision algorithm lists all permutations of the vertices of G and then
+checks each permutation to see if it is a hamiltonian path. What is the running time of this
+algorithm? If we use the "reasonable" encoding of a graph as its adjacency matrix, the number
+, where n = | G | is the length of the encoding of G. There
+m of vertices in the graph is
+are m! possible permutations of the vertices, and therefore the running time is
+, which is not O(nk) for any constant k. Thus, this naive algorithm does
+not run in polynomial time. In fact, the hamiltonian-cycle problem is NP-complete, as we
+shall prove in Section 34.5.
+Verification algorithms
+Consider a slightly easier problem. Suppose that a friend tells you that a given graph G is
+hamiltonian, and then offers to prove it by giving you the vertices in order along the
+hamiltonian cycle. It would certainly be easy enough to verify the proof: simply verify that
+
+

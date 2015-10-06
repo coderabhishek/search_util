@@ -1,0 +1,38 @@
+increasing degree, and BINOMIAL-HEAP-MERGE returns a root list H that is sorted by
+monotonically increasing degree. If the root lists of H1 and H2 have m roots altogether,
+BINOMIAL-HEAP-MERGE runs in O(m) time by repeatedly examining the roots at the
+heads of the two root lists and appending the root with the lower degree to the output root list,
+removing it from its input root list in the process.
+The BINOMIAL-HEAP-UNION procedure next initializes some pointers into the root list of
+H . First, it simply returns in lines 4-5 if it happens to be uniting two empty binomial heaps.
+From line 6 on, therefore, we know that H has at least one root. Throughout the procedure, we
+maintain three pointers into the root list:
+•
+•
+•
+
+x points to the root currently being examined,
+prev-x points to the root preceding x on the root list: sibling[prev-x] = x (since initially
+x has no predecessor, we start with prev-x set to NIL), and
+next-x points to the root following x on the root list: sibling[x] = next-x.
+
+Initially, there are at most two roots on the root list H of a given degree: because H1 and H2
+were binomial heaps, they each had at most one root of a given degree. Moreover,
+BINOMIAL-HEAP-MERGE guarantees us that if two roots in H have the same degree, they
+are adjacent in the root list.
+In fact, during the execution of BINOMIAL-HEAP-UNION, there may be three roots of a
+given degree appearing on the root list H at some time. We shall see in a moment how this
+situation could occur. At each iteration of the while loop of lines 9-21, therefore, we decide
+whether to link x and next-x based on their degrees and possibly the degree of sibling[next-x].
+An invariant of the loop is that each time we start the body of the loop, both x and next-x are
+non-NIL. (See Exercise 19.2-4 for a precise loop invariant.)
+Case 1, shown in Figure 19.6(a), occurs when degree[x] ≠ degree[next-x], that is, when x is
+the root of a Bk-tree and next-x is the root of a Bl-tree for some l > k. Lines 11-12 handle this
+case. We don't link x and next-x, so we simply march the pointers one position farther down
+the list. Updating next-x to point to the node following the new node x is handled in line 21,
+which is common to every case.
+
+Figure 19.6: The four cases that occur in BINOMIAL-HEAP-UNION. Labels a, b, c, and d
+serve only to identify the roots involved; they do not indicate the degrees or keys of these
+
+

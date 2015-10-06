@@ -1,0 +1,33 @@
+(29.23)
+
+Finally, we negate constraint (29.23). For consistency in variable names, we rename to x2
+and to x3, obtaining the standard form
+(29.24)
+subject to
+(29.25)
+(29.26)
+(29.27)
+(29.28)
+Converting linear programs into slack form
+To efficiently solve a linear program with the simplex algorithm, we prefer to express it in a
+form in which some of the constraints are equality constraints. More precisely, we shall
+convert it into a form in which the nonnegativity constraints are the only inequality
+constraints, and the remaining constraints are equalities. Let
+(29.29)
+
+be an inequality constraint. We introduce a new variable s and rewrite inequality (29.29) as
+the two constraints
+(29.30)
+(29.31)
+We call s a slack variable because it measures the slack, or difference, between the left-hand
+and right-hand sides of equation (29.29). Because inequality (29.29) is true if and only if both
+equation (29.30) and inequality (29.31) are true, we can apply this conversion to each
+inequality constraint of a linear program, obtaining an equivalent linear program in which the
+only inequality constraints are the nonnegativity constraints. When converting from standard
+to slack form, we shall use xn+i (instead of s) to denote the slack variable associated with the
+ith inequality. The ith constraint is therefore
+(29.32)
+
+along with the nonnegativity constraint xn+i ≥ 0.
+
+

@@ -1,0 +1,40 @@
+Lemma 26.1
+Let G = (V, E) be a flow network, and let f be a flow in G. Then the following equalities hold:
+1. For all X V, we have f(X, X) = 0.
+2. For all X, Y V, we have f(X, Y) = - f (Y, X).
+3. For all X, Y, Z V with X ∩ Y = Ø, we have the sums f(X
+f(X, Z) + f(Y, Z) and f(Z, X
+
+Y, Z) =
+
+Y) = f (Z, X) + f(Z, Y).
+
+As an example of working with the implicit summation notation, we can prove that the value
+of a flow is the total flow into the sink; that is,
+(26.3)
+Intuitively, we expect this property to hold. By flow conservation, all vertices other than the
+source and sink have equal amounts of total positive flow entering and leaving. The source
+has, by definition, a total net flow that is greater than 0; that is, more positive flow leaves the
+source than enters it. Symmetrically, the sink is the only vertex that can have a total net flow
+that is less than 0; that is, more positive flow enters the sink than leaves it. Our formal proof
+goes as follows:
+|f| = f(s, V)
+(by definition)
+= f(V, V) - f (V - s, V) (by Lemma 26.1, part (3))
+= - f(V - s, V)
+(by Lemma 26.1, part (1))
+(by Lemma 26.1, part (2))
+= f(V, V - s)
+= f(V, t) + f(V, V - s - t) (by Lemma 26.1, part (3))
+(by flow conservation).
+= f(V, t)
+Later in this chapter, we shall generalize this result (Lemma 26.5).
+Exercises 26.1-1
+
+Using the definition of a flow, prove that if (u, v) ∉ E and (v, u) ∉ E then f(u, v) = f(v, u) = 0.
+
+Exercises 26.1-2
+Prove that for any vertex v other than the source or sink, the total positive flow entering v
+must equal the total positive flow leaving v.
+
+

@@ -1,0 +1,39 @@
+Exercises 12.1-4
+Give recursive algorithms that perform preorder and postorder tree walks in Θ(n) time on a
+tree of n nodes.
+
+Exercises 12.1-5
+Argue that since sorting n elements takes Ω(n lg n) time in the worst case in the comparison
+model, any comparison-based algorithm for constructing a binary search tree from an
+arbitrary list of n elements takes Ω(n lg n) time in the worst case.
+
+12.2 Querying a binary search tree
+A common operation performed on a binary search tree is searching for a key stored in the
+tree. Besides the SEARCH operation, binary search trees can support such queries as
+MINIMUM, MAXIMUM, SUCCESSOR, and PREDECESSOR. In this section, we shall
+examine these operations and show that each can be supported in time O(h) on a binary search
+tree of height h.
+Searching
+We use the following procedure to search for a node with a given key in a binary search tree.
+Given a pointer to the root of the tree and a key k, TREE-SEARCH returns a pointer to a node
+with key k if one exists; otherwise, it returns NIL.
+TREE-SEARCH (x, k)
+1 if x= NIL or k = key[x]
+2
+then return x
+3 if k < key[x]
+4
+then return TREE-SEARCH(left[x], k)
+5
+else return TREE-SEARCH(right[x], k)
+
+The procedure begins its search at the root and traces a path downward in the tree, as shown
+in Figure 12.2. For each node x it encounters, it compares the key k with key[x]. If the two
+keys are equal, the search terminates. If k is smaller than key[x], the search continues in the
+left subtree of x, since the binary-search-tree property implies that k could not be stored in the
+right subtree. Symmetrically, if k is larger than key[x], the search continues in the right
+subtree. The nodes encountered during the recursion form a path downward from the root of
+the tree, and thus the running time of TREE-SEARCH is O(h), where h is the height of the
+tree.
+
+

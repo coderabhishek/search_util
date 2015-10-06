@@ -1,0 +1,44 @@
+Figure 12.2: Queries on a binary search tree. To search for the key 13 in the tree, we follow
+the path 15 → 6 → 7 → 13 from the root. The minimum key in the tree is 2, which can be
+found by following left pointers from the root. The maximum key 20 is found by following
+right pointers from the root. The successor of the node with key 15 is the node with key 17,
+since it is the minimum key in the right subtree of 15. The node with key 13 has no right
+subtree, and thus its successor is its lowest ancestor whose left child is also an ancestor. In this
+case, the node with key 15 is its successor.
+The same procedure can be written iteratively by "unrolling" the recursion into a while loop.
+On most computers, this version is more efficient.
+ITERATIVE-TREE-SEARCH(x, k)
+1 while x ≠ NIL and k ≠ key[x]
+2
+do if k < key[x]
+3
+then x ← left[x]
+4
+else x ← right[x]
+5 return x
+
+Minimum and maximum
+An element in a binary search tree whose key is a minimum can always be found by following
+left child pointers from the root until a NIL is encountered, as shown in Figure 12.2. The
+following procedure returns a pointer to the minimum element in the subtree rooted at a given
+node x.
+TREE-MINIMUM (x)
+1 while left[x] ≠ NIL
+2
+do x ← left[x]
+3 return x
+
+The binary-search-tree property guarantees that TREE-MINIMUM is correct. If a node x has
+no left subtree, then since every key in the right subtree of x is at least as large as key[x], the
+minimum key in the subtree rooted at x is key[x]. If node x has a left subtree, then since no
+key in the right subtree is smaller than key[x] and every key in the left subtree is not larger
+than key[x], the minimum key in the subtree rooted at x can be found in the subtree rooted at
+left[x].
+The pseudocode for TREE-MAXIMUM is symmetric.
+TREE-MAXIMUM(x)
+1 while right[x] ≠ NIL
+2
+do x ← right[x]
+3 return x
+
+

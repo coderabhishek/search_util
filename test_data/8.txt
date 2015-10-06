@@ -1,0 +1,48 @@
+Toom, Felzer Torsten, Hirendu Vaishnav, M. Veldhorst, Luca Venuti, Jian Wang, Michael
+Wellman, Gerry Wiener, Ronald Williams, David Wolfe, Jeff Wong, Richard Woundy, Neal
+Young, Huaiyuan Yu, Tian Yuxing, Joe Zachary, Steve Zhang, Florian Zschoke, and Uri
+Zwick.
+Many of our colleagues provided thoughtful reviews or filled out a long survey. We thank
+reviewers Nancy Amato, Jim Aspnes, Kevin Compton, William Evans, Peter Gacs, Michael
+Goldwasser, Andrzej Proskurowski, Vijaya Ramachandran, and John Reif. We also thank the
+following people for sending back the survey: James Abello, Josh Benaloh, Bryan BeresfordSmith, Kenneth Blaha, Hans Bodlaender, Richard Borie, Ted Brown, Domenico Cantone, M.
+Chen, Robert Cimikowski, William Clocksin, Paul Cull, Rick Decker, Matthew Dickerson,
+Robert Douglas, Margaret Fleck, Michael Goodrich, Susanne Hambrusch, Dean Hendrix,
+Richard Johnsonbaugh, Kyriakos Kalorkoti, Srinivas Kankanahalli, Hikyoo Koh, Steven
+Lindell, Errol Lloyd, Andy Lopez, Dian Rae Lopez, George Lucker, David Maier, Charles
+Martel, Xiannong Meng, David Mount, Alberto Policriti, Andrzej Proskurowski, Kirk Pruhs,
+Yves Robert, Guna Seetharaman, Stanley Selkow, Robert Sloan, Charles Steele, Gerard Tel,
+Murali Varanasi, Bernd Walter, and Alden Wright. We wish we could have carried out all
+your suggestions. The only problem is that if we had, the second edition would have been
+about 3000 pages long!
+The second edition was produced in
+. Michael Downes converted the
+macros from
+"classic"
+to
+, and he converted the text files to use these new macros. David Jones
+support. Figures for the second edition were produced by the authors
+also provided
+using MacDraw Pro. As in the first edition, the index was compiled using Windex, a C
+program written by the authors, and the bibliography was prepared using
+. Ayorkor
+Mills-Tettey and Rob Leathern helped convert the figures to MacDraw Pro, and Ayorkor also
+checked our bibliography.
+As it was in the first edition, working with The MIT Press and McGraw-Hill has been a
+delight. Our editors, Bob Prior of The MIT Press and Betsy Jones of McGraw-Hill, put up
+with our antics and kept us going with carrots and sticks.
+Finally, we thank our wives-Nicole Cormen, Gail Rivest, and Rebecca Ivry-our childrenRicky, William, and Debby Leiserson; Alex and Christopher Rivest; and Molly, Noah, and
+Benjamin Stein-and our parents-Renee and Perry Cormen, Jean and Mark Leiserson, Shirley
+and Lloyd Rivest, and Irene and Ira Stein-for their love and support during the writing of this
+book. The patience and encouragement of our families made this project possible. We
+affectionately dedicate this book to them.
+THOMAS H. CORMEN
+Hanover, New Hampshire
+CHARLES E. LEISERSON
+Cambridge, Massachusetts
+RONALD L. RIVEST
+Cambridge, Massachusetts
+CLIFFORD STEIN
+Hanover, New Hampshire
+
+

@@ -1,0 +1,26 @@
+light edge crossing a cut in the case of ties. More generally, we say that an edge is a light edge
+satisfying a given property if its weight is the minimum of any edge satisfying the property.
+
+Figure 23.2: Two ways of viewing a cut (S, V - S) of the graph from Figure 23.1. (a) The
+vertices in the set S are shown in black, and those in V - S are shown in white. The edges
+crossing the cut are those connecting white vertices with black vertices. The edge (d, c) is the
+unique light edge crossing the cut. A subset A of the edges is shaded; note that the cut (S, V S) respects A, since no edge of A crosses the cut. (b) The same graph with the vertices in the
+set S on the left and the vertices in the set V - S on the right. An edge crosses the cut if it
+connects a vertex on the left with a vertex on the right.
+Our rule for recognizing safe edges is given by the following theorem.
+Theorem 23.1
+Let G = (V, E) be a connected, undirected graph with a real-valued weight function w defined
+on E. Let A be a subset of E that is included in some minimum spanning tree for G, let (S, V S) be any cut of G that respects A, and let (u, v) be a light edge crossing (S, V - S). Then, edge
+(u, v) is safe for A.
+Proof Let T be a minimum spanning tree that includes A, and assume that T does not contain
+the light edge (u, v), since if it does, we are done. We shall construct another minimum
+spanning tree T′ that includes A {(u, v)} by using a cut-and-paste technique, thereby
+showing that (u, v) is a safe edge for A.
+The edge (u, v) forms a cycle with the edges on the path p from u to v in T, as illustrated in
+Figure 23.3. Since u and v are on opposite sides of the cut (S, V - S), there is at least one edge
+in T on the path p that also crosses the cut. Let (x, y) be any such edge. The edge (x, y) is not
+in A, because the cut respects A. Since (x, y) is on the unique path from u to v in T, removing
+(x, y) breaks T into two components. Adding (u, v) reconnects them to form a new spanning
+tree T′ = T - {(x, y)} {(u, v)}.
+
+

@@ -1,0 +1,35 @@
+Implement the dictionary operations INSERT, DELETE, and SEARCH using singly linked,
+circular lists. What are the running times of your procedures?
+
+Exercises 10.2-6
+The dynamic-set operation UNION takes two disjoint sets S1 and S2 as input, and it returns a
+set S = S1 S2 consisting of all the elements of S1 and S2. The sets S1 and S2 are usually
+destroyed by the operation. Show how to support UNION in O(1) time using a suitable list
+data structure.
+
+Exercises 10.2-7
+Give a Θ(n)-time nonrecursive procedure that reverses a singly linked list of n elements. The
+procedure should use no more than constant storage beyond that needed for the list itself.
+
+Exercises 10.2-8:
+Explain how to implement doubly linked lists using only one pointer value np[x] per item
+instead of the usual two (next and prev). Assume that all pointer values can be interpreted as
+k-bit integers, and define np[x] to be np[x] = next[x] XOR prev[x], the k-bit "exclusive-or" of
+next[x] and prev[x]. (The value NIL is represented by 0.) Be sure to describe what information
+is needed to access the head of the list. Show how to implement the SEARCH, INSERT, and
+DELETE operations on such a list. Also show how to reverse such a list in O(1) time.
+
+10.3 Implementing pointers and objects
+How do we implement pointers and objects in languages, such as Fortran, that do not provide
+them? In this section, we shall see two ways of implementing linked data structures without
+an explicit pointer data type. We shall synthesize objects and pointers from arrays and array
+indices.
+A multiple-array representation of objects
+We can represent a collection of objects that have the same fields by using an array for each
+field. As an example, Figure 10.5 shows how we can implement the linked list of Figure
+10.3(a) with three arrays. The array key holds the values of the keys currently in the dynamic
+set, and the pointers are stored in the arrays next and prev. For a given array index x, key[x],
+next[x], and prev[x] represent an object in the linked list. Under this interpretation, a pointer x
+is simply a common index into the key, next, and prev arrays.
+
+

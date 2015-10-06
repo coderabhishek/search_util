@@ -1,0 +1,40 @@
+roots. In each case, x is the root of a Bk-tree and l > k. (a) Case 1: degree[x] ≠ degree[next-x].
+The pointers move one position farther down the root list. (b) Case 2: degree[x] =
+degree[next-x] = degree[sibling[next-x]]. Again, the pointers move one position farther down
+the list, and the next iteration executes either case 3 or case 4. (c) Case 3: degree[x] =
+degree[next-x] ≠ degree[sibling[next-x]] and key[x] ≤ key[next-x]. We remove next-x from the
+root list and link it to x, creating a Bk+1-tree. (d) Case 4: degree[x] = degree[next-x] ≠
+degree[sibling[next-x]] and key[next-x] ≤ key[x]. We remove x from the root list and link it to
+next-x, again creating a Bk+1-tree.
+Case 2, shown in Figure 19.6(b), occurs when x is the first of three roots of equal degree, that
+is, when
+degree[x] = degree[next-x] = degree[sibling[next-x]].
+We handle this case in the same manner as case 1: we just march the pointers one position
+farther down the list. The next iteration will execute either case 3 or case 4 to combine the
+second and third of the three equal-degree roots. Line 10 tests for both cases 1 and 2, and lines
+11-12 handle both cases.
+Cases 3 and 4 occur when x is the first of two roots of equal degree, that is, when
+degree[x] = degree[next-x] ≠ degree[sibling[next-x]].
+These cases may occur in any iteration, but one of them always occurs immediately following
+case 2. In cases 3 and 4, we link x and next-x. The two cases are distinguished by whether x or
+next-x has the smaller key, which determines the node that will be the root after the two are
+linked.
+In case 3, shown in Figure 19.6(c), key[x] ≤ key[next-x], so next-x is linked to x. Line 14
+removes next-x from the root list, and line 15 makes next-x the leftmost child of x.
+In case 4, shown in Figure 19.6(d), next-x has the smaller key, so x is linked to next-x. Lines
+16-18 remove x from the root list; there are two cases depending on whether x is the first root
+on the list (line 17) or is not (line 18). Line 19 then makes x the leftmost child of next-x, and
+line 20 updates x for the next iteration.
+Following either case 3 or case 4, the setup for the next iteration of the while loop is the same.
+We have just linked two Bk-trees to form a Bk+1-tree, which x now points to. There were
+already zero, one, or two other Bk+1-trees on the root list resulting from BINOMIAL-HEAPMERGE, so x is now the first of either one, two, or three Bk+1-trees on the root list. If x is the
+only one, then we enter case 1 in the next iteration: degree[x] ≠ degree[next-x]. If x is the first
+of two, then we enter either case 3 or case 4 in the next iteration. It is when x is the first of
+three that we enter case 2 in the next iteration.
+The running time of BINOMIAL-HEAP-UNION is O(lg n), where n is the total number of
+nodes in binomial heaps H1 and H2. We can see this as follows. Let H1 contain n1 nodes and
+H2 contain n2 nodes, so that n = n1 + n2. Then H1 contains at most ⌊lg n1⌋+1 roots and H2
+contains at most ⌊lg n2⌋+1 roots, and so H contains at most ⌊lg n1⌋+⌊lg n2⌋+2 ≤ 2⌊lg n⌋+2 =
+O(lg n) roots immediately after the call of BINOMIAL-HEAP-MERGE. The time to perform
+
+

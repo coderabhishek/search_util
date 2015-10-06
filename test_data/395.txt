@@ -1,0 +1,96 @@
+Bk-1 tree rooted at node z; that is, it makes z the parent of y. Node z thus becomes the root of a
+Bk tree.
+BINOMIAL-LINK(y, z)
+1 p[y] ← z
+2 sibling[y] ← child[z]
+3 child[z] ← y
+4 degree[z] ← degree[z] + 1
+
+The BINOMIAL-LINK procedure makes node y the new head of the linked list of node z's
+children in O(1) time. It works because the left-child, right-sibling representation of each
+binomial tree matches the ordering property of the tree: in a Bk tree, the leftmost child of the
+root is the root of a Bk-1 tree.
+The following procedure unites binomial heaps H1 and H2, returning the resulting heap. It
+destroys the representations of H1 and H2 in the process. Besides BINOMIAL-LINK, the
+procedure uses an auxiliary procedure BINOMIAL-HEAP-MERGE that merges the root lists
+of H1 and H2 into a single linked list that is sorted by degree into monotonically increasing
+order. The BINOMIAL-HEAP-MERGE procedure, whose pseudocode we leave as Exercise
+19.2-1, is similar to the MERGE procedure in Section 2.3.1.
+BINOMIAL-HEAP-UNION(H1, H2)
+1 H ← MAKE-BINOMIAL-HEAP()
+2 head[H] ← BINOMIAL-HEAP-MERGE(H1, H2)
+3 free the objects H1 and H2 but not the lists they point to
+4 if head[H] = NIL
+5
+then return H
+6 prev-x ← NIL
+7 x ← head[H]
+8 next-x ← sibling[x]
+9 while next-x ≠ NIL
+10
+do if (degree[x] ≠ degree[next-x]) or
+(sibling[next-x] ≠ NIL and degree[sibling[next-x]] =
+degree[x])
+11
+2
+
+then prev-x ← x
+
+▹ Cases 1 and
+
+12
+2
+13
+
+x ← next-x
+
+▹ Cases 1 and
+
+else if key[x] ≤ key[next-x]
+
+14
+
+then sibling[x] ← sibling[next-x]
+
+15
+
+BINOMIAL-LINK(next-x, x)
+
+16
+
+else if prev-x = NIL
+
+17
+
+then head[H] ← next-x
+
+18
+
+else sibling[prev-x] ← next-x
+
+19
+20
+21
+22
+
+BINOMIAL-LINK(x, next-x)
+x ← next-x
+next-x ← sibling[x]
+return H
+
+▹ Case 3
+▹ Case 3
+▹ Case 4
+
+▹ Case 4
+
+▹ Case 4
+
+▹ Case 4
+
+▹ Case 4
+
+Figure 19.5 shows an example of BINOMIAL-HEAP-UNION in which all four cases given in
+the pseudocode occur.
+
+

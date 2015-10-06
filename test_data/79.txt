@@ -1,0 +1,45 @@
+Problems 4-2: Finding the missing integer
+An array A[1 n] contains all the integers from 0 to n except one. It would be easy to
+determine the missing integer in O(n) time by using an auxiliary array B[0 n] to record
+which numbers appear in A. In this problem, however, we cannot access an entire integer in A
+with a single operation. The elements of A are represented in binary, and the only operation
+we can use to access them is "fetch the jth bit of A[i]," which takes constant time.
+Show that if we use only this operation, we can still determine the missing integer in O(n)
+time.
+
+Problems 4-3: Parameter-passing costs
+Throughout this book, we assume that parameter passing during procedure calls takes
+constant time, even if an N-element array is being passed. This assumption is valid in most
+systems because a pointer to the array is passed, not the array itself. This problem examines
+the implications of three parameter-passing strategies:
+1. An array is passed by pointer. Time = Θ(1).
+2. An array is passed by copying. Time = Θ(N), where N is the size of the array.
+3. An array is passed by copying only the subrange that might be accessed by the called
+procedure. Time = Θ(q - p + 1) if the subarray A[p q] is passed.
+a. Consider the recursive binary search algorithm for finding a number in a sorted array
+(see Exercise 2.3-5). Give recurrences for the worst-case running times of binary
+search when arrays are passed using each of the three methods above, and give good
+upper bounds on the solutions of the recurrences. Let N be the size of the original
+problem and n be the size of a subproblem.
+b. Redo part (a) for the MERGE-SORT algorithm from Section 2.3.1.
+
+Problems 4-4: More recurrence examples
+Give asymptotic upper and lower bounds for T(n) in each of the following recurrences.
+Assume that T(n) is constant for sufficiently small n. Make your bounds as tight as possible,
+and justify your answers.
+a.
+b.
+c.
+d.
+e.
+f.
+g.
+
+T(n) = 3T(n/2) + n lg n.
+T(n) = 5T(n/5) + n/ lg n.
+T(n) = 3T(n/3 + 5) + n/2.
+T(n) = 2T(n/2) + n/ lg n.
+T(n) = T(n/2) + T(n/4) + T(n/8) + n.
+T(n) = T(n - 1) + 1/n.
+
+

@@ -1,0 +1,46 @@
+22
+else (same as then clause with "right" and "left" exchanged)
+23 color[x] ← BLACK
+
+If the spliced-out node y in RB-DELETE is black, three problems may arise. First, if y had
+been the root and a red child of y becomes the new root, we have violated property 2. Second,
+if both x and p[y] (which is now also p[x]) were red, then we have violated property 4. Third,
+y's removal causes any path that previously contained y to have one fewer black node. Thus,
+property 5 is now violated by any ancestor of y in the tree. We can correct this problem by
+saying that node x has an "extra" black. That is, if we add 1 to the count of black nodes on any
+path that contains x, then under this interpretation, property 5 holds. When we splice out the
+black node y, we "push" its blackness onto its child. The problem is that now node x is neither
+red nor black, thereby violating property 1. Instead, node x is either "doubly black" or "redand-black," and it contributes either 2 or 1, respectively, to the count of black nodes on paths
+containing x. The color attribute of x will still be either RED (if x is red-and-black) or
+BLACK (if x is doubly black). In other words, the extra black on a node is reflected in x's
+pointing to the node rather than in the color attribute.
+The procedure RB-DELETE-FIXUP restores properties 1, 2, and 4. Exercises 13.4-1 and
+13.4-2 ask you to show that the procedure restores properties 2 and 4, and so in the remainder
+of this section, we shall focus on property 1. The goal of the while loop in lines 1–22 is to
+move the extra black up the tree until
+1. x points to a red-and-black node, in which case we color x (singly) black in line 23,
+2. x points to the root, in which case the extra black can be simply "removed," or
+3. suitable rotations and recolorings can be performed.
+Within the while loop, x always points to a nonroot doubly black node. We determine in line
+2 whether x is a left child or a right child of its parent p[x]. (We have given the code for the
+situation in which x is a left child; the situation in which x is a right child—line 22—is
+symmetric.) We maintain a pointer w to the sibling of x. Since node x is doubly black, node w
+cannot be nil[T]; otherwise, the number of blacks on the path from p[x] to the (singly black)
+leaf w would be smaller than the number on the path from p[x] to x.
+The four cases[2] in the code are illustrated in Figure 13.7. Before examining each case in
+detail, let's look more generally at how we can verify that the transformation in each of the
+cases preserves property 5. The key idea is that in each case the number of black nodes
+(including x's extra black) from (and including) the root of the subtree shown to each of the
+subtrees α, β, ..., ζ is preserved by the transformation. Thus, if property 5 holds prior to the
+transformation, it continues to hold afterward. For example, in Figure 13.7(a), which
+illustrates case 1, the number of black nodes from the root to either subtree α or β is 3, both
+before and after the transformation. (Again, remember that node x adds an extra black.)
+Similarly, the number of black nodes from the root to any of γ, δ, ε, and is ζ, both before and
+after the transformation. In Figure 13.7(b), the counting must involve the value c of the color
+attribute of the root of the subtree shown, which can be either RED or BLACK. If we define
+count(RED) = 0 and count(BLACK) = 1, then the number of black nodes from the root to α is
+2 + count(c), both before and after the transformation. In this case, after the transformation,
+the new node x has color attribute c, but this node is really either red-and-black (if c = RED)
+or doubly black (if c = BLACK). The other cases can be verified similarly (see Exercise 13.45).
+
+

@@ -1,0 +1,28 @@
+decomposition produces the Schur complement of A with respect to A1 = (a11), Lemma 28.11
+implies that all pivots are positive by induction.
+
+Least-squares approximation
+Fitting curves to given sets of data points is an important application of symmetric positivedefinite matrices. Suppose that we are given a set of m data points
+(x1, y1), (x2, y2), . . . , (xm, ym),
+where the yi are known to be subject to measurement errors. We would like to determine a
+function F(x) such that
+(28.31)
+for i = 1, 2, . . . , m, where the approximation errors ηi are small. The form of the function F
+depends on the problem at hand. Here, we assume that it has the form of a linearly weighted
+sum,
+
+where the number of summands n and the specific basis functions fj are chosen based on
+knowledge of the problem at hand. A common choice is fj(x) = xj-1, which means that
+F (x) = c1 + c2x + c3x2 +. . .+ cnxn-1
+is a polynomial of degree n - 1 in x.
+By choosing n = m, we can calculate each yi exactly in equation (28.31). Such a high-degree F
+"fits the noise" as well as the data, however, and generally gives poor results when used to
+predict y for previously unseen values of x. It is usually better to choose n significantly
+smaller than m and hope that by choosing the coefficients cj well, we can obtain a function F
+that finds the significant patterns in the data points without paying undue attention to the
+noise. Some theoretical principles exist for choosing n, but they are beyond the scope of this
+text. In any case, once n is chosen, we end up with an overdetermined set of equations whose
+solution we wish to approximate. We now show how this can be done.
+Let
+
+

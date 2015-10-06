@@ -1,0 +1,45 @@
+Chapter 28 studies efficient algorithms for operating on matrices. After examining some basic
+matrix properties, it explores Strassen's algorithm, which can multiply two n × n matrices in
+O(n2.81) time. It then presents two general methods-LU decomposition and LUP
+decomposition-for solving linear equations by Gaussian elimination in O(n3) time. It also
+shows that matrix inversion and matrix multiplication can be performed equally fast. The
+chapter concludes by showing how a least-squares approximate solution can be computed
+when a set of linear equations has no exact solution.
+Chapter 29 studies linear programming, in which we wish to maximize or minimize an
+objective, given limited resources and competing constraints. Linear programming arises in a
+variety of practical application areas. This chapter covers the formulation and solution of
+linear programs. The solution method covered is the simplex algorithm, which is the oldest
+algorithm for linear programming. In contrast to many algorithms in this book, the simplex
+algorithm does not run in polynomial time in the worst case, but it is fairly efficient and
+widely used in practice.
+Chapter 30 studies operations on polynomials and shows that a well-known signal-processing
+technique-the Fast Fourier Transform (FFT)-can be used to multiply two degree-n
+polynomials in O(n lg n) time. It also investigates efficient implementations of the FFT,
+including a parallel circuit.
+Chapter 31 presents number-theoretic algorithms. After a review of elementary number
+theory, it presents Euclid's algorithm for computing greatest common divisors. Algorithms for
+solving modular linear equations and for raising one number to a power modulo another
+number are presented next. Then we see an important application of number-theoretic
+algorithms: the RSA public-key cryptosystem. This cryptosystem not only can be used to
+encrypt messages so that an adversary cannot read them, it also can be used to provide digital
+signatures. The chapter then presents the Miller-Rabin randomized primality test, which can
+be used to find large primes efficiently-an essential requirement for the RSA system. Finally,
+the chapter covers Pollard's "rho" heuristic for factoring integers and discusses the state of the
+art of integer factorization.
+Chapter 32 studies the problem of finding all occurrences of a given pattern string in a given
+text string, a problem that arises frequently in text-editing programs. After examining the
+naive approach, the chapter presents an elegant approach due to Rabin and Karp. Then, after
+showing an efficient solution based on finite automata, the chapter presents the Knuth-MorrisPratt algorithm, which achieves efficiency by cleverly preprocessing the pattern.
+Computational geometry is the topic of Chapter 33. After discussing basic primitives of
+computational geometry, the chapter shows how a "sweeping" method can efficiently
+determine whether a set of line segments contains any intersections. Two clever algorithms
+for finding the convex hull of a set of points-Graham's scan and Jarvis's march-also illustrate
+the power of sweeping methods. The chapter closes with an efficient algorithm for finding the
+closest pair from among a given set of points in the plane.
+Chapter 34 concerns NP-complete problems. Many interesting computational problems are
+NP-complete, but no polynomial-time algorithm is known for solving any of them. This
+chapter presents techniques for determining when a problem is NP-complete. Several classic
+problems are proved to be NP-complete: determining if a graph has a hamiltonian cycle,
+determining if a boolean formula is satisfiable, and determining if a given set of numbers has
+
+

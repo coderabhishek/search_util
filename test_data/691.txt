@@ -1,0 +1,26 @@
+Put the single-pair shortest-path linear program from (29.44)–(29.46) into standard form.
+
+Exercises 29.2-2
+Write out explicitly the linear program corresponding to finding the shortest path from node s
+to node y in Figure 24.2(a).
+
+Exercises 29.2-3
+In the single-source shortest-paths problem, we want to find the shortest-path weights from a
+source vertex s to all vertices v V. Given a graph G, write a linear program for which the
+solution has the property that d[v] is the shortest-path weight from s to v for each vertex v
+V.
+
+Exercises 29.2-4
+Write out explicitly the linear program corresponding to finding the maximum flow in Figure
+26.1(a).
+
+Exercises 29.2-5
+Rewrite the linear program for maximum flow (29.47)–(29.50) so that it uses only O(V + E)
+constraints.
+
+Exercises 29.2-6
+Write a linear program that, given a bipartite graph G = (V, E), solves the maximum-bipartitematching problem.
+
+Exercises 29.2-7
+
+

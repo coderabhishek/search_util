@@ -1,0 +1,41 @@
+In Section 15.1, we briefly examined how a recursive solution to assembly-line scheduling
+makes 2n-j references to fi[j] for j = 1, 2, ..., n. Our tabular solution takes an exponential-time
+recursive algorithm down to linear time.
+To illustrate the overlapping-subproblems property in greater detail, let us reexamine the
+matrix-chain multiplication problem. Referring back to Figure 15.3, observe that MATRIXCHAIN-ORDER repeatedly looks up the solution to subproblems in lower rows when solving
+subproblems in higher rows. For example, entry m[3, 4] is referenced 4 times: during the
+computations of m[2, 4], m[1, 4], m[3, 5], and m[3, 6]. If m[3, 4] were recomputed each time,
+rather than just being looked up, the increase in running time would be dramatic. To see this,
+consider the following (inefficient) recursive procedure that determines m[i, j], the minimum
+number of scalar multiplications needed to compute the matrix-chain product Ai j = AiAi+1 ···
+Aj. The procedure is based directly on the recurrence (15.12).
+RECURSIVE-MATRIX-CHAIN(p, i, j)
+1 if i = j
+2
+then return 0
+3 m[i, j] ← ∞
+4 for k ← i to j - 1
+5
+do q ← RECURSIVE-MATRIX-CHAIN(p, i, k)
++ RECURSIVE-MATRIX-CHAIN(p,k + 1, j)
++ pi-1 pk pj
+6
+if q < m[i, j]
+7
+then m[i, j] ← q
+8 return m[i, j]
+
+Figure 15.5 shows the recursion tree produced by the call RECURSIVE-MATRIX-CHAIN(p,
+1, 4). Each node is labeled by the values of the parameters i and j. Observe that some pairs of
+values occur many times.
+
+Figure 15.5: The recursion tree for the computation of RECURSIVE-MATRIX-CHAIN(p, 1,
+4). Each node contains the parameters i and j. The computations performed in a shaded
+subtree are replaced by a single table lookup in MEMOIZED-MATRIX-CHAIN(p, 1, 4).
+In fact, we can show that the time to compute m[1, n] by this recursive procedure is at least
+exponential in n. Let T (n) denote the time taken by RECURSIVE-MATRIX-CHAIN to
+compute an optimal parenthesization of a chain of n matrices. If we assume that the execution
+of lines 1–2 and of lines 6–7 each take at least unit time, then inspection of the procedure
+yields the recurrence
+
+

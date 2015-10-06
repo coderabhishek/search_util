@@ -1,0 +1,41 @@
+of which can be computationally expensive and prone to problems with round-off error. For
+example, the "straightforward" method of determining whether two segments intersectcompute the line equation of the form y = mx + b for each segment (m is the slope and b is the
+y-intercept), find the point of intersection of the lines, and check whether this point is on both
+segments-uses division to find the point of intersection. When the segments are nearly
+parallel, this method is very sensitive to the precision of the division operation on real
+computers. The method in this section, which avoids division, is much more accurate.
+Cross products
+Computing cross products is at the heart of our line-segment methods. Consider vectors p1
+and p2, shown in Figure 33.1(a). The cross product p1 × p2 can be interpreted as the signed
+area of the parallelogram formed by the points (0, 0), p1, p2, and p1 + p2 = (x1 + x2, y1 + y2). An
+equivalent, but more useful, definition gives the cross product as the determinant of a
+matrix:[1]
+
+Figure 33.1: (a) The cross product of vectors p1 and p2 is the signed area of the parallelogram.
+(b) The lightly shaded region contains vectors that are clockwise from p. The darkly shaded
+region contains vectors that are counterclockwise from p.
+If p1 × p2 is positive, then p1 is clockwise from p2 with respect to the origin (0, 0); if this cross
+product is negative, then p1 is counterclockwise from p2. (See Exercise 33.1-1.) Figure 33.1(b)
+shows the clockwise and counterclockwise regions relative to a vector p. A boundary
+condition arises if the cross product is 0; in this case, the vectors are collinear, pointing in
+either the same or opposite directions.
+To determine whether a directed segment
+is clockwise from a directed segment
+with
+respect to their common endpoint p0, we simply translate to use p0 as the origin. That is, we
+, where
+and
+, and we define p2 - p0
+let p1 - p0 denote the vector
+similarly. We then compute the cross product
+(p1 - p0) × (p2 - p0) = (x1 - x0)(y2 - y0) - (x2 - x0)(y1 - y0).
+If this cross product is positive, then
+counterclockwise.
+
+is clockwise from
+
+; if negative, it is
+
+Determining whether consecutive segments turn left or right
+
+

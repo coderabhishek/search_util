@@ -1,0 +1,35 @@
+=′-′
+= 0.
+Similarly, the amortized cost of an ordinary POP operation is 0.
+The amortized cost of each of the three operations is O(1), and thus the total amortized cost of
+a sequence of n operations is O(n). Since we have already argued that Φ(Di) ≥ Φ(D0), the total
+amortized cost of n operations is an upper bound on the total actual cost. The worst-case cost
+of n operations is therefore O(n).
+Incrementing a binary counter
+As another example of the potential method, we again look at incrementing a binary counter.
+This time, we define the potential of the counter after the ith INCREMENT operation to be bi
+, the number of ′s in the counter after the ith operation.
+Let us compute the amortized cost of an INCREMENT operation. Suppose that the ith
+INCREMENT operation resets ti bits. The actual cost of the operation is therefore at most ti +
+1, since in addition to resetting ti bits, it sets at most one bit to 1. If bi = 0, then the ith
+operation resets all k bits, and so bi-1 = ti = k. If bi > 0, then bi = bi-1 - ti + 1. In either case, bi ≤
+bi-1 - ti + 1, and the potential difference is
+Φ(Di) - Φ(Di-1) ≤ (bi-1 - ti + 1) - bi-1
+= 1 - t i.
+The amortized cost is therefore
+= ci + Φ(Di) - Φ(Di-1)
+≤ (ti + 1) + (1 - ti)
+= 2.
+If the counter starts at zero, then Φ(D0) = 0. Since Φ(Di) ≥ 0 for all i, the total amortized cost
+of a sequence of n INCREMENT operations is an upper bound on the total actual cost, and so
+the worst-case cost of n INCREMENT operations is O(n).
+The potential method gives us an easy way to analyze the counter even when it does not start
+at zero. There are initially b0 ′s, and after n INCREMENT operations there are bn 1's, where 0
+≤ b0, bn ≤ k. (Recall that k is the number of bits in the counter.) We can rewrite equation
+(17.3) as
+(17.4)
+
+We have ≤ 2 for all 1 ≤ i ≤ n. Since Φ(D0) = b0 and Φ(Dn) = bn, the total actual cost of n
+INCREMENT operations is
+
+

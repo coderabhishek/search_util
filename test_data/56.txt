@@ -1,0 +1,52 @@
+Indicate, for each pair of expressions (A, B) in the table below, whether A is O, o, Ω, ω, or Θ
+of B. Assume that k ≥ 1, > 0, and c > 1 are constants. Your answer should be in the form of
+the table with "yes" or "no" written in each box.
+A
+a. lgk n
+b.
+
+k
+
+n
+
+OoΩωΘ
+
+n
+cn
+nsin n
+
+c.
+d.
+
+B
+
+2n
+
+e. nlg c
+
+2n/2
+clg n
+
+f. lg(n!) lg(nn)
+
+Problems 3-3: Ordering by asymptotic growth rates
+a. Rank the following functions by order of growth; that is, find an arrangement g1, g2,
+..., g30 of the functions satisfying g1 = Ω(g2), g2 = Ω(g3), ..., g29 = Ω(g30). Partition your
+list into equivalence classes such that f(n) and g(n) are in the same class if and only if
+f(n) = Θ(g(n)).
+
+b. Give an example of a single nonnegative function f(n) such that for all functions gi(n)
+in part (a), f(n) is neither O(gi(n)) nor Ω(gi(n)).
+
+Problems 3-4: Asymptotic notation properties
+Let f(n) and g(n) be asymptotically positive functions. Prove or disprove each of the following
+conjectures.
+a. f(n) = O(g(n)) implies g(n) = O(f(n)).
+b. f(n) + g(n) = Θ(min(f(n), g(n))).
+c. f(n) = O(g(n)) implies lg(f(n)) = O(lg(g(n))), where lg(g(n)) ≥ 1 and f(n) ≥ 1 for all
+sufficiently large n.
+d. f(n) = O(g(n)) implies 2f(n) = O (2g(n)).
+e. f(n) = O((f(n))2).
+f. f(n) = O(g(n)) implies g(n) = Ω(f(n)).
+
+

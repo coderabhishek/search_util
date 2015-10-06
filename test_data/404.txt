@@ -1,0 +1,58 @@
+Finally, 2-3-4 heaps are intended to be kept in main memory, so that disk reads and writes are
+not needed.
+Implement the following 2-3-4 heap operations. Each of the operations in parts (a)-(e) should
+run in O(lg n) time on a 2-3-4 heap with n elements. The UNION operation in part (f) should
+run in O(lg n) time, where n is the number of elements in the two input heaps.
+a. MINIMUM, which returns a pointer to the leaf with the smallest key.
+b. DECREASE-KEY, which decreases the key of a given leaf x to a given value k ≤
+key[x].
+c. INSERT, which inserts leaf x with key k.
+d. DELETE, which deletes a given leaf x.
+e. EXTRACT-MIN, which extracts the leaf with the smallest key.
+f. UNION, which unites two 2-3-4 heaps, returning a single 2-3-4 heap and de-stroying
+the input heaps.
+
+Problems 19-2: Minimum-spanning-tree algorithm using binomial heaps
+Chapter 23 presents two algorithms to solve the problem of finding a minimum spanning tree
+of an undirected graph. Here, we shall see how binomial heaps can be used to devise a
+different minimum-spanning-tree algorithm.
+We are given a connected, undirected graph G = (V, E) with a weight function w : E → R. We
+call w(u, v) the weight of edge (u, v). We wish to find a minimum spanning tree for G: an
+acyclic subset T E that connects all the vertices in V and whose total weight
+
+is minimized.
+The following pseudocode, which can be proven correct using techniques from Section 23.1,
+constructs a minimum spanning tree T . It maintains a partition {Vi} of the vertices of V and,
+with each set Vi, a set
+Ei
+
+(u, v): u
+
+Vi or v
+
+Vi}
+
+of edges incident on vertices in VI.
+MST(G)
+1 T ← Ø
+2 for each vertex vi
+V[G]
+3
+do Vi ← {vi}
+4
+Ei ← {(vi, v)
+E[G]}
+5 while there is more than one set Vi
+6
+do choose any set Vi
+7
+extract the minimum-weight edge (u, v) from Ei
+8
+assume without loss of generality that u
+Vi and v
+9
+if i ≠ j
+
+Vj
+
+

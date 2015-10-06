@@ -1,0 +1,40 @@
+us to focus on their operation for input sequences consisting solely of 0's and 1's. Once we
+have constructed a sorting network and proved that it can sort all zero-one sequences, we shall
+appeal to the zero-one principle to show that it properly sorts sequences of arbitrary values.
+The proof of the zero-one principle relies on the notion of a monotonically increasing function
+(Section 3.2).
+Lemma 27.1
+If a comparison network transforms the input sequence a = a1, a2,...,an into the output
+sequence b = b1, b2,...,bn , then for any monotonically increasing function f, the network
+transforms the input sequence f (a) = f(a1), f(a2),...,f(an) into the output sequence f(b) =
+f(b1), f(b2),...,f(bn) .
+Proof We shall first prove the claim that if f is a monotonically increasing function, then a
+single comparator with inputs f(x) and f(y) produces outputs f(min(x, y)) and f(max(x, y)). We
+then use induction to prove the lemma.
+To prove the claim, consider a comparator whose input values are x and y. The upper output
+of the comparator is min(x, y) and the lower output is max(x, y). Suppose we now apply f(x)
+and f(y) to the inputs of the comparator, as is shown in Figure 27.4. The operation of the
+comparator yields the value min(f(x), f(y)) on the upper output and the value max(f(x), f(y)) on
+the lower output. Since f is monotonically increasing, x ≤ y implies f(x) ≤ f(y). Consequently,
+we have the identities
+min(f(x), f(y)) = f(max(x, y)),
+max(f(x), f(y)) = f(min(x, y)).
+
+Figure 27.4: The operation of the comparator in the proof of Lemma 27.1. The function f is
+monotonically increasing.
+Thus, the comparator produces the values f(min(x, y)) and f(max(x, y)) when f(x) and f(y) are
+its inputs, which completes the proof of the claim.
+We can use induction on the depth of each wire in a general comparison network to prove a
+stronger result than the statement of the lemma: if a wire assumes the value ai when the input
+sequence a is applied to the network, then it assumes the value f(ai) when the input sequence
+f(a) is applied. Because the output wires are included in this statement, proving it will prove
+the lemma.
+For the basis, consider a wire at depth 0, that is, an input wire ai. The result follows trivially:
+when f(a) is applied to the network, the input wire carries f(ai). For the inductive step,
+consider a wire at depth d, where d ≥ 1. The wire is the output of a comparator at depth d, and
+the input wires to this comparator are at a depth strictly less than d. By the inductive
+hypothesis, therefore, if the input wires to the comparator carry values ai and aj when the
+input sequence a is applied, then they carry f(ai) and f(aj) when the input sequence f(a) is
+applied. By our earlier claim, the output wires of this comparator then carry f(min(ai, aj)) and
+
+
