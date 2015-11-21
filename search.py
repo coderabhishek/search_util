@@ -4,21 +4,19 @@ import shelve
 from nltk.stem.porter import *
 
 
-#q=raw_input("Enter query").lower()
+#Search function based on [product(1+lambda*ai)] formula
 
 def search(q):
 		stemmer=PorterStemmer()
 #for f in range(900):
 #	os.system("pdftotext a.pdf -f "+str(f)+" -l "+str(f)+" "+str(f)+".txt")
 
-#		q=raw_input("Enter query").lower()
 		tokens=shelve.open('tokens1.db')
 
 		queries=q.split(' ')
 		for i in range(len(queries)):
 			queries[i]=str(stemmer.stem(queries[i]))
 
-#print "queries-",queries 
 
 		query_list=[]
 
@@ -51,15 +49,11 @@ def search(q):
 
 			
 
-	#	if query_len!=0:
+
 			return  sorted(temp,key=temp.get,reverse=True)[:10]
-	#	else:
-	#		print "NOT FOUND\n"
 
 
 
 
 
-#print "\n\n\n\n",query_list 
 
-#print temp
