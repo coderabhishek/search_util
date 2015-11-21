@@ -2,13 +2,11 @@ import os
 import re
 import shelve
 from nltk.stem.porter import *
-#f=1
 
 stemmer=PorterStemmer()
-#for f in range(900):
-#	os.system("pdftotext a.pdf -f "+str(f)+" -l "+str(f)+" "+str(f)+".txt")
 
 
+#Function to check impotance of a line
 def imp_line(line):
 	data=line.split(' ')
 	if len(data)<6 and line[-1:].isalpha():
@@ -38,8 +36,6 @@ for i in range(50,900):
 						word=str(word)
 						if word not in trivia:
 								if word not in tokens.keys():
-										#word.encode("ascii",'ignore')
-										#print word+"kk"
 										tokens[word]={}
 										tokens[word][i]=m
 										tokens[word][0]=1
