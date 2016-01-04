@@ -8,8 +8,6 @@ from nltk.stem.porter import *
 
 def search(q):
 		stemmer=PorterStemmer()
-#for f in range(900):
-#	os.system("pdftotext a.pdf -f "+str(f)+" -l "+str(f)+" "+str(f)+".txt")
 
 		tokens=shelve.open('tokens1.db')
 
@@ -38,19 +36,19 @@ def search(q):
 
 		for i in range(query_len):
 			for word in query_list[i]:
-						if word not in temp.keys():
-								temp[word]=(1+_lambda*query_list[i][word])
-								for j in range(query_len):
-										if i==j:
-												continue
-										if word in query_list[j].keys():
-												temp[word]*=1+_lambda*query_list[j][word]
+				if word not in temp.keys():
+					temp[word]=(1+_lambda*query_list[i][word])
+					for j in range(query_len):
+						if i==j:
+							continue
+						if word in query_list[j].keys():
+							temp[word]*=1+_lambda*query_list[j][word]
 								
 
 			
 
 
-			return  sorted(temp,key=temp.get,reverse=True)[:10]
+		return  sorted(temp,key=temp.get,reverse=True)[:10]
 
 
 
