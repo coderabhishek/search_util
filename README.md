@@ -9,5 +9,5 @@ Indexing Mechanism:
   
 Searching Mechanism:
   It uses 
-   [product_over_all_i (1+lambda*ai)] formula to calculate where ai is importance of ith word in a page and lambda is just a constant so that when product expands as a polynmial the file containing all the words that is no ai=0 will have highest power of lambda thus making geting relatively higher weightage.
+   [product_over_all_i (1+lambda*ai)] formula to calculate where ai is importance of ith word in a page and lambda is just a constant so that when product expands as a polynmial the file containing all the words that is no ai=0 will have highest power of lambda thus giving relatively higher weightage.
    
