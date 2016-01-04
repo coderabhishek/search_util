@@ -1,17 +1,0 @@
-When I appears without a subscript, its size can be derived from context. The ith
-column of an identity matrix is the unit vector ei.
-3. A tridiagonal matrix T is one for which tij = 0 if |i - j| > 1. Nonzero entries appear only
-on the main diagonal, immediately above the main diagonal (ti,i+1 for i = 1, 2, . . . , n 1), or immediately below the main diagonal (ti+1,i for i = 1, 2, . . . , n - 1):
-
-4. An upper-triangular matrix U is one for which uij = 0 if i > j. All entries below the
-diagonal are zero:
-
-An upper-triangular matrix is unit upper-triangular if it has all 1's along the diagonal.
-5. A lower-triangular matrix L is one for which lij = 0 if i < j. All entries above the
-diagonal are zero:
-
-A lower-triangular matrix is unit lower-triangular if it has all 1's along the diagonal.
-6. A permutation matrix P has exactly one 1 in each row or column, and 0's elsewhere.
-An example of a permutation matrix is
-
-

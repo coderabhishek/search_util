@@ -1,18 +1,0 @@
-(12.3)
-
-(Exercise 12.4-1 asks you to prove this identity.)
-For the base case, we verify that the bound
-
-holds. For the substitution, we have that
-
-We have bounded E[Yn], but our ultimate goal is to bound E[Xn]. As Exercise 12.4-4 asks you
-to show, the function f(x) = 2x is convex (see page 1109). Therefore, we can apply Jensen's
-inequality (C.25), which says that
-
-to derive that
-
-Taking logarithms of both sides gives E[Xn] = O(lg n). Thus, we have proven the following:
-Theorem 12.4
-The expected height of a randomly built binary search tree on n keys is O(lg n).
-
-

@@ -1,9 +1,0 @@
-We begin our search for a faster matrix-multiplication algorithm by observing that the
-submatrix s can be computed as s = P1 + P2, where P1 and P2 are computed using one matrix
-multiplication each:
-
-The matrix t can be computed in a similar manner as t = P3 + P4, where
-
-and
-
-

@@ -1,6 +1,0 @@
-Figure 26.9: Discharging a vertex y. It takes 15 iterations of the while loop of DISCHARGE
-to push all the excess flow from y. Only the neighbors of y and edges entering or leaving y are
-shown. In each part, the number inside each vertex is its excess at the beginning of the first
-iteration shown in the part, and each vertex is shown at its height throughout the part. To the
-
-

@@ -1,10 +1,0 @@
-have the same polar angle relative to p0, all but the farthest such point are convex
-combinations of p0 and the farthest point, and so we remove them entirely from consideration.
-We let m denote the number of points other than p0 that remain. The polar angle, measured in
-radians, of each point in Q relative to p0 is in the half-open interval [0, π). Since the points are
-sorted according to polar angles, they are sorted in counterclockwise order relative to p0. We
-designate this sorted sequence of points by p1, p2, ..., pm . Note that points p1 and pm are
-vertices of CH(Q) (see Exercise 33.3-1). Figure 33.7(a) shows the points of Figure 33.6
-sequentially numbered in order of increasing polar angle relative to p0.
-
-
